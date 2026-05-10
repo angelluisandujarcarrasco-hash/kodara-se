@@ -681,6 +681,20 @@
     .fv2-badge{font-size:11px;color:var(--muted);font-family:'Space Mono',monospace}
     .fv2-badge span{color:var(--orange)}
 
+    /* ── FAQ ── */
+    .faq-section{padding:100px 48px;max-width:1200px;margin:0 auto}
+    .faq-list{display:flex;flex-direction:column;gap:12px;margin-top:52px}
+    .faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s}
+    .faq-item.open{border-color:rgba(232,116,74,.4)}
+    .faq-q{width:100%;background:none;border:none;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;text-align:left}
+    .faq-q-text{font-size:16px;font-weight:600;color:var(--white);line-height:1.4}
+    .faq-icon{width:28px;height:28px;background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .3s}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--orange);border-color:var(--orange)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+    .faq-item.open .faq-a{max-height:300px}
+    .faq-a-inner{padding:0 28px 24px;font-size:15px;color:var(--muted);line-height:1.75;border-top:1px solid var(--border);padding-top:20px}
+    @media(max-width:600px){.faq-section{padding:72px 24px}.faq-q{padding:18px 20px}.faq-a-inner{padding:0 20px 20px;padding-top:16px}}
+
     /* RESPONSIVE */
     @media(max-width:960px){
       .hero-inner { flex-direction: column; gap: 48px; }
@@ -1878,6 +1892,68 @@
   </div>
 </div>
 
+<!-- FAQ -->
+<div style="border-top:1px solid var(--border);background:var(--bg-card)">
+  <div class="faq-section">
+    <div class="s-tag" data-es="// PREGUNTAS FRECUENTES" data-en="// FAQ">// PREGUNTAS FRECUENTES</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <h2 class="s-title reveal" style="margin-bottom:0" data-es="Todo lo que necesitas<br>saber antes de empezar" data-en="Everything you need<br>to know before starting">Todo lo que necesitas<br>saber antes de empezar</h2>
+      <a href="#contact" class="btn-primary" style="flex-shrink:0;font-size:13px;padding:10px 22px" data-es="Pregunta lo que quieras →" data-en="Ask us anything →">Pregunta lo que quieras →</a>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Cuánto tiempo tarda un proyecto?" data-en="How long does a project take?">¿Cuánto tiempo tarda un proyecto?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Depende del servicio. Una auditoría SEO o de Meta Ads la entregamos en 48 horas. Un diseño web profesional en 72 horas. Las automatizaciones pueden tardar entre 3 y 7 días según la complejidad. Siempre te decimos el tiempo exacto antes de empezar." data-en="It depends on the service. An SEO or Meta Ads audit is delivered in 48 hours. A professional web design in 72 hours. Automations can take 3-7 days depending on complexity. We always tell you the exact time before starting.">Depende del servicio. Una auditoría SEO o de Meta Ads la entregamos en 48 horas. Un diseño web profesional en 72 horas. Las automatizaciones pueden tardar entre 3 y 7 días según la complejidad. Siempre te decimos el tiempo exacto antes de empezar.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Necesito conocimientos técnicos para trabajar con vosotros?" data-en="Do I need technical knowledge to work with you?">¿Necesito conocimientos técnicos para trabajar con vosotros?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Para nada. Nosotros nos encargamos de todo lo técnico. Tú solo nos dices qué quieres conseguir y nosotros lo hacemos. No necesitas saber de programación, SEO ni automatizaciones." data-en="Not at all. We take care of everything technical. You just tell us what you want to achieve and we do it. You don't need to know about programming, SEO or automations.">Para nada. Nosotros nos encargamos de todo lo técnico. Tú solo nos dices qué quieres conseguir y nosotros lo hacemos. No necesitas saber de programación, SEO ni automatizaciones.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Qué pasa si no me gusta el resultado?" data-en="What if I don't like the result?">¿Qué pasa si no me gusta el resultado?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Todos nuestros servicios incluyen 2 rondas de revisiones sin coste adicional. Si después de las revisiones no estás satisfecho, lo hablamos. Nuestro objetivo es que quedes contento con el resultado." data-en="All our services include 2 revision rounds at no extra cost. If after the revisions you're not satisfied, we'll talk it through. Our goal is for you to be happy with the result.">Todos nuestros servicios incluyen 2 rondas de revisiones sin coste adicional. Si después de las revisiones no estás satisfecho, lo hablamos. Nuestro objetivo es que quedes contento con el resultado.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Con qué países trabajáis?" data-en="Which countries do you work with?">¿Con qué países trabajáis?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Trabajamos con negocios de cualquier país. Todo es 100% remoto. España, México, Colombia, Argentina, Estados Unidos — no importa dónde estés, podemos ayudarte." data-en="We work with businesses from any country. Everything is 100% remote. Spain, Mexico, Colombia, Argentina, United States — no matter where you are, we can help you.">Trabajamos con negocios de cualquier país. Todo es 100% remoto. España, México, Colombia, Argentina, Estados Unidos — no importa dónde estés, podemos ayudarte.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Qué necesito para empezar?" data-en="What do I need to get started?">¿Qué necesito para empezar?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Solo necesitas contarnos qué quieres mejorar en tu negocio. Nosotros te pediremos lo que necesitemos (acceso a tu web, redes, etc.) una vez que acordemos el trabajo. La consulta inicial es completamente gratis." data-en="You just need to tell us what you want to improve in your business. We'll ask for what we need (access to your website, social media, etc.) once we agree on the work. The initial consultation is completely free.">Solo necesitas contarnos qué quieres mejorar en tu negocio. Nosotros te pediremos lo que necesitemos (acceso a tu web, redes, etc.) una vez que acordemos el trabajo. La consulta inicial es completamente gratis.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-es="¿Cómo se realiza el pago?" data-en="How is payment made?">¿Cómo se realiza el pago?</span>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="#E8744A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner" data-es="Aceptamos transferencia bancaria, Zelle y PayPal. Próximamente tarjeta de crédito/débito. El pago se realiza antes de comenzar el trabajo. Para proyectos grandes podemos acordar un 50% al inicio y 50% al finalizar." data-en="We accept bank transfer, Zelle and PayPal. Credit/debit card coming soon. Payment is made before starting the work. For large projects we can agree on 50% upfront and 50% upon completion.">Aceptamos transferencia bancaria, Zelle y PayPal. Próximamente tarjeta de crédito/débito. El pago se realiza antes de comenzar el trabajo. Para proyectos grandes podemos acordar un 50% al inicio y 50% al finalizar.</div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
   <div class="contact-grid">
@@ -1968,7 +2044,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-bottom-copy" data-es="© 2025 Kodara Service Enterprise. Todos los derechos reservados." data-en="© 2025 Kodara Service Enterprise. All rights reserved.">© 2025 Kodara Service Enterprise. Todos los derechos reservados.</div>
+    <div class="footer-bottom-copy" data-es="© 2026 Kodara Service Enterprise. Todos los derechos reservados." data-en="© 2026 Kodara Service Enterprise. All rights reserved.">© 2026 Kodara Service Enterprise. Todos los derechos reservados.</div>
     <div class="footer-bottom-badge">Hecho con <span>✦</span> por Kodara SE</div>
   </div>
 </footer>
@@ -2545,6 +2621,14 @@
   window.addEventListener('scroll', () => {
     if (robot) robot.style.transform = `translateY(${window.scrollY * 0.12}px)`;
   }, { passive: true });
+
+  /* ---- FAQ ---- */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
 
   /* ---- STAR RATING ---- */
   (function() {
