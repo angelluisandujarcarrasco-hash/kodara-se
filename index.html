@@ -484,6 +484,74 @@
     }
     .svc-card.visible, .p-step.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── MODAL PRESUPUESTO ── */
+    #budgetOverlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9995;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(12px)}
+    #budgetOverlay.open{opacity:1;pointer-events:all}
+    #budgetBox{background:#0F0F0F;border:1px solid #252525;border-radius:20px;width:100%;max-width:720px;max-height:92vh;overflow-y:auto;transform:translateY(24px);transition:transform .35s cubic-bezier(.16,1,.3,1);scrollbar-width:thin;scrollbar-color:#222 transparent}
+    #budgetOverlay.open #budgetBox{transform:translateY(0)}
+    .bud-head{padding:28px 32px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .bud-title{font-size:22px;font-weight:700;letter-spacing:-.5px}
+    .bud-sub{font-size:13px;color:var(--muted);margin-top:4px}
+    .bud-close{background:#1A1A1A;border:1px solid #2A2A2A;border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#666;font-size:16px;transition:color .2s,border-color .2s;flex-shrink:0}
+    .bud-close:hover{color:#fff;border-color:#555}
+    /* PROGRESS */
+    .bud-progress{padding:20px 32px 0;display:flex;align-items:center;gap:8px}
+    .bud-step-dot{display:flex;align-items:center;gap:8px;flex:1}
+    .bud-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-family:'Space Mono',monospace;font-weight:700;border:1.5px solid #2A2A2A;color:#444;background:#111;transition:all .3s;flex-shrink:0}
+    .bud-dot.done{background:var(--green);border-color:var(--green);color:#000}
+    .bud-dot.active{background:var(--orange);border-color:var(--orange);color:#fff}
+    .bud-line{flex:1;height:1px;background:#2A2A2A;transition:background .3s}
+    .bud-line.done{background:var(--green)}
+    .bud-step-lbl{font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-top:4px;white-space:nowrap}
+    /* STEPS */
+    .bud-body{padding:28px 32px 32px}
+    .bud-step{display:none}
+    .bud-step.active{display:block}
+    /* SERVICE GRID */
+    .svc-select-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}
+    .svc-sel-card{background:#131313;border:1.5px solid #222;border-radius:12px;padding:14px 12px;cursor:pointer;transition:all .25s;text-align:left;display:flex;flex-direction:column;gap:6px}
+    .svc-sel-card:hover{border-color:rgba(232,116,74,.4);background:#1A1A1A}
+    .svc-sel-card.selected{border-color:var(--orange);background:rgba(232,116,74,.06)}
+    .svc-sel-card.selected .svc-sel-name{color:var(--orange)}
+    .svc-sel-icon{font-size:20px}
+    .svc-sel-name{font-size:13px;font-weight:600;line-height:1.3}
+    .svc-sel-price{font-size:11px;color:var(--muted);font-family:'Space Mono',monospace}
+    .svc-sel-check{width:16px;height:16px;border-radius:50%;border:1.5px solid #333;margin-left:auto;transition:all .25s;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px}
+    .svc-sel-card.selected .svc-sel-check{background:var(--orange);border-color:var(--orange);color:#fff}
+    /* FORM FIELDS */
+    .bud-fields{display:flex;flex-direction:column;gap:16px}
+    .bud-group{display:flex;flex-direction:column;gap:6px}
+    .bud-label{font-size:12px;font-weight:600;color:#aaa;display:flex;align-items:center;gap:6px}
+    .bud-req{color:var(--orange);font-size:11px}
+    .bud-input{background:#131313;border:1px solid #252525;border-radius:8px;padding:12px 16px;color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;outline:none;transition:border-color .2s;width:100%}
+    .bud-input:focus{border-color:var(--orange)}
+    .bud-input::placeholder{color:#3A3A3A}
+    .bud-select{appearance:none;background:#131313 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 14px center;background-size:16px;cursor:pointer}
+    .bud-hint{font-size:11px;color:#444;line-height:1.5}
+    .bud-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    /* SERVICE INFO BLOCKS */
+    .svc-info-block{display:none}
+    .svc-info-block.show{display:flex;flex-direction:column;gap:14px}
+    .svc-info-header{background:#131313;border:1px solid #222;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+    .svc-info-icon{font-size:18px}
+    .svc-info-name{font-size:14px;font-weight:700;color:var(--orange)}
+    /* EXTRAS */
+    .extra-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .extra-chip{background:#131313;border:1.5px solid #222;border-radius:20px;padding:7px 16px;font-size:12px;cursor:pointer;transition:all .2s;font-family:'Space Grotesk',sans-serif;color:#888}
+    .extra-chip:hover{border-color:rgba(232,116,74,.4);color:#ccc}
+    .extra-chip.selected{border-color:var(--orange);color:var(--orange);background:rgba(232,116,74,.06)}
+    /* FOOTER BTNS */
+    .bud-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid #1A1A1A;margin-top:28px}
+    .bud-back{background:transparent;border:1px solid #2A2A2A;color:#888;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all .2s}
+    .bud-back:hover{border-color:#555;color:#fff}
+    .bud-next{background:var(--orange);color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:opacity .2s,transform .2s;display:flex;align-items:center;gap:8px}
+    .bud-next:hover{opacity:.88;transform:translateY(-1px)}
+    .bud-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+    /* SUCCESS */
+    #budSuccess{display:none;text-align:center;padding:48px 32px}
+    #budSuccess.show{display:block}
+    @media(max-width:600px){.svc-select-grid{grid-template-columns:1fr 1fr}.bud-grid2{grid-template-columns:1fr}.bud-body{padding:20px 20px 28px}.bud-head{padding:20px 20px 0}.bud-progress{padding:16px 20px 0}}
+
     /* ── CHAT WIDGET ── */
     #chatBtn{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:var(--orange);border-radius:50%;cursor:pointer;z-index:9990;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(232,116,74,.4);transition:transform .25s,box-shadow .25s;border:none}
     #chatBtn:hover{transform:scale(1.08);box-shadow:0 12px 36px rgba(232,116,74,.5)}
@@ -769,7 +837,7 @@
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <a href="#contact" class="nav-cta" data-es="Contactar" data-en="Contact us">Contactar</a>
+    <button onclick="openBudget()" class="nav-cta" data-es="Solicitar presupuesto" data-en="Get a quote">Solicitar presupuesto</button>
   </div>
 </nav>
 
@@ -2059,6 +2127,258 @@
   </div>
 </div>
 
+<!-- MODAL PRESUPUESTO -->
+<div id="budgetOverlay" onclick="if(event.target===this)closeBudget()">
+  <div id="budgetBox">
+
+    <div class="bud-head">
+      <div>
+        <div class="bud-title" data-es="Solicitar presupuesto" data-en="Request a quote">Solicitar presupuesto</div>
+        <div class="bud-sub" data-es="Rellena el formulario y te respondemos en menos de 24 horas con una propuesta sin compromiso." data-en="Fill in the form and we'll respond within 24 hours with a no-commitment proposal.">Rellena el formulario y te respondemos en menos de 24 horas con una propuesta sin compromiso.</div>
+      </div>
+      <button class="bud-close" onclick="closeBudget()">✕</button>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="bud-progress" id="budProgress">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div class="bud-dot active" id="dot1">1</div>
+        <div class="bud-step-lbl" data-es="Servicio" data-en="Service">Servicio</div>
+      </div>
+      <div class="bud-line" id="line1"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div class="bud-dot" id="dot2">2</div>
+        <div class="bud-step-lbl" data-es="Detalles" data-en="Details">Detalles</div>
+      </div>
+      <div class="bud-line" id="line2"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div class="bud-dot" id="dot3">3</div>
+        <div class="bud-step-lbl" data-es="Extras" data-en="Extras">Extras</div>
+      </div>
+      <div class="bud-line" id="line3"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div class="bud-dot" id="dot4">4</div>
+        <div class="bud-step-lbl" data-es="Contacto" data-en="Contact">Contacto</div>
+      </div>
+    </div>
+
+    <div class="bud-body">
+
+      <!-- STEP 1: SERVICIO -->
+      <div class="bud-step active" id="bStep1">
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px" data-es="¿Qué servicio necesitas?" data-en="What service do you need?">¿Qué servicio necesitas?</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px" data-es="Puedes seleccionar más de uno." data-en="You can select more than one.">Puedes seleccionar más de uno.</div>
+        <div class="svc-select-grid">
+          <button class="svc-sel-card" onclick="toggleService(this,'web')" data-svc="web">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">🌐</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Diseño Web Premium" data-en="Premium Web Design">Diseño Web Premium</div>
+            <div class="svc-sel-price">$900–$2,000</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'instagram')" data-svc="instagram">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">📱</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Instagram a Web" data-en="Instagram to Web">Instagram a Web</div>
+            <div class="svc-sel-price">$200–$1,000</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'metaads')" data-svc="metaads">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">📣</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Auditoría Meta Ads" data-en="Meta Ads Audit">Auditoría Meta Ads</div>
+            <div class="svc-sel-price">$200–$800</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'seo')" data-svc="seo">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">🔍</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Auditoría SEO" data-en="SEO Audit">Auditoría SEO</div>
+            <div class="svc-sel-price">$200–$700</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'auto')" data-svc="auto">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">⚡</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Automatizaciones" data-en="Automations">Automatizaciones</div>
+            <div class="svc-sel-price">$1,000–$10,000+</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'negocio')" data-svc="negocio">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">📊</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Auditoría de Negocio" data-en="Business Audit">Auditoría de Negocio</div>
+            <div class="svc-sel-price">$500–$3,000</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'facturas')" data-svc="facturas">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">🧾</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Dashboard Facturas" data-en="Invoice Dashboard">Dashboard Facturas</div>
+            <div class="svc-sel-price">$100–$500</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'prospeccion')" data-svc="prospeccion">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">🎯</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Prospección Clientes" data-en="Client Prospecting">Prospección Clientes</div>
+            <div class="svc-sel-price">$400–$900</div>
+          </button>
+          <button class="svc-sel-card" onclick="toggleService(this,'chat')" data-svc="chat">
+            <div style="display:flex;align-items:center;justify-content:space-between"><div class="svc-sel-icon">🤖</div><div class="svc-sel-check">✓</div></div>
+            <div class="svc-sel-name" data-es="Chat IA para Web" data-en="AI Web Chat">Chat IA para Web</div>
+            <div class="svc-sel-price">$150–$350</div>
+          </button>
+        </div>
+        <div class="bud-foot">
+          <div style="font-size:12px;color:var(--muted)" id="svcCount" data-es="Selecciona al menos 1 servicio" data-en="Select at least 1 service">Selecciona al menos 1 servicio</div>
+          <button class="bud-next" onclick="goStep(2)" id="btnStep1" disabled>Siguiente <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- STEP 2: DETALLES POR SERVICIO -->
+      <div class="bud-step" id="bStep2">
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px" data-es="Cuéntanos los detalles" data-en="Tell us the details">Cuéntanos los detalles</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px" data-es="Esta información nos ayuda a preparar una propuesta exacta para ti." data-en="This information helps us prepare an exact proposal for you.">Esta información nos ayuda a preparar una propuesta exacta para ti.</div>
+        <div id="svcDetailFields" class="bud-fields">
+
+          <div class="svc-info-block" id="field-web">
+            <div class="svc-info-header"><div class="svc-info-icon">🌐</div><div class="svc-info-name">Diseño Web Premium</div></div>
+            <div class="bud-group"><div class="bud-label">URL actual (si tienes web) <span style="color:var(--muted);font-size:11px">Opcional</span></div><input class="bud-input" type="url" placeholder="https://tunegocio.com" id="web-url"></div>
+            <div class="bud-group"><div class="bud-label">Tipo de negocio <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="Ej: Clínica dental, restaurante, tienda online..." id="web-type"></div>
+            <div class="bud-group"><div class="bud-label">Páginas que necesitas <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="Ej: Inicio, Servicios, Sobre mí, Contacto" id="web-pages"></div>
+            <div class="bud-group"><div class="bud-label">Estilo visual que te gusta</div><input class="bud-input" type="text" placeholder="Ej: Oscuro y moderno, blanco y minimalista, colorido..." id="web-style"></div>
+            <div class="bud-group"><div class="bud-label">¿Tienes fotos o logo propio?</div><select class="bud-input bud-select" id="web-assets"><option value="">Selecciona...</option><option>Sí, tengo fotos y logo</option><option>Tengo logo pero no fotos</option><option>No tengo ninguno</option></select></div>
+          </div>
+
+          <div class="svc-info-block" id="field-instagram">
+            <div class="svc-info-header"><div class="svc-info-icon">📱</div><div class="svc-info-name">Instagram a Web</div></div>
+            <div class="bud-group"><div class="bud-label">Tu @ de Instagram <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="@tuusuario" id="ig-handle"></div>
+            <div class="bud-group"><div class="bud-label">¿Qué servicios o productos ofreces? <span class="bud-req">*</span></div><textarea class="bud-input" rows="3" placeholder="Describe brevemente lo que vendes o haces..." id="ig-services"></textarea></div>
+            <div class="bud-group"><div class="bud-label">¿Quieres que el cliente pueda contactarte o comprar directamente?</div><select class="bud-input bud-select" id="ig-cta"><option value="">Selecciona...</option><option>Solo contacto por WhatsApp o email</option><option>Quiero formulario de citas/contacto</option><option>Quiero tienda online (productos con precio)</option></select></div>
+          </div>
+
+          <div class="svc-info-block" id="field-metaads">
+            <div class="svc-info-header"><div class="svc-info-icon">📣</div><div class="svc-info-name">Auditoría Meta Ads</div></div>
+            <div class="bud-group"><div class="bud-label">URL de tu página de Facebook o Business Manager <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="https://facebook.com/tupagina" id="ads-fb"></div>
+            <div class="bud-group"><div class="bud-label">¿Cuánto gastas en anuncios al mes?</div><select class="bud-input bud-select" id="ads-budget"><option value="">Selecciona...</option><option>Menos de $200</option><option>$200–$500</option><option>$500–$1,500</option><option>$1,500–$5,000</option><option>Más de $5,000</option></select></div>
+            <div class="bud-group"><div class="bud-label">Objetivo principal de tus anuncios <span class="bud-req">*</span></div><select class="bud-input bud-select" id="ads-goal"><option value="">Selecciona...</option><option>Conseguir más clientes / ventas</option><option>Aumentar seguidores</option><option>Generar leads / contactos</option><option>Aumentar visitas a la web</option></select></div>
+            <div class="bud-group"><div class="bud-label">¿Tienes acceso al Administrador de Anuncios?</div><select class="bud-input bud-select" id="ads-access"><option value="">Selecciona...</option><option>Sí, puedo compartir acceso</option><option>No, solo tengo capturas de pantalla</option><option>No sé cómo acceder</option></select></div>
+          </div>
+
+          <div class="svc-info-block" id="field-seo">
+            <div class="svc-info-header"><div class="svc-info-icon">🔍</div><div class="svc-info-name">Auditoría SEO</div></div>
+            <div class="bud-group"><div class="bud-label">URL de tu web o tienda <span class="bud-req">*</span></div><input class="bud-input" type="url" placeholder="https://tunegocio.com" id="seo-url"></div>
+            <div class="bud-group"><div class="bud-label">¿Tienes Google Search Console activo?</div><select class="bud-input bud-select" id="seo-gsc"><option value="">Selecciona...</option><option>Sí y puedo compartir acceso</option><option>Sí pero no sé cómo compartirlo</option><option>No lo tengo</option><option>No sé qué es eso</option></select></div>
+            <div class="bud-group"><div class="bud-label">¿Para qué palabras quieres aparecer en Google? <span class="bud-req">*</span></div><textarea class="bud-input" rows="2" placeholder='Ej: "dentista en miami", "comprar zapatillas online", "fotógrafo barcelona"' id="seo-keywords"></textarea></div>
+          </div>
+
+          <div class="svc-info-block" id="field-auto">
+            <div class="svc-info-header"><div class="svc-info-icon">⚡</div><div class="svc-info-name">Automatizaciones</div></div>
+            <div class="bud-group"><div class="bud-label">Describe el proceso que quieres automatizar <span class="bud-req">*</span></div><textarea class="bud-input" rows="4" placeholder="Ej: Cuando alguien llena el formulario de mi web, quiero que me llegue un email, se añada a mi Excel y me avise por WhatsApp." id="auto-process"></textarea></div>
+            <div class="bud-group"><div class="bud-label">Herramientas que usas actualmente <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="Ej: Gmail, WhatsApp, Shopify, Excel, Notion, HubSpot..." id="auto-tools"></div>
+            <div class="bud-group"><div class="bud-label">¿Con qué frecuencia ocurre el proceso?</div><select class="bud-input bud-select" id="auto-freq"><option value="">Selecciona...</option><option>Muchas veces al día</option><option>Una vez al día</option><option>Varias veces a la semana</option><option>Una vez a la semana</option><option>Una vez al mes</option></select></div>
+          </div>
+
+          <div class="svc-info-block" id="field-negocio">
+            <div class="svc-info-header"><div class="svc-info-icon">📊</div><div class="svc-info-name">Auditoría de Negocio</div></div>
+            <div class="bud-group"><div class="bud-label">URL de tu web <span class="bud-req">*</span></div><input class="bud-input" type="url" placeholder="https://tunegocio.com" id="neg-url"></div>
+            <div class="bud-group"><div class="bud-label">Tus redes sociales (pon las que tengas)</div><input class="bud-input" type="text" placeholder="Ej: @tunegocio en IG, facebook.com/tunegocio..." id="neg-social"></div>
+            <div class="bud-group"><div class="bud-label">¿Cuál es el principal problema que quieres resolver? <span class="bud-req">*</span></div><textarea class="bud-input" rows="3" placeholder="Ej: No consigo clientes nuevos, mi web no convierte, no sé cómo crecer..." id="neg-problem"></textarea></div>
+          </div>
+
+          <div class="svc-info-block" id="field-facturas">
+            <div class="svc-info-header"><div class="svc-info-icon">🧾</div><div class="svc-info-name">Dashboard de Facturas</div></div>
+            <div class="bud-group"><div class="bud-label">¿Cuántas facturas tienes aproximadamente? <span class="bud-req">*</span></div><select class="bud-input bud-select" id="fac-count"><option value="">Selecciona...</option><option>Menos de 20</option><option>20–50</option><option>50–100</option><option>Más de 100</option></select></div>
+            <div class="bud-group"><div class="bud-label">Formato de tus facturas <span class="bud-req">*</span></div><select class="bud-input bud-select" id="fac-format"><option value="">Selecciona...</option><option>PDF (facturas escaneadas o digitales)</option><option>Excel o Google Sheets</option><option>Mezcla de formatos</option><option>Otro</option></select></div>
+            <div class="bud-group"><div class="bud-label">¿Qué información quieres ver en el dashboard?</div><textarea class="bud-input" rows="2" placeholder="Ej: Ingresos por cliente, IVA trimestral, gastos por categoría..." id="fac-info"></textarea></div>
+          </div>
+
+          <div class="svc-info-block" id="field-prospeccion">
+            <div class="svc-info-header"><div class="svc-info-icon">🎯</div><div class="svc-info-name">Prospección de Clientes</div></div>
+            <div class="bud-group"><div class="bud-label">¿A qué tipo de negocio quieres vender? <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="Ej: Clínicas dentales, restaurantes, gimnasios, tiendas online..." id="pros-sector"></div>
+            <div class="bud-group"><div class="bud-label">Ciudad o país objetivo <span class="bud-req">*</span></div><input class="bud-input" type="text" placeholder="Ej: Miami FL, Barcelona, México DF..." id="pros-location"></div>
+            <div class="bud-group"><div class="bud-label">¿Cuántos leads necesitas?</div><select class="bud-input bud-select" id="pros-count"><option value="">Selecciona...</option><option>10–20 leads</option><option>20–50 leads</option><option>50–100 leads</option><option>Más de 100 leads</option></select></div>
+            <div class="bud-group"><div class="bud-label">¿Qué ofreces a esos negocios?</div><input class="bud-input" type="text" placeholder="Ej: Diseño web, servicios de limpieza, software..." id="pros-offer"></div>
+          </div>
+
+          <div class="svc-info-block" id="field-chat">
+            <div class="svc-info-header"><div class="svc-info-icon">🤖</div><div class="svc-info-name">Chat IA para Web</div></div>
+            <div class="bud-group"><div class="bud-label">URL de tu web <span class="bud-req">*</span></div><input class="bud-input" type="url" placeholder="https://tunegocio.com" id="chat-url"></div>
+            <div class="bud-group"><div class="bud-label">¿Qué preguntas hace la gente más frecuentemente?</div><textarea class="bud-input" rows="3" placeholder="Ej: ¿Cuál es el precio?, ¿Cuánto tarda?, ¿Cómo reservo?..." id="chat-faq"></textarea></div>
+            <div class="bud-group"><div class="bud-label">¿Qué quieres que haga el chat cuando alguien quiera hablar contigo?</div><select class="bud-input bud-select" id="chat-action"><option value="">Selecciona...</option><option>Que te mande un email</option><option>Que redirija a WhatsApp</option><option>Que muestre un formulario de contacto</option></select></div>
+          </div>
+
+        </div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="goStep(1)">← Atrás</button>
+          <button class="bud-next" onclick="goStep(3)">Siguiente <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: EXTRAS -->
+      <div class="bud-step" id="bStep3">
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px" data-es="¿Quieres añadir algo más?" data-en="Do you want to add anything else?">¿Quieres añadir algo más?</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px" data-es="Marca lo que te interese o escríbelo tú mismo abajo." data-en="Check what interests you or write it yourself below.">Marca lo que te interese o escríbelo tú mismo abajo.</div>
+        <div class="extra-chips" id="extraChips">
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Versión en inglés</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Adaptación móvil extra</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Integración con WhatsApp</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Formulario de pagos</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Google Analytics conectado</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Mapa de Google embebido</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Blog o noticias</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Integración con redes sociales</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Tienda online (e-commerce)</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Reservas y citas online</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Informe mensual de resultados</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Mantenimiento mensual</button>
+        </div>
+        <div class="bud-group">
+          <div class="bud-label" data-es="¿Algo más que quieras decirnos?" data-en="Anything else you want to tell us?">¿Algo más que quieras decirnos?</div>
+          <textarea class="bud-input" rows="4" id="extraNotes" placeholder="Cuéntanos cualquier detalle extra, idea, referencia de web que te guste, plazo que necesitas..."></textarea>
+        </div>
+        <div class="bud-group" style="margin-top:4px">
+          <div class="bud-label" data-es="¿Cuál es tu presupuesto aproximado?" data-en="What is your approximate budget?">¿Cuál es tu presupuesto aproximado?</div>
+          <select class="bud-input bud-select" id="budgetRange">
+            <option value="">Prefiero recibir una propuesta primero</option>
+            <option>Menos de $200</option>
+            <option>$200 – $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>Más de $3,000</option>
+          </select>
+        </div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="goStep(2)">← Atrás</button>
+          <button class="bud-next" onclick="goStep(4)">Siguiente <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- STEP 4: CONTACTO -->
+      <div class="bud-step" id="bStep4">
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px" data-es="Tus datos de contacto" data-en="Your contact details">Tus datos de contacto</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px" data-es="Para enviarte la propuesta. Nunca compartimos tus datos." data-en="To send you the proposal. We never share your data.">Para enviarte la propuesta. Nunca compartimos tus datos.</div>
+        <div class="bud-fields">
+          <div class="bud-grid2">
+            <div class="bud-group"><div class="bud-label">Nombre <span class="bud-req">*</span></div><input class="bud-input" type="text" id="con-name" placeholder="Tu nombre completo"></div>
+            <div class="bud-group"><div class="bud-label">Email <span class="bud-req">*</span></div><input class="bud-input" type="email" id="con-email" placeholder="tu@email.com"></div>
+          </div>
+          <div class="bud-grid2">
+            <div class="bud-group"><div class="bud-label">Teléfono / WhatsApp <span style="color:var(--muted);font-size:11px">Opcional</span></div><input class="bud-input" type="tel" id="con-phone" placeholder="+1 786 000 0000"></div>
+            <div class="bud-group"><div class="bud-label">¿Cómo prefieres que te contactemos?</div><select class="bud-input bud-select" id="con-pref"><option value="">Sin preferencia</option><option>Por email</option><option>Por WhatsApp</option><option>Videollamada</option></select></div>
+          </div>
+          <div class="bud-group">
+            <div class="bud-label">Empresa o nombre de tu negocio <span style="color:var(--muted);font-size:11px">Opcional</span></div>
+            <input class="bud-input" type="text" id="con-company" placeholder="Ej: Mi Restaurante SL, Fotógrafo freelance...">
+          </div>
+        </div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="goStep(3)">← Atrás</button>
+          <button class="bud-next" onclick="submitBudget()" id="btnSubmit">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Enviar solicitud
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="budSuccess">
+        <div style="width:64px;height:64px;background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:26px">✓</div>
+        <div style="font-size:22px;font-weight:700;margin-bottom:10px" data-es="¡Solicitud enviada!" data-en="Request sent!">¡Solicitud enviada!</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.7;max-width:380px;margin:0 auto 28px" data-es="Te responderemos en menos de 24 horas con una propuesta personalizada. Revisa tu email." data-en="We'll respond within 24 hours with a personalized proposal. Check your email.">Te responderemos en menos de 24 horas con una propuesta personalizada. Revisa tu email.</div>
+        <button onclick="closeBudget()" style="background:var(--orange);color:#fff;border:none;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">Cerrar ✕</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer-v2">
   <div class="footer-v2-top">
@@ -2682,6 +3002,108 @@
   window.addEventListener('scroll', () => {
     if (robot) robot.style.transform = `translateY(${window.scrollY * 0.12}px)`;
   }, { passive: true });
+
+  /* ---- BUDGET MODAL ---- */
+  let selectedServices = [];
+  let currentStep = 1;
+
+  function openBudget() {
+    document.getElementById('budgetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBudget() {
+    document.getElementById('budgetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function toggleService(el, svc) {
+    el.classList.toggle('selected');
+    if (selectedServices.includes(svc)) {
+      selectedServices = selectedServices.filter(s => s !== svc);
+    } else {
+      selectedServices.push(svc);
+    }
+    const count = selectedServices.length;
+    const countEl = document.getElementById('svcCount');
+    const btn = document.getElementById('btnStep1');
+    countEl.textContent = count === 0 ? 'Selecciona al menos 1 servicio' : count + ' servicio' + (count > 1 ? 's' : '') + ' seleccionado' + (count > 1 ? 's' : '');
+    btn.disabled = count === 0;
+  }
+
+  function goStep(n) {
+    document.getElementById('bStep' + currentStep).classList.remove('active');
+    if (n === 2) buildStep2();
+    document.getElementById('bStep' + n).classList.add('active');
+    currentStep = n;
+    updateProgress(n);
+    document.getElementById('budgetBox').scrollTop = 0;
+  }
+
+  function updateProgress(n) {
+    for (let i = 1; i <= 4; i++) {
+      const dot = document.getElementById('dot' + i);
+      dot.classList.remove('active', 'done');
+      if (i < n) dot.classList.add('done');
+      else if (i === n) dot.classList.add('active');
+    }
+    for (let i = 1; i <= 3; i++) {
+      const line = document.getElementById('line' + i);
+      line.classList.toggle('done', i < n);
+    }
+  }
+
+  const svcFieldMap = { web:'web', instagram:'instagram', metaads:'metaads', seo:'seo', auto:'auto', negocio:'negocio', facturas:'facturas', prospeccion:'prospeccion', chat:'chat' };
+
+  function buildStep2() {
+    document.querySelectorAll('.svc-info-block').forEach(b => b.classList.remove('show'));
+    selectedServices.forEach(svc => {
+      const block = document.getElementById('field-' + svcFieldMap[svc]);
+      if (block) block.classList.add('show');
+    });
+  }
+
+  function submitBudget() {
+    const name = document.getElementById('con-name').value.trim();
+    const email = document.getElementById('con-email').value.trim();
+    if (!name || !email) { alert('Por favor completa tu nombre y email.'); return; }
+
+    const svcs = selectedServices.join(', ');
+    const extras = [...document.querySelectorAll('.extra-chip.selected')].map(c => c.textContent).join(', ');
+    const notes = document.getElementById('extraNotes').value;
+    const budget = document.getElementById('budgetRange').value;
+    const phone = document.getElementById('con-phone').value;
+    const pref = document.getElementById('con-pref').value;
+    const company = document.getElementById('con-company').value;
+
+    let details = '';
+    selectedServices.forEach(svc => {
+      details += '\n--- ' + svc.toUpperCase() + ' ---\n';
+      const block = document.getElementById('field-' + svc);
+      if (block) {
+        block.querySelectorAll('input,textarea,select').forEach(inp => {
+          if (inp.value) details += inp.placeholder.replace('Ej:','') + ': ' + inp.value + '\n';
+        });
+      }
+    });
+
+    const subject = encodeURIComponent('Solicitud de presupuesto — ' + name + ' — ' + svcs);
+    const body = encodeURIComponent(
+      '=== SOLICITUD DE PRESUPUESTO KODARA SE ===\n\n' +
+      'CLIENTE: ' + name + '\nEMAIL: ' + email + '\nTELÉFONO: ' + (phone||'No indicado') +
+      '\nEMPRESA: ' + (company||'No indicado') + '\nCONTACTO PREFERIDO: ' + (pref||'Sin preferencia') +
+      '\n\nSERVICIOS SOLICITADOS: ' + svcs +
+      '\n\n=== DETALLES POR SERVICIO ===' + details +
+      '\n=== EXTRAS SOLICITADOS ===\n' + (extras||'Ninguno') +
+      '\n\nPRESUPUESTO APROXIMADO: ' + (budget||'Sin especificar') +
+      '\n\nNOTAS ADICIONALES:\n' + (notes||'Sin notas adicionales') +
+      '\n\n--- Enviado desde kodarase.com ---'
+    );
+
+    window.location.href = 'mailto:kodaraservi@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('bStep4').style.display = 'none';
+    document.getElementById('budSuccess').classList.add('show');
+    document.getElementById('budgetBox').scrollTop = 0;
+  }
 
   /* ---- CYCLING TEXT ---- */
   (function(){
