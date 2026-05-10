@@ -933,20 +933,29 @@
       </div>
     </div>
     <div class="reveal">
-      <div class="vid-ph-v2">
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="vid-caption">🎥 Así trabajamos en Kodara SE</div>
-        <div class="vid-time">2:18</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
-          <div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--orange)">+50</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px" data-es="Proyectos entregados" data-en="Projects delivered">Proyectos entregados</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;display:flex;align-items:flex-start;gap:20px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:5px 10px;flex-shrink:0">01</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px" data-es="Contactas — respondemos en 24h" data-en="You contact us — we reply in 24h">Contactas — respondemos en 24h</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6" data-es="Sin reuniones largas. Un formulario o un mensaje es suficiente para empezar." data-en="No long meetings. A form or a message is enough to get started.">Sin reuniones largas. Un formulario o un mensaje es suficiente para empezar.</div>
+          </div>
         </div>
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
-          <div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--green)">100%</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px" data-es="Clientes satisfechos" data-en="Satisfied clients">Clientes satisfechos</div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;display:flex;align-items:flex-start;gap:20px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:5px 10px;flex-shrink:0">02</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px" data-es="Recibimos tu propuesta sin coste" data-en="You receive your proposal at no cost">Recibes tu propuesta sin coste</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6" data-es="Te enviamos un plan detallado con precio exacto. Sin sorpresas." data-en="We send you a detailed plan with exact price. No surprises.">Te enviamos un plan detallado con precio exacto. Sin sorpresas.</div>
+          </div>
         </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;display:flex;align-items:flex-start;gap:20px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:5px 10px;flex-shrink:0">03</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px" data-es="Entregamos y revisamos juntos" data-en="We deliver and revise together">Entregamos y revisamos juntos</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6" data-es="Ves cada avance. 2 rondas de cambios incluidas. Publicamos cuando tú digas." data-en="You see every advance. 2 rounds of changes included. We publish when you say.">Ves cada avance. 2 rondas de cambios incluidas. Publicamos cuando tú digas.</div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-primary" style="text-align:center;padding:14px" data-es="Empezar ahora — es gratis →" data-en="Start now — it's free →">Empezar ahora — es gratis →</a>
       </div>
     </div>
   </div>
@@ -1438,33 +1447,77 @@
 </div>
 
 <!-- TESTIMONIOS -->
-<div class="testi-section">
+<div class="testi-section" id="testimonios">
   <div class="testi-inner">
     <div class="testi-head">
       <div>
         <div class="s-tag" data-es="// CLIENTES" data-en="// CLIENTS">// CLIENTES</div>
         <div class="testi-head-title reveal" data-es="Lo que dicen<br>nuestros clientes" data-en="What our<br>clients say">Lo que dicen<br>nuestros clientes</div>
       </div>
-      <div class="testi-rating-row">
-        <span class="testi-stars">★★★★★</span>
-        <span class="testi-rating-txt">5.0 · 100% satisfacción</span>
-      </div>
+      <a href="#dejar-opinion" class="btn-primary" style="font-size:13px;padding:10px 22px;flex-shrink:0" data-es="Dejar mi opinión →" data-en="Leave my review →">Dejar mi opinión →</a>
     </div>
-  </div>
-  <div class="testi-marquee-wrap">
-    <div class="testi-track">
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La web que me entregaron superó todas mis expectativas. En 72 horas tenía una página con animaciones que nadie en mi competencia tiene."</p><div class="tc-auth"><div class="tc-av">M</div><div><div class="tc-name">María García</div><div class="tc-meta">Diseño Web · Restaurante Miami</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La auditoría SEO fue brutal. Me dijeron exactamente por qué no aparecía en Google y en 2 semanas estaba en primera página."</p><div class="tc-auth"><div class="tc-av">C</div><div><div class="tc-name">Carlos Mejía</div><div class="tc-meta">Auditoría SEO · Clínica Dental</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"Las automatizaciones me ahorran 3 horas diarias. Emails automáticos, reportes y seguimiento — todo funciona solo mientras me enfoco en crecer."</p><div class="tc-auth"><div class="tc-av">A</div><div><div class="tc-name">Ana Rodríguez</div><div class="tc-meta">Automatizaciones · E-commerce</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"Convertí mi Instagram en una web increíble. Los clientes ahora me encuentran en Google y parece que tengo un equipo de diseño detrás."</p><div class="tc-auth"><div class="tc-av">J</div><div><div class="tc-name">Juan Torres</div><div class="tc-meta">Instagram a Web · Fotógrafo</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La auditoría de Meta Ads me mostró que el 60% de mi presupuesto se iba en anuncios que no convertían. Ahora gasto menos y vendo más."</p><div class="tc-auth"><div class="tc-av">L</div><div><div class="tc-name">Laura Sánchez</div><div class="tc-meta">Meta Ads · Tienda Online</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"El dashboard de facturas me cambió la vida. Antes tardaba horas en revisar mis finanzas, ahora abro el dashboard y en 2 minutos tengo todo claro."</p><div class="tc-auth"><div class="tc-av">R</div><div><div class="tc-name">Roberto Díaz</div><div class="tc-meta">Dashboard · Consultor</div></div></div></div>
-      <!-- duplicadas para loop infinito -->
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La web que me entregaron superó todas mis expectativas. En 72 horas tenía una página con animaciones que nadie en mi competencia tiene."</p><div class="tc-auth"><div class="tc-av">M</div><div><div class="tc-name">María García</div><div class="tc-meta">Diseño Web · Restaurante Miami</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La auditoría SEO fue brutal. Me dijeron exactamente por qué no aparecía en Google y en 2 semanas estaba en primera página."</p><div class="tc-auth"><div class="tc-av">C</div><div><div class="tc-name">Carlos Mejía</div><div class="tc-meta">Auditoría SEO · Clínica Dental</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"Las automatizaciones me ahorran 3 horas diarias. Emails automáticos, reportes y seguimiento — todo funciona solo mientras me enfoco en crecer."</p><div class="tc-auth"><div class="tc-av">A</div><div><div class="tc-name">Ana Rodríguez</div><div class="tc-meta">Automatizaciones · E-commerce</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"Convertí mi Instagram en una web increíble. Los clientes ahora me encuentran en Google y parece que tengo un equipo de diseño detrás."</p><div class="tc-auth"><div class="tc-av">J</div><div><div class="tc-name">Juan Torres</div><div class="tc-meta">Instagram a Web · Fotógrafo</div></div></div></div>
-      <div class="testi-card"><div class="tc-stars">★★★★★</div><p class="tc-text">"La auditoría de Meta Ads me mostró que el 60% de mi presupuesto se iba en anuncios que no convertían. Ahora gasto menos y vendo más."</p><div class="tc-auth"><div class="tc-av">L</div><div><div class="tc-name">Laura Sánchez</div><div class="tc-meta">Meta Ads · Tienda Online</div></div></div></div>
+
+    <!-- Estado vacío: honesto, sin reseñas falsas -->
+    <div style="border:1px dashed #2A2A2A;border-radius:20px;padding:72px 40px;text-align:center;margin-top:0">
+      <div style="font-size:44px;letter-spacing:6px;color:#2A2A2A;margin-bottom:24px">★★★★★</div>
+      <p style="font-size:16px;color:var(--muted);max-width:460px;margin:0 auto 32px;line-height:1.75" data-es="Somos una agencia nueva y honesta. Cuando trabajes con nosotros, tu opinión real aparecerá aquí para que otros puedan verla." data-en="We're a new and honest agency. When you work with us, your real review will appear here for others to see.">Somos una agencia nueva y honesta. Cuando trabajes con nosotros, tu opinión real aparecerá aquí para que otros puedan verla.</p>
+      <a href="#dejar-opinion" class="btn-primary" data-es="Sé el primero en opinar →" data-en="Be the first to review →">Sé el primero en opinar →</a>
+    </div>
+
+    <!-- Formulario de reseña -->
+    <div id="dejar-opinion" style="margin-top:72px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:52px;max-width:680px;margin-left:auto;margin-right:auto">
+      <div class="s-tag" data-es="// DEJA TU RESEÑA" data-en="// LEAVE YOUR REVIEW">// DEJA TU RESEÑA</div>
+      <h3 style="font-size:clamp(22px,2.5vw,32px);font-weight:700;letter-spacing:-0.8px;margin-bottom:8px;margin-top:0" data-es="¿Cómo fue tu experiencia?" data-en="How was your experience?">¿Cómo fue tu experiencia?</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7" data-es="Tu opinión real llegará a nuestro equipo. La revisamos y la publicamos aquí." data-en="Your real review will reach our team. We review it and publish it here.">Tu opinión real llegará a nuestro equipo. La revisamos y la publicamos aquí.</p>
+
+      <!-- Selector de estrellas -->
+      <div style="margin-bottom:28px">
+        <div style="font-size:10px;font-family:'Space Mono',monospace;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px" data-es="TU PUNTUACIÓN" data-en="YOUR RATING">TU PUNTUACIÓN</div>
+        <div id="star-selector" style="display:flex;gap:8px;font-size:36px;cursor:pointer;user-select:none">
+          <span class="star-opt" data-val="1" style="color:#2A2A2A;transition:color .15s,transform .15s">★</span>
+          <span class="star-opt" data-val="2" style="color:#2A2A2A;transition:color .15s,transform .15s">★</span>
+          <span class="star-opt" data-val="3" style="color:#2A2A2A;transition:color .15s,transform .15s">★</span>
+          <span class="star-opt" data-val="4" style="color:#2A2A2A;transition:color .15s,transform .15s">★</span>
+          <span class="star-opt" data-val="5" style="color:#2A2A2A;transition:color .15s,transform .15s">★</span>
+        </div>
+        <input type="hidden" id="testi-rating" value="5">
+      </div>
+
+      <form id="testi-form" style="display:flex;flex-direction:column;gap:0" onsubmit="submitTestimonio(event)">
+        <div class="f2-field">
+          <input type="text" id="testi-name" placeholder=" " required>
+          <label for="testi-name" data-es="Tu nombre completo" data-en="Your full name">Tu nombre completo</label>
+        </div>
+        <div class="f2-field">
+          <select id="testi-service" required style="cursor:pointer;color:var(--white)">
+            <option value="" disabled selected></option>
+            <option>Diseño Web Premium</option>
+            <option>Instagram a Web</option>
+            <option>Auditoría Meta Ads</option>
+            <option>Auditoría SEO</option>
+            <option>Automatizaciones</option>
+            <option>Auditoría de Negocio</option>
+            <option>Dashboard de Facturas</option>
+            <option>Prospección de Clientes</option>
+            <option>Chat IA para Web</option>
+          </select>
+          <label for="testi-service" data-es="Servicio contratado" data-en="Service purchased">Servicio contratado</label>
+        </div>
+        <div class="f2-field">
+          <input type="text" id="testi-company" placeholder=" ">
+          <label for="testi-company" data-es="Tu empresa o profesión (opcional)" data-en="Your company or profession (optional)">Tu empresa o profesión (opcional)</label>
+        </div>
+        <div class="f2-field" style="margin-bottom:24px">
+          <textarea id="testi-msg" placeholder=" " style="min-height:130px" required></textarea>
+          <label for="testi-msg" data-es="Cuéntanos tu experiencia con Kodara SE..." data-en="Tell us about your experience with Kodara SE...">Cuéntanos tu experiencia con Kodara SE...</label>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:15px;font-size:15px" data-es="Enviar mi opinión →" data-en="Send my review →">Enviar mi opinión →</button>
+      </form>
+      <div id="testi-success" style="display:none;text-align:center;padding:40px 20px">
+        <div style="width:56px;height:56px;background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;color:var(--green)">✓</div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:8px" data-es="¡Gracias por tu opinión!" data-en="Thank you for your review!">¡Gracias por tu opinión!</div>
+        <div style="font-size:14px;color:var(--muted)" data-es="La revisamos y la publicamos en breve." data-en="We'll review it and publish it shortly.">La revisamos y la publicamos en breve.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1753,7 +1806,7 @@
     <div class="port-grid" style="margin-top:52px">
 
       <!-- Ejemplo 1: Clínica Norte -->
-      <div class="port-card" onclick="window.open('C:/Users/lucie/OneDrive/Desktop/KODARA SE/03 - Kits para Clientes/kit-web-scrolling/web-clinica-norte.html')">
+      <div class="port-card" onclick="window.open('https://angelluisandujarcarrasco-hash.github.io/kodara-se/clinica-norte.html')" style="cursor:pointer">
         <div class="port-preview">
           <div class="port-badge">DEMO REAL</div>
           <div class="port-overlay"><button class="port-overlay-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo completa</button></div>
@@ -1789,25 +1842,23 @@
         </div>
       </div>
 
-      <!-- Ejemplo 2: Próximamente -->
-      <div class="port-card" style="opacity:.6;cursor:default">
-        <div class="port-preview">
-          <div class="port-badge soon">MUY PRONTO</div>
-          <div class="port-preview-inner" style="background:linear-gradient(135deg,#0A0A0A,#1A1A1A)">
-            <div style="text-align:center">
-              <div style="width:60px;height:60px;border:2px dashed #333;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px">+</div>
-              <div style="font-family:'Space Mono',monospace;font-size:11px;color:#444" data-es="Próximo proyecto" data-en="Next project">Próximo proyecto</div>
+      <!-- Tarjeta CTA: Tu proyecto aquí -->
+      <div class="port-card" style="cursor:default;display:flex;flex-direction:column">
+        <div class="port-preview" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D0D0D,#1A1A1A);flex:1">
+          <div style="text-align:center;padding:40px 24px">
+            <div style="width:64px;height:64px;border:1px solid rgba(232,116,74,.3);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;background:rgba(232,116,74,.06)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8744A" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
             </div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--orange);letter-spacing:1px" data-es="TU PROYECTO AQUÍ" data-en="YOUR PROJECT HERE">TU PROYECTO AQUÍ</div>
           </div>
         </div>
-        <div class="port-info">
-          <div class="port-tag" data-es="Instagram a Web" data-en="Instagram to Web">Instagram a Web</div>
-          <div class="port-name" data-es="Tu negocio aquí" data-en="Your business here">Tu negocio aquí</div>
-          <div class="port-desc" data-es="¿Tienes un Instagram? Lo convertimos en tu web profesional en menos de 48 horas." data-en="Do you have an Instagram? We turn it into your professional website in less than 48 hours.">¿Tienes un Instagram? Lo convertimos en tu web profesional en menos de 48 horas.</div>
-          <div class="port-tags">
-            <span class="port-tag-item">$200–$1,000</span>
-            <span class="port-tag-item">24–48 horas</span>
+        <div class="port-info" style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <div class="port-tag" data-es="El siguiente somos nosotros contigo" data-en="Next one is us with you">El siguiente somos nosotros contigo</div>
+            <div class="port-name" data-es="¿Tu negocio merece una web así?" data-en="Does your business deserve a website like this?">¿Tu negocio merece una web así?</div>
+            <div class="port-desc" data-es="Cada web que entregamos es única, diseñada desde cero para tu cliente ideal. Empieza hoy sin compromiso." data-en="Every website we deliver is unique, designed from scratch for your ideal client. Start today with no commitment.">Cada web que entregamos es única, diseñada desde cero para tu cliente ideal. Empieza hoy sin compromiso.</div>
           </div>
+          <a href="#contact" class="btn-primary" style="text-align:center;font-size:13px;padding:11px" data-es="Quiero la mía →" data-en="I want mine →">Quiero la mía →</a>
         </div>
       </div>
 
@@ -2482,6 +2533,43 @@
   window.addEventListener('scroll', () => {
     if (robot) robot.style.transform = `translateY(${window.scrollY * 0.12}px)`;
   }, { passive: true });
+
+  /* ---- STAR RATING ---- */
+  (function() {
+    const stars = document.querySelectorAll('.star-opt');
+    const ratingInput = document.getElementById('testi-rating');
+    let selected = 5;
+    stars.forEach(s => { s.style.color = '#F59E0B'; });
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => {
+        const val = +star.dataset.val;
+        stars.forEach(s => { s.style.color = +s.dataset.val <= val ? '#F59E0B' : '#2A2A2A'; s.style.transform = +s.dataset.val <= val ? 'scale(1.15)' : 'scale(1)'; });
+      });
+      star.addEventListener('mouseleave', () => {
+        stars.forEach(s => { s.style.color = +s.dataset.val <= selected ? '#F59E0B' : '#2A2A2A'; s.style.transform = 'scale(1)'; });
+      });
+      star.addEventListener('click', () => {
+        selected = +star.dataset.val;
+        if (ratingInput) ratingInput.value = selected;
+      });
+    });
+  })();
+
+  /* ---- TESTIMONIAL FORM ---- */
+  function submitTestimonio(e) {
+    e.preventDefault();
+    const name = document.getElementById('testi-name').value;
+    const service = document.getElementById('testi-service').value;
+    const company = document.getElementById('testi-company').value;
+    const msg = document.getElementById('testi-msg').value;
+    const rating = document.getElementById('testi-rating').value;
+    const stars = '★'.repeat(+rating) + '☆'.repeat(5 - +rating);
+    const subject = encodeURIComponent('Nueva reseña Kodara SE — ' + name);
+    const body = encodeURIComponent('Nombre: ' + name + '\nServicio: ' + service + '\nEmpresa/Profesión: ' + (company || '—') + '\nPuntuación: ' + stars + ' (' + rating + '/5)\n\nReseña:\n' + msg);
+    window.location.href = 'mailto:angelluisandujarcarrasco@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('testi-form').style.display = 'none';
+    document.getElementById('testi-success').style.display = 'block';
+  }
 
   /* ---- FORM ---- */
   function handleSubmit(e) {

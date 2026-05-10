@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Norte — Dentista en Miami</title>
+<meta name="description" content="Clínica dental de confianza en Miami. Limpieza $80, blanqueamiento $200. Tel: 555-1234">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{
+  --blue:#1B6FD8;--blue2:#0047AB;--blue3:#E8F0FD;--blue4:#0D1B2A;
+  --green:#10B981;--gold:#F59E0B;--red:#EF4444;
+  --text:#0D1B2A;--muted:#6B7C8E;--border:#D6E4F7;
+  --white:#fff;--bg:#FAFCFF;--bg2:#EEF4FF;
+  --fh:'Cormorant Garamond',serif;--fb:'DM Sans',sans-serif;
+  --tr:all .4s cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;font-family:var(--fb);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+img{max-width:100%;display:block}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:var(--blue4);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.ld-logo{font-family:var(--fh);font-size:2.5rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+.ld-logo em{color:var(--blue);font-style:normal}
+.ld-bar{width:160px;height:2px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
+.ld-fill{height:100%;width:0;background:var(--blue);border-radius:2px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(250,252,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fh);font-size:1.4rem;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-ic{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.nav-logo-ic svg{fill:#fff;width:17px;height:17px}
+.nav-logo em{color:var(--blue);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-btn{font-size:.88rem;font-weight:500;color:var(--muted);padding:8px 16px;border-radius:8px;transition:var(--tr);cursor:pointer;background:none;border:none;font-family:var(--fb)}
+.nav-btn:hover{color:var(--blue);background:var(--blue3)}
+.nav-btn.active{color:var(--blue);background:var(--blue3);font-weight:600}
+.nav-cta{background:var(--blue) !important;color:#fff !important;border-radius:40px !important;padding:9px 22px !important;font-weight:600 !important;box-shadow:0 4px 12px rgba(27,111,216,.3)}
+.nav-cta:hover{background:var(--blue2) !important;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.ham span{display:block;width:22px;height:2px;background:var(--text);transition:var(--tr);border-radius:2px}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile drawer */
+.drawer{position:fixed;inset:0;background:var(--white);z-index:1001;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding-top:68px}
+.drawer.open{transform:translateX(0)}
+.drawer-btn{font-family:var(--fh);font-size:2.2rem;font-weight:700;padding:10px 28px;color:var(--text);transition:color .3s;background:none;border:none;cursor:pointer}
+.drawer-btn:hover,.drawer-btn.active{color:var(--blue)}
+
+/* ── PÁGINAS ── */
+.page{position:fixed;inset:0;top:68px;overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;z-index:1;transition:none}
+.page.active{opacity:1;pointer-events:all;z-index:2}
+
+/* ── BOTONES ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:50px;font-size:.9rem;font-weight:600;transition:var(--tr);position:relative;overflow:hidden;cursor:pointer;border:none;font-family:var(--fb)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(27,111,216,.3)}
+.btn-blue:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(27,111,216,.4)}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);background:transparent}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--blue);font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.2)}
+.btn-ghost{border:2px solid rgba(255,255,255,.4);color:#fff;padding:13px 30px;border-radius:50px;font-size:.9rem;font-weight:600;transition:var(--tr);cursor:pointer;font-family:var(--fb)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ─────────────────────────────────────
+   PÁGINA 1 — INICIO
+───────────────────────────────────── */
+#p-inicio{background:linear-gradient(135deg,#0D1B2A 0%,#0A2A6E 45%,#1B6FD8 100%)}
+.hero-wrap{min-height:calc(100vh - 68px);display:flex;align-items:center;padding:60px;position:relative;overflow:hidden}
+/* Orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;pointer-events:none}
+.o1{width:600px;height:600px;background:radial-gradient(#1B6FD8,transparent);top:-150px;right:-100px;animation:orbF 10s ease-in-out infinite}
+.o2{width:400px;height:400px;background:radial-gradient(#6366F1,transparent);bottom:-100px;left:100px;animation:orbF 14s ease-in-out infinite reverse}
+.o3{width:280px;height:280px;background:radial-gradient(#0EA5E9,transparent);top:40%;left:45%;animation:orbF 8s ease-in-out infinite}
+@keyframes orbF{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-20px) scale(1.05)}66%{transform:translate(-15px,20px) scale(.97)}}
+/* Grid lines */
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+/* Partículas */
+.ptcl{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;opacity:.3;animation:ptclF linear infinite;pointer-events:none}
+@keyframes ptclF{0%{transform:translateY(100vh);opacity:0}10%{opacity:.3}90%{opacity:.3}100%{transform:translateY(-50px);opacity:0}}
+/* Content */
+.hero-content{position:relative;z-index:2;max-width:620px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:40px;padding:8px 20px;font-size:.78rem;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:28px}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero-h1{font-family:var(--fh);font-size:clamp(3rem,7vw,7rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
+.hero-h1 em{color:#60C8F8;font-style:normal;display:block}
+.hero-p{font-size:1.05rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.hero-rating{display:flex;align-items:center;gap:14px;padding:14px 22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;width:fit-content}
+.stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px}
+.rating-txt{font-size:.82rem;color:rgba(255,255,255,.7)}
+.rating-txt strong{color:#fff}
+/* Floating cards */
+.hero-cards{position:absolute;right:80px;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:16px}
+.hc{background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:18px 24px;display:flex;align-items:center;gap:14px}
+.hc-ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.hc-ic.g{background:rgba(16,185,129,.2)}
+.hc-ic.y{background:rgba(245,158,11,.2)}
+.hc-ic.b{background:rgba(99,102,241,.2)}
+.hc-ic svg{width:20px;height:20px}
+.hc-num{font-family:var(--fh);font-size:1.7rem;font-weight:700;color:#fff;line-height:1}
+.hc-lbl{font-size:.74rem;color:rgba(255,255,255,.6)}
+/* Stats strip */
+.hero-stats{background:var(--blue4);padding:32px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.hs-it{padding:16px 32px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.hs-it:last-child{border:none}
+.hs-n{font-family:var(--fh);font-size:2.8rem;font-weight:700;color:var(--blue);line-height:1}
+.hs-l{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px}
+/* Scroll hint dentro del hero */
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;text-align:center;cursor:pointer}
+.scroll-hint span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:8px}
+.sh-arr{width:28px;height:28px;border:1.5px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ─────────────────────────────────────
+   PÁGINA 2 — SERVICIOS
+───────────────────────────────────── */
+#p-servicios{background:var(--bg)}
+.page-inner{padding:60px 60px 80px;min-height:calc(100vh - 68px)}
+.ph{margin-bottom:52px}
+.ov{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.ov::before{content:'';width:24px;height:1px;background:var(--blue)}
+.stitle{font-family:var(--fh);font-size:clamp(2rem,4vw,3.6rem);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.ssub{font-size:.95rem;color:var(--muted);line-height:1.7;margin-top:12px;max-width:520px}
+/* Grid servicios */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:32px;transition:var(--tr);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue),var(--blue2));opacity:0;transition:opacity .4s;z-index:0;border-radius:20px}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(27,111,216,.15)}
+.svc-card:hover::after{opacity:1}
+.svc-card>*{position:relative;z-index:1}
+.svc-card:hover .svc-ic{background:rgba(255,255,255,.15);color:#fff}
+.svc-card:hover .svc-name,.svc-card:hover .svc-price{color:#fff}
+.svc-card:hover .svc-desc{color:rgba(255,255,255,.78)}
+.svc-card:hover .svc-badge{background:rgba(255,255,255,.2);color:#fff}
+.svc-card.big{grid-column:span 2}
+.svc-ic{width:48px;height:48px;background:var(--blue3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:18px;transition:var(--tr)}
+.svc-badge{display:inline-flex;align-items:center;gap:5px;background:var(--blue3);color:var(--blue);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;transition:var(--tr);width:fit-content}
+.svc-name{font-family:var(--fh);font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;transition:color .4s}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.6;flex:1;margin-bottom:18px;transition:color .4s}
+.svc-price{font-family:var(--fh);font-size:2.2rem;font-weight:700;color:var(--blue);letter-spacing:-.03em;transition:color .4s}
+.svc-plbl{font-size:.75rem;color:var(--muted);transition:color .4s}
+
+/* ─────────────────────────────────────
+   PÁGINA 3 — NOSOTROS
+───────────────────────────────────── */
+#p-nosotros{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;min-height:calc(100vh - 200px)}
+.about-imgs{position:relative;height:460px}
+.ai-main{width:78%;aspect-ratio:3/4;background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-radius:24px;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--muted);overflow:hidden;border:1px solid var(--border)}
+.ai-main::after{content:'[FOTO CLÍNICA]';position:absolute;background:rgba(255,255,255,.9);padding:6px 14px;border-radius:20px;font-size:.72rem}
+.ai-sec{width:52%;aspect-ratio:1;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:20px;position:absolute;bottom:20px;right:0;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(27,111,216,.3);overflow:hidden}
+.ai-sec::after{content:'[FOTO EQUIPO]';position:absolute;font-size:.7rem;color:rgba(255,255,255,.8)}
+.ai-badge{position:absolute;top:24px;right:8px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px;z-index:2}
+.aib-num{font-family:var(--fh);font-size:1.4rem;font-weight:700;line-height:1}
+.aib-lbl{font-size:.7rem;color:var(--muted)}
+.ai-badge2{position:absolute;bottom:60px;left:0;background:var(--blue4);border-radius:14px;padding:14px 20px;z-index:2;display:flex;align-items:center;gap:10px}
+.aib2-stars{color:var(--gold);font-size:.9rem}
+.aib2-txt{font-size:.78rem;color:rgba(255,255,255,.85);font-weight:500}
+.about-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue3);color:var(--blue);border-radius:40px;padding:7px 18px;font-size:.76rem;font-weight:600;margin-bottom:18px}
+.about-p{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.avals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.aval{display:flex;align-items:center;gap:10px;font-size:.86rem;font-weight:500}
+.avaldot{width:18px;height:18px;border-radius:5px;background:var(--blue3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.avaldot svg{width:11px;height:11px;fill:var(--blue)}
+
+/* ─────────────────────────────────────
+   PÁGINA 4 — HORARIOS
+───────────────────────────────────── */
+#p-horarios{background:var(--bg)}
+.hor-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start;margin-top:52px}
+.hours-card{background:var(--white);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.hours-head{background:linear-gradient(135deg,var(--blue),var(--blue2));padding:28px 32px;display:flex;align-items:center;gap:14px}
+.hours-head svg{fill:#fff;width:22px;height:22px;flex-shrink:0}
+.hh-title{font-family:var(--fh);font-size:1.4rem;font-weight:700;color:#fff}
+.hh-sub{font-size:.78rem;color:rgba(255,255,255,.7)}
+.hours-rows{}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--border);transition:background .2s}
+.hours-row:last-child{border:none}
+.hours-row:hover{background:var(--bg2)}
+.hours-row.today{background:var(--blue3)}
+.hday{font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.today-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.htime{font-size:.86rem;color:var(--muted);font-weight:500}
+.hours-row.today .htime{color:var(--blue);font-weight:700}
+/* Map */
+.map-card{border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.map-ph{width:100%;height:340px;background:linear-gradient(135deg,#dbeafe,#eff6ff);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.map-ph-ic{width:54px;height:54px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.map-ph-ic svg{fill:#fff;width:26px;height:26px}
+.map-addr{background:var(--white);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
+.ma-txt{font-size:.9rem;font-weight:700;color:var(--text)}
+.ma-sub{font-size:.76rem;color:var(--muted);margin-top:2px}
+/* Contacto rápido */
+.quick-contact{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.qc{display:flex;align-items:center;gap:12px;padding:16px 22px;background:var(--white);border:1px solid var(--border);border-radius:14px;transition:var(--tr);flex:1;min-width:200px}
+.qc:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 16px rgba(27,111,216,.1)}
+.qc-ic{width:40px;height:40px;background:var(--blue3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);flex-shrink:0}
+.qc-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px}
+.qc-val{font-size:.92rem;font-weight:700}
+
+/* ─────────────────────────────────────
+   PÁGINA 5 — CONTACTO
+───────────────────────────────────── */
+#p-contacto{background:var(--blue4)}
+.contact-wrap{min-height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 1.3fr;align-items:center;padding:60px}
+/* Left info */
+.contact-left{padding-right:60px}
+.contact-left .ov{color:rgba(100,160,255,.8)}
+.contact-left .ov::before{background:rgba(100,160,255,.8)}
+.contact-h{font-family:var(--fh);font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+.contact-h em{color:#60C8F8;font-style:normal}
+.contact-sub{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:36px}
+.cic-list{display:flex;flex-direction:column;gap:14px}
+.cic{display:flex;align-items:center;gap:14px;padding:18px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;transition:var(--tr)}
+.cic:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+.cic-ic{width:40px;height:40px;background:rgba(27,111,216,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#60C8F8;flex-shrink:0}
+.cic-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:3px}
+.cic-val{font-size:.9rem;font-weight:700;color:#fff}
+/* Trust */
+.trust{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px}
+.trust-it{display:flex;align-items:center;gap:7px;font-size:.8rem;color:rgba(255,255,255,.5)}
+.trust-it svg{fill:rgba(255,255,255,.35);width:14px;height:14px}
+/* Form */
+.form-card{background:#fff;border-radius:24px;padding:44px;box-shadow:0 24px 80px rgba(0,0,0,.3)}
+.form-title{font-family:var(--fh);font-size:1.7rem;font-weight:700;margin-bottom:6px}
+.form-sub{font-size:.85rem;color:var(--muted);margin-bottom:28px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{position:relative;margin-bottom:14px}
+.field input,.field textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:20px 14px 8px;color:var(--text);font-family:var(--fb);font-size:.9rem;transition:border-color .3s,box-shadow .3s;appearance:none}
+.field textarea{min-height:100px;resize:vertical}
+.field label{position:absolute;left:14px;top:15px;color:var(--muted);font-size:.86rem;transition:all .3s;pointer-events:none}
+.field input:focus,.field textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px rgba(27,111,216,.1)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{top:6px;font-size:.66rem;color:var(--blue);font-weight:700;letter-spacing:.06em}
+.btn-send{width:100%;padding:15px;border-radius:50px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-size:.92rem;font-weight:700;transition:var(--tr);border:none;cursor:pointer;font-family:var(--fb)}
+.btn-send:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(27,111,216,.4)}
+
+/* ── FLOATING BUTTONS ── */
+.float-btns{position:fixed;bottom:28px;right:24px;z-index:999;display:flex;flex-direction:column;gap:10px}
+.fb{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.18);transition:var(--tr);position:relative}
+.fb:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.fb-ph{background:var(--green)}
+.fb-ch{background:var(--blue)}
+.fb svg{fill:#fff;width:20px;height:20px}
+.fb-tip{position:absolute;right:58px;background:var(--blue4);color:#fff;font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.fb:hover .fb-tip{opacity:1}
+
+/* ── CURSOR ── */
+@media(hover:hover)and(pointer:fine){
+  body{cursor:none}
+  .cur{position:fixed;width:34px;height:34px;border:1.5px solid var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+  .cur-dot{position:fixed;width:5px;height:5px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+}
+@media(hover:none){.cur,.cur-dot{display:none}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  nav,.hero-wrap,.page-inner,.contact-wrap,.hor-grid{padding-left:36px;padding-right:36px}
+  .hero-cards{right:36px}
+  .about-grid{gap:48px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-card.big{grid-column:span 2}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .hero-wrap,.page-inner,.contact-wrap{padding:40px 20px}
+  .hero-cards{display:none}
+  .hero-stats{grid-template-columns:1fr 1fr;padding:24px 20px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card.big{grid-column:span 1}
+  .about-grid,.contact-wrap,.hor-grid{grid-template-columns:1fr}
+  .about-imgs{height:260px}
+  .contact-left{padding-right:0;padding-bottom:40px}
+  .frow{grid-template-columns:1fr}
+  .float-btns{bottom:16px;right:14px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}.cur,.cur-dot{display:none !important}}
+
+/* ── IMÁGENES PLACEHOLDER ── */
+.img-ph{border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;font-size:.78rem;color:var(--muted)}
+.img-ph .ph-label{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.92);padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.img-ph .ph-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center}
+.img-ph .ph-icon svg{width:24px;height:24px;opacity:.4}
+/* Colores por tipo */
+.iph-blue{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.iph-purple{background:linear-gradient(135deg,#ede9fe,#ddd6fe)}
+.iph-green{background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+.iph-amber{background:linear-gradient(135deg,#fef3c7,#fde68a)}
+.iph-rose{background:linear-gradient(135deg,#ffe4e6,#fecdd3)}
+.iph-dark{background:linear-gradient(135deg,#1e3a5f,#1B6FD8)}
+
+/* ── VIDEO PLACEHOLDER ── */
+.vid-ph{border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(135deg,#0D1B2A,#1B6FD8);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.vid-ph:hover .play-btn{transform:scale(1.1)}
+.play-btn{width:72px;height:72px;background:rgba(255,255,255,.95);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.play-btn svg{width:28px;height:28px;fill:var(--blue);margin-left:4px}
+.vid-label{position:absolute;bottom:16px;left:16px;background:rgba(0,0,0,.6);color:#fff;font-size:.78rem;padding:6px 14px;border-radius:20px;font-weight:500}
+.vid-duration{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.6);color:#fff;font-size:.75rem;padding:4px 10px;border-radius:8px}
+
+/* ── FEATURED SERVICES (inicio) ── */
+.feat-strip{padding:60px 60px 40px;background:var(--bg)}
+.feat-strip-title{font-family:var(--fh);font-size:1.1rem;color:var(--muted);margin-bottom:24px;font-weight:500;letter-spacing:.05em}
+.feat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;align-items:center;gap:16px;transition:var(--tr);cursor:pointer}
+.feat-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,111,216,.1)}
+.feat-ic{width:48px;height:48px;background:var(--blue3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue);flex-shrink:0;transition:var(--tr)}
+.feat-card:hover .feat-ic{background:var(--blue);color:#fff}
+.feat-name{font-weight:700;font-size:.95rem;margin-bottom:3px}
+.feat-price{font-family:var(--fh);font-size:1.2rem;font-weight:700;color:var(--blue)}
+
+/* ── TESTIMONIALS STRIP ── */
+.testi-strip{background:var(--blue4);padding:52px 0}
+.testi-hd{padding:0 60px 36px;display:flex;align-items:center;justify-content:space-between}
+.testi-hd-title{font-family:var(--fh);font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+.testi-rating{display:flex;align-items:center;gap:10px}
+.testi-stars{color:var(--gold);font-size:1.1rem}
+.testi-rating-txt{font-size:.85rem;color:rgba(255,255,255,.6)}
+.marquee-wrap{overflow:hidden;position:relative}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--blue4),transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--blue4),transparent)}
+.marquee-track{display:flex;gap:20px;animation:marquee 35s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 28px;width:320px;flex-shrink:0;transition:var(--tr)}
+.tcard:hover{background:rgba(255,255,255,.12)}
+.tcard-stars{color:var(--gold);letter-spacing:2px;margin-bottom:10px;font-size:.88rem}
+.tcard-txt{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:18px;font-style:italic}
+.tcard-auth{display:flex;align-items:center;gap:10px}
+.tcard-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.tcard-name{font-size:.85rem;font-weight:700;color:#fff}
+.tcard-date{font-size:.72rem;color:rgba(255,255,255,.4)}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:linear-gradient(135deg,var(--blue),var(--blue2));padding:52px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.cta-strip-title{font-family:var(--fh);font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+.cta-strip-sub{font-size:.95rem;color:rgba(255,255,255,.75);margin-top:6px}
+.cta-strip-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* ── WHY US (servicios) ── */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.why-card{text-align:center;padding:32px 20px;background:var(--white);border:1px solid var(--border);border-radius:16px;transition:var(--tr)}
+.why-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 8px 24px rgba(27,111,216,.1)}
+.why-ic{width:56px;height:56px;border-radius:16px;background:var(--blue3);display:flex;align-items:center;justify-content:center;color:var(--blue);margin:0 auto 16px}
+.why-title{font-weight:700;font-size:.95rem;margin-bottom:6px}
+.why-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ── BEFORE/AFTER ── */
+.ba-section{margin-top:52px}
+.ba-title{font-family:var(--fh);font-size:1.6rem;font-weight:700;margin-bottom:8px;letter-spacing:-.02em}
+.ba-sub{font-size:.88rem;color:var(--muted);margin-bottom:28px}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ba-card{border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.ba-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.ba-before,.ba-after{height:180px;display:flex;align-items:flex-end;padding:10px}
+.ba-before{background:linear-gradient(135deg,#fef3c7,#fde68a)}
+.ba-after{background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+.ba-tag{font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.05em}
+.ba-tag.before{background:rgba(0,0,0,.15);color:rgba(0,0,0,.6)}
+.ba-tag.after{background:rgba(16,185,129,.2);color:#065f46}
+.ba-info{padding:14px 16px;font-size:.85rem;font-weight:600;color:var(--text);background:var(--white)}
+
+/* ── PROCESS STEPS ── */
+.proc-sec{margin-top:52px}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-steps::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--border),var(--blue),var(--border))}
+.pstep{text-align:center;padding:0 16px 32px}
+.pstep-n{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.5rem;font-weight:700;margin:0 auto 20px;position:relative;z-index:1;transition:var(--tr)}
+.pstep-n.n1{background:var(--blue3);color:var(--blue)}
+.pstep-n.n2{background:var(--blue);color:#fff;box-shadow:0 6px 20px rgba(27,111,216,.4)}
+.pstep-n.n3{background:var(--blue4);color:#fff}
+.pstep-n.n4{background:var(--green);color:#fff}
+.pstep:hover .pstep-n{transform:scale(1.12)}
+.pstep-title{font-weight:700;font-size:.92rem;margin-bottom:6px}
+.pstep-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* ── FAQ ── */
+.faq-sec{margin-top:52px;max-width:760px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;gap:16px}
+.faq-qt{font-size:.92rem;font-weight:600}
+.faq-ic{width:28px;height:28px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--tr);color:var(--blue)}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--blue);border-color:var(--blue);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease,padding .3s}
+.faq-item.open .faq-a{max-height:160px;padding-bottom:16px}
+.faq-a p{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* ── TEAM SECTION ── */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.team-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:var(--tr)}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(27,111,216,.1)}
+.team-img{height:220px}
+.team-info{padding:24px}
+.team-name{font-family:var(--fh);font-size:1.3rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.team-role{font-size:.8rem;color:var(--blue);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.team-bio{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ── CERTIFICATIONS ── */
+.cert-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:40px;padding:28px 32px;background:var(--white);border:1px solid var(--border);border-radius:16px}
+.cert-item{display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;color:var(--muted)}
+.cert-ic{width:32px;height:32px;border-radius:8px;background:var(--blue3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cert-ic svg{width:16px;height:16px;fill:var(--blue)}
+
+/* ── INSURANCE ── */
+.ins-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.ins-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:var(--tr)}
+.ins-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.ins-logo{height:40px;background:var(--bg2);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:.78rem;font-weight:700;color:var(--muted)}
+.ins-name{font-size:.78rem;font-weight:600;color:var(--text)}
+
+/* ── GALLERY GRID ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:12px;margin-top:28px}
+.gal-item{border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-item.tall{grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+.gal-overlay{position:absolute;inset:0;background:rgba(27,111,216,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.gal-overlay svg{fill:#fff;width:32px;height:32px}
+
+/* ── EMERGENCY CARD ── */
+.emerg-card{background:linear-gradient(135deg,#7f1d1d,var(--red));border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:20px;margin-top:28px}
+.emerg-ic{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.emerg-ic svg{fill:#fff;width:26px;height:26px}
+.emerg-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
+.emerg-sub{font-size:.82rem;color:rgba(255,255,255,.75)}
+.emerg-phone{font-family:var(--fh);font-size:1.5rem;font-weight:700;color:#fff;margin-left:auto}
+
+/* ── VIRTUAL TOUR ── */
+.tour-section{margin-top:36px}
+.tour-label{font-family:var(--fh);font-size:1.3rem;font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+.tour-sub{font-size:.85rem;color:var(--muted);margin-bottom:16px}
+
+@media(max-width:768px){
+  .feat-row{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .ba-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr 1fr}
+  .proc-steps::before{display:none}
+  .team-grid{grid-template-columns:1fr}
+  .ins-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .cta-strip{flex-direction:column;text-align:center}
+  .feat-strip,.testi-strip,.cta-strip{padding-left:20px;padding-right:20px}
+  .testi-hd{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="cur"></div>
+<div class="cur-dot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">Clínica <em>Norte</em></div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<!-- DRAWER MOBILE -->
+<div class="drawer" id="drawer">
+  <button class="drawer-btn active" onclick="goTo('inicio')">Inicio</button>
+  <button class="drawer-btn" onclick="goTo('servicios')">Servicios</button>
+  <button class="drawer-btn" onclick="goTo('nosotros')">Nosotros</button>
+  <button class="drawer-btn" onclick="goTo('horarios')">Horarios</button>
+  <button class="drawer-btn" onclick="goTo('contacto')">Contacto</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goTo('inicio')">
+    <div class="nav-logo-ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 3.5 2 6.5 4 8.5v3.5h8v-3.5c2-2 4-5 4-8.5 0-4.4-3.6-8-8-8z"/></svg></div>
+    Clínica <em>Norte</em>
+  </div>
+  <ul class="nav-links">
+    <li><button class="nav-btn active" data-page="inicio" onclick="goTo('inicio')">Inicio</button></li>
+    <li><button class="nav-btn" data-page="servicios" onclick="goTo('servicios')">Servicios</button></li>
+    <li><button class="nav-btn" data-page="nosotros" onclick="goTo('nosotros')">Nosotros</button></li>
+    <li><button class="nav-btn" data-page="horarios" onclick="goTo('horarios')">Horarios</button></li>
+    <li><button class="nav-btn nav-cta" data-page="contacto" onclick="goTo('contacto')">Reservar cita</button></li>
+  </ul>
+  <div class="ham" id="ham" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="tel:5551234" class="fb fb-ph" style="position:relative">
+    <div class="fb-tip">Llamar: 555-1234</div>
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+  <div class="fb fb-ch" onclick="goTo('contacto')" style="position:relative;cursor:pointer">
+    <div class="fb-tip">Reservar cita</div>
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PÁGINA: INICIO
+═══════════════════════════ -->
+<div class="page active" id="p-inicio">
+  <div class="hero-wrap">
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+    <div class="hero-grid"></div>
+    <div id="ptcls"></div>
+    <!-- Tarjetas flotantes -->
+    <div class="hero-cards">
+      <div class="hc"><div class="hc-ic g"><svg width="20" height="20" viewBox="0 0 24 24" fill="#10B981"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><div class="hc-num">500+</div><div class="hc-lbl">Pacientes felices</div></div></div>
+      <div class="hc"><div class="hc-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><div><div class="hc-num">4.9★</div><div class="hc-lbl">Google Reviews</div></div></div>
+      <div class="hc"><div class="hc-ic b"><svg width="20" height="20" viewBox="0 0 24 24" fill="#6366F1"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div><div class="hc-num">10+</div><div class="hc-lbl">Años en Miami</div></div></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">Clínica Dental · Miami, FL</div>
+      <h1 class="hero-h1">Tu sonrisa perfecta<em>empieza aquí</em></h1>
+      <p class="hero-p">Atención dental de confianza en Miami. Tecnología moderna, resultados excepcionales y un equipo que te cuida de verdad.</p>
+      <div class="hero-btns">
+        <button class="btn btn-white" onclick="goTo('contacto')">Reservar cita →</button>
+        <button class="btn btn-ghost" onclick="goTo('servicios')">Ver servicios</button>
+      </div>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-txt"><strong>4.9 / 5</strong> · Más de 300 reseñas en Google</span>
+      </div>
+    </div>
+    <div class="scroll-hint" onclick="goTo('servicios')">
+      <span>Explorar</span>
+      <div class="sh-arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,.6)"><path d="M7 10l5 5 5-5z"/></svg></div>
+    </div>
+  </div>
+  <!-- Stats strip -->
+  <div class="hero-stats">
+    <div class="hs-it"><div class="hs-n" data-t="500" data-suf="+">0+</div><div class="hs-l">Pacientes satisfechos</div></div>
+    <div class="hs-it"><div class="hs-n" data-t="10" data-suf="+">0+</div><div class="hs-l">Años de experiencia</div></div>
+    <div class="hs-it"><div class="hs-n" data-t="98" data-suf="%">0%</div><div class="hs-l">Tasa de satisfacción</div></div>
+    <div class="hs-it"><div class="hs-n" data-t="300" data-suf="+">0+</div><div class="hs-l">Reseñas de 5 estrellas</div></div>
+  </div>
+</div>
+
+<!-- SERVICIOS DESTACADOS -->
+<div class="feat-strip">
+  <div class="feat-strip-title">SERVICIOS DESTACADOS</div>
+  <div class="feat-row">
+    <div class="feat-card" onclick="goTo('servicios')">
+      <div class="feat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+      <div><div class="feat-name">Limpieza Dental</div><div class="feat-price">$80 / sesión</div></div>
+    </div>
+    <div class="feat-card" onclick="goTo('servicios')">
+      <div class="feat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+      <div><div class="feat-name">Blanqueamiento LED</div><div class="feat-price">$200 / sesión</div></div>
+    </div>
+    <div class="feat-card" onclick="goTo('contacto')">
+      <div class="feat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+      <div><div class="feat-name">Reservar Cita</div><div class="feat-price">Respuesta en 2h</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<div style="padding:0 60px 52px;background:var(--bg)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+    <div>
+      <div class="ov">Conócenos</div>
+      <div style="font-family:var(--fh);font-size:2.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:16px">Conoce nuestra<br>clínica por dentro</div>
+      <p style="font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:20px">Visita virtualmente nuestras instalaciones. Equipamiento de última generación, salas confortables y un equipo profesional que te recibirá con la mejor atención.</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500"><div style="width:6px;height:6px;background:var(--green);border-radius:50%"></div>Equipos de radiografía digital 3D</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500"><div style="width:6px;height:6px;background:var(--green);border-radius:50%"></div>Sala de blanqueamiento LED avanzada</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500"><div style="width:6px;height:6px;background:var(--green);border-radius:50%"></div>Área infantil especializada y acogedora</div>
+      </div>
+    </div>
+    <div class="vid-ph">
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vid-label">🎥 Tour virtual — Clínica Norte Miami</div>
+      <div class="vid-duration">2:34</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-strip">
+  <div class="testi-hd">
+    <div class="testi-hd-title">Lo que dicen nuestros pacientes</div>
+    <div class="testi-rating"><span class="testi-stars">★★★★★</span><span class="testi-rating-txt">4.9 · +300 reseñas en Google</span></div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"La mejor clínica dental en Miami. El blanqueamiento quedó perfecto, resultados inmediatos. Muy profesionales."</p><div class="tcard-auth"><div class="tcard-av">M</div><div><div class="tcard-name">María González</div><div class="tcard-date">Google · Hace 2 semanas</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Llevo años viniendo y siempre salgo satisfecho. La limpieza es rápida, indolora y muy profesional."</p><div class="tcard-auth"><div class="tcard-av">C</div><div><div class="tcard-name">Carlos Ruiz</div><div class="tcard-date">Google · Hace 1 mes</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Tenía fobia al dentista y aquí me trataron con mucha paciencia. El ambiente es tranquilo y el resultado genial."</p><div class="tcard-auth"><div class="tcard-av">A</div><div><div class="tcard-name">Ana Martínez</div><div class="tcard-date">Google · Hace 3 semanas</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"El blanqueamiento me cambió la vida. En una sola sesión noté la diferencia. Vale cada centavo."</p><div class="tcard-auth"><div class="tcard-av">J</div><div><div class="tcard-name">Juan Pérez</div><div class="tcard-date">Google · Hace 2 meses</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Traigo a toda mi familia aquí. Los niños no tienen miedo y los adultos quedamos encantados siempre."</p><div class="tcard-auth"><div class="tcard-av">L</div><div><div class="tcard-name">Laura Fernández</div><div class="tcard-date">Google · Hace 1 semana</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Atención rápida, precios justos y resultados de primera. La mejor inversión para tu salud bucal."</p><div class="tcard-auth"><div class="tcard-av">R</div><div><div class="tcard-name">Roberto Díaz</div><div class="tcard-date">Google · Hace 3 meses</div></div></div></div>
+      <!-- duplicadas para loop -->
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"La mejor clínica dental en Miami. El blanqueamiento quedó perfecto, resultados inmediatos. Muy profesionales."</p><div class="tcard-auth"><div class="tcard-av">M</div><div><div class="tcard-name">María González</div><div class="tcard-date">Google · Hace 2 semanas</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Llevo años viniendo y siempre salgo satisfecho. La limpieza es rápida, indolora y muy profesional."</p><div class="tcard-auth"><div class="tcard-av">C</div><div><div class="tcard-name">Carlos Ruiz</div><div class="tcard-date">Google · Hace 1 mes</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Tenía fobia al dentista y aquí me trataron con mucha paciencia. El ambiente es tranquilo y el resultado genial."</p><div class="tcard-auth"><div class="tcard-av">A</div><div><div class="tcard-name">Ana Martínez</div><div class="tcard-date">Google · Hace 3 semanas</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"El blanqueamiento me cambió la vida. En una sola sesión noté la diferencia. Vale cada centavo."</p><div class="tcard-auth"><div class="tcard-av">J</div><div><div class="tcard-name">Juan Pérez</div><div class="tcard-date">Google · Hace 2 meses</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-txt">"Traigo a toda mi familia aquí. Los niños no tienen miedo y los adultos quedamos encantados siempre."</p><div class="tcard-auth"><div class="tcard-av">L</div><div><div class="tcard-name">Laura Fernández</div><div class="tcard-date">Google · Hace 1 semana</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div><div class="cta-strip-title">¿Listo para tu sonrisa perfecta?</div><div class="cta-strip-sub">Primera consulta incluida · Sin compromisos · Respuesta en 2 horas</div></div>
+  <div class="cta-strip-btns">
+    <button class="btn btn-white" onclick="goTo('contacto')">Reservar cita →</button>
+    <a href="tel:5551234" class="btn btn-ghost">📞 555-1234</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PÁGINA: SERVICIOS
+═══════════════════════════ -->
+<div class="page" id="p-servicios">
+  <div class="page-inner">
+    <div class="ph">
+      <div class="ov">Servicios</div>
+      <h2 class="stitle">Lo que hacemos<br>por tu sonrisa</h2>
+      <p class="ssub">Tratamientos de alta calidad con tecnología de última generación.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card big">
+        <div class="svc-badge">⭐ Más popular</div>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <div class="svc-name">Limpieza Dental Profesional</div>
+        <div class="svc-desc">Eliminamos placa bacteriana y sarro con ultrasonido. Incluye revisión completa, pulido y fluoración. Tu boca perfectamente limpia en 45 minutos.</div>
+        <div style="display:flex;align-items:baseline;gap:5px"><span class="svc-price">$80</span><span class="svc-plbl">/ sesión</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-badge">✨ Resultado inmediato</div>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+        <div class="svc-name">Blanqueamiento LED</div>
+        <div class="svc-desc">Hasta 8 tonos más blanco en una sesión. Tecnología LED, seguro y sin dolor.</div>
+        <div style="display:flex;align-items:baseline;gap:5px"><span class="svc-price">$200</span><span class="svc-plbl">/ tratamiento</span></div>
+      </div>
+      <div class="svc-card"><div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div><div class="svc-name">Revisión General</div><div class="svc-desc">Examen con radiografías digitales. Detectamos problemas a tiempo.</div><button class="btn btn-outline" onclick="goTo('contacto')" style="margin-top:auto;padding:8px 18px;font-size:.8rem">Consultar precio</button></div>
+      <div class="svc-card"><div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div class="svc-name">Implantes Dentales</div><div class="svc-desc">Solución definitiva para dientes perdidos, con naturalidad y durabilidad.</div><button class="btn btn-outline" onclick="goTo('contacto')" style="margin-top:auto;padding:8px 18px;font-size:.8rem">Consultar precio</button></div>
+      <div class="svc-card"><div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><div class="svc-name">Ortodoncia</div><div class="svc-desc">Brackets tradicionales y alineadores invisibles Invisalign.</div><button class="btn btn-outline" onclick="goTo('contacto')" style="margin-top:auto;padding:8px 18px;font-size:.8rem">Consultar precio</button></div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <button class="btn btn-blue" onclick="goTo('contacto')">Reservar cita ahora →</button>
+    </div>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <div style="margin-top:60px">
+      <div class="ov">¿Por qué nosotros?</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">Lo que nos hace diferentes</div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div class="why-title">Tecnología 3D</div><div class="why-desc">Radiografías digitales y escáner 3D para diagnósticos precisos sin dolor</div></div>
+      <div class="why-card"><div class="why-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="why-title">Sin dolor</div><div class="why-desc">Anestesia de última generación. Tratamientos cómodos e indoloros garantizados</div></div>
+      <div class="why-card"><div class="why-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z"/></svg></div><div class="why-title">Todas las edades</div><div class="why-desc">Desde bebés hasta adultos mayores. Tratamientos adaptados a cada etapa de vida</div></div>
+      <div class="why-card"><div class="why-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div><div class="why-title">Citas flexibles</div><div class="why-desc">Horarios de mañana, tarde y sábado. Respondemos en menos de 2 horas</div></div>
+    </div>
+
+    <!-- ANTES Y DESPUÉS -->
+    <div class="ba-section">
+      <div class="ba-title">Resultados reales</div>
+      <div class="ba-sub">Resultados reales de nuestros pacientes — imágenes antes/después</div>
+      <div class="ba-grid">
+        <div class="ba-card"><div class="ba-imgs"><div class="ba-before"><span class="ba-tag before">ANTES</span></div><div class="ba-after"><span class="ba-tag after">DESPUÉS</span></div></div><div class="ba-info">Blanqueamiento LED — 1 sesión</div></div>
+        <div class="ba-card"><div class="ba-imgs"><div class="ba-before"><span class="ba-tag before">ANTES</span></div><div class="ba-after"><span class="ba-tag after">DESPUÉS</span></div></div><div class="ba-info">Limpieza profunda + fluoración</div></div>
+        <div class="ba-card"><div class="ba-imgs"><div class="ba-before"><span class="ba-tag before">ANTES</span></div><div class="ba-after"><span class="ba-tag after">DESPUÉS</span></div></div><div class="ba-info">Ortodoncia invisible — 8 meses</div></div>
+      </div>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="proc-sec">
+      <div class="ov">Proceso</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:32px">Tu tratamiento en 4 pasos</div>
+      <div class="proc-steps">
+        <div class="pstep"><div class="pstep-n n1">1</div><div class="pstep-title">Reserva tu cita</div><div class="pstep-desc">Online, por teléfono o email. Confirmamos en 2 horas.</div></div>
+        <div class="pstep"><div class="pstep-n n2">2</div><div class="pstep-title">Evaluación inicial</div><div class="pstep-desc">Revisión completa con radiografías digitales gratuita.</div></div>
+        <div class="pstep"><div class="pstep-n n3">3</div><div class="pstep-title">Tratamiento</div><div class="pstep-desc">Aplicamos el plan con precisión, tecnología y sin dolor.</div></div>
+        <div class="pstep"><div class="pstep-n n4">4</div><div class="pstep-title">Sonrisa perfecta</div><div class="pstep-desc">Sales con resultados visibles desde el primer día.</div></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-sec">
+      <div class="ov" style="margin-top:52px">FAQ</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:28px">Preguntas frecuentes</div>
+      <div class="faq-item"><div class="faq-q"><span class="faq-qt">¿Con qué frecuencia debo visitar al dentista?</span><div class="faq-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div></div><div class="faq-a"><p>Recomendamos visitas cada 6 meses para limpieza y revisión. Las visitas regulares previenen problemas mayores y mantienen tu boca en perfecto estado.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span class="faq-qt">¿El blanqueamiento es seguro para el esmalte?</span><div class="faq-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div></div><div class="faq-a"><p>Sí. El blanqueamiento profesional que realizamos utiliza productos aprobados y es supervisado por especialistas. Es seguro para el esmalte y los resultados son inmediatos.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span class="faq-qt">¿Aceptan seguros dentales?</span><div class="faq-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div></div><div class="faq-a"><p>Sí, trabajamos con los principales seguros de Florida. Contáctanos antes de tu cita para verificar cobertura. También ofrecemos planes de pago flexibles sin intereses.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span class="faq-qt">¿Cuánto dura una limpieza dental?</span><div class="faq-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div></div><div class="faq-a"><p>Entre 45 y 60 minutos. Incluye eliminación de placa y sarro, pulido, fluoración y revisión general. Un proceso completamente indoloro.</p></div></div>
+    </div>
+    <div style="padding-bottom:60px"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PÁGINA: NOSOTROS
+═══════════════════════════ -->
+<div class="page" id="p-nosotros">
+  <div class="page-inner">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <div class="ai-main"></div>
+        <div class="ai-sec"></div>
+        <div class="ai-badge"><div style="width:36px;height:36px;background:var(--blue3);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--blue)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div><div class="aib-num">10+</div><div class="aib-lbl">Años en Miami</div></div></div>
+        <div class="ai-badge2"><div><div class="aib2-stars">★★★★★</div><div class="aib2-txt">+300 pacientes nos recomiendan</div></div></div>
+      </div>
+      <div>
+        <div class="about-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Clínica de confianza en Miami</div>
+        <div class="ov">Sobre Nosotros</div>
+        <h2 class="stitle">Más de una década<br>cuidando sonrisas</h2>
+        <p class="about-p" style="margin-top:18px">En Clínica Norte creemos que una sonrisa saludable transforma vidas. Desde nuestra apertura en Miami hemos atendido a cientos de pacientes con dedicación, tecnología de vanguardia y el trato personalizado que mereces.</p>
+        <p class="about-p">Nuestro equipo combina experiencia clínica con un enfoque humano y moderno. Sin miedo, sin dolor, con resultados que duran.</p>
+        <div class="avals">
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Tecnología de vanguardia</span></div>
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Atención personalizada</span></div>
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Sin dolor, sin miedo</span></div>
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Seguros aceptados</span></div>
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Pacientes de todas las edades</span></div>
+          <div class="aval"><div class="avaldot"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Resultados duraderos</span></div>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+          <button class="btn btn-blue" onclick="goTo('contacto')">Agenda tu visita →</button>
+          <button class="btn btn-outline" onclick="goTo('horarios')">Ver horarios</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERÍA -->
+    <div style="margin-top:60px">
+      <div class="ov">Galería</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:20px">Nuestras instalaciones</div>
+      <div class="gallery-grid">
+        <div class="gal-item tall img-ph iph-blue" style="min-height:260px"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-label">📷 Sala principal</span></div>
+        <div class="gal-item img-ph iph-purple" style="min-height:120px"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-label">📷 Sala blanqueamiento</span></div>
+        <div class="gal-item img-ph iph-green" style="min-height:120px"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-label">📷 Área infantil</span></div>
+        <div class="gal-item wide img-ph iph-amber" style="min-height:120px"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-label">📷 Recepción y sala de espera</span></div>
+      </div>
+    </div>
+
+    <!-- EQUIPO -->
+    <div style="margin-top:60px">
+      <div class="ov">Equipo</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">Nuestros especialistas</div>
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:0">Un equipo de profesionales comprometidos con tu salud bucal</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-img img-ph iph-blue"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg></div><span class="ph-label">📷 Foto del doctor</span></div>
+        <div class="team-info"><div class="team-name">Dr. [Nombre]</div><div class="team-role">Director Médico · Cirugía Oral</div><div class="team-bio">Más de 15 años de experiencia en cirugía oral e implantología. Formado en la Universidad de Miami.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-img img-ph iph-purple"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg></div><span class="ph-label">📷 Foto de la doctora</span></div>
+        <div class="team-info"><div class="team-name">Dra. [Nombre]</div><div class="team-role">Especialista · Ortodoncia</div><div class="team-bio">Especialista en ortodoncia invisible y brackets estéticos. Experta en Invisalign certificada.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-img img-ph iph-green"><div class="ph-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg></div><span class="ph-label">📷 Foto del doctor</span></div>
+        <div class="team-info"><div class="team-name">Dr. [Nombre]</div><div class="team-role">Especialista · Odontopediatría</div><div class="team-bio">Especialista en niños y adolescentes. Técnicas especiales para pacientes con ansiedad dental.</div></div>
+      </div>
+    </div>
+
+    <!-- CERTIFICACIONES -->
+    <div style="margin-top:40px">
+      <div class="cert-strip">
+        <div class="cert-item"><div class="cert-ic"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><span>ADA — American Dental Association</span></div>
+        <div class="cert-item"><div class="cert-ic"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span>Invisalign Certified Provider</span></div>
+        <div class="cert-item"><div class="cert-ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span>Florida Board of Dentistry</span></div>
+        <div class="cert-item"><div class="cert-ic"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span>5★ Google Rating</span></div>
+      </div>
+    </div>
+    <div style="padding-bottom:60px"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PÁGINA: HORARIOS
+═══════════════════════════ -->
+<div class="page" id="p-horarios">
+  <div class="page-inner">
+    <div class="ph">
+      <div class="ov">Ubicación y Horarios</div>
+      <h2 class="stitle">Visítanos en Miami</h2>
+      <p class="ssub">Estamos aquí para ti de lunes a sábado.</p>
+    </div>
+    <div class="hor-grid">
+      <div class="hours-card">
+        <div class="hours-head">
+          <svg width="22" height="22" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          <div><div class="hh-title">Horario de atención</div><div class="hh-sub">Miami, Florida</div></div>
+        </div>
+        <div class="hours-rows">
+          <div class="hours-row today"><div class="hday"><span class="today-dot"></span>Lunes</div><div class="htime">9:00 AM – 8:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Martes</div><div class="htime">8:00 AM – 7:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Miércoles</div><div class="htime">8:00 AM – 5:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Jueves</div><div class="htime">8:00 AM – 6:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Viernes</div><div class="htime">8:00 AM – 5:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Sábado</div><div class="htime">9:00 AM – 2:00 PM</div></div>
+          <div class="hours-row"><div class="hday">Domingo</div><div class="htime" style="color:var(--red)">Cerrado</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="map-card">
+          <div class="map-ph">
+            <div class="map-ph-ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div style="font-size:.9rem;color:var(--muted);font-weight:500">[DIRECCIÓN MIAMI — añadir mapa]</div>
+            <a href="https://maps.google.com" target="_blank" class="btn btn-outline" style="padding:9px 22px;font-size:.82rem">Ver en Google Maps</a>
+          </div>
+          <div class="map-addr">
+            <div><div class="ma-txt">[DIRECCIÓN MIAMI]</div><div class="ma-sub">Miami, FL</div></div>
+            <a href="tel:5551234" class="btn btn-blue" style="padding:10px 20px;font-size:.82rem">555-1234</a>
+          </div>
+        </div>
+        <div class="quick-contact">
+          <a href="tel:5551234" class="qc"><div class="qc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div><div class="qc-lbl">Teléfono</div><div class="qc-val">555-1234</div></div></a>
+          <a href="mailto:info@clinicanorte.com" class="qc"><div class="qc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><div class="qc-lbl">Email</div><div class="qc-val">info@clinicanorte.com</div></div></a>
+        </div>
+
+        <!-- TOUR VIRTUAL -->
+        <div class="tour-section">
+          <div class="tour-label">Tour virtual de la clínica</div>
+          <div class="tour-sub">Conoce nuestras instalaciones antes de venir</div>
+          <div class="vid-ph">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vid-label">🎥 Tour virtual 360° — Clínica Norte</div>
+            <div class="vid-duration">1:48</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEGUROS -->
+    <div style="margin-top:52px">
+      <div class="ov">Seguros</div>
+      <div style="font-family:var(--fh);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px">Seguros que aceptamos</div>
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:0">Trabajamos con los principales seguros dentales de Florida. ¿No aparece el tuyo? Contáctanos para verificar.</p>
+      <div class="ins-grid">
+        <div class="ins-card"><div class="ins-logo">Delta Dental</div><div class="ins-name">Delta Dental</div></div>
+        <div class="ins-card"><div class="ins-logo">Cigna</div><div class="ins-name">Cigna Dental</div></div>
+        <div class="ins-card"><div class="ins-logo">Aetna</div><div class="ins-name">Aetna Dental</div></div>
+        <div class="ins-card"><div class="ins-logo">MetLife</div><div class="ins-name">MetLife</div></div>
+        <div class="ins-card"><div class="ins-logo">BlueCross</div><div class="ins-name">Blue Cross</div></div>
+        <div class="ins-card"><div class="ins-logo">Humana</div><div class="ins-name">Humana</div></div>
+        <div class="ins-card"><div class="ins-logo">Guardian</div><div class="ins-name">Guardian</div></div>
+        <div class="ins-card" style="border-style:dashed;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="goTo('contacto')"><div style="text-align:center;font-size:.8rem;color:var(--blue);font-weight:600">+ Consultar<br>tu seguro</div></div>
+      </div>
+    </div>
+
+    <!-- EMERGENCIAS -->
+    <div class="emerg-card">
+      <div class="emerg-ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+      <div><div class="emerg-title">Urgencias dentales</div><div class="emerg-sub">Dolor, fractura o accidente — te atendemos el mismo día</div></div>
+      <a href="tel:5551234" class="emerg-phone">555-1234</a>
+    </div>
+    <div style="padding-bottom:60px"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PÁGINA: CONTACTO
+═══════════════════════════ -->
+<div class="page" id="p-contacto">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="ov">Contacto</div>
+      <h2 class="contact-h">Reserva tu<br>cita <em>hoy</em></h2>
+      <p class="contact-sub">Estamos aquí para ti. Respondemos en menos de 2 horas.</p>
+      <div class="cic-list">
+        <a href="tel:5551234" class="cic"><div class="cic-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div><div class="cic-lbl">Teléfono</div><div class="cic-val">555-1234</div></div></a>
+        <a href="mailto:info@clinicanorte.com" class="cic"><div class="cic-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><div class="cic-lbl">Email</div><div class="cic-val">info@clinicanorte.com</div></div></a>
+        <div class="cic"><div class="cic-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div><div class="cic-lbl">Dirección</div><div class="cic-val">[DIRECCIÓN MIAMI]</div></div></div>
+      </div>
+      <div class="trust">
+        <div class="trust-it"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Sin riesgos</div>
+        <div class="trust-it"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>1ª consulta incluida</div>
+        <div class="trust-it"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2z"/></svg>Respuesta en 2h</div>
+      </div>
+    </div>
+    <div class="form-card">
+      <div class="form-title">Reservar una cita</div>
+      <div class="form-sub">Respondemos en menos de 2 horas</div>
+      <div class="frow">
+        <div class="field"><input type="text" id="fn" placeholder=" "><label for="fn">Tu nombre</label></div>
+        <div class="field"><input type="tel" id="ft" placeholder=" "><label for="ft">Teléfono</label></div>
+      </div>
+      <div class="field"><input type="email" id="fe" placeholder=" "><label for="fe">Correo electrónico</label></div>
+      <div class="field"><textarea id="fm" placeholder=" "></textarea><label for="fm">¿En qué podemos ayudarte?</label></div>
+      <button class="btn-send" id="sendBtn">Reservar mi cita →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PÁGINAS ACTIVAS ──
+const pages = ['inicio','servicios','nosotros','horarios','contacto'];
+let currentPage = 'inicio';
+let isAnimating = false;
+
+function goTo(id){
+  if(isAnimating || id === currentPage) return;
+  isAnimating = true;
+  closeDrawer();
+
+  const out = document.getElementById('p-'+currentPage);
+  const inn = document.getElementById('p-'+id);
+
+  // Dirección de la animación
+  const fromIdx = pages.indexOf(currentPage);
+  const toIdx   = pages.indexOf(id);
+  const dir     = toIdx > fromIdx ? 1 : -1; // 1 = hacia abajo/adelante, -1 = hacia arriba/atrás
+
+  // Prepara la página entrante
+  inn.style.opacity = '1';
+  inn.style.pointerEvents = 'none';
+  inn.style.transform = `translateY(${dir * 40}px)`;
+  inn.classList.add('active');
+
+  // Scroll al top de la nueva página
+  inn.scrollTop = 0;
+
+  // Anima salida
+  gsap.to(out, {
+    opacity: 0,
+    y: dir * -40,
+    duration: 0.35,
+    ease: 'power2.in',
+    onComplete: () => {
+      out.classList.remove('active');
+      out.style.transform = '';
+      out.style.opacity = '';
+    }
+  });
+
+  // Anima entrada
+  gsap.to(inn, {
+    opacity: 1,
+    y: 0,
+    duration: 0.45,
+    ease: 'power3.out',
+    delay: 0.1,
+    onComplete: () => {
+      inn.style.pointerEvents = '';
+      isAnimating = false;
+      currentPage = id;
+      updateNav();
+      onPageEnter(id);
+    }
+  });
+}
+
+function updateNav(){
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.page === currentPage);
+  });
+  document.querySelectorAll('.drawer-btn').forEach((b,i)=>{
+    b.classList.toggle('active', pages[i] === currentPage);
+  });
+}
+
+function onPageEnter(id){
+  if(id === 'inicio') animateStats();
+  if(id === 'servicios') animateCards('#p-servicios .svc-card');
+  if(id === 'nosotros') animateAbout();
+  if(id === 'horarios') animateHours();
+  if(id === 'contacto') animateContact();
+}
+
+// ── ANIMACIONES POR PÁGINA ──
+function animateStats(){
+  document.querySelectorAll('.hs-n').forEach(el=>{
+    const t = parseInt(el.dataset.t);
+    const suf = el.dataset.suf||'';
+    gsap.to({v:0},{v:t,duration:2,ease:'power2.out',onUpdate:function(){
+      el.textContent = Math.round(this.targets()[0].v)+suf;
+    }});
+  });
+  gsap.from('.hero-content>*',{opacity:0,y:30,duration:.7,stagger:.1,ease:'power3.out'});
+  gsap.from('.hc',{opacity:0,x:30,duration:.6,stagger:.12,ease:'back.out(1.5)',delay:.2});
+}
+
+function animateCards(sel){
+  gsap.fromTo(sel,
+    {opacity:0,y:40,scale:.97},
+    {opacity:1,y:0,scale:1,duration:.6,stagger:.08,ease:'back.out(1.3)'}
+  );
+  gsap.from('#p-servicios .ph>*',{opacity:0,y:25,duration:.6,stagger:.08,ease:'power3.out'});
+}
+
+function animateAbout(){
+  gsap.from('.ai-main',{clipPath:'inset(0 100% 0 0)',duration:1,ease:'power4.out'});
+  gsap.from('.ai-sec',{clipPath:'inset(100% 0 0 0)',duration:.9,ease:'power4.out',delay:.2});
+  gsap.from('.ai-badge',{opacity:0,x:20,duration:.6,ease:'back.out(2)',delay:.5});
+  gsap.from('.ai-badge2',{opacity:0,x:-20,duration:.6,ease:'back.out(2)',delay:.7});
+  gsap.from('#p-nosotros .about-grid>div:last-child>*',{opacity:0,y:25,duration:.6,stagger:.08,ease:'power3.out'});
+}
+
+function animateHours(){
+  gsap.from('.hours-card',{opacity:0,x:-40,duration:.7,ease:'power3.out'});
+  gsap.from('.map-card',{opacity:0,x:40,duration:.7,ease:'power3.out',delay:.1});
+  gsap.from('.hours-row',{opacity:0,x:-20,duration:.4,stagger:.06,ease:'power2.out',delay:.3});
+  gsap.from('.qc',{opacity:0,y:20,duration:.5,stagger:.1,ease:'back.out(1.5)',delay:.4});
+}
+
+function animateContact(){
+  gsap.from('.contact-left>*',{opacity:0,x:-30,duration:.6,stagger:.09,ease:'power3.out'});
+  gsap.from('.form-card',{opacity:0,x:30,scale:.98,duration:.7,ease:'power3.out',delay:.1});
+}
+
+// ── RIPPLE ──
+function ripple(el){
+  el.addEventListener('click',function(e){
+    const r=el.getBoundingClientRect();
+    const s=document.createElement('span');
+    s.style.cssText=`position:absolute;border-radius:50%;background:rgba(255,255,255,.25);width:8px;height:8px;left:${e.clientX-r.left-4}px;top:${e.clientY-r.top-4}px;pointer-events:none;`;
+    el.appendChild(s);
+    gsap.to(s,{scale:40,opacity:0,duration:.7,onComplete:()=>s.remove()});
+  });
+}
+document.querySelectorAll('.btn,.btn-send,.btn-white,.nav-cta').forEach(ripple);
+
+// ── FORM ──
+document.getElementById('sendBtn').addEventListener('click',function(){
+  const b=this;
+  b.textContent='Enviando...';b.disabled=true;
+  setTimeout(()=>{
+    b.textContent='✓ ¡Cita reservada!';b.style.background='#10B981';
+    setTimeout(()=>{b.textContent='Reservar mi cita →';b.style.background='';b.disabled=false;},3000);
+  },1500);
+});
+
+// ── FAQ ──
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.addEventListener('click',()=>{
+    const o=item.classList.contains('open');
+    // Cierra solo los del mismo contenedor
+    item.closest('.faq-sec,#p-servicios')?.querySelectorAll('.faq-item.open').forEach(x=>x.classList.remove('open'));
+    if(!o)item.classList.add('open');
+  });
+});
+
+// ── DRAWER ──
+function toggleDrawer(){
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('ham').classList.toggle('open');
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
+}
+
+// ── CURSOR ──
+const cur=document.querySelector('.cur'),cdot=document.querySelector('.cur-dot');
+if(cur&&cdot){
+  document.addEventListener('mousemove',e=>{
+    gsap.to(cur,{x:e.clientX,y:e.clientY,duration:.4,ease:'power2.out'});
+    gsap.to(cdot,{x:e.clientX,y:e.clientY,duration:.08});
+  });
+  document.querySelectorAll('a,button,.svc-card,.cic,.qc,.hc,.hours-row').forEach(el=>{
+    el.addEventListener('mouseenter',()=>gsap.to(cur,{scale:2,opacity:.35,duration:.3}));
+    el.addEventListener('mouseleave',()=>gsap.to(cur,{scale:1,opacity:1,duration:.3}));
+  });
+}
+
+// ── PARTÍCULAS ──
+(function(){
+  const c=document.getElementById('ptcls');
+  if(!c)return;
+  c.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none';
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='ptcl';
+    p.style.cssText=`left:${Math.random()*100}%;animation-duration:${9+Math.random()*12}s;animation-delay:${-Math.random()*20}s;width:${1+Math.random()*3}px;height:${1+Math.random()*3}px;opacity:${.1+Math.random()*.25}`;
+    c.appendChild(p);
+  }
+})();
+
+// ── LOADER ──
+window.addEventListener('load',()=>{
+  gsap.to('.ld-fill',{width:'100%',duration:1.2,ease:'power2.inOut',onComplete:()=>{
+    gsap.to('#loader',{opacity:0,duration:.4,delay:.2,onComplete:()=>{
+      document.getElementById('loader').style.display='none';
+      animateStats();
+      updateNav();
+    }});
+  }});
+});
+</script>
+</body>
+</html>
