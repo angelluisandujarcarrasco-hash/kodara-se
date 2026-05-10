@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría SEO — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;padding:0 0 60px}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
+.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
+.h-badge{background:rgba(232,116,74,.1);border:1px solid rgba(232,116,74,.25);color:var(--orange);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
+.h-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:40px 24px}
+/* HERO SCORE */
+.score-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;display:flex;align-items:center;gap:48px;margin-bottom:28px}
+.score-circle{position:relative;flex-shrink:0}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-big{font-size:44px;font-weight:700;font-family:monospace;line-height:1}
+.score-lbl{font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:1px}
+.score-info h1{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
+.score-info .url{font-family:monospace;font-size:14px;color:var(--orange);margin-bottom:16px}
+.score-info p{font-size:14px;color:var(--muted);line-height:1.7;max-width:440px}
+/* MINI SCORES */
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
+.mini-val{font-size:28px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
+.mini-lbl{font-size:11px;color:var(--muted)}
+/* SECTIONS */
+.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.sec-title{font-size:16px;font-weight:700}
+.sec-score{font-family:monospace;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px}
+.good{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
+.warn{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
+.bad{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
+/* ISSUE LIST */
+.issue{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.issue:last-child{border-bottom:none;padding-bottom:0}
+.issue-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
+.ic-good{background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.2)}
+.ic-warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+.ic-bad{background:rgba(255,77,77,.1);border:1px solid rgba(255,77,77,.2)}
+.issue-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.issue-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.issue-fix{font-size:11px;color:var(--orange);margin-top:4px;font-family:monospace}
+/* KEYWORDS TABLE */
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 12px;border-bottom:1px solid var(--border)}
+td{padding:11px 0;font-size:13px;border-bottom:1px solid rgba(34,34,34,.5)}
+tr:last-child td{border-bottom:none}
+.vol-bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden;width:80px}
+.vol-fill{height:100%;border-radius:3px}
+/* ACTION PLAN */
+.action-list{display:flex;flex-direction:column;gap:12px}
+.action{display:flex;align-items:flex-start;gap:14px;background:var(--card2);border-radius:10px;padding:16px}
+.action-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0;margin-top:1px}
+.action-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.action-desc{font-size:12px;color:var(--muted)}
+.impact{font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block}
+.imp-high{background:rgba(61,255,143,.1);color:var(--green)}
+.imp-med{background:rgba(245,158,11,.1);color:var(--yellow)}
+/* FOOTER */
+.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:28px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-logo">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
+    Auditoría SEO
+    <div class="h-badge">DEMO KODARA SE</div>
+  </div>
+  <div class="h-meta">Informe generado: 10 May 2026<br>Cliente: Restaurante La Palma · Miami</div>
+</div>
+
+<div class="container">
+
+  <!-- SCORE HERO -->
+  <div class="score-hero">
+    <div class="score-circle">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#1A1A1A" stroke-width="12"/>
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#E8744A" stroke-width="12"
+          stroke-dasharray="255 364" stroke-dashoffset="91" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+      </svg>
+      <div class="score-num">
+        <div class="score-big" style="color:var(--orange)">68</div>
+        <div class="score-lbl">/ 100</div>
+      </div>
+    </div>
+    <div class="score-info">
+      <div class="url">restaurantelapalma.com</div>
+      <h1>Puntuación SEO: Mejorable</h1>
+      <p>Tu web tiene buenas bases pero pierde posiciones por 3 errores críticos. Con las correcciones indicadas puedes llegar a primera página en 4-6 semanas.</p>
+      <div style="display:flex;gap:12px;margin-top:20px">
+        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--green);font-family:monospace">5</div><div style="font-size:11px;color:var(--muted)">Errores críticos</div></div>
+        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--yellow);font-family:monospace">12</div><div style="font-size:11px;color:var(--muted)">Advertencias</div></div>
+        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--green);font-family:monospace">24</div><div style="font-size:11px;color:var(--muted)">Correctos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI SCORES -->
+  <div class="mini-grid">
+    <div class="mini"><div class="mini-val" style="color:var(--red)">42</div><div class="mini-lbl">Rendimiento</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--yellow)">71</div><div class="mini-lbl">SEO On-Page</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--green)">88</div><div class="mini-lbl">Accesibilidad</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--yellow)">65</div><div class="mini-lbl">Buenas Prácticas</div></div>
+  </div>
+
+  <!-- ERRORES CRÍTICOS -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-title">Errores críticos</div>
+      <div class="sec-score bad">5 problemas</div>
+    </div>
+    <div class="issue">
+      <div class="issue-icon ic-bad">✕</div>
+      <div><div class="issue-title">Imágenes sin comprimir — carga 8.2 segundos</div><div class="issue-desc">14 imágenes en JPG sin optimizar. Google penaliza webs que cargan en más de 3 segundos. Esto solo ya te hace perder el 50% de tus visitas.</div><div class="issue-fix">→ Convertir a WebP y reducir tamaño · Impacto: +18 puntos</div></div>
+    </div>
+    <div class="issue">
+      <div class="issue-icon ic-bad">✕</div>
+      <div><div class="issue-title">Sin etiquetas meta description en 8 páginas</div><div class="issue-desc">Google no sabe de qué trata tu web. Resultado: apareces con texto aleatorio en los resultados de búsqueda y nadie hace clic.</div><div class="issue-fix">→ Escribir meta description única para cada página · Impacto: +12 puntos</div></div>
+    </div>
+    <div class="issue">
+      <div class="issue-icon ic-bad">✕</div>
+      <div><div class="issue-title">Sin HTTPS — conexión no segura</div><div class="issue-desc">Tu web usa HTTP en lugar de HTTPS. Chrome la marca como "No segura" y Google la penaliza automáticamente en el ranking.</div><div class="issue-fix">→ Instalar certificado SSL gratuito · Impacto: +8 puntos</div></div>
+    </div>
+  </div>
+
+  <!-- KEYWORDS -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-title">Palabras clave con oportunidad</div>
+      <div class="sec-score warn">Posición 8-20</div>
+    </div>
+    <table>
+      <thead><tr><th>Keyword</th><th>Posición actual</th><th>Volumen/mes</th><th>Dificultad</th><th>Potencial</th></tr></thead>
+      <tbody>
+        <tr><td>restaurante miami español</td><td style="font-family:monospace;color:var(--yellow)">#12</td><td><div class="vol-bar"><div class="vol-fill" style="width:80%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">2,400/mes</div></td><td style="color:var(--green);font-family:monospace;font-size:12px">BAJA</td><td style="color:var(--green);font-family:monospace;font-size:12px">ALTO</td></tr>
+        <tr><td>comer paella miami</td><td style="font-family:monospace;color:var(--red)">#31</td><td><div class="vol-bar"><div class="vol-fill" style="width:55%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">1,200/mes</div></td><td style="color:var(--yellow);font-family:monospace;font-size:12px">MEDIA</td><td style="color:var(--yellow);font-family:monospace;font-size:12px">MEDIO</td></tr>
+        <tr><td>restaurante romántico miami</td><td style="font-family:monospace;color:var(--yellow)">#8</td><td><div class="vol-bar"><div class="vol-fill" style="width:65%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">880/mes</div></td><td style="color:var(--green);font-family:monospace;font-size:12px">BAJA</td><td style="color:var(--green);font-family:monospace;font-size:12px">ALTO</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PLAN DE ACCIÓN -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-title">Plan de acción — ordenado por impacto</div></div>
+    <div class="action-list">
+      <div class="action"><div class="action-num">01</div><div><div class="action-title">Optimizar imágenes a WebP</div><div class="action-desc">Convertir 14 imágenes. Tiempo de carga pasará de 8.2s a 1.8s.</div><div class="impact imp-high">IMPACTO ALTO</div></div></div>
+      <div class="action"><div class="action-num">02</div><div><div class="action-title">Instalar SSL / HTTPS</div><div class="action-desc">Certificado gratuito vía Let's Encrypt. Activación en 30 minutos.</div><div class="impact imp-high">IMPACTO ALTO</div></div></div>
+      <div class="action"><div class="action-num">03</div><div><div class="action-title">Escribir meta descriptions únicas</div><div class="action-desc">8 páginas sin descripción. Redactar 150 caracteres por página con la keyword principal.</div><div class="impact imp-med">IMPACTO MEDIO</div></div></div>
+      <div class="action"><div class="action-num">04</div><div><div class="action-title">Crear página "Menú" optimizada para SEO</div><div class="action-desc">Página dedicada con keywords locales. Estimado: +340 visitas/mes en 6 semanas.</div><div class="impact imp-high">IMPACTO ALTO</div></div></div>
+    </div>
+  </div>
+
+  <div class="footer-badge">
+    <div style="font-size:13px;color:var(--muted)">Auditoría SEO generada por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-004 · Desde $200 · Entrega en 48h</div>
+    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  </div>
+
+</div>
+</body>
+</html>

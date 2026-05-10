@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat IA para Web — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0F1117;--card:#1A1D27;--card2:#22263A;--orange:#E8744A;--green:#3DFF8F;--white:#fff;--muted:#8B92A5;--border:#2A2E42;--blue:#4F8EF7}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+/* DEMO SITE - fake website to embed chat in */
+.demo-site-header{background:linear-gradient(90deg,#1a0a00,#0a0a1a);border-bottom:1px solid rgba(255,255,255,.06);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
+.ds-logo{font-weight:700;font-size:18px;letter-spacing:-0.5px}
+.ds-nav{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+.ds-cta{background:var(--orange);color:#fff;border:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer}
+/* HERO */
+.demo-hero{min-height:60vh;display:flex;align-items:center;padding:60px 40px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 60% 40%,rgba(232,116,74,.06),transparent 60%)}
+.dh-content{max-width:520px}
+.dh-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.dh-h1{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-1px;margin-bottom:16px;line-height:1.1}
+.dh-sub{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px}
+.dh-btns{display:flex;gap:12px}
+.btn-primary{background:var(--orange);color:#fff;border:none;padding:13px 28px;border-radius:7px;font-weight:700;font-size:14px;cursor:pointer}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid #333;padding:13px 28px;border-radius:7px;font-size:14px;cursor:pointer}
+/* KODARA LABEL */
+.kodara-label{background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:10px;padding:10px 20px;display:flex;align-items:center;gap:12px;margin:0 40px 40px;font-size:13px}
+.kl-badge{background:var(--orange);color:#fff;font-size:10px;font-weight:700;font-family:monospace;padding:3px 10px;border-radius:20px}
+/* CHAT WIDGET */
+#chatBtn{position:fixed;bottom:28px;right:28px;width:60px;height:60px;background:var(--orange);border-radius:50%;cursor:pointer;z-index:1000;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(232,116,74,.5);border:none;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(232,116,74,.5)}50%{box-shadow:0 8px 48px rgba(232,116,74,.8),0 0 0 12px rgba(232,116,74,.1)}}
+#chatBtn:hover{animation:none;transform:scale(1.08)}
+.chat-pulse{position:absolute;top:2px;right:2px;width:14px;height:14px;background:var(--green);border-radius:50%;border:2px solid var(--bg);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+#chatWin{position:fixed;bottom:100px;right:28px;width:360px;max-height:580px;background:#131313;border:1px solid #252525;border-radius:20px;z-index:999;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.8);transform:scale(.92) translateY(20px);opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.16,1,.3,1);transform-origin:bottom right}
+#chatWin.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chat-head{background:#1A1A1A;border-bottom:1px solid #222;border-radius:20px 20px 0 0;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.chat-avatar{width:36px;height:36px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-name{font-size:14px;font-weight:600;margin-bottom:1px}
+.chat-status{font-size:11px;color:var(--green);display:flex;align-items:center;gap:4px}
+.chat-close{background:none;border:none;color:#555;font-size:20px;cursor:pointer;padding:2px 6px}
+.chat-close:hover{color:#fff}
+#chatMsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.msg{max-width:84%;font-size:13px;line-height:1.55;padding:10px 13px;border-radius:14px;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg-bot{background:#1E1E1E;border:1px solid #2A2A2A;color:#ddd;border-bottom-left-radius:4px;align-self:flex-start}
+.msg-user{background:var(--orange);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.chat-quicks{padding:0 10px 8px;display:flex;flex-wrap:wrap;gap:5px}
+.quick-btn{background:transparent;border:1px solid #2A2A2A;color:#aaa;font-size:11px;padding:5px 11px;border-radius:20px;cursor:pointer;font-family:'Segoe UI',sans-serif;transition:all .2s;white-space:nowrap}
+.quick-btn:hover{border-color:var(--orange);color:var(--orange)}
+.chat-input-wrap{padding:10px;border-top:1px solid #222;display:flex;gap:7px}
+#chatField{flex:1;background:#1A1A1A;border:1px solid #2A2A2A;border-radius:10px;padding:9px 13px;color:#fff;font-size:13px;font-family:'Segoe UI',sans-serif;outline:none;transition:border-color .2s}
+#chatField:focus{border-color:var(--orange)}
+#chatField::placeholder{color:#444}
+#chatSend{background:var(--orange);border:none;border-radius:9px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#chatSend:hover{opacity:.85}
+/* STATS SECTION */
+.stats-section{padding:40px;background:rgba(232,116,74,.03);border-top:1px solid var(--border)}
+.stats-title{font-size:20px;font-weight:700;margin-bottom:24px;text-align:center}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:600px;margin:0 auto}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.stat-val{font-size:28px;font-weight:700;font-family:monospace;color:var(--orange);margin-bottom:4px}
+.stat-lbl{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- DEMO SITE HEADER -->
+<div class="demo-site-header">
+  <div class="ds-logo">🏋️ FitZone Pro</div>
+  <div class="ds-nav"><span>Inicio</span><span>Clases</span><span>Precios</span><span>Contacto</span></div>
+  <button class="ds-cta">Reservar clase gratis</button>
+</div>
+
+<!-- DEMO HERO -->
+<div class="demo-hero">
+  <div class="dh-content">
+    <div class="dh-tag">Gimnasio Premium · Madrid</div>
+    <h1 class="dh-h1">Transforma tu cuerpo en 90 días</h1>
+    <p class="dh-sub">Entrenamiento personalizado, nutrición y seguimiento continuo. Primera clase completamente gratis.</p>
+    <div class="dh-btns">
+      <button class="btn-primary">Clase gratis →</button>
+      <button class="btn-ghost">Ver horarios</button>
+    </div>
+  </div>
+</div>
+
+<!-- KODARA LABEL -->
+<div class="kodara-label">
+  <div class="kl-badge">DEMO</div>
+  <div>El <strong>chat naranja</strong> de abajo a la derecha es el Chat IA de Kodara SE instalado en esta web ficticia. Pruébalo — responde preguntas reales sobre el negocio 24/7.</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-title">Lo que consigue el Chat IA en este tipo de negocio</div>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-val">+38%</div><div class="stat-lbl">Más consultas captadas fuera de horario</div></div>
+    <div class="stat-box"><div class="stat-val">24/7</div><div class="stat-lbl">Atención sin que estés presente</div></div>
+    <div class="stat-box"><div class="stat-val">-65%</div><div class="stat-lbl">Menos preguntas repetitivas por teléfono</div></div>
+  </div>
+  <div style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">
+    Instalado en tu web en menos de 24 horas · Desde $150 · KSE-009 ·
+    <a href="https://kodarase.com" style="color:var(--orange);text-decoration:none">kodarase.com</a>
+  </div>
+</div>
+
+<!-- CHAT WIDGET -->
+<button id="chatBtn" onclick="toggleChat()">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="chat-pulse"></div>
+</button>
+
+<div id="chatWin">
+  <div class="chat-head">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="chat-avatar">🏋️</div>
+      <div>
+        <div class="chat-name">FitZone Pro</div>
+        <div class="chat-status"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block"></span>En línea ahora</div>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chatMsgs">
+    <div class="msg msg-bot">¡Hola! 👋 Soy el asistente de FitZone Pro. ¿En qué puedo ayudarte hoy?</div>
+    <div class="msg msg-bot">Puedo decirte todo sobre nuestras clases, horarios, precios y cómo reservar tu primera clase gratuita.</div>
+  </div>
+  <div class="chat-quicks" id="quicks">
+    <button class="quick-btn" onclick="sendQuick('¿Cuáles son los horarios?')">⏰ Horarios</button>
+    <button class="quick-btn" onclick="sendQuick('¿Cuánto cuesta la membresía?')">💰 Precios</button>
+    <button class="quick-btn" onclick="sendQuick('Quiero reservar mi clase gratis')">🎁 Clase gratis</button>
+    <button class="quick-btn" onclick="sendQuick('¿Qué tipos de clases hay?')">🏋️ Clases</button>
+  </div>
+  <div class="chat-input-wrap">
+    <input id="chatField" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter')sendMsg()">
+    <button id="chatSend" onclick="sendMsg()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<script>
+const responses = {
+  'horario': '🕐 Nuestros horarios son:\n\nLunes a Viernes: 6:00 – 22:00\nSábados: 8:00 – 20:00\nDomingos: 9:00 – 14:00\n\nTenemos clases cada hora. ¿Te apetece reservar una?',
+  'precio': '💰 Nuestras membresías:\n\n• Básica: €45/mes\n• Completa: €65/mes (todas las clases)\n• Premium: €85/mes (+ entrenador personal)\n\n¡La primera clase es completamente gratis! ¿Te animas?',
+  'clase gratis': '🎁 ¡Genial! Para reservar tu clase gratis solo necesito:\n\n1. Tu nombre\n2. Tu email\n3. El día que prefieres\n\nO puedes llamarnos al 91 234 56 78 y lo hacemos en 2 minutos. ¿Cuándo te viene bien?',
+  'clases': '🏋️ Ofrecemos:\n\n• CrossFit y funcional\n• Yoga y pilates\n• Ciclo indoor\n• Boxeo y kickboxing\n• Entrenamiento personal\n• Natación (disponible pronto)\n\n¿Te interesa alguna en particular?',
+  'default': '¡Gracias por tu pregunta! Para darte una respuesta más precisa, te recomiendo contactar directamente con nuestro equipo:\n\n📧 info@fitzoni.com\n📞 91 234 56 78\n\n¿Hay algo más en lo que pueda ayudarte?'
+};
+
+function getReply(msg) {
+  const m = msg.toLowerCase();
+  if (/horario|hora|cuando|abr/.test(m)) return responses.horario;
+  if (/precio|cost|cuant|membresia|pago/.test(m)) return responses.precio;
+  if (/gratis|reservar|primera|prueba/.test(m)) return responses['clase gratis'];
+  if (/clase|tipo|actividad|deporte/.test(m)) return responses.clases;
+  return responses.default;
+}
+
+let open = false;
+function toggleChat() {
+  open = !open;
+  document.getElementById('chatWin').classList.toggle('open', open);
+}
+
+function addMsg(text, type) {
+  const msgs = document.getElementById('chatMsgs');
+  const div = document.createElement('div');
+  div.className = 'msg msg-' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sendMsg() {
+  const f = document.getElementById('chatField');
+  const val = f.value.trim();
+  if (!val) return;
+  addMsg(val, 'user');
+  f.value = '';
+  document.getElementById('quicks').style.display = 'none';
+  setTimeout(() => addMsg(getReply(val), 'bot'), 800);
+}
+
+function sendQuick(text) {
+  addMsg(text, 'user');
+  document.getElementById('quicks').style.display = 'none';
+  setTimeout(() => addMsg(getReply(text), 'bot'), 800);
+}
+</script>
+</body>
+</html>

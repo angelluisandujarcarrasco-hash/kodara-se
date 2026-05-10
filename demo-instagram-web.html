@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía Morales — Fotografía · Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D0D0D;--card:#161616;--white:#fff;--muted:#888;--border:#232323;--accent:#C9A66B;--green:#3DFF8F}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white)}
+/* KODARA BADGE */
+.kodara-bar{background:rgba(232,116,74,.08);border-bottom:1px solid rgba(232,116,74,.2);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;color:#aaa}
+.kb-tag{background:#E8744A;color:#fff;font-size:10px;font-weight:700;font-family:monospace;padding:3px 10px;border-radius:20px}
+/* NAV */
+nav{padding:20px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,.95);backdrop-filter:blur(20px);z-index:100}
+.nav-logo{font-size:20px;font-weight:300;letter-spacing:4px;text-transform:uppercase}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:9px 22px;border-radius:4px;font-size:13px;letter-spacing:1px;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:var(--accent);color:#0D0D0D}
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;padding:80px 48px;gap:64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,166,107,.06),transparent 60%)}
+.hero-text{flex:1;max-width:520px}
+.hero-pretag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.hero-pretag::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero-h1{font-size:clamp(44px,6vw,72px);font-weight:200;line-height:1.08;letter-spacing:-1px;margin-bottom:24px}
+.hero-h1 strong{font-weight:600}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px}
+.hero-btns{display:flex;gap:16px}
+.btn-gold{background:var(--accent);color:#0D0D0D;padding:14px 32px;border-radius:4px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.5px;transition:opacity .2s}
+.btn-ghost{border:1px solid #333;color:var(--white);padding:14px 32px;border-radius:4px;font-size:14px;text-decoration:none;letter-spacing:.5px;transition:all .2s}
+.hero-stats{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+.h-stat-num{font-size:28px;font-weight:600;color:var(--accent)}
+.h-stat-lbl{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+/* GALLERY */
+.hero-gallery{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:480px}
+.gal-item{border-radius:6px;overflow:hidden;background:var(--card)}
+.gal-item:nth-child(1){grid-row:span 2}
+.gal-img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.gal-ph{width:100%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--muted);font-size:12px;letter-spacing:1px}
+/* INSTAGRAM SOURCE NOTE */
+.ig-note{margin:0 48px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:16px;margin-bottom:72px}
+.ig-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#C9A66B,#8B6914);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.ig-handle{font-size:14px;font-weight:600}
+.ig-meta{font-size:12px;color:var(--muted)}
+.ig-badge{margin-left:auto;font-size:11px;color:var(--green);background:rgba(61,255,143,.08);border:1px solid rgba(61,255,143,.2);padding:4px 12px;border-radius:20px;font-family:monospace}
+/* SERVICES */
+.section{padding:72px 48px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.sec-title{font-size:clamp(32px,4vw,48px);font-weight:200;letter-spacing:-0.5px;margin-bottom:48px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;transition:border-color .3s}
+.svc:hover{border-color:var(--accent)}
+.svc-icon{font-size:28px;margin-bottom:16px}
+.svc-name{font-size:16px;font-weight:600;margin-bottom:8px}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.svc-price{font-size:20px;font-weight:600;color:var(--accent)}
+/* GALLERY SECTION */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gallery-item{aspect-ratio:1;background:var(--card);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-style:italic;cursor:pointer;transition:opacity .2s;border:1px solid var(--border)}
+.gallery-item:hover{opacity:.8}
+/* CONTACT */
+.contact-sec{background:var(--card);border-top:1px solid var(--border);padding:72px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.c-form{display:flex;flex-direction:column;gap:14px}
+.c-input{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px 16px;color:var(--white);font-size:14px;outline:none;transition:border-color .2s}
+.c-input:focus{border-color:var(--accent)}
+.c-input::placeholder{color:var(--muted)}
+/* FOOTER */
+footer{padding:24px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.f-copy{font-size:12px;color:var(--muted)}
+.f-kodara{font-size:11px;color:var(--muted)}
+.f-kodara a{color:#E8744A;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="kodara-bar">
+  <div class="kb-tag">DEMO</div>
+  Esta web fue creada desde el perfil de Instagram <strong style="color:#fff">@sofiafoto.mx</strong> · Servicio KSE-002 de <strong style="color:#E8744A">Kodara SE</strong> · Desde $200
+</div>
+
+<nav>
+  <div class="nav-logo">Sofía <span>Morales</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Servicios</a></li>
+    <li><a href="#">Sobre mí</a></li>
+  </ul>
+  <button class="nav-cta">Reservar sesión</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-pretag">Fotografía profesional</div>
+    <h1 class="hero-h1">Capturo momentos que<br><strong>duran para siempre</strong></h1>
+    <p class="hero-sub">Fotografía de retrato, bodas y lifestyle en Ciudad de México. Cada imagen cuenta una historia única.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-gold">Ver mi trabajo</a>
+      <a href="#" class="btn-ghost">Reservar sesión</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="h-stat-num">340+</div><div class="h-stat-lbl">Sesiones</div></div>
+      <div><div class="h-stat-num">98%</div><div class="h-stat-lbl">Satisfacción</div></div>
+      <div><div class="h-stat-num">8 años</div><div class="h-stat-lbl">Experiencia</div></div>
+    </div>
+  </div>
+  <div class="hero-gallery">
+    <div class="gal-item" style="aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1005,#2d1f0a);font-size:13px;color:#C9A66B;letter-spacing:1px">📸 Foto 1</div>
+    <div class="gal-item" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0d1a1a,#0a2020);font-size:13px;color:#C9A66B;letter-spacing:1px">📸 Foto 2</div>
+    <div class="gal-item" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a100d,#2d1510);font-size:13px;color:#C9A66B;letter-spacing:1px">📸 Foto 3</div>
+  </div>
+</div>
+
+<!-- INSTAGRAM SOURCE -->
+<div class="ig-note">
+  <div class="ig-avatar">S</div>
+  <div>
+    <div class="ig-handle">@sofiafoto.mx</div>
+    <div class="ig-meta">340K seguidores · Ciudad de México · Fotografía & Lifestyle</div>
+  </div>
+  <div class="ig-badge">✓ Web creada desde Instagram</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section">
+  <div class="sec-label">Lo que ofrezco</div>
+  <div class="sec-title">Mis servicios</div>
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-icon">💍</div>
+      <div class="svc-name">Fotografía de bodas</div>
+      <div class="svc-desc">Capturamos cada momento especial de tu día. Cobertura completa desde preparativos hasta baile final.</div>
+      <div class="svc-price">desde $1,200</div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">🖼️</div>
+      <div class="svc-name">Retrato profesional</div>
+      <div class="svc-desc">Fotos de perfil, LinkedIn, marca personal. Sesión de 2 horas con 30 fotos editadas entregadas en 48h.</div>
+      <div class="svc-price">desde $250</div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">📱</div>
+      <div class="svc-name">Contenido para redes</div>
+      <div class="svc-desc">Pack mensual de fotos y videos para Instagram y TikTok. Contenido consistente que vende.</div>
+      <div class="svc-price">desde $400/mes</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="section" style="padding-top:0">
+  <div class="sec-label">Portfolio</div>
+  <div class="sec-title">Trabajos recientes</div>
+  <div class="gallery-grid">
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a1005,#2d1f0a)">Boda · 2026</div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#0d1a1a,#0a2020)">Retrato · 2026</div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a100d,#2d1510)">Lifestyle · 2026</div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#0d0d1a,#10102d)">Eventos · 2026</div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a1505,#2d2510)">Moda · 2026</div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#0a1a0a,#102010)">Naturaleza · 2026</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-sec">
+  <div>
+    <div class="sec-label">Contacto</div>
+    <h2 style="font-size:clamp(28px,3vw,40px);font-weight:200;letter-spacing:-.5px;margin-bottom:16px">¿Listo para<br>tu sesión?</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px">Respondo en menos de 24 horas. Cuéntame tu idea y hacemos algo increíble juntos.</p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:13px;color:var(--muted)">📧 sofia@sofiafoto.mx</div>
+      <div style="font-size:13px;color:var(--muted)">📍 Ciudad de México, CDMX</div>
+      <div style="font-size:13px;color:var(--muted)">📸 @sofiafoto.mx</div>
+    </div>
+  </div>
+  <form class="c-form" onsubmit="return false">
+    <input class="c-input" type="text" placeholder="Tu nombre">
+    <input class="c-input" type="email" placeholder="Tu email">
+    <select class="c-input" style="cursor:pointer"><option value="" disabled selected>Tipo de sesión</option><option>Boda</option><option>Retrato profesional</option><option>Contenido para redes</option><option>Otro</option></select>
+    <textarea class="c-input" rows="4" placeholder="Cuéntame tu idea..."></textarea>
+    <button type="submit" style="background:var(--accent);color:#0D0D0D;border:none;padding:14px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.5px">Enviar mensaje →</button>
+  </form>
+</div>
+
+<footer>
+  <div class="f-copy">© 2026 Sofía Morales Fotografía · Ciudad de México</div>
+  <div class="f-kodara">Web creada desde Instagram por <a href="https://kodarase.com">Kodara SE</a></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatizaciones — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--purple:#7C5CBF;--blue:#4F8EF7;--white:#fff;--muted:#666;--border:#222}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
+.h-badge{background:rgba(232,116,74,.1);border:1px solid rgba(232,116,74,.25);color:var(--orange);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
+.container{max-width:1000px;margin:0 auto;padding:36px 24px}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
+.stat-val{font-size:28px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:11px;color:var(--muted)}
+/* WORKFLOW */
+.workflow-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px}
+.wf-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.wf-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
+.workflow{display:flex;align-items:center;gap:0;flex-wrap:wrap;gap:0}
+.wf-node{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:10px;min-width:160px;position:relative;transition:border-color .3s}
+.wf-node:hover{border-color:rgba(232,116,74,.4)}
+.wf-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.wf-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.wf-type{font-size:10px;color:var(--muted);font-family:monospace}
+.wf-arrow{padding:0 8px;color:var(--border);font-size:18px;flex-shrink:0}
+.wf-arrow.active{color:var(--orange)}
+.wf-badge{position:absolute;top:-8px;right:-8px;background:var(--green);color:#000;font-size:9px;font-weight:700;font-family:monospace;padding:2px 6px;border-radius:10px}
+/* LOG */
+.log{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0;overflow:hidden;margin-top:20px}
+.log-header{background:var(--card2);padding:10px 16px;font-size:11px;font-family:monospace;color:var(--muted);border-bottom:1px solid var(--border)}
+.log-body{padding:12px 16px;display:flex;flex-direction:column;gap:6px;max-height:180px;overflow-y:auto}
+.log-line{display:flex;gap:12px;font-size:12px;font-family:monospace}
+.log-time{color:var(--muted);flex-shrink:0}
+.log-event{color:#ccc}
+.log-ok{color:var(--green)}
+.log-warn{color:var(--yellow)}
+/* TIME SAVED */
+.time-saved{background:linear-gradient(135deg,rgba(61,255,143,.06),rgba(232,116,74,.06));border:1px solid rgba(61,255,143,.2);border-radius:16px;padding:28px;display:flex;align-items:center;gap:32px;margin-bottom:20px}
+.ts-big{font-size:56px;font-weight:700;font-family:monospace;color:var(--green);line-height:1}
+/* AUTOMATIONS LIST */
+.auto-list{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.auto-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px}
+.auto-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.auto-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.auto-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.auto-meta{display:flex;gap:12px}
+.auto-stat{font-size:11px;font-family:monospace;padding:3px 10px;border-radius:20px}
+.as-runs{background:rgba(79,142,247,.1);color:var(--blue);border:1px solid rgba(79,142,247,.2)}
+.as-time{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
+.as-status{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
+.auto-toggle{margin-left:auto;width:44px;height:24px;background:var(--green);border-radius:12px;position:relative;cursor:pointer;flex-shrink:0}
+.auto-toggle::after{content:'';position:absolute;top:3px;right:3px;width:18px;height:18px;background:#0A0A0A;border-radius:50%}
+/* FOOTER */
+.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-logo">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
+    Panel de Automatizaciones
+    <div class="h-badge">DEMO KODARA SE</div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);text-align:right">Cliente: E-commerce Moda Cali · Shopify<br>Activo desde: 1 Mar 2026</div>
+</div>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val" style="color:var(--green)">4</div><div class="stat-lbl">Automatizaciones activas</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--orange)">3.2h</div><div class="stat-lbl">Ahorradas hoy</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--blue)">847</div><div class="stat-lbl">Ejecuciones este mes</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--green)">99.2%</div><div class="stat-lbl">Tasa de éxito</div></div>
+  </div>
+
+  <!-- WORKFLOW VISUAL -->
+  <div class="workflow-section">
+    <div class="wf-title">Flujo: Email de carrito abandonado</div>
+    <div class="wf-sub">Se ejecuta automáticamente cuando un cliente deja productos sin comprar · 47 recuperaciones este mes</div>
+    <div class="workflow">
+      <div class="wf-node">
+        <div class="wf-icon" style="background:rgba(79,142,247,.1)">🛒</div>
+        <div><div class="wf-name">Shopify</div><div class="wf-type">Carrito abandonado</div></div>
+        <div class="wf-badge">TRIGGER</div>
+      </div>
+      <div class="wf-arrow active">→</div>
+      <div class="wf-node">
+        <div class="wf-icon" style="background:rgba(245,158,11,.1)">⏱️</div>
+        <div><div class="wf-name">Esperar 1h</div><div class="wf-type">Temporizador</div></div>
+      </div>
+      <div class="wf-arrow active">→</div>
+      <div class="wf-node">
+        <div class="wf-icon" style="background:rgba(61,255,143,.1)">📧</div>
+        <div><div class="wf-name">Email #1</div><div class="wf-type">"¿Olvidaste algo?"</div></div>
+      </div>
+      <div class="wf-arrow active">→</div>
+      <div class="wf-node">
+        <div class="wf-icon" style="background:rgba(124,92,191,.1)">🔍</div>
+        <div><div class="wf-name">¿Compró?</div><div class="wf-type">Condición</div></div>
+      </div>
+      <div class="wf-arrow active">→</div>
+      <div class="wf-node">
+        <div class="wf-icon" style="background:rgba(232,116,74,.1)">💸</div>
+        <div><div class="wf-name">Email #2</div><div class="wf-type">Descuento 10%</div></div>
+      </div>
+    </div>
+    <div class="log" style="margin-top:20px">
+      <div class="log-header">// Registro de actividad en tiempo real</div>
+      <div class="log-body">
+        <div class="log-line"><span class="log-time">14:32:01</span><span class="log-event">Carrito abandonado detectado → <strong>laura.g@gmail.com</strong></span><span class="log-ok">✓</span></div>
+        <div class="log-line"><span class="log-time">15:32:01</span><span class="log-event">Email #1 enviado → "Laura, olvidaste tu carrito 🛒"</span><span class="log-ok">✓ Abierto</span></div>
+        <div class="log-line"><span class="log-time">15:45:22</span><span class="log-event">Laura hizo clic en el email</span><span class="log-ok">✓ Conversión</span></div>
+        <div class="log-line"><span class="log-time">15:46:10</span><span class="log-event">Compra completada — $124.00 recuperados</span><span class="log-ok">✓ ÉXITO</span></div>
+        <div class="log-line"><span class="log-time">16:11:44</span><span class="log-event">Carrito abandonado detectado → <strong>carlos.m@outlook.com</strong></span><span class="log-ok">✓</span></div>
+        <div class="log-line"><span class="log-time">17:11:44</span><span class="log-event">Email #1 enviado → "Carlos, olvidaste tu carrito 🛒"</span><span class="log-warn">⏳ Sin abrir</span></div>
+        <div class="log-line"><span class="log-time">19:11:44</span><span class="log-event">Email #2 enviado → "10% de descuento solo para ti"</span><span class="log-ok">✓ Abierto</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIME SAVED -->
+  <div class="time-saved">
+    <div>
+      <div class="ts-big">96h</div>
+      <div style="font-size:13px;color:var(--muted);font-family:monospace;margin-top:4px">ahorradas este mes</div>
+    </div>
+    <div>
+      <div style="font-size:18px;font-weight:700;margin-bottom:8px">Tiempo que ya no dedicas a tareas manuales</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.7">Emails de bienvenida · Seguimiento de pedidos · Reportes de ventas · Recordatorios de reseña · Alertas de stock bajo · Notificaciones al equipo</div>
+    </div>
+  </div>
+
+  <!-- AUTOMATIZACIONES -->
+  <div class="auto-list">
+    <div class="auto-item">
+      <div class="auto-icon" style="background:rgba(79,142,247,.1)">📧</div>
+      <div style="flex:1">
+        <div class="auto-name">Email de bienvenida — nuevos clientes</div>
+        <div class="auto-desc">Cuando alguien compra por primera vez, recibe un email de bienvenida personalizado con su nombre y su pedido en menos de 2 minutos.</div>
+        <div class="auto-meta">
+          <span class="auto-stat as-runs">312 ejecuciones</span>
+          <span class="auto-stat as-time">Ahorra 5h/mes</span>
+          <span class="auto-stat as-status">● ACTIVO</span>
+        </div>
+      </div>
+      <div class="auto-toggle"></div>
+    </div>
+    <div class="auto-item">
+      <div class="auto-icon" style="background:rgba(61,255,143,.1)">📊</div>
+      <div style="flex:1">
+        <div class="auto-name">Reporte de ventas diario — WhatsApp</div>
+        <div class="auto-desc">Cada día a las 20:00 recibes un mensaje en WhatsApp con las ventas del día, productos más vendidos y comparativa con ayer.</div>
+        <div class="auto-meta">
+          <span class="auto-stat as-runs">71 ejecuciones</span>
+          <span class="auto-stat as-time">Ahorra 2h/mes</span>
+          <span class="auto-stat as-status">● ACTIVO</span>
+        </div>
+      </div>
+      <div class="auto-toggle"></div>
+    </div>
+    <div class="auto-item">
+      <div class="auto-icon" style="background:rgba(232,116,74,.1)">🔔</div>
+      <div style="flex:1">
+        <div class="auto-name">Alerta de stock bajo — Slack</div>
+        <div class="auto-desc">Cuando un producto baja de 5 unidades, envía alerta automática al canal de Slack del equipo para reponer antes de quedarse sin stock.</div>
+        <div class="auto-meta">
+          <span class="auto-stat as-runs">18 ejecuciones</span>
+          <span class="auto-stat as-time">Ahorra 3h/mes</span>
+          <span class="auto-stat as-status">● ACTIVO</span>
+        </div>
+      </div>
+      <div class="auto-toggle"></div>
+    </div>
+  </div>
+
+  <div class="footer-badge">
+    <div style="font-size:13px;color:var(--muted)">Automatizaciones creadas por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-005 · Desde $1,000 · n8n + Shopify + Make</div>
+    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  </div>
+
+</div>
+</body>
+</html>

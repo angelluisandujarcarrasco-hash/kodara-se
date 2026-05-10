@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prospección de Clientes — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
+.h-badge{background:rgba(232,116,74,.1);border:1px solid rgba(232,116,74,.25);color:var(--orange);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
+.container{max-width:980px;margin:0 auto;padding:36px 24px}
+/* SUMMARY */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.sum-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
+.sum-val{font-size:28px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
+.sum-lbl{font-size:11px;color:var(--muted)}
+/* PROSPECT CARDS */
+.section-title{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.prospect-list{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.prospect{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s}
+.prospect:hover{border-color:rgba(232,116,74,.3)}
+.p-header{padding:18px 22px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border)}
+.p-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.p-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.p-meta{font-size:12px;color:var(--muted)}
+.p-badges{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.badge{font-size:10px;font-family:monospace;font-weight:700;padding:3px 10px;border-radius:20px}
+.b-weak{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
+.b-noseo{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
+.b-noads{background:rgba(107,79,216,.1);color:#9D7FF7;border:1px solid rgba(107,79,216,.2)}
+.b-hot{background:rgba(232,116,74,.1);color:var(--orange);border:1px solid rgba(232,116,74,.2)}
+.p-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.p-analysis h4{font-size:12px;font-family:monospace;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.p-analysis ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.p-analysis li{font-size:13px;color:#aaa;display:flex;align-items:flex-start;gap:6px}
+.p-analysis li::before{content:'→';color:var(--orange);flex-shrink:0}
+.p-message{background:var(--card2);border-radius:10px;padding:16px}
+.msg-label{font-size:10px;font-family:monospace;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.msg-text{font-size:13px;color:#ccc;line-height:1.7}
+.p-score{display:flex;align-items:center;gap:8px;padding:12px 22px;background:var(--card2);border-top:1px solid var(--border)}
+.score-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.score-fill{height:100%;border-radius:3px}
+.score-label{font-size:11px;font-family:monospace;color:var(--muted)}
+.score-val{font-size:13px;font-family:monospace;font-weight:700}
+/* FOOTER */
+.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-logo">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
+    Prospección de Clientes
+    <div class="h-badge">DEMO KODARA SE</div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);text-align:right">Sector: Clínicas dentales · Miami, FL<br>Generado: 10 May 2026</div>
+</div>
+
+<div class="container">
+  <!-- SUMMARY -->
+  <div class="summary">
+    <div class="sum-card"><div class="sum-val" style="color:var(--white)">47</div><div class="sum-lbl">Negocios analizados</div></div>
+    <div class="sum-card"><div class="sum-val" style="color:var(--orange)">12</div><div class="sum-lbl">Oportunidades calientes</div></div>
+    <div class="sum-card"><div class="sum-val" style="color:var(--yellow)">23</div><div class="sum-lbl">Sin SEO activo</div></div>
+    <div class="sum-card"><div class="sum-val" style="color:var(--red)">31</div><div class="sum-lbl">Web débil o sin web</div></div>
+  </div>
+
+  <div class="section-title">
+    🔥 Oportunidades calientes — Contactar esta semana
+    <span style="font-size:12px;color:var(--muted);font-weight:400">12 de 47 analizados</span>
+  </div>
+
+  <div class="prospect-list">
+
+    <!-- PROSPECT 1 -->
+    <div class="prospect">
+      <div class="p-header">
+        <div class="p-avatar" style="background:rgba(232,116,74,.1)">🦷</div>
+        <div>
+          <div class="p-name">Dental Care Brickell</div>
+          <div class="p-meta">dental-brickell.com · Miami, FL · IG: 1.2K seguidores</div>
+        </div>
+        <div class="p-badges">
+          <span class="badge b-weak">WEB DÉBIL</span>
+          <span class="badge b-noseo">SIN SEO</span>
+          <span class="badge b-hot">🔥 CALIENTE</span>
+        </div>
+      </div>
+      <div class="p-body">
+        <div class="p-analysis">
+          <h4>Problemas detectados</h4>
+          <ul>
+            <li>Web de 2018 sin móvil</li>
+            <li>No aparece en "dentista miami"</li>
+            <li>Sin Google My Business actualizado</li>
+            <li>Sin formulario de citas online</li>
+            <li>Instagram con 3 posts al año</li>
+          </ul>
+        </div>
+        <div class="p-message">
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">Hola, soy Angel de Kodara SE. Vi que Dental Care Brickell no aparece en Google cuando busco "dentista en Brickell" — y hay 1,800 búsquedas al mes ahí. Con una web actualizada y SEO básico podrías captar 15-20 pacientes nuevos al mes. ¿Te interesa una auditoría gratuita de 15 minutos?</div>
+        </div>
+      </div>
+      <div class="p-score">
+        <span class="score-label">Puntuación oportunidad</span>
+        <div class="score-bar"><div class="score-fill" style="width:88%;background:var(--orange)"></div></div>
+        <span class="score-val" style="color:var(--orange)">88/100</span>
+      </div>
+    </div>
+
+    <!-- PROSPECT 2 -->
+    <div class="prospect">
+      <div class="p-header">
+        <div class="p-avatar" style="background:rgba(61,255,143,.08)">😁</div>
+        <div>
+          <div class="p-name">Smile Studio Miami</div>
+          <div class="p-meta">smilestudiomia.com · Coral Gables · IG: 4.8K seguidores</div>
+        </div>
+        <div class="p-badges">
+          <span class="badge b-noads">SIN META ADS</span>
+          <span class="badge b-noseo">SEO BAJO</span>
+          <span class="badge b-hot">🔥 CALIENTE</span>
+        </div>
+      </div>
+      <div class="p-body">
+        <div class="p-analysis">
+          <h4>Problemas detectados</h4>
+          <ul>
+            <li>Web decente pero SEO score 34/100</li>
+            <li>Sin campañas de Meta Ads activas</li>
+            <li>Competencia gasta $2,000/mes en ads</li>
+            <li>Horarios no actualizados en Google</li>
+          </ul>
+        </div>
+        <div class="p-message">
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">Hola desde Kodara SE. Tienen un Instagram genial con 4.8K seguidores pero no están apareciendo en Google — y su competencia Brickell Dental sí está invirtiendo en ads. Detecté que con una auditoría SEO + 1 campaña Meta Ads podrían duplicar las consultas en 60 días. ¿Hablamos esta semana?</div>
+        </div>
+      </div>
+      <div class="p-score">
+        <span class="score-label">Puntuación oportunidad</span>
+        <div class="score-bar"><div class="score-fill" style="width:74%;background:var(--yellow)"></div></div>
+        <span class="score-val" style="color:var(--yellow)">74/100</span>
+      </div>
+    </div>
+
+    <!-- PROSPECT 3 -->
+    <div class="prospect">
+      <div class="p-header">
+        <div class="p-avatar" style="background:rgba(107,79,216,.1)">🏥</div>
+        <div>
+          <div class="p-name">Miami Family Dentistry</div>
+          <div class="p-meta">Sin web propia · Doral, FL · Google Maps: 3.2★ (14 reseñas)</div>
+        </div>
+        <div class="p-badges">
+          <span class="badge b-weak">SIN WEB</span>
+          <span class="badge b-noads">SIN ADS</span>
+          <span class="badge b-hot">🔥 MUY CALIENTE</span>
+        </div>
+      </div>
+      <div class="p-body">
+        <div class="p-analysis">
+          <h4>Problemas detectados</h4>
+          <ul>
+            <li>No tiene web propia — solo Facebook</li>
+            <li>Competencia directa: 2 clínicas en radio de 1km</li>
+            <li>Reseñas bajas sin respuesta</li>
+            <li>Sin presencia en Instagram</li>
+          </ul>
+        </div>
+        <div class="p-message">
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">Hola, soy Angel de Kodara SE. Encontré Miami Family Dentistry en Google Maps y vi que todavía no tienen página web. Cada día pierden pacientes que buscan "dentista en Doral" y van a la competencia que sí tiene web. Puedo tenerles una web profesional en 72 horas por $900. ¿Le muestro un ejemplo?</div>
+        </div>
+      </div>
+      <div class="p-score">
+        <span class="score-label">Puntuación oportunidad</span>
+        <div class="score-bar"><div class="score-fill" style="width:95%;background:var(--green)"></div></div>
+        <span class="score-val" style="color:var(--green)">95/100</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-badge">
+    <div style="font-size:13px;color:var(--muted)">Prospección generada por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-008 · Desde $400 · 20+ leads por entrega</div>
+    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  </div>
+
+</div>
+</body>
+</html>

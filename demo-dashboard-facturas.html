@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Facturas — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--white:#fff;--muted:#666;--border:#222}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+/* TOP BAR */
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.tb-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;font-family:monospace}
+.tb-badge{background:rgba(232,116,74,.12);border:1px solid rgba(232,116,74,.3);color:var(--orange);font-size:11px;padding:4px 12px;border-radius:20px;font-family:monospace}
+.tb-right{display:flex;align-items:center;gap:16px}
+.tb-date{font-size:12px;color:var(--muted);font-family:monospace}
+.tb-btn{background:var(--orange);color:#fff;border:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer}
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 57px)}
+/* SIDEBAR */
+.sidebar{background:var(--card);border-right:1px solid var(--border);padding:24px 0}
+.sb-section{padding:0 16px;margin-bottom:8px}
+.sb-label{font-size:10px;color:var(--muted);font-family:monospace;letter-spacing:2px;text-transform:uppercase;padding:8px 12px;margin-bottom:4px}
+.sb-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:13px;color:#888;cursor:pointer;transition:all .2s}
+.sb-item:hover{background:var(--card2);color:var(--white)}
+.sb-item.active{background:rgba(232,116,74,.1);color:var(--orange)}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* MAIN */
+.main{padding:32px;overflow-y:auto}
+.page-header{margin-bottom:32px}
+.page-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:6px}
+.page-sub{font-size:14px;color:var(--muted)}
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.kpi-label{font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.kpi-val{font-size:30px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:8px}
+.kpi-delta{font-size:12px;display:flex;align-items:center;gap:4px}
+.up{color:var(--green)}.down{color:var(--red)}
+/* CHARTS ROW */
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.chart-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.chart-sub{font-size:12px;color:var(--muted);margin-bottom:20px}
+/* BAR CHART */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:140px}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar{width:100%;border-radius:4px 4px 0 0;transition:opacity .2s;cursor:pointer;min-height:4px}
+.bar:hover{opacity:.8}
+.bar-lbl{font-size:10px;color:var(--muted);font-family:monospace}
+.bar-val{font-size:10px;font-family:monospace;font-weight:700}
+/* LINE CHART SVG */
+.line-chart{width:100%;height:140px}
+/* DONUT */
+.donut-row{display:flex;align-items:center;gap:24px}
+.donut-svg{flex-shrink:0}
+.donut-legend{display:flex;flex-direction:column;gap:10px}
+.leg-item{display:flex;align-items:center;gap:8px;font-size:13px}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.leg-val{font-family:monospace;font-weight:700;margin-left:auto;padding-left:16px}
+/* TRANSACTIONS TABLE */
+.table-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px}
+.table-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 12px;border-bottom:1px solid var(--border)}
+td{padding:13px 0;font-size:13px;border-bottom:1px solid rgba(34,34,34,.5)}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;font-size:10px;font-family:monospace;padding:3px 10px;border-radius:20px;font-weight:700}
+.tag-in{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
+.tag-out{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
+.tag-iva{background:rgba(232,116,74,.1);color:var(--orange);border:1px solid rgba(232,116,74,.2)}
+/* IVA BOX */
+.iva-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.iva-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.iva-label{font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.iva-val{font-size:22px;font-weight:700;font-family:monospace}
+/* KODARA BADGE */
+.kodara-badge{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;margin-top:24px}
+.kb-text{font-size:12px;color:var(--muted)}
+.kb-link{font-size:12px;color:var(--orange);font-family:monospace;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-logo">
+    <svg width="24" height="24" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
+    Dashboard · Facturas
+    <div class="tb-badge">DEMO KODARA SE</div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-date">Ene 2025 — Dic 2025</div>
+    <button class="tb-btn">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sb-label">Vista general</div>
+    <div class="sb-section">
+      <div class="sb-item active"><div class="sb-dot" style="background:var(--orange)"></div>Resumen anual</div>
+      <div class="sb-item"><div class="sb-dot" style="background:#444"></div>Por cliente</div>
+      <div class="sb-item"><div class="sb-dot" style="background:#444"></div>Por categoría</div>
+    </div>
+    <div class="sb-label" style="margin-top:8px">Finanzas</div>
+    <div class="sb-section">
+      <div class="sb-item"><div class="sb-dot" style="background:var(--green)"></div>Ingresos</div>
+      <div class="sb-item"><div class="sb-dot" style="background:var(--red)"></div>Gastos</div>
+      <div class="sb-item"><div class="sb-dot" style="background:var(--orange)"></div>IVA pendiente</div>
+      <div class="sb-item"><div class="sb-dot" style="background:#6B4FD8"></div>Beneficio neto</div>
+    </div>
+    <div class="sb-label" style="margin-top:8px">Informes</div>
+    <div class="sb-section">
+      <div class="sb-item"><div class="sb-dot" style="background:#444"></div>Trimestral</div>
+      <div class="sb-item"><div class="sb-dot" style="background:#444"></div>Anual</div>
+      <div class="sb-item"><div class="sb-dot" style="background:#444"></div>Exportar</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="page-header">
+      <div class="page-title">Resumen financiero 2025</div>
+      <div class="page-sub">Generado a partir de 47 facturas PDF · Última actualización: hace 2 minutos</div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">Ingresos totales</div>
+        <div class="kpi-val" style="color:var(--green)">$48,320</div>
+        <div class="kpi-delta up">↑ +22% vs 2024</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Gastos totales</div>
+        <div class="kpi-val" style="color:var(--red)">$18,740</div>
+        <div class="kpi-delta down">↑ +8% vs 2024</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Beneficio neto</div>
+        <div class="kpi-val" style="color:var(--orange)">$29,580</div>
+        <div class="kpi-delta up">↑ +34% vs 2024</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">IVA a declarar</div>
+        <div class="kpi-val" style="color:#ccc">$8,698</div>
+        <div class="kpi-delta" style="color:var(--muted)">Trimestre Q4</div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">Ingresos vs Gastos mensuales</div>
+        <div class="chart-sub">Comparativa mensual 2025</div>
+        <div class="bar-chart">
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">3.2k</div><div class="bar" style="height:60%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Ene</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">2.8k</div><div class="bar" style="height:52%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Feb</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">4.1k</div><div class="bar" style="height:76%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Mar</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">3.8k</div><div class="bar" style="height:70%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Abr</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">5.2k</div><div class="bar" style="height:96%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">May</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">4.6k</div><div class="bar" style="height:85%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Jun</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">3.9k</div><div class="bar" style="height:72%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Jul</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">4.4k</div><div class="bar" style="height:81%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Ago</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">5.8k</div><div class="bar" style="height:100%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Sep</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">4.9k</div><div class="bar" style="height:90%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Oct</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">5.1k</div><div class="bar" style="height:94%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Nov</div></div>
+          <div class="bar-wrap"><div class="bar-val" style="color:var(--green)">4.5k</div><div class="bar" style="height:83%;background:linear-gradient(to top,#3DFF8F,rgba(61,255,143,.4))"></div><div class="bar-lbl">Dic</div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Distribución de gastos</div>
+        <div class="chart-sub">Por categoría · Año 2025</div>
+        <div class="donut-row">
+          <svg class="donut-svg" width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#1A1A1A" stroke-width="18"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#E8744A" stroke-width="18" stroke-dasharray="113 170" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#3DFF8F" stroke-width="18" stroke-dasharray="68 215" stroke-dashoffset="-113" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#6B4FD8" stroke-width="18" stroke-dasharray="51 232" stroke-dashoffset="-181" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#FF4D4D" stroke-width="18" stroke-dasharray="34 249" stroke-dashoffset="-232" transform="rotate(-90 60 60)"/>
+            <text x="60" y="56" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="monospace">47</text>
+            <text x="60" y="70" text-anchor="middle" fill="#666" font-size="9" font-family="monospace">facturas</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="leg-item"><div class="leg-dot" style="background:var(--orange)"></div>Proveedores <span class="leg-val">40%</span></div>
+            <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Software <span class="leg-val">24%</span></div>
+            <div class="leg-item"><div class="leg-dot" style="background:#6B4FD8"></div>Marketing <span class="leg-val">18%</span></div>
+            <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>Otros <span class="leg-val">18%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IVA -->
+    <div class="iva-grid">
+      <div class="iva-card">
+        <div class="iva-label">IVA repercutido (cobrado)</div>
+        <div class="iva-val" style="color:var(--green)">$8,698</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">21% sobre $41,418 facturado</div>
+      </div>
+      <div class="iva-card">
+        <div class="iva-label">IVA soportado (pagado)</div>
+        <div class="iva-val" style="color:var(--red)">$3,371</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">21% sobre $16,052 en gastos</div>
+      </div>
+      <div class="iva-card" style="border-color:rgba(232,116,74,.3)">
+        <div class="iva-label">IVA a pagar a Hacienda</div>
+        <div class="iva-val" style="color:var(--orange)">$5,327</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Próxima declaración: Q4 2025</div>
+      </div>
+    </div>
+
+    <!-- TRANSACTIONS -->
+    <div class="table-card">
+      <div class="table-header">
+        <div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:2px">Últimas transacciones</div>
+          <div style="font-size:12px;color:var(--muted)">Extraídas automáticamente de tus PDFs</div>
+        </div>
+        <div style="font-size:12px;color:var(--orange);font-family:monospace;cursor:pointer">Ver todas →</div>
+      </div>
+      <table>
+        <thead><tr><th>Fecha</th><th>Concepto</th><th>Cliente/Proveedor</th><th>Tipo</th><th style="text-align:right">Importe</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">15 Nov 2025</td><td>Diseño web premium</td><td>Restaurante La Palma</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$1,400</td></tr>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">12 Nov 2025</td><td>Suscripción Adobe CC</td><td>Adobe Inc.</td><td><span class="tag tag-out">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$54</td></tr>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">08 Nov 2025</td><td>Auditoría SEO + Plan</td><td>Clínica Dental Bernal</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$700</td></tr>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">05 Nov 2025</td><td>Automatización CRM</td><td>Tech Startup MX</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$2,200</td></tr>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">03 Nov 2025</td><td>Publicidad Meta Ads</td><td>Meta Platforms</td><td><span class="tag tag-out">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$320</td></tr>
+          <tr><td style="color:var(--muted);font-family:monospace;font-size:12px">01 Nov 2025</td><td>IVA Q3 declarado</td><td>Agencia Tributaria</td><td><span class="tag tag-iva">IVA</span></td><td style="text-align:right;font-family:monospace;color:var(--orange);font-weight:700">-$1,248</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="kodara-badge">
+      <div class="kb-text">Dashboard generado por <strong>Kodara Service Enterprise</strong> · KSE-007 · Dashboard de Facturas · Desde $100</div>
+      <a class="kb-link" href="https://kodarase.com">kodarase.com →</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría de Negocio — Demo Kodara SE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
+.h-badge{background:rgba(232,116,74,.1);border:1px solid rgba(232,116,74,.25);color:var(--orange);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
+.container{max-width:960px;margin:0 auto;padding:36px 24px}
+/* RADAR / SCORES */
+.scores-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.overall-score{text-align:center;flex-shrink:0}
+.overall-num{font-size:64px;font-weight:700;font-family:monospace;color:var(--yellow);line-height:1}
+.overall-lbl{font-size:12px;color:var(--muted);font-family:monospace;letter-spacing:1px;margin-top:4px}
+.scores-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.score-row{display:flex;align-items:center;gap:12px}
+.score-name{font-size:13px;min-width:140px}
+.score-bar{flex:1;height:8px;background:var(--card2);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px}
+.score-num{font-size:13px;font-family:monospace;font-weight:700;min-width:36px;text-align:right}
+/* SECTIONS */
+.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.sec-title{font-size:16px;font-weight:700}
+.sec-badge{font-size:10px;font-family:monospace;font-weight:700;padding:4px 12px;border-radius:20px}
+/* ANALYSIS GRID */
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.a-item{background:var(--card2);border-radius:10px;padding:14px}
+.a-icon{font-size:20px;margin-bottom:8px}
+.a-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.a-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.a-status{display:inline-block;font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:6px}
+.st-ok{background:rgba(61,255,143,.1);color:var(--green)}
+.st-warn{background:rgba(245,158,11,.1);color:var(--yellow)}
+.st-bad{background:rgba(255,77,77,.1);color:var(--red)}
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:0;margin-top:4px}
+.funnel-step{padding:14px 20px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border)}
+.funnel-step:last-child{border-bottom:none}
+.f-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0}
+.f-name{flex:1;font-size:14px;font-weight:500}
+.f-bar-wrap{width:160px}
+.f-bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden}
+.f-fill{height:100%;border-radius:3px}
+.f-val{font-size:12px;font-family:monospace;text-align:right;width:60px}
+.f-status{font-size:11px;font-family:monospace;font-weight:700;padding:3px 10px;border-radius:20px;flex-shrink:0}
+/* COMPETENCIA */
+.comp-table{width:100%;border-collapse:collapse;margin-top:8px}
+th{text-align:left;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 10px;border-bottom:1px solid var(--border)}
+td{padding:11px 0;font-size:13px;border-bottom:1px solid rgba(34,34,34,.5)}
+tr:last-child td{border-bottom:none}
+.you-row td{color:var(--orange)}
+/* ACTION */
+.action-list{display:flex;flex-direction:column;gap:10px}
+.action{background:var(--card2);border-radius:10px;padding:16px;display:flex;gap:14px;align-items:flex-start}
+.a-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0}
+.act-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.act-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.impact{font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block}
+.imp-h{background:rgba(61,255,143,.1);color:var(--green)}
+.imp-m{background:rgba(245,158,11,.1);color:var(--yellow)}
+.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-logo">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
+    Auditoría de Negocio
+    <div class="h-badge">DEMO KODARA SE</div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);text-align:right">Cliente: FitLife Studio · Barcelona<br>Entregado: 10 May 2026</div>
+</div>
+
+<div class="container">
+
+  <div class="scores-hero">
+    <div class="overall-score">
+      <div class="overall-num">58</div>
+      <div style="font-size:14px;color:var(--yellow);font-weight:600;margin-top:4px">Mejorable</div>
+      <div class="overall-lbl">puntuación global</div>
+    </div>
+    <div class="scores-grid">
+      <div class="score-row">
+        <div class="score-name">Presencia web</div>
+        <div class="score-bar"><div class="score-fill" style="width:45%;background:var(--red)"></div></div>
+        <div class="score-num" style="color:var(--red)">45</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name">Redes sociales</div>
+        <div class="score-bar"><div class="score-fill" style="width:72%;background:var(--yellow)"></div></div>
+        <div class="score-num" style="color:var(--yellow)">72</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name">Oferta y precios</div>
+        <div class="score-bar"><div class="score-fill" style="width:65%;background:var(--yellow)"></div></div>
+        <div class="score-num" style="color:var(--yellow)">65</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name">Embudo de ventas</div>
+        <div class="score-bar"><div class="score-fill" style="width:38%;background:var(--red)"></div></div>
+        <div class="score-num" style="color:var(--red)">38</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name">Reputación online</div>
+        <div class="score-bar"><div class="score-fill" style="width:82%;background:var(--green)"></div></div>
+        <div class="score-num" style="color:var(--green)">82</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name">SEO y visibilidad</div>
+        <div class="score-bar"><div class="score-fill" style="width:29%;background:var(--red)"></div></div>
+        <div class="score-num" style="color:var(--red)">29</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANÁLISIS DETALLADO -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-title">Análisis detallado por área</div></div>
+    <div class="analysis-grid">
+      <div class="a-item">
+        <div class="a-icon">🌐</div>
+        <div class="a-title">Web</div>
+        <div class="a-desc">Diseño de 2020, no adaptada a móvil. Sin HTTPS. Sin formulario de contacto. Tarda 6.8 segundos en cargar.</div>
+        <div class="a-status st-bad">CRÍTICO</div>
+      </div>
+      <div class="a-item">
+        <div class="a-icon">📱</div>
+        <div class="a-title">Instagram</div>
+        <div class="a-desc">3.4K seguidores. Buen contenido visual pero sin estrategia de CTAs. Solo 2 posts/semana. Sin link en bio claro.</div>
+        <div class="a-status st-warn">MEJORAR</div>
+      </div>
+      <div class="a-item">
+        <div class="a-icon">💰</div>
+        <div class="a-title">Precios vs competencia</div>
+        <div class="a-desc">Tarifa mensual $45 — la competencia cobra $60-80 con menos servicios. Estás infravalorando tu oferta un 30%.</div>
+        <div class="a-status st-warn">MEJORAR</div>
+      </div>
+      <div class="a-item">
+        <div class="a-icon">⭐</div>
+        <div class="a-title">Reputación</div>
+        <div class="a-desc">4.7★ en Google con 89 reseñas. Excelente. Respondes a todas las reseñas. Punto fuerte del negocio.</div>
+        <div class="a-status st-ok">EXCELENTE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMBUDO -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-title">Mapa del embudo de ventas</div><div class="sec-badge" style="background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)">Problema detectado</div></div>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="f-num">01</div>
+        <div class="f-name">Visitas a la web</div>
+        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:100%;background:var(--orange)"></div></div></div>
+        <div class="f-val" style="color:var(--white)">340/mes</div>
+        <div class="f-status" style="background:rgba(61,255,143,.1);color:var(--green)">OK</div>
+      </div>
+      <div class="funnel-step">
+        <div class="f-num">02</div>
+        <div class="f-name">Ven formulario</div>
+        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:65%;background:var(--yellow)"></div></div></div>
+        <div class="f-val" style="color:var(--yellow)">220/mes</div>
+        <div class="f-status" style="background:rgba(245,158,11,.1);color:var(--yellow)">MEJORAR</div>
+      </div>
+      <div class="funnel-step">
+        <div class="f-num">03</div>
+        <div class="f-name">Envían contacto</div>
+        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:12%;background:var(--red)"></div></div></div>
+        <div class="f-val" style="color:var(--red)">8/mes</div>
+        <div class="f-status" style="background:rgba(255,77,77,.1);color:var(--red)">CRÍTICO</div>
+      </div>
+      <div class="funnel-step">
+        <div class="f-num">04</div>
+        <div class="f-name">Se hacen socios</div>
+        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:8%;background:var(--red)"></div></div></div>
+        <div class="f-val" style="color:var(--red)">4/mes</div>
+        <div class="f-status" style="background:rgba(255,77,77,.1);color:var(--red)">CRÍTICO</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;background:rgba(255,77,77,.04);border:1px solid rgba(255,77,77,.15);border-radius:10px;padding:14px;font-size:13px;color:#aaa;line-height:1.7">
+      <strong style="color:var(--red)">Problema clave:</strong> El formulario de contacto está en la 4ª sección de la web y no se ve fácilmente. Solo el 2.3% de visitantes llega a enviar un mensaje. La media del sector es 8-12%. Con un botón de contacto visible y un popup de salida podrías pasar de 4 a 15+ socios nuevos/mes.
+    </div>
+  </div>
+
+  <!-- COMPETENCIA -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-title">Tu posición vs competencia local</div></div>
+    <table class="comp-table">
+      <thead><tr><th>Negocio</th><th>Web</th><th>IG seguidores</th><th>Google ★</th><th>Precio/mes</th><th>SEO</th></tr></thead>
+      <tbody>
+        <tr class="you-row"><td><strong>FitLife Studio (tú)</strong></td><td style="color:var(--red)">Débil</td><td>3.4K</td><td style="color:var(--green)">4.7★</td><td style="color:var(--yellow)">$45</td><td style="color:var(--red)">29/100</td></tr>
+        <tr><td>Flex Gym BCN</td><td style="color:var(--green)">Buena</td><td>8.2K</td><td style="color:var(--yellow)">4.3★</td><td>$65</td><td style="color:var(--yellow)">62/100</td></tr>
+        <tr><td>ActiveLife Center</td><td style="color:var(--yellow)">Media</td><td>5.1K</td><td style="color:var(--yellow)">4.5★</td><td>$72</td><td style="color:var(--orange)">55/100</td></tr>
+        <tr><td>Urban Fitness</td><td style="color:var(--green)">Buena</td><td>12.4K</td><td style="color:var(--green)">4.8★</td><td>$80</td><td style="color:var(--green)">78/100</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PLAN -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-title">Plan de acción — 90 días</div></div>
+    <div class="action-list">
+      <div class="action"><div class="a-num">01</div><div><div class="act-title">Nueva web profesional con formulario visible</div><div class="act-desc">Rediseño completo con contacto en hero, carga &lt;2s y optimizada para móvil.</div><div class="impact imp-h">IMPACTO ALTO · Semanas 1-2</div></div></div>
+      <div class="action"><div class="a-num">02</div><div><div class="act-title">Subir precio mensual a $65-70</div><div class="act-desc">Estás 30% por debajo del mercado con mejores reseñas que la competencia. Comunicar el aumento como "actualización de valor".</div><div class="impact imp-h">IMPACTO ALTO · Semana 3</div></div></div>
+      <div class="action"><div class="a-num">03</div><div><div class="act-title">SEO local: aparecer en "gimnasio barcelona"</div><div class="act-desc">Optimizar Google My Business, crear página de servicios con keywords locales. Estimado: +180 visitas/mes.</div><div class="impact imp-m">IMPACTO MEDIO · Semanas 4-8</div></div></div>
+    </div>
+  </div>
+
+  <div class="footer-badge">
+    <div style="font-size:13px;color:var(--muted)">Auditoría de Negocio por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-006 · Desde $500 · Entrega en 48-72h</div>
+    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  </div>
+
+</div>
+</body>
+</html>
