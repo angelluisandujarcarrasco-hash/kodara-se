@@ -703,15 +703,57 @@
     /* STAT COUNTER */
     .stat-num{transition:color .3s}
 
+    /* ── GRADIENT TEXT ── */
+    .grad-text{background:linear-gradient(135deg,var(--orange) 0%,#FF9A6C 50%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .grad-text-orange{background:linear-gradient(135deg,#E8744A,#FF9A6C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ── GLOW BUTTON ── */
+    .btn-primary{position:relative}
+    .btn-primary::after{content:'';position:absolute;inset:-2px;border-radius:9px;background:linear-gradient(135deg,var(--orange),#FF9A6C);opacity:0;filter:blur(12px);z-index:-1;transition:opacity .3s}
+    .btn-primary:hover::after{opacity:.6}
+
+    /* ── STATS GLOW ── */
+    .stat-item:hover .stat-num{filter:drop-shadow(0 0 12px currentColor)}
+
+    /* ── SECTION ACCENT LINES ── */
+    .section-gradient{position:relative}
+    .section-gradient::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent)}
+
+    /* ── SERVICE CARD GLOW ── */
+    .svc-card:hover{box-shadow:0 20px 60px rgba(232,116,74,.15)!important}
+
+    /* ── FAQ VIBRANT ── */
+    .faq-item.open{border-color:var(--orange);box-shadow:0 8px 32px rgba(232,116,74,.08)}
+
+    /* ── PLAN CARD FEATURED GLOW ── */
+    .plan-featured{box-shadow:0 0 40px rgba(232,116,74,.08)}
+
     /* ── V2: SECCIÓN 3 RAZONES ── */
     .why-section{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px}
     .why-inner{max-width:1200px;margin:0 auto}
     .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
     .why-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s}
-    .why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),#ff9a6c);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-    .why-card:hover{border-color:var(--orange);transform:translateY(-6px);box-shadow:0 24px 48px rgba(232,116,74,.1)}
+    .why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+    .why-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;border-radius:20px}
+    .why-card:hover{transform:translateY(-8px)}
     .why-card:hover::before{transform:scaleX(1)}
-    .why-big{font-family:'Space Mono',monospace;font-size:64px;font-weight:700;color:var(--orange);line-height:1;letter-spacing:-2px;margin-bottom:16px}
+    .why-card:hover::after{opacity:1}
+    .why-card.c1{border-color:rgba(232,116,74,.2)}
+    .why-card.c1::before{background:linear-gradient(90deg,#E8744A,#FF9A6C)}
+    .why-card.c1:hover{border-color:#E8744A;box-shadow:0 24px 64px rgba(232,116,74,.2)}
+    .why-card.c1::after{background:radial-gradient(ellipse at 0% 0%,rgba(232,116,74,.06),transparent 70%)}
+    .why-card.c2{border-color:rgba(61,255,143,.2)}
+    .why-card.c2::before{background:linear-gradient(90deg,#3DFF8F,#00C96A)}
+    .why-card.c2:hover{border-color:#3DFF8F;box-shadow:0 24px 64px rgba(61,255,143,.15)}
+    .why-card.c2::after{background:radial-gradient(ellipse at 0% 0%,rgba(61,255,143,.05),transparent 70%)}
+    .why-card.c3{border-color:rgba(107,79,216,.2)}
+    .why-card.c3::before{background:linear-gradient(90deg,#7C5CBF,#A78BFA)}
+    .why-card.c3:hover{border-color:#7C5CBF;box-shadow:0 24px 64px rgba(107,79,216,.15)}
+    .why-card.c3::after{background:radial-gradient(ellipse at 0% 0%,rgba(107,79,216,.06),transparent 70%)}
+    .why-big{font-family:'Space Mono',monospace;font-size:64px;font-weight:700;line-height:1;letter-spacing:-2px;margin-bottom:16px}
+    .why-card.c1 .why-big{color:#E8744A}
+    .why-card.c2 .why-big{color:#3DFF8F}
+    .why-card.c3 .why-big{color:#A78BFA}
     .why-title{font-size:18px;font-weight:700;margin-bottom:10px}
     .why-desc{font-size:14px;color:var(--muted);line-height:1.7}
     .why-icon{font-size:32px;margin-bottom:20px}
@@ -733,13 +775,34 @@
     .vid-feat-desc{font-size:13px;color:var(--muted)}
 
     /* ── V2: SERVICES MEJORADO ── */
-    .svc-card::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,var(--orange),#c85a2c);opacity:0;transition:opacity .4s;z-index:0}
+    .svc-card::after{content:'';position:absolute;inset:0;border-radius:14px;opacity:0;transition:opacity .4s;z-index:0}
     .svc-card:hover::after{opacity:1}
     .svc-card>*{position:relative;z-index:1}
     .svc-card:hover .svc-name,.svc-card:hover .svc-features li{color:#fff}
     .svc-card:hover .svc-desc{color:rgba(255,255,255,.8)}
     .svc-card:hover .svc-price{color:#fff}
     .svc-card:hover .svc-more{color:rgba(255,255,255,.8);opacity:1}
+    /* Colores únicos por tarjeta */
+    .svc-card:nth-child(1)::after{background:linear-gradient(135deg,#E8744A,#C85A2C)}
+    .svc-card:nth-child(2)::after{background:linear-gradient(135deg,#E8306A,#C8204A)}
+    .svc-card:nth-child(3)::after{background:linear-gradient(135deg,#4F8EF7,#2563EB)}
+    .svc-card:nth-child(4)::after{background:linear-gradient(135deg,#3DFF8F,#059669)}
+    .svc-card:nth-child(5)::after{background:linear-gradient(135deg,#7C5CBF,#5B21B6)}
+    .svc-card:nth-child(6)::after{background:linear-gradient(135deg,#F59E0B,#D97706)}
+    .svc-card:nth-child(7)::after{background:linear-gradient(135deg,#06B6D4,#0284C7)}
+    .svc-card:nth-child(8)::after{background:linear-gradient(135deg,#EC4899,#BE185D)}
+    .svc-card:nth-child(9)::after{background:linear-gradient(135deg,#3DFF8F,#E8744A)}
+    /* Top border de color único */
+    .svc-card{border-top:2px solid transparent}
+    .svc-card:nth-child(1){border-top-color:rgba(232,116,74,.5)}
+    .svc-card:nth-child(2){border-top-color:rgba(232,48,106,.5)}
+    .svc-card:nth-child(3){border-top-color:rgba(79,142,247,.5)}
+    .svc-card:nth-child(4){border-top-color:rgba(61,255,143,.5)}
+    .svc-card:nth-child(5){border-top-color:rgba(124,92,191,.5)}
+    .svc-card:nth-child(6){border-top-color:rgba(245,158,11,.5)}
+    .svc-card:nth-child(7){border-top-color:rgba(6,182,212,.5)}
+    .svc-card:nth-child(8){border-top-color:rgba(236,72,153,.5)}
+    .svc-card:nth-child(9){border-top-color:rgba(61,255,143,.5)}
     .svc-demo-btn{display:inline-flex;align-items:center;gap:7px;background:var(--bg-card2);color:var(--orange);border:1px solid rgba(232,116,74,.35);padding:10px 20px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;position:relative;z-index:2;margin-top:14px}
     .svc-demo-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
     .svc-card:hover .svc-demo-btn{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.5)}
@@ -856,7 +919,7 @@
       </div>
       <h1>
         <span class="word-reveal" style="--d:.2s" data-es="Tu negocio," data-en="Your business,">Tu negocio,</span><br>
-        <span class="word-reveal accent" style="--d:.42s" data-es="resultados reales." data-en="real results.">resultados reales.</span>
+        <span class="word-reveal grad-text-orange" style="--d:.42s" data-es="resultados reales." data-en="real results.">resultados reales.</span>
       </h1>
       <div class="hero-cycle">
         <span class="cycle-label">→</span>
@@ -1020,19 +1083,19 @@
 <div class="stats-wrap">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-num" data-counter="9" data-suf="">9</div>
+      <div class="stat-num" data-counter="9" data-suf="" style="color:var(--orange)">9</div>
       <div class="stat-label" data-es="Servicios disponibles" data-en="Available services">Servicios disponibles</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">48h</div>
+      <div class="stat-num" style="color:#4F8EF7">48h</div>
       <div class="stat-label" data-es="Tiempo de respuesta máximo" data-en="Maximum response time">Tiempo de respuesta máximo</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num" data-counter="100" data-suf="%">100%</div>
-      <div class="stat-label" data-es="Resultados entregados" data-en="Results delivered">Resultados entregados</div>
+      <div class="stat-num" data-counter="100" data-suf="%" style="color:var(--green)">100%</div>
+      <div class="stat-label" data-es="Compromiso garantizado" data-en="Guaranteed commitment">Compromiso garantizado</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">$0</div>
+      <div class="stat-num" style="color:#A78BFA">$0</div>
       <div class="stat-label" data-es="Consulta inicial, sin compromiso" data-en="Initial consultation, no commitment">Consulta inicial, sin compromiso</div>
     </div>
   </div>
@@ -1044,19 +1107,19 @@
     <div class="s-tag reveal" data-es="// POR QUÉ KODARA" data-en="// WHY KODARA">// POR QUÉ KODARA</div>
     <h2 class="s-title reveal" data-es="Lo que nos hace<br>diferentes" data-en="What makes us<br>different">Lo que nos hace<br>diferentes</h2>
     <div class="why-grid">
-      <div class="why-card reveal">
+      <div class="why-card c1 reveal">
         <div class="why-icon">⚡</div>
         <div class="why-big">72h</div>
         <div class="why-title" data-es="Entrega garantizada" data-en="Guaranteed delivery">Entrega garantizada</div>
         <div class="why-desc" data-es="Entregamos cada proyecto en 72 horas o menos. Sin esperas de semanas. Sin excusas. Tu web lista cuando la necesitas." data-en="We deliver every project in 72 hours or less. No waiting weeks. No excuses. Your website ready when you need it.">Entregamos cada proyecto en 72 horas o menos. Sin esperas de semanas. Sin excusas. Tu web lista cuando la necesitas.</div>
       </div>
-      <div class="why-card reveal">
+      <div class="why-card c2 reveal">
         <div class="why-icon">🎯</div>
         <div class="why-big">9</div>
         <div class="why-title" data-es="Servicios especializados" data-en="Specialized services">Servicios especializados</div>
         <div class="why-desc" data-es="Desde diseño web hasta automatizaciones con IA. Cubrimos todas las áreas digitales que tu negocio necesita para crecer." data-en="From web design to AI automations. We cover all digital areas your business needs to grow.">Desde diseño web hasta automatizaciones con IA. Cubrimos todas las áreas digitales que tu negocio necesita para crecer.</div>
       </div>
-      <div class="why-card reveal">
+      <div class="why-card c3 reveal">
         <div class="why-icon">💬</div>
         <div class="why-big">$0</div>
         <div class="why-title" data-es="Consulta inicial gratis" data-en="Free initial consultation">Consulta inicial gratis</div>
