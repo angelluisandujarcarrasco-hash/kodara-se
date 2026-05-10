@@ -528,7 +528,7 @@
     .orb-1{width:680px;height:680px;background:radial-gradient(circle,#E8744A,transparent 70%);top:-220px;right:-120px;animation:orb1Float 24s ease-in-out infinite,orbIn 2.5s .3s ease forwards}
     .orb-2{width:520px;height:520px;background:radial-gradient(circle,#3DFF8F,transparent 70%);bottom:-80px;left:-130px;animation:orb2Float 30s ease-in-out infinite,orbIn 2.5s .8s ease forwards}
     .orb-3{width:380px;height:380px;background:radial-gradient(circle,#6B4FD8,transparent 70%);top:45%;left:38%;animation:orb3Float 20s ease-in-out infinite,orbIn 2.5s 1.2s ease forwards}
-    @keyframes orbIn{to{opacity:.11}}
+    @keyframes orbIn{to{opacity:.18}}
     @keyframes orb1Float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-90px,70px) scale(1.18)}}
     @keyframes orb2Float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(75px,-55px) scale(.83)}}
     @keyframes orb3Float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(55px,-75px) scale(1.12)}66%{transform:translate(-35px,45px) scale(.9)}}
@@ -539,6 +539,23 @@
     @keyframes wordUp{to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{to{opacity:1}}
     @keyframes robotFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-16px)}}
+
+    /* ── CYCLING TEXT ── */
+    .hero-cycle{display:flex;align-items:center;gap:8px;margin-bottom:28px;opacity:0;animation:fadeIn .8s ease .6s forwards}
+    .cycle-label{font-size:13px;color:var(--muted);font-family:'Space Mono',monospace}
+    .cycle-text{font-size:13px;font-family:'Space Mono',monospace;color:var(--orange);font-weight:700;letter-spacing:.5px;min-width:200px}
+    .cycle-cursor{display:inline-block;width:2px;height:13px;background:var(--orange);margin-left:2px;animation:blink .8s infinite;vertical-align:middle}
+
+    /* ── BTN PULSE ── */
+    @keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,116,74,.4)}70%{box-shadow:0 0 0 12px rgba(232,116,74,0)}}
+    .btn-primary{animation:btnPulse 2.5s ease-in-out infinite}
+    .btn-primary:hover{animation:none}
+
+    /* ── TECH STRIP ── */
+    .tech-strip{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden}
+    .tech-inner{display:flex;align-items:center;gap:0;animation:ticker 25s linear infinite;width:max-content}
+    .tech-item{display:flex;align-items:center;gap:8px;padding:0 36px;font-size:12px;font-family:'Space Mono',monospace;color:#555;letter-spacing:.5px;white-space:nowrap;transition:color .2s}
+    .tech-dot{width:6px;height:6px;border-radius:50%;background:#2A2A2A;flex-shrink:0}
     .robot-wrap{animation:robotFloat 5.5s ease-in-out infinite}
     .float-chip{position:absolute;background:rgba(15,15,15,.88);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:14px;padding:11px 16px;pointer-events:none;animation:chipFloat var(--cd,6s) ease-in-out infinite;animation-delay:var(--cl,0s)}
     @keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -769,6 +786,11 @@
         <span class="word-reveal" style="--d:.2s" data-es="Tu negocio," data-en="Your business,">Tu negocio,</span><br>
         <span class="word-reveal accent" style="--d:.42s" data-es="resultados reales." data-en="real results.">resultados reales.</span>
       </h1>
+      <div class="hero-cycle">
+        <span class="cycle-label">→</span>
+        <span class="cycle-text" id="cycleText">Diseño Web Premium</span>
+        <span class="cycle-cursor"></span>
+      </div>
       <p class="hero-sub sub-reveal" data-es="Transformamos tu presencia digital con procesos y herramientas que generan impacto desde el primer día. Sin rodeos." data-en="We transform your digital presence with processes and tools that generate impact from day one. No runaround.">
         Transformamos tu presencia digital con procesos y herramientas que generan impacto desde el primer día. Sin rodeos.
       </p>
@@ -892,6 +914,33 @@
     <span class="ticker-item ticker-sep">✦</span>
     <span class="ticker-item" data-es="Auditoría de Negocio" data-en="Business Audit">Auditoría de Negocio</span>
     <span class="ticker-item ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- TECH STRIP -->
+<div class="tech-strip">
+  <div class="tech-inner">
+    <div class="tech-item"><div class="tech-dot" style="background:#E8744A"></div>Shopify</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#3DFF8F"></div>Meta Ads</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#4285F4"></div>Google Analytics</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#EA4335"></div>Google Search Console</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#FF6600"></div>n8n Automations</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#74AA9C"></div>ChatGPT / OpenAI</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#21759B"></div>WordPress</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#E1306C"></div>Instagram</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#0866FF"></div>Facebook Ads</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#FFBD00"></div>EmailJS</div>
+    <!-- duplicado para loop -->
+    <div class="tech-item"><div class="tech-dot" style="background:#E8744A"></div>Shopify</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#3DFF8F"></div>Meta Ads</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#4285F4"></div>Google Analytics</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#EA4335"></div>Google Search Console</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#FF6600"></div>n8n Automations</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#74AA9C"></div>ChatGPT / OpenAI</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#21759B"></div>WordPress</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#E1306C"></div>Instagram</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#0866FF"></div>Facebook Ads</div>
+    <div class="tech-item"><div class="tech-dot" style="background:#FFBD00"></div>EmailJS</div>
   </div>
 </div>
 
@@ -2621,6 +2670,31 @@
   window.addEventListener('scroll', () => {
     if (robot) robot.style.transform = `translateY(${window.scrollY * 0.12}px)`;
   }, { passive: true });
+
+  /* ---- CYCLING TEXT ---- */
+  (function(){
+    const words = {
+      es: ['Diseño Web Premium','Instagram a Web','Auditoría Meta Ads','Auditoría SEO','Automatizaciones','Auditoría de Negocio','Dashboard de Facturas','Prospección de Clientes','Chat IA para Web'],
+      en: ['Premium Web Design','Instagram to Web','Meta Ads Audit','SEO Audit','Automations','Business Audit','Invoice Dashboard','Client Prospecting','AI Web Chat']
+    };
+    const el = document.getElementById('cycleText');
+    if (!el) return;
+    let i = 0;
+    function next() {
+      const list = words[lang] || words.es;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-8px)';
+      setTimeout(() => {
+        i = (i + 1) % list.length;
+        el.textContent = list[i];
+        el.style.transition = 'opacity .4s,transform .4s';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 300);
+    }
+    el.style.transition = 'opacity .4s,transform .4s';
+    setInterval(next, 2200);
+  })();
 
   /* ---- FAQ ---- */
   function toggleFaq(btn) {
