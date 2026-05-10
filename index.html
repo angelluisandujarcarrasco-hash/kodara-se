@@ -672,6 +672,10 @@
     .svc-card:hover .svc-desc{color:rgba(255,255,255,.8)}
     .svc-card:hover .svc-price{color:#fff}
     .svc-card:hover .svc-more{color:rgba(255,255,255,.8);opacity:1}
+    .svc-demo-btn{display:inline-flex;align-items:center;gap:7px;background:var(--bg-card2);color:var(--orange);border:1px solid rgba(232,116,74,.35);padding:10px 20px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;position:relative;z-index:2;margin-top:14px}
+    .svc-demo-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+    .svc-card:hover .svc-demo-btn{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.5)}
+    .svc-card:hover .svc-demo-btn:hover{background:#fff;color:var(--orange);border-color:#fff}
 
     /* ── V2: CONTACT FLOATING LABELS ── */
     .f2-field{position:relative;margin-bottom:16px}
@@ -1155,7 +1159,7 @@
           <li data-es="Lista para publicar en 48 horas" data-en="Ready to publish in 48 hours">Lista para publicar en 48 horas</li>
         </ul>
         <div class="svc-price">$200 — $1,000</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-instagram-web.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-instagram-web.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1209,7 +1213,7 @@
           <li data-es="Pack de nuevos anuncios listos para lanzar" data-en="Pack of new ads ready to launch">Pack de nuevos anuncios listos para lanzar</li>
         </ul>
         <div class="svc-price">$200 — $800</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-auditoria-meta-ads.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-auditoria-meta-ads.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1256,7 +1260,7 @@
           <li data-es="Informe visual entregado en 48h" data-en="Visual report delivered in 48h">Informe visual entregado en 48h</li>
         </ul>
         <div class="svc-price">$200 — $700</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-auditoria-seo.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-auditoria-seo.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1311,7 +1315,7 @@
           <li data-es="Funciona 24/7 sin que toques nada" data-en="Works 24/7 without you touching anything">Funciona 24/7 sin que toques nada</li>
         </ul>
         <div class="svc-price">$1,000 — $10,000+</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-automatizaciones.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-automatizaciones.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1362,7 +1366,7 @@
           <li data-es="Quick wins para implementar esta semana" data-en="Quick wins to implement this week">Quick wins para implementar esta semana</li>
         </ul>
         <div class="svc-price">$500 — $3,000</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-auditoria-negocio.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-auditoria-negocio.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1416,7 +1420,7 @@
           <li data-es="Dashboard exportable y actualizable" data-en="Exportable and updatable dashboard">Dashboard exportable y actualizable</li>
         </ul>
         <div class="svc-price">$100 — $500</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-dashboard-facturas.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-dashboard-facturas.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1481,7 +1485,7 @@
           <li data-es="Lista entregada lista para enviar" data-en="List delivered ready to send">Lista entregada lista para enviar</li>
         </ul>
         <div class="svc-price">$400 — $900</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-prospeccion.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-prospeccion.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
@@ -1522,7 +1526,7 @@
           <li data-es="Español e inglés incluidos" data-en="Spanish and English included">Español e inglés incluidos</li>
         </ul>
         <div class="svc-price">$150 — $350</div>
-        <div style="margin-top:14px"><button onclick="window.open('https://kodarase.com/demo-chat-ia.html')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--orange);border:1px solid rgba(232,116,74,.3);padding:7px 14px;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(232,116,74,.08)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button></div>
+        <button class="svc-demo-btn" onclick="event.stopPropagation();window.open('https://kodarase.com/demo-chat-ia.html')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Ver demo →</button>
       </div>
     </div>
 
