@@ -3,92 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auditoría SEO Real — La Vasca Deli Miami · Kodara SE</title>
+<title>Auditoría SEO Premium — La Vasca Deli Miami · Kodara SE</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg:#060B18; --bg-2:#0A1424; --card:#0F1A2E; --card-2:#131F36;
+  --border:rgba(255,255,255,0.06); --border-2:rgba(255,255,255,0.1);
+  --text:#fff; --text-2:#B8C0D0; --text-3:#6B7689;
+  --orange:#F97316; --orange-light:#FB923C;
+  --green:#10B981; --red:#EF4444; --yellow:#F59E0B; --blue:#3B82F6;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
-.header{background:var(--card);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
-.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
-.h-badge{background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.25);color:var(--green);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
-.container{max-width:960px;margin:0 auto;padding:40px 24px}
-.score-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;display:flex;align-items:center;gap:48px;margin-bottom:28px}
-.score-circle{position:relative;flex-shrink:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* TOP NAV */
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.live-badge{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:var(--green);font-size:11px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;gap:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* HERO BANNER */
+.hero-banner{position:relative;height:60vh;min-height:480px;max-height:600px;overflow:hidden;background:var(--bg-2)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;opacity:0.65}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(6,11,24,0.4) 60%,var(--bg) 100%);pointer-events:none}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:1px;margin-bottom:16px;width:fit-content}
+.hero-title{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px;max-width:900px}
+.hero-title .grad{background:linear-gradient(135deg,var(--orange),#EC4899,#7C3AED);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{display:flex;gap:24px;font-size:13px;color:var(--text-2);font-family:'JetBrains Mono',monospace;flex-wrap:wrap}
+
+/* CONTAINER */
+.container{max-width:1100px;margin:0 auto;padding:64px 32px}
+
+/* SCORE HERO */
+.score-hero{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:40px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin-bottom:32px;position:relative;overflow:hidden}
+.score-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(239,68,68,0.06),transparent 60%);pointer-events:none}
+.score-circle{position:relative;width:180px;height:180px;flex-shrink:0}
+.score-circle svg{transform:rotate(-90deg)}
 .score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.score-big{font-size:44px;font-weight:700;font-family:monospace;line-height:1}
-.score-lbl{font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:1px}
-.score-info h1{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
-.score-info .url{font-family:monospace;font-size:14px;color:var(--orange);margin-bottom:6px}
-.score-info .biz{font-size:13px;color:var(--muted);margin-bottom:16px}
-.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
-.mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
-.mini-val{font-size:28px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
-.mini-lbl{font-size:11px;color:var(--muted)}
-.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px}
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-.sec-title{font-size:16px;font-weight:700}
-.sec-score{font-family:monospace;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px}
-.bad{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
-.warn{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
-.good{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
-.issue{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.score-big{font-size:56px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;color:var(--red)}
+.score-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:4px}
+.score-info .url{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--orange);margin-bottom:6px}
+.score-info .biz{font-size:13px;color:var(--text-2);margin-bottom:20px}
+.score-info h1{font-size:32px;font-weight:900;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.1}
+.score-info p{font-size:14px;color:var(--text-2);line-height:1.7;max-width:480px;margin-bottom:24px}
+.score-stats{display:flex;gap:32px}
+.score-stat{text-align:center}
+.score-stat-val{font-size:24px;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1}
+.score-stat-lbl{font-size:11px;color:var(--text-3);margin-top:4px}
+
+/* MINI GRID */
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.mini{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.mini-val{font-size:30px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:6px}
+.mini-lbl{font-size:11px;color:var(--text-3)}
+
+/* SECTION */
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.section-title{font-size:20px;font-weight:800;letter-spacing:-0.3px}
+.section-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:5px 14px;border-radius:999px}
+.bad{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.warn{background:rgba(245,158,11,0.1);color:var(--yellow);border:1px solid rgba(245,158,11,0.2)}
+.good{background:rgba(16,185,129,0.1);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+
+/* ISSUES */
+.issue{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border)}
 .issue:last-child{border-bottom:none;padding-bottom:0}
-.ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
-.ic-bad{background:rgba(255,77,77,.1);border:1px solid rgba(255,77,77,.2)}
-.ic-warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
-.ic-ok{background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.2)}
-.issue-title{font-size:14px;font-weight:600;margin-bottom:3px}
-.issue-desc{font-size:12px;color:var(--muted);line-height:1.6}
-.issue-fix{font-size:11px;color:var(--orange);margin-top:4px;font-family:monospace}
-.evidence{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:monospace;font-size:12px;color:#888;margin-top:8px;line-height:1.6}
-.evidence span{color:var(--red)}
+.ic{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px;font-weight:700}
+.ic-bad{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:var(--red)}
+.ic-warn{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);color:var(--yellow)}
+.ic-ok{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);color:var(--green)}
+.issue-title{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-0.2px}
+.issue-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:8px}
+.evidence{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.5}
+.evidence span{color:var(--red);font-weight:700}
+.issue-fix{font-size:12px;color:var(--orange);margin-top:8px;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:6px}
+
+/* KEYWORDS TABLE */
 .kw-table{width:100%;border-collapse:collapse}
-th{text-align:left;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 12px;border-bottom:1px solid var(--border)}
-td{padding:11px 0;font-size:13px;border-bottom:1px solid rgba(34,34,34,.5)}
-tr:last-child td{border-bottom:none}
-.vol-bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden;width:80px}
+.kw-table th{text-align:left;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-3);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 14px;border-bottom:1px solid var(--border);font-weight:700}
+.kw-table td{padding:14px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.kw-table tr:last-child td{border-bottom:none}
+.vol-bar{height:6px;background:var(--bg-2);border-radius:3px;overflow:hidden;width:80px}
 .vol-fill{height:100%;border-radius:3px}
-.action-list{display:flex;flex-direction:column;gap:12px}
-.action{display:flex;align-items:flex-start;gap:14px;background:var(--card2);border-radius:10px;padding:16px}
-.a-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0;margin-top:1px}
-.act-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.act-desc{font-size:12px;color:var(--muted)}
-.impact{font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block}
-.imp-h{background:rgba(61,255,143,.1);color:var(--green)}
-.imp-m{background:rgba(245,158,11,.1);color:var(--yellow)}
-.real-badge{background:rgba(61,255,143,.08);border:1px solid rgba(61,255,143,.2);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px}
-.rb-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+
+/* ACTION PLAN */
+.action-list{display:flex;flex-direction:column;gap:14px}
+.action{background:var(--card-2);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;gap:16px;align-items:flex-start;transition:all 0.25s}
+.action:hover{border-color:rgba(249,115,22,0.3);transform:translateX(4px)}
+.action-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--orange);background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:8px;padding:5px 10px;flex-shrink:0;margin-top:1px}
+.action-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.action-desc{font-size:13px;color:var(--text-2);line-height:1.7}
+.impact{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:6px;display:inline-block}
+.imp-h{background:rgba(16,185,129,0.1);color:var(--green)}
+.imp-m{background:rgba(245,158,11,0.1);color:var(--yellow)}
+
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid rgba(249,115,22,0.3);border-radius:24px;padding:48px;text-align:center;margin-top:32px;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(249,115,22,0.08),transparent 60%);pointer-events:none}
+.cta-final h2{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.1}
+.cta-final p{font-size:15px;color:var(--text-2);margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;padding:16px 32px;border-radius:12px;font-weight:700;font-size:15px;box-shadow:0 8px 24px rgba(249,115,22,0.35);transition:all 0.25s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(249,115,22,0.5)}
+
+/* FOOTER */
+.demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+.demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+
+@media(max-width:800px){
+  .score-hero{grid-template-columns:1fr;gap:32px;text-align:center;padding:32px 24px}
+  .score-circle{margin:0 auto}
+  .score-info p{margin-left:auto;margin-right:auto}
+  .score-stats{justify-content:center}
+  .mini-grid{grid-template-columns:1fr 1fr}
+  .hero-content{padding:32px 24px}
+  .container{padding:48px 24px}
+}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="h-logo">
-    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
-    Auditoría SEO · Kodara SE
-    <div class="h-badge">✓ AUDITORÍA REAL</div>
+<div class="topnav">
+  <div class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <span>Kodara</span><span style="font-size:12px">SE</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría SEO</span>
   </div>
-  <div style="font-size:12px;color:var(--muted);text-align:right">Analizado en vivo: Mayo 2026<br>Herramienta: Kodara SEO Scanner</div>
+  <div class="live-badge"><div class="live-dot"></div>DATOS REALES VERIFICADOS</div>
+</div>
+
+<div class="hero-banner">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203647_8a747412-699b-4b8b-a124-0ba86bb2e5cb.png" alt="Auditoría SEO Premium">
+  <div class="hero-content">
+    <div class="hero-tag">// KSE-004 · AUDITORÍA SEO</div>
+    <h1 class="hero-title">Auditoría SEO <span class="grad">Premium</span></h1>
+    <div class="hero-meta">
+      <span>🏢 La Vasca Deli Miami</span>
+      <span>📅 Mayo 2026</span>
+      <span>⚡ Entrega 48h</span>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
-  <div class="real-badge">
-    <div class="rb-dot"></div>
-    <div>Esta auditoría fue realizada <strong>en tiempo real</strong> sobre la web de <strong>La Vasca Deli Miami</strong> — datos 100% reales obtenidos el 10 de mayo de 2026.</div>
-  </div>
-
+  <!-- SCORE HERO -->
   <div class="score-hero">
     <div class="score-circle">
-      <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle cx="70" cy="70" r="58" fill="none" stroke="#1A1A1A" stroke-width="12"/>
-        <circle cx="70" cy="70" r="58" fill="none" stroke="#FF4D4D" stroke-width="12"
-          stroke-dasharray="182 364" stroke-dashoffset="91" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+      <svg width="180" height="180" viewBox="0 0 180 180">
+        <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
+        <circle cx="90" cy="90" r="75" fill="none" stroke="url(#scoreGrad)" stroke-width="14" stroke-dasharray="179 471" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#EF4444"/>
+            <stop offset="100%" stop-color="#F97316"/>
+          </linearGradient>
+        </defs>
       </svg>
       <div class="score-num">
-        <div class="score-big" style="color:var(--red)">38</div>
+        <div class="score-big">38</div>
         <div class="score-lbl">/ 100</div>
       </div>
     </div>
@@ -96,15 +178,16 @@ tr:last-child td{border-bottom:none}
       <div class="url">lavascadelimiami.com</div>
       <div class="biz">📍 3407 SW 8th St, Miami, FL 33135 · ☎ (786) 334-0873</div>
       <h1>Puntuación SEO: Crítica</h1>
-      <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:440px">La Vasca Deli tiene un producto auténtico y un local en Calle 8, pero su web es prácticamente invisible para Google. Sin meta tags, sin estructura de contenido y sin blog, pierde cientos de búsquedas diarias de "restaurante español miami".</p>
-      <div style="display:flex;gap:16px;margin-top:20px">
-        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--red);font-family:monospace">6</div><div style="font-size:11px;color:var(--muted)">Errores críticos</div></div>
-        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--yellow);font-family:monospace">4</div><div style="font-size:11px;color:var(--muted)">Advertencias</div></div>
-        <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:var(--green);font-family:monospace">2</div><div style="font-size:11px;color:var(--muted)">Correctos</div></div>
+      <p>La Vasca Deli tiene un producto auténtico y un local prime en Calle 8, pero su web es <strong>prácticamente invisible para Google</strong>. Sin meta tags, sin estructura de contenido y sin blog, pierde cientos de búsquedas mensuales de "restaurante español miami".</p>
+      <div class="score-stats">
+        <div class="score-stat"><div class="score-stat-val" style="color:var(--red)">6</div><div class="score-stat-lbl">Errores críticos</div></div>
+        <div class="score-stat"><div class="score-stat-val" style="color:var(--yellow)">4</div><div class="score-stat-lbl">Advertencias</div></div>
+        <div class="score-stat"><div class="score-stat-val" style="color:var(--green)">2</div><div class="score-stat-lbl">Correctos</div></div>
       </div>
     </div>
   </div>
 
+  <!-- MINI METRICS -->
   <div class="mini-grid">
     <div class="mini"><div class="mini-val" style="color:var(--red)">0/10</div><div class="mini-lbl">Meta Tags</div></div>
     <div class="mini"><div class="mini-val" style="color:var(--red)">28</div><div class="mini-lbl">Rendimiento</div></div>
@@ -113,118 +196,161 @@ tr:last-child td{border-bottom:none}
   </div>
 
   <!-- ERRORES CRÍTICOS -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-title">Errores críticos detectados en la auditoría real</div>
-      <div class="sec-score bad">6 problemas</div>
+  <div class="section-card">
+    <div class="section-head">
+      <div class="section-title">Errores críticos detectados</div>
+      <div class="section-badge bad">6 problemas</div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
-      <div>
-        <div class="issue-title">Sin título de página (Title Tag) — Google no sabe cómo llamar a tu web</div>
-        <div class="issue-desc">El &lt;title&gt; es lo primero que Google lee. La Vasca no tiene uno definido, así que Google inventa uno automáticamente con texto aleatorio de la página. Resultado: nadie hace clic en los resultados de búsqueda.</div>
+      <div style="flex:1">
+        <div class="issue-title">Sin Title Tag — Google no sabe cómo llamar a tu web</div>
+        <div class="issue-desc">El &lt;title&gt; es lo primero que Google lee. La Vasca no tiene uno definido, así que Google inventa uno automáticamente con texto aleatorio. Resultado: nadie hace clic.</div>
         <div class="evidence"><span>&lt;title&gt;</span> — No encontrado en el HTML</div>
-        <div class="issue-fix">→ Solución: &lt;title&gt;La Vasca Deli Miami — Restaurante Español Auténtico en Calle 8&lt;/title&gt; · Impacto: +22 puntos</div>
+        <div class="issue-fix">→ Solución: &lt;title&gt;La Vasca Deli Miami — Restaurante Español en Calle 8&lt;/title&gt; · +22 puntos</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
-      <div>
-        <div class="issue-title">Sin Meta Description — Google elige el texto por ti (siempre mal)</div>
-        <div class="issue-desc">El meta description es el texto que aparece bajo el nombre de tu web en Google. Sin él, Google coge frases aleatorias de tu página que no convencen a nadie de hacer clic.</div>
+      <div style="flex:1">
+        <div class="issue-title">Sin Meta Description — Google elige el texto por ti</div>
+        <div class="issue-desc">El meta description es el texto bajo el nombre de tu web en Google. Sin él, Google coge frases aleatorias que no convencen a nadie.</div>
         <div class="evidence"><span>&lt;meta name="description"&gt;</span> — No encontrado</div>
-        <div class="issue-fix">→ Impacto en CTR estimado: +35% más clics desde Google · Impacto SEO: +18 puntos</div>
+        <div class="issue-fix">→ Impacto CTR: +35% más clics · +18 puntos SEO</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
-      <div>
-        <div class="issue-title">Imágenes sin texto alternativo (Alt Text) — Google no ve tus fotos</div>
-        <div class="issue-desc">La Vasca tiene fotos de platos, del local y productos, pero ninguna tiene descripción. Google no puede "leer" imágenes, necesita el texto alt. Estas fotos no aportan nada al SEO.</div>
+      <div style="flex:1">
+        <div class="issue-title">Imágenes sin Alt Text — Google no ve tus fotos</div>
+        <div class="issue-desc">12+ imágenes de platos y local sin descripción. Google no puede "leer" imágenes, necesita el texto alt. Estas fotos no aportan nada al SEO.</div>
         <div class="evidence">Imágenes detectadas: 12+ · Alt text presente: <span>0</span></div>
-        <div class="issue-fix">→ Añadir alt descriptivo a cada imagen. Ej: alt="Tabla de jamón ibérico en La Vasca Deli Calle 8 Miami" · Impacto: +10 puntos</div>
+        <div class="issue-fix">→ Añadir: alt="Tabla de jamón ibérico en La Vasca Calle 8 Miami" · +10 puntos</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
-      <div>
-        <div class="issue-title">Estructura de encabezados rota (H1, H2, H3)</div>
-        <div class="issue-desc">Google usa los H1, H2, H3 para entender de qué trata cada sección. La Vasca no tiene una estructura clara — el contenido está sin jerarquía, como un documento sin índice.</div>
+      <div style="flex:1">
+        <div class="issue-title">Estructura H1/H2/H3 rota</div>
+        <div class="issue-desc">Google usa los encabezados para entender de qué trata cada sección. La Vasca no tiene jerarquía clara — el contenido está sin estructura, como un documento sin índice.</div>
         <div class="evidence">H1 detectados: <span>0 correctos</span> · Estructura: desorganizada</div>
-        <div class="issue-fix">→ Crear H1 principal con keyword. Ej: "Restaurante Español en Miami — Auténtica cocina de Calle 8" · Impacto: +12 puntos</div>
+        <div class="issue-fix">→ Crear H1: "Restaurante Español Auténtico en Calle 8 Miami" · +12 puntos</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
-      <div>
-        <div class="issue-title">Menú con solo 4 páginas — contenido insuficiente para posicionar</div>
-        <div class="issue-desc">La web tiene solo: Home, About, Menu, Contact. Google necesita contenido para posicionarte. Sin páginas para cada plato estrella, sin blog, sin página de eventos — la competencia con más contenido aparece antes.</div>
-        <div class="evidence">Páginas indexables: <span>4</span> · Competidores con buena web: 8+ páginas de media</div>
-        <div class="issue-fix">→ Crear páginas: /tapas, /vinos-espanoles, /eventos, /reservas-grupo · Impacto: +240 visitas/mes estimado</div>
+      <div style="flex:1">
+        <div class="issue-title">Solo 4 páginas — contenido insuficiente</div>
+        <div class="issue-desc">La web tiene solo Home, About, Menu, Contact. Sin páginas para platos estrella, sin blog, sin eventos. La competencia con más contenido te supera.</div>
+        <div class="evidence">Páginas indexables: <span>4</span> · Competidores: 8+ páginas de media</div>
+        <div class="issue-fix">→ Crear /tapas, /vinos-espanoles, /eventos, /reservas-grupo · +240 visitas/mes estimadas</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-warn">⚠</div>
-      <div>
-        <div class="issue-title">Sin Google My Business optimizado — invisible en búsquedas locales</div>
-        <div class="issue-desc">La mayoría de clientes buscan "restaurante español cerca" o "restaurante en Calle 8" en Google Maps. Sin GMB activo con fotos, horarios y reseñas, La Vasca no aparece en el mapa.</div>
-        <div class="issue-fix">→ Verificar y optimizar Google My Business · Impacto: Principal fuente de clientes locales</div>
+      <div style="flex:1">
+        <div class="issue-title">Google My Business sin optimizar</div>
+        <div class="issue-desc">La mayoría busca "restaurante español cerca" o "restaurante Calle 8" en Google Maps. Sin GMB activo con fotos, horarios y reseñas, La Vasca no aparece en el mapa.</div>
+        <div class="issue-fix">→ Verificar y optimizar Google My Business · Principal fuente de clientes locales</div>
       </div>
     </div>
   </div>
 
-  <!-- LO QUE SÍ TIENE -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Lo que sí funciona bien</div><div class="sec-score good">2 puntos fuertes</div></div>
-    <div class="issue">
-      <div class="ic ic-ok">✓</div>
-      <div><div class="issue-title">Formulario de contacto activo</div><div class="issue-desc">La web tiene un formulario para mensajes. Está bien posicionado y funciona. Punto a favor.</div></div>
+  <!-- LO QUE FUNCIONA -->
+  <div class="section-card">
+    <div class="section-head">
+      <div class="section-title">Lo que sí funciona bien</div>
+      <div class="section-badge good">2 puntos fuertes</div>
     </div>
     <div class="issue">
       <div class="ic ic-ok">✓</div>
-      <div><div class="issue-title">Redes sociales conectadas</div><div class="issue-desc">Facebook, Twitter e Instagram están enlazados desde el footer. Señal social positiva para Google.</div></div>
+      <div><div class="issue-title">Formulario de contacto activo</div><div class="issue-desc">La web tiene un formulario para mensajes. Bien posicionado y funciona correctamente. Punto a favor.</div></div>
+    </div>
+    <div class="issue">
+      <div class="ic ic-ok">✓</div>
+      <div><div class="issue-title">Redes sociales conectadas</div><div class="issue-desc">Facebook, Twitter e Instagram enlazados desde el footer. Señal social positiva para Google.</div></div>
     </div>
   </div>
 
   <!-- KEYWORDS -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Oportunidades de palabras clave — Miami</div><div class="sec-score warn">Sin posición actual</div></div>
+  <div class="section-card">
+    <div class="section-head">
+      <div class="section-title">Oportunidades de palabras clave — Miami</div>
+      <div class="section-badge warn">6,000+ búsquedas/mes</div>
+    </div>
     <table class="kw-table">
-      <thead><tr><th>Búsqueda en Google</th><th>Volumen/mes</th><th>Dificultad</th><th>Posición actual</th><th>Potencial</th></tr></thead>
+      <thead><tr><th>Keyword</th><th>Volumen/mes</th><th>Dificultad</th><th>Posición actual</th><th>Potencial</th></tr></thead>
       <tbody>
-        <tr><td>restaurante español miami</td><td><div class="vol-bar"><div class="vol-fill" style="width:90%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">3,600/mes</div></td><td style="color:var(--yellow);font-family:monospace;font-size:12px">MEDIA</td><td style="color:var(--red);font-family:monospace">No posiciona</td><td style="color:var(--green);font-family:monospace;font-size:12px">ALTO</td></tr>
-        <tr><td>restaurante calle 8 miami</td><td><div class="vol-bar"><div class="vol-fill" style="width:65%;background:var(--orange)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">1,200/mes</div></td><td style="color:var(--green);font-family:monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:monospace">No posiciona</td><td style="color:var(--green);font-family:monospace;font-size:12px">MUY ALTO</td></tr>
-        <tr><td>tapas miami little havana</td><td><div class="vol-bar"><div class="vol-fill" style="width:45%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">720/mes</div></td><td style="color:var(--green);font-family:monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:monospace">No posiciona</td><td style="color:var(--green);font-family:monospace;font-size:12px">ALTO</td></tr>
-        <tr><td>jamon iberico miami</td><td><div class="vol-bar"><div class="vol-fill" style="width:35%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--muted);margin-top:2px">480/mes</div></td><td style="color:var(--green);font-family:monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:monospace">No posiciona</td><td style="color:var(--green);font-family:monospace;font-size:12px">ALTO</td></tr>
+        <tr><td><strong>restaurante español miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:90%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">3,600/mes</div></td><td style="color:var(--yellow);font-family:'JetBrains Mono',monospace;font-size:12px">MEDIA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">ALTO</td></tr>
+        <tr><td><strong>restaurante calle 8 miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:65%;background:var(--orange)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">1,200/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">MUY ALTO</td></tr>
+        <tr><td><strong>tapas miami little havana</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:45%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">720/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">ALTO</td></tr>
+        <tr><td><strong>jamon iberico miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:35%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">480/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">ALTO</td></tr>
       </tbody>
     </table>
-    <div style="margin-top:16px;background:rgba(232,116,74,.04);border:1px solid rgba(232,116,74,.15);border-radius:10px;padding:14px;font-size:13px;color:#aaa;line-height:1.7">
-      <strong style="color:var(--orange)">Oportunidad:</strong> Estas 4 keywords tienen <strong>6,000+ búsquedas mensuales</strong> en Miami y dificultad baja-media. Con las correcciones de esta auditoría, La Vasca podría aparecer en primera página en 6-8 semanas y atraer <strong>200-400 visitas nuevas al mes</strong> sin pagar publicidad.
+    <div style="margin-top:20px;background:rgba(249,115,22,0.04);border:1px solid rgba(249,115,22,0.15);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7">
+      <strong style="color:var(--orange)">Oportunidad:</strong> Estas 4 keywords tienen <strong>6,000+ búsquedas mensuales</strong> en Miami con dificultad baja-media. Con las correcciones de esta auditoría, La Vasca podría aparecer en primera página en 6-8 semanas y atraer <strong>200-400 visitas nuevas/mes sin pagar publicidad</strong>.
     </div>
   </div>
 
-  <!-- PLAN -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Plan de acción — ordenado por impacto</div></div>
+  <!-- PLAN DE ACCIÓN -->
+  <div class="section-card">
+    <div class="section-head">
+      <div class="section-title">Plan de acción — ordenado por impacto</div>
+    </div>
     <div class="action-list">
-      <div class="action"><div class="a-num">01</div><div><div class="act-title">Añadir Title Tag y Meta Description</div><div class="act-desc">30 minutos de trabajo. Cambio inmediato visible en Google en 48-72 horas.</div><div class="impact imp-h">IMPACTO ALTO · Esta semana</div></div></div>
-      <div class="action"><div class="a-num">02</div><div><div class="act-title">Alt text en las 12+ imágenes del sitio</div><div class="act-desc">Describir cada foto con keywords locales. Google indexará las imágenes en búsquedas de imágenes de Miami.</div><div class="impact imp-h">IMPACTO ALTO · Esta semana</div></div></div>
-      <div class="action"><div class="a-num">03</div><div><div class="act-title">Optimizar y activar Google My Business</div><div class="act-desc">Verificar el negocio, añadir horarios, fotos de calidad y responder a reseñas. Principal fuente de nuevos clientes locales.</div><div class="impact imp-h">IMPACTO ALTO · Semana 1-2</div></div></div>
-      <div class="action"><div class="a-num">04</div><div><div class="act-title">Crear página dedicada para tapas y vinos españoles</div><div class="act-desc">Una página por producto estrella con texto optimizado. Estimado: +180 visitas/mes desde Google en 8 semanas.</div><div class="impact imp-m">IMPACTO MEDIO · Mes 1-2</div></div></div>
+      <div class="action">
+        <div class="action-num">01</div>
+        <div>
+          <div class="action-title">Añadir Title Tag y Meta Description</div>
+          <div class="action-desc">30 minutos de trabajo. Cambio visible en Google en 48-72 horas.</div>
+          <div class="impact imp-h">IMPACTO ALTO · ESTA SEMANA</div>
+        </div>
+      </div>
+      <div class="action">
+        <div class="action-num">02</div>
+        <div>
+          <div class="action-title">Alt text en las 12+ imágenes</div>
+          <div class="action-desc">Describir cada foto con keywords locales. Google indexará las imágenes en búsquedas de Miami.</div>
+          <div class="impact imp-h">IMPACTO ALTO · ESTA SEMANA</div>
+        </div>
+      </div>
+      <div class="action">
+        <div class="action-num">03</div>
+        <div>
+          <div class="action-title">Optimizar Google My Business</div>
+          <div class="action-desc">Verificar el negocio, añadir horarios, fotos de calidad y responder a reseñas. Principal fuente de nuevos clientes locales.</div>
+          <div class="impact imp-h">IMPACTO ALTO · SEMANA 1-2</div>
+        </div>
+      </div>
+      <div class="action">
+        <div class="action-num">04</div>
+        <div>
+          <div class="action-title">Crear página dedicada para tapas y vinos</div>
+          <div class="action-desc">Una página por producto estrella con texto optimizado. Estimado: +180 visitas/mes en 8 semanas.</div>
+          <div class="impact imp-m">IMPACTO MEDIO · MES 1-2</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="footer-badge">
-    <div style="font-size:13px;color:var(--muted)">Auditoría SEO real realizada por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-004 · Desde $200 · Entrega en 48h · <a href="mailto:kodaraservi@gmail.com" style="color:var(--orange)">kodaraservi@gmail.com</a></div>
-    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  <!-- CTA FINAL -->
+  <div class="cta-final">
+    <h2>¿Tu web también <span style="background:linear-gradient(135deg,var(--orange),#EC4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">pierde clientes</span> en Google?</h2>
+    <p>Te entregamos una auditoría SEO real como esta en <strong style="color:var(--text)">menos de 48 horas</strong>. Sin compromiso, sin letra pequeña.</p>
+    <a href="https://kodarase.com" class="cta-btn">Solicitar mi auditoría →</a>
   </div>
 
 </div>
+
+<footer class="demo-footer">
+  Auditoría SEO real generada por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-004 · Desde $200 · Entrega 48h · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+</footer>
+
 </body>
 </html>
