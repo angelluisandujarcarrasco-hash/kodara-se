@@ -644,6 +644,25 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   font-size: 14px; color: var(--text-2); line-height: 1.6;
 }
 .svc-modal-list li svg { flex-shrink: 0; margin-top: 3px; color: var(--green); }
+.svc-modal-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.svc-modal-step { display: flex; gap: 14px; align-items: flex-start; }
+.svc-modal-step-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+  color: var(--orange); background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.2); border-radius: 8px;
+  padding: 5px 10px; flex-shrink: 0; margin-top: 1px;
+}
+.svc-modal-step-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.svc-modal-step-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; }
+.svc-modal-needs { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.svc-modal-needs li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-2); line-height: 1.6; }
+.needs-num {
+  width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
+  background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--orange);
+  flex-shrink: 0; margin-top: 1px; font-weight: 700;
+}
 .svc-modal-foot {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px; flex-wrap: wrap; margin-top: 16px;
@@ -1239,6 +1258,10 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <p class="svc-modal-pitch" id="svcModalPitch"></p>
       <div class="svc-modal-section-label">// QUÉ INCLUYE</div>
       <ul class="svc-modal-list" id="svcModalList"></ul>
+      <div class="svc-modal-section-label">// CÓMO FUNCIONA</div>
+      <div class="svc-modal-steps" id="svcModalSteps"></div>
+      <div class="svc-modal-section-label">// QUÉ NECESITAMOS DE TI</div>
+      <ul class="svc-modal-needs" id="svcModalNeeds"></ul>
       <div class="svc-modal-foot">
         <div>
           <div class="svc-modal-price-lbl">Inversión</div>
@@ -1473,15 +1496,132 @@ function handleSubmit(e) {
 
 /* ====== SERVICE DATA ====== */
 const SERVICES = {
-  web: { tag:'KSE-001', name:'Diseño Web Premium', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073709_1d7c53e2-f320-40c4-bd29-2167dd86833e.png', icon:'🌐', price:'$900 – $2,000', priceShort:'$900–2K', pitch:'Web profesional diseñada a medida con animaciones GSAP, optimizada para convertir visitas en clientes. Compatible con Shopify y cualquier plataforma. Lista para publicar en 72 horas.', features:['Diseño a medida desde cero, no plantillas','Animaciones GSAP profesionales','Adaptada a móvil (responsive)','Optimizada para SEO y velocidad','Formulario de contacto funcional','Compatible con tu hosting actual','2 rondas de revisiones incluidas','Entrega en 72 horas'], demo:'clinica-norte.html' },
-  instagram: { tag:'KSE-002', name:'Instagram a Web', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073720_f0c22035-d77c-4d73-8be0-007789670bb1.png', icon:'📱', price:'$200 – $1,000', priceShort:'$200–1K', pitch:'Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Sin inventar nada. Entrega en 24-48 horas.', features:['Extraemos tus colores y fotos del perfil','Web con tu identidad visual real, no inventada','Secciones: inicio, servicios, galería, contacto','Formulario de contacto funcional','Enlace a tu Instagram integrado','Totalmente adaptada a móvil','Lista para publicar en 24-48 horas'], demo:'demo-instagram-web.html' },
-  metaads: { tag:'KSE-003', name:'Auditoría Meta Ads', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073740_e7b00a82-3883-4caa-8d72-0ce2a4591d35.png', icon:'📣', price:'$200 – $800', priceShort:'$200–800', pitch:'Detectamos qué anuncios de Facebook e Instagram están perdiendo dinero. Entregamos anuncios reescritos listos para lanzar con mejores conversiones. Entrega en 48 horas.', features:['Análisis completo de campañas activas','Detección de gasto malgastado','Anuncios reescritos por nosotros','Recomendaciones de audiencia y segmentación','Comparativa con competencia','Plan de acción priorizado','Entrega en 48 horas'], demo:'demo-auditoria-meta-ads.html' },
-  seo: { tag:'KSE-004', name:'Auditoría SEO', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073947_470207c8-1e32-46f3-94dd-6056c2d15fff.png', icon:'🔍', price:'$200 – $700', priceShort:'$200–700', pitch:'Analizamos por qué tu web no aparece en Google. Informe visual con puntuación 0-100, correcciones ordenadas por impacto y plan de acción. Entrega en 48 horas.', features:['Puntuación 0-100 de tu web','Análisis de keywords de tu sector','Detección de errores técnicos','Comparativa con competencia local','Plan de acción priorizado por impacto','Estimación de tráfico potencial','Informe visual entregado en 48h'], demo:'demo-auditoria-seo.html' },
-  auto: { tag:'KSE-005', name:'Automatizaciones', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074002_c6652c8c-38a3-44f0-811e-54f0e170066f.png', icon:'⚡', price:'$1,000 – $10,000+', priceShort:'$1K–10K+', pitch:'Automatizamos emails, reportes, seguimiento de clientes y flujos de Shopify con n8n. Todo funciona solo 24/7. Ahorra 3+ horas diarias desde el primer día.', features:['Flujos de email automáticos','Reportes que se generan solos','Seguimiento de clientes 24/7','Conexión entre tus herramientas','Alertas en Slack/WhatsApp','Construido con n8n profesional','Soporte y mantenimiento incluido'], demo:'demo-automatizaciones.html' },
-  negocio: { tag:'KSE-006', name:'Auditoría de Negocio', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074013_fb060d9f-8e20-47ac-b391-2be146e7c3e6.png', icon:'📊', price:'$500 – $3,000', priceShort:'$500–3K', pitch:'Análisis completo de tu negocio digital: web, redes, oferta, precios vs competencia. Informe con puntuación por área, mapa del embudo y plan priorizado. Entrega en 48-72 horas.', features:['Análisis web + redes + oferta + precios','Puntuación por área (0-100)','Mapa visual de tu embudo de ventas','Comparativa con 3+ competidores','Plan de acción 90 días','Quick wins para esta semana','Entrega en 48-72 horas'], demo:'demo-auditoria-negocio.html' },
-  facturas: { tag:'KSE-007', name:'Dashboard de Facturas', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074114_7b893118-7e0f-4678-bd0b-f073141fc089.png', icon:'🧾', price:'$100 – $500', priceShort:'$100–500', pitch:'Subes tus facturas en PDF y en 24 horas tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto. Sin más Excel.', features:['Procesamos tus PDFs automáticamente','Dashboard visual interactivo','Ingresos y gastos por mes','IVA calculado automáticamente','Pie chart de categorías','Tabla de transacciones','Exportable a PDF/Excel','Entrega en 24 horas'], demo:'demo-dashboard-facturas.html' },
-  prospeccion: { tag:'KSE-008', name:'Prospección de Clientes', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074127_e5423e8e-f08e-4c83-b69a-5c850897572b.png', icon:'🎯', price:'$400 – $900', priceShort:'$400–900', pitch:'Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado para cada uno. Listo para enviar.', features:['20+ leads verificados por entrega','Análisis individual de cada negocio','Datos de contacto verificados','Mensaje personalizado por empresa','Puntuación de oportunidad','Lista lista para enviar','CSV y formato HubSpot incluidos'], demo:'demo-prospeccion.html' },
-  chat: { tag:'KSE-009', name:'Chat IA para Web', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074147_849b5757-f209-42ea-adf3-48c45402e294.png', icon:'🤖', price:'$150 – $350', priceShort:'$150–350', pitch:'Chatbot de IA en tu web que responde preguntas de clientes 24/7 y captura leads automáticamente mientras duermes.', features:['Responde 24/7 sin que estés presente','Aprende de tu web y servicios','Captura leads con email automático','Te avisa por email cuando hay cliente','Integración con WhatsApp opcional','Diseño personalizado a tu marca','Instalación en menos de 24h'], demo:'demo-chat-ia.html' }
+  web: {
+    tag:'KSE-001', name:'Diseño Web Premium', icon:'🌐',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073709_1d7c53e2-f320-40c4-bd29-2167dd86833e.png',
+    price:'$900 – $2,000', priceShort:'$900–2K',
+    pitch:'Web profesional diseñada a medida con animaciones GSAP, optimizada para convertir visitas en clientes. Compatible con Shopify y cualquier plataforma. Lista para publicar en 72 horas.',
+    features:['Diseño 100% a medida desde cero, no plantillas','Animaciones GSAP profesionales','Adaptada a móvil (responsive)','Optimizada para SEO y velocidad de carga','Formulario de contacto funcional','Compatible con cualquier hosting','Hasta 5 páginas (inicio, servicios, sobre, contacto, etc.)','2 rondas de revisiones incluidas','Soporte 30 días post-entrega'],
+    process:[
+      {n:'01', t:'Briefing en 30 minutos', d:'Llamada o cuestionario para entender tu negocio, objetivos y referencias visuales.'},
+      {n:'02', t:'Diseño y desarrollo (48-60h)', d:'Diseñamos y programamos. Ves avances en tiempo real para que ajustes lo que quieras.'},
+      {n:'03', t:'Entrega y publicación (72h)', d:'Te entregamos el archivo final o lo publicamos directamente en tu dominio.'}
+    ],
+    needs:['Logo de tu negocio (si tienes)','3-5 fotos reales del negocio o stock que te gusten','Textos de tus servicios o productos','Acceso al dominio (si quieres que lo publiquemos)'],
+    demo:'clinica-norte.html'
+  },
+  instagram: {
+    tag:'KSE-002', name:'Instagram a Web', icon:'📱',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073720_f0c22035-d77c-4d73-8be0-007789670bb1.png',
+    price:'$200 – $1,000', priceShort:'$200–1K',
+    pitch:'Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Sin inventar nada. Entrega en 24-48 horas.',
+    features:['Extraemos tus colores y fotos del perfil','Web con tu identidad visual real, no inventada','Secciones: inicio, servicios, galería, contacto','Formulario de contacto funcional','Enlace a tu Instagram integrado','Totalmente adaptada a móvil','Lista para publicar en 24-48 horas','Optimizada para SEO local'],
+    process:[
+      {n:'01', t:'Nos das tu @ de Instagram', d:'Solo necesitamos tu nombre de usuario. Analizamos tu perfil y extraemos colores, fotos y bio.'},
+      {n:'02', t:'Construimos la web en 24h', d:'En 24 horas tienes una web completa con todo tu contenido real. Cero inventado.'},
+      {n:'03', t:'Revisas y publicas', d:'Si necesitas ajustes los hacemos. Luego recibes el archivo o lo publicamos donde quieras.'}
+    ],
+    needs:['Tu @ de Instagram público','Lista de tus servicios y precios (si los muestras)','Información de contacto (teléfono, email, dirección)'],
+    demo:'demo-instagram-web.html'
+  },
+  metaads: {
+    tag:'KSE-003', name:'Auditoría Meta Ads', icon:'📣',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073740_e7b00a82-3883-4caa-8d72-0ce2a4591d35.png',
+    price:'$200 – $800', priceShort:'$200–800',
+    pitch:'Detectamos qué anuncios de Facebook e Instagram están perdiendo dinero. Entregamos anuncios reescritos listos para lanzar con mejores conversiones. Entrega en 48 horas.',
+    features:['Análisis completo de campañas activas','Detección de gasto malgastado en € o $','Anuncios reescritos por nosotros (copy + estructura)','Recomendaciones de audiencia y segmentación','Comparativa con competencia del sector','Plan de acción priorizado por impacto','Estimación de ROAS potencial','Informe visual entregado en 48h'],
+    process:[
+      {n:'01', t:'Acceso a tu cuenta de ads', d:'Nos das acceso de solo lectura al Administrador de Anuncios. Cero riesgo para ti.'},
+      {n:'02', t:'Análisis profundo (48h)', d:'Revisamos cada campaña, anuncio y audiencia. Detectamos qué pierde dinero y qué funciona.'},
+      {n:'03', t:'Entrega del informe + anuncios listos', d:'Recibes el informe visual y los anuncios reescritos listos para copiar y pegar.'}
+    ],
+    needs:['Acceso de solo lectura al Administrador de Anuncios (Business Manager)','URL de tu Facebook/Instagram','Tu presupuesto mensual actual aproximado','Tu objetivo principal (ventas, leads, seguidores...)'],
+    demo:'demo-auditoria-meta-ads.html'
+  },
+  seo: {
+    tag:'KSE-004', name:'Auditoría SEO', icon:'🔍',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073947_470207c8-1e32-46f3-94dd-6056c2d15fff.png',
+    price:'$200 – $700', priceShort:'$200–700',
+    pitch:'Analizamos por qué tu web no aparece en Google. Informe visual con puntuación 0-100, correcciones ordenadas por impacto y plan de acción. Entrega en 48 horas.',
+    features:['Puntuación 0-100 de tu web completa','Análisis de keywords de tu sector','Detección de errores técnicos (velocidad, mobile, HTTPS)','Comparativa con 3 competidores locales','Plan de acción priorizado por impacto','Estimación de tráfico potencial','Recomendaciones de contenido a crear','Informe visual entregado en 48h'],
+    process:[
+      {n:'01', t:'Análisis automático de tu web', d:'Solo necesitamos la URL. Lanzamos 50+ comprobaciones técnicas y de contenido.'},
+      {n:'02', t:'Análisis manual de competencia (24h)', d:'Estudiamos qué hace tu competencia mejor que tú y dónde tienes la oportunidad.'},
+      {n:'03', t:'Informe + plan de acción (48h)', d:'Recibes el informe visual con la lista priorizada de cosas a corregir esta semana.'}
+    ],
+    needs:['URL de tu web','Acceso a Google Search Console (si lo tienes — si no, no pasa nada)','Las 3-5 palabras por las que te gustaría aparecer','Tu sector y ubicación geográfica (para SEO local)'],
+    demo:'demo-auditoria-seo.html'
+  },
+  auto: {
+    tag:'KSE-005', name:'Automatizaciones', icon:'⚡',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074002_c6652c8c-38a3-44f0-811e-54f0e170066f.png',
+    price:'$1,000 – $10,000+', priceShort:'$1K–10K+',
+    pitch:'Automatizamos emails, reportes, seguimiento de clientes y flujos de Shopify con n8n. Todo funciona solo 24/7. Ahorra 3+ horas diarias desde el primer día.',
+    features:['Flujos de email automáticos','Reportes que se generan solos cada día/semana','Seguimiento de clientes 24/7','Conexión entre tus herramientas (Shopify, Gmail, HubSpot, etc.)','Alertas en Slack/WhatsApp/Email','Construido con n8n profesional','Panel de control para gestionar flujos','Soporte y mantenimiento 30 días incluidos'],
+    process:[
+      {n:'01', t:'Análisis de procesos', d:'Llamada para identificar qué tareas repetitivas te quitan tiempo cada día.'},
+      {n:'02', t:'Diseño y construcción (3-7 días)', d:'Construimos el flujo en n8n y lo testeamos con casos reales antes de activarlo.'},
+      {n:'03', t:'Activación + formación', d:'Activamos el flujo, te enseñamos cómo monitorizarlo y te dejamos 30 días de soporte.'}
+    ],
+    needs:['Descripción del proceso a automatizar','Acceso a las herramientas que usas (Gmail, Shopify, etc.)','Frecuencia con la que ocurre el proceso','Ejemplos de los datos que entran y salen'],
+    demo:'demo-automatizaciones.html'
+  },
+  negocio: {
+    tag:'KSE-006', name:'Auditoría de Negocio', icon:'📊',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074013_fb060d9f-8e20-47ac-b391-2be146e7c3e6.png',
+    price:'$500 – $3,000', priceShort:'$500–3K',
+    pitch:'Análisis completo de tu negocio digital: web, redes, oferta, precios vs competencia. Informe con puntuación por área, mapa del embudo y plan priorizado. Entrega en 48-72 horas.',
+    features:['Análisis web + redes + oferta + precios','Puntuación por área (0-100)','Mapa visual de tu embudo de ventas','Comparativa con 3+ competidores directos','Análisis de reputación online (reseñas)','Plan de acción 90 días','Quick wins para implementar esta semana','Entrega en 48-72 horas'],
+    process:[
+      {n:'01', t:'Llamada de descubrimiento', d:'30 minutos para entender tu modelo de negocio, objetivos y problemas principales.'},
+      {n:'02', t:'Análisis profundo (48h)', d:'Auditamos web, redes, oferta, precios y comparamos con la competencia.'},
+      {n:'03', t:'Informe + reunión de presentación', d:'Te enviamos el informe y agendamos una llamada de 30 min para explicarte cada conclusión.'}
+    ],
+    needs:['URL de tu web','Tus redes sociales principales','Información de tu oferta y precios','Lista de 2-3 competidores que admires'],
+    demo:'demo-auditoria-negocio.html'
+  },
+  facturas: {
+    tag:'KSE-007', name:'Dashboard de Facturas', icon:'🧾',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074114_7b893118-7e0f-4678-bd0b-f073141fc089.png',
+    price:'$100 – $500', priceShort:'$100–500',
+    pitch:'Subes tus facturas en PDF y en 24 horas tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto. Sin más Excel.',
+    features:['Procesamos tus PDFs automáticamente con OCR','Dashboard visual interactivo en HTML','Ingresos y gastos por mes y trimestre','IVA calculado automáticamente','Pie chart de categorías de gastos','Tabla de últimas transacciones','Exportable a PDF/Excel','Entrega en 24 horas'],
+    process:[
+      {n:'01', t:'Subes las facturas', d:'Comprime tus PDFs en una carpeta o nos los envías por email/Drive.'},
+      {n:'02', t:'Procesamos y creamos el dashboard (24h)', d:'Extraemos datos de cada factura y los organizamos en un dashboard visual.'},
+      {n:'03', t:'Recibes el dashboard', d:'Te entregamos el archivo HTML interactivo + PDF resumen. Actualizable cada mes.'}
+    ],
+    needs:['Carpeta con tus facturas en PDF (mínimo 10)','Tu país (para el IVA correcto)','Si quieres categorías personalizadas o las automáticas'],
+    demo:'demo-dashboard-facturas.html'
+  },
+  prospeccion: {
+    tag:'KSE-008', name:'Prospección de Clientes', icon:'🎯',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074127_e5423e8e-f08e-4c83-b69a-5c850897572b.png',
+    price:'$400 – $900', priceShort:'$400–900',
+    pitch:'Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado para cada uno. Listo para enviar.',
+    features:['20+ leads verificados por entrega','Análisis individual de cada negocio (web, redes, problemas)','Datos de contacto verificados (email, teléfono, decisor)','Mensaje personalizado por empresa','Puntuación de oportunidad (1-100)','Lista lista para enviar','Exportada en CSV y formato HubSpot/Pipedrive','Entrega en 5-7 días'],
+    process:[
+      {n:'01', t:'Definimos tu cliente ideal', d:'Sector, ciudad/país, tamaño del negocio y qué problemas le resuelves.'},
+      {n:'02', t:'Búsqueda y análisis (3-5 días)', d:'Buscamos 50+ negocios, los analizamos uno a uno y filtramos los 20 mejores.'},
+      {n:'03', t:'Entrega + mensajes', d:'Recibes la lista con datos de contacto y mensaje personalizado para cada uno.'}
+    ],
+    needs:['Sector exacto de tus clientes ideales','Ciudad o país objetivo','Qué les vendes (1-2 líneas)','Rango de tamaño de empresa que buscas'],
+    demo:'demo-prospeccion.html'
+  },
+  chat: {
+    tag:'KSE-009', name:'Chat IA para Web', icon:'🤖',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074147_849b5757-f209-42ea-adf3-48c45402e294.png',
+    price:'$150 – $350', priceShort:'$150–350',
+    pitch:'Chatbot de IA en tu web que responde preguntas de clientes 24/7 y captura leads automáticamente mientras duermes.',
+    features:['Responde 24/7 sin que estés presente','Aprende de tu web, servicios y precios','Captura leads con email automático','Te avisa por email cuando hay cliente caliente','Integración con WhatsApp opcional','Diseño personalizado a tu marca','Hasta 1,000 conversaciones/mes','Instalación en menos de 24h'],
+    process:[
+      {n:'01', t:'Entrenamiento con tu info', d:'Nos das tu web y FAQ. Entrenamos el chat con todos tus servicios, precios y horarios.'},
+      {n:'02', t:'Instalación en tu web (24h)', d:'Añadimos el chat a tu web. Probamos con 50 preguntas reales antes de activarlo.'},
+      {n:'03', t:'Activación + soporte', d:'Lo activamos. Recibes panel para ver conversaciones y ajustar respuestas cuando quieras.'}
+    ],
+    needs:['URL de tu web','Tus servicios y precios','Preguntas frecuentes que reciben tus clientes','Email donde quieres recibir las alertas'],
+    demo:'demo-chat-ia.html'
+  }
 };
 
 /* ====== SERVICE MODAL ====== */
@@ -1498,6 +1638,10 @@ function openSvcModal(key) {
   document.getElementById('svcModalPrice').textContent = s.price;
   const list = document.getElementById('svcModalList');
   list.innerHTML = s.features.map(f => `<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span>${f}</span></li>`).join('');
+  const steps = document.getElementById('svcModalSteps');
+  steps.innerHTML = s.process.map(p => `<div class="svc-modal-step"><div class="svc-modal-step-num">${p.n}</div><div><div class="svc-modal-step-title">${p.t}</div><div class="svc-modal-step-desc">${p.d}</div></div></div>`).join('');
+  const needs = document.getElementById('svcModalNeeds');
+  needs.innerHTML = s.needs.map((n, i) => `<li><span class="needs-num">${i+1}</span><span>${n}</span></li>`).join('');
   document.getElementById('svcModalDemo').href = s.demo;
   document.getElementById('svcModal').classList.add('open');
   document.body.style.overflow = 'hidden';
