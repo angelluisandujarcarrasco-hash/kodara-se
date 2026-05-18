@@ -1758,6 +1758,12 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', () => openSvcModal(cardKeys[i]));
     }
   });
+  // Auto-open budget modal from URL parameter (e.g. ?budget=seo)
+  const params = new URLSearchParams(window.location.search);
+  const budgetSvc = params.get('budget');
+  if (budgetSvc && SERVICES[budgetSvc]) {
+    setTimeout(() => openBudget(budgetSvc), 500);
+  }
 });
 </script>
 
