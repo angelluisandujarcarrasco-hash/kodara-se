@@ -579,6 +579,210 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* SERVICE MODAL */
+.svc-card { cursor: pointer; }
+#svcModal {
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(20px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#svcModal.open { opacity: 1; pointer-events: all; }
+.svc-modal-box {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 24px; max-width: 760px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#svcModal.open .svc-modal-box { transform: translateY(0) scale(1); }
+.svc-modal-head {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--card); padding: 28px 36px 20px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; border-bottom: 1px solid var(--border);
+}
+.svc-modal-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--orange); letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 8px;
+}
+.svc-modal-title {
+  font-size: 28px; font-weight: 900; letter-spacing: -0.8px; line-height: 1.1;
+}
+.svc-modal-close {
+  background: var(--card-2); border: 1px solid var(--border);
+  width: 36px; height: 36px; border-radius: 10px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-3); flex-shrink: 0; font-size: 16px;
+  transition: all 0.2s;
+}
+.svc-modal-close:hover { color: var(--text); border-color: var(--text-3); }
+.svc-modal-body { padding: 28px 36px 36px; }
+.svc-modal-img {
+  border-radius: 14px; overflow: hidden; margin-bottom: 24px;
+  border: 1px solid var(--border); aspect-ratio: 4/3; background: var(--bg-2);
+}
+.svc-modal-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.svc-modal-pitch {
+  font-size: 16px; color: var(--text-2); line-height: 1.75;
+  margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border);
+}
+.svc-modal-section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--orange); letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 16px;
+}
+.svc-modal-list {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border);
+}
+.svc-modal-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: var(--text-2); line-height: 1.6;
+}
+.svc-modal-list li svg { flex-shrink: 0; margin-top: 3px; color: var(--green); }
+.svc-modal-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-top: 16px;
+}
+.svc-modal-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px; font-weight: 800;
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.svc-modal-price-lbl { font-size: 11px; color: var(--text-3); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; }
+.svc-modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* BUDGET MODAL */
+#budgetModal {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.94); backdrop-filter: blur(24px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#budgetModal.open { opacity: 1; pointer-events: all; }
+.bud-box {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 24px; max-width: 720px; width: 100%;
+  max-height: 92vh; overflow-y: auto;
+  transform: translateY(24px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#budgetModal.open .bud-box { transform: translateY(0); }
+.bud-head {
+  padding: 28px 32px 0; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 16px;
+}
+.bud-title { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+.bud-sub { font-size: 13px; color: var(--text-2); margin-top: 4px; }
+.bud-progress {
+  padding: 24px 32px 0; display: flex; align-items: center; gap: 8px;
+}
+.bud-step-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bud-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  border: 1.5px solid var(--border); color: var(--text-3); background: var(--bg-2);
+  transition: all 0.3s;
+}
+.bud-dot.done { background: var(--green); border-color: var(--green); color: #000; }
+.bud-dot.active { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 0 0 4px rgba(249,115,22,0.2); }
+.bud-line { flex: 1; height: 2px; background: var(--border); transition: background 0.3s; }
+.bud-line.done { background: var(--green); }
+.bud-step-lbl {
+  font-size: 10px; color: var(--text-3); font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
+}
+.bud-body { padding: 28px 32px 32px; }
+.bud-step { display: none; }
+.bud-step.active { display: block; }
+.bud-step-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.bud-step-desc { font-size: 14px; color: var(--text-2); margin-bottom: 24px; }
+.svc-sel-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.svc-sel-card {
+  background: var(--bg-2); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 14px 12px; cursor: pointer;
+  transition: all 0.25s; text-align: left;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.svc-sel-card:hover { border-color: rgba(249,115,22,0.4); background: var(--bg-3); }
+.svc-sel-card.selected { border-color: var(--orange); background: rgba(249,115,22,0.06); }
+.svc-sel-card.selected .svc-sel-name { color: var(--orange); }
+.svc-sel-icon { font-size: 20px; }
+.svc-sel-name { font-size: 12px; font-weight: 600; line-height: 1.3; }
+.svc-sel-price { font-size: 10px; color: var(--text-3); font-family: 'JetBrains Mono', monospace; }
+.svc-sel-check {
+  position: absolute; top: 10px; right: 10px;
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid var(--border); transition: all 0.25s;
+  display: flex; align-items: center; justify-content: center; font-size: 9px;
+}
+.svc-sel-card { position: relative; }
+.svc-sel-card.selected .svc-sel-check { background: var(--orange); border-color: var(--orange); color: #fff; }
+.bud-fields { display: flex; flex-direction: column; gap: 16px; }
+.bud-group { display: flex; flex-direction: column; gap: 6px; }
+.bud-label { font-size: 12px; font-weight: 600; color: var(--text-2); display: flex; gap: 6px; }
+.bud-req { color: var(--orange); font-size: 11px; }
+.bud-input {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; color: var(--text);
+  font-family: 'Inter', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.2s; width: 100%;
+}
+.bud-input:focus { border-color: var(--orange); }
+.bud-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.svc-info-block { display: none; }
+.svc-info-block.show { display: flex; flex-direction: column; gap: 14px; margin-bottom: 16px; }
+.svc-info-hdr {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px; display: flex; align-items: center;
+  gap: 10px; margin-bottom: 4px;
+}
+.svc-info-name { font-size: 13px; font-weight: 700; color: var(--orange); }
+.extra-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.extra-chip {
+  background: var(--bg-2); border: 1.5px solid var(--border);
+  border-radius: 999px; padding: 7px 14px; font-size: 12px; cursor: pointer;
+  transition: all 0.2s; color: var(--text-3); font-family: 'Inter', sans-serif;
+}
+.extra-chip:hover { color: var(--text-2); border-color: rgba(249,115,22,0.4); }
+.extra-chip.selected { color: var(--orange); border-color: var(--orange); background: rgba(249,115,22,0.06); }
+.bud-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;
+}
+.bud-back {
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-2); padding: 12px 22px; border-radius: 10px;
+  font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.bud-back:hover { border-color: var(--text-3); color: var(--text); }
+.bud-next {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: #fff; border: none; padding: 12px 24px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.3); transition: all 0.25s;
+}
+.bud-next:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(249,115,22,0.5); }
+.bud-next:disabled { opacity: 0.4; cursor: not-allowed; }
+#budSuccess { display: none; text-align: center; padding: 48px 32px; }
+#budSuccess.show { display: block; }
+@media (max-width: 600px) {
+  .svc-sel-grid { grid-template-columns: 1fr 1fr; }
+  .bud-grid2 { grid-template-columns: 1fr; }
+  .svc-modal-head, .svc-modal-body { padding-left: 24px; padding-right: 24px; }
+  .bud-head, .bud-body, .bud-progress { padding-left: 20px; padding-right: 20px; }
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .section { padding: 80px 24px; }
@@ -1020,6 +1224,145 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   </div>
 </section>
 
+<!-- SERVICE MODAL -->
+<div id="svcModal" onclick="if(event.target===this)closeSvcModal()">
+  <div class="svc-modal-box">
+    <div class="svc-modal-head">
+      <div>
+        <div class="svc-modal-tag" id="svcModalTag">KSE-001</div>
+        <div class="svc-modal-title" id="svcModalTitle">Servicio</div>
+      </div>
+      <button class="svc-modal-close" onclick="closeSvcModal()">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <div class="svc-modal-img"><img id="svcModalImg" src="" alt=""></div>
+      <p class="svc-modal-pitch" id="svcModalPitch"></p>
+      <div class="svc-modal-section-label">// QUÉ INCLUYE</div>
+      <ul class="svc-modal-list" id="svcModalList"></ul>
+      <div class="svc-modal-foot">
+        <div>
+          <div class="svc-modal-price-lbl">Inversión</div>
+          <div class="svc-modal-price" id="svcModalPrice">$0</div>
+        </div>
+        <div class="svc-modal-actions">
+          <a id="svcModalDemo" href="#" target="_blank" rel="noopener" class="cta-ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            Ver demo
+          </a>
+          <button class="cta-btn" onclick="closeSvcModal();setTimeout(()=>openBudget(svcModalCurrent),300)">
+            Solicitar presupuesto →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET MODAL -->
+<div id="budgetModal" onclick="if(event.target===this)closeBudget()">
+  <div class="bud-box">
+    <div class="bud-head">
+      <div>
+        <div class="bud-title">Solicitar presupuesto</div>
+        <div class="bud-sub">Te respondemos en menos de 24h con propuesta sin compromiso.</div>
+      </div>
+      <button class="svc-modal-close" onclick="closeBudget()">✕</button>
+    </div>
+    <div class="bud-progress">
+      <div class="bud-step-wrap"><div class="bud-dot active" id="bDot1">1</div><div class="bud-step-lbl">Servicio</div></div>
+      <div class="bud-line" id="bLine1"></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot2">2</div><div class="bud-step-lbl">Detalles</div></div>
+      <div class="bud-line" id="bLine2"></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot3">3</div><div class="bud-step-lbl">Extras</div></div>
+      <div class="bud-line" id="bLine3"></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot4">4</div><div class="bud-step-lbl">Contacto</div></div>
+    </div>
+    <div class="bud-body">
+
+      <div class="bud-step active" id="bStep1">
+        <div class="bud-step-title">¿Qué servicio necesitas?</div>
+        <div class="bud-step-desc">Puedes seleccionar más de uno.</div>
+        <div class="svc-sel-grid" id="svcSelGrid"></div>
+        <div class="bud-foot">
+          <span id="svcCount" style="font-size:12px;color:var(--text-3)">Selecciona al menos 1 servicio</span>
+          <button class="bud-next" id="btnStep1" onclick="bGoStep(2)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="bud-step" id="bStep2">
+        <div class="bud-step-title">Cuéntanos los detalles</div>
+        <div class="bud-step-desc">Esta información nos ayuda a preparar una propuesta exacta.</div>
+        <div id="svcDetailFields"></div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="bGoStep(1)">← Atrás</button>
+          <button class="bud-next" onclick="bGoStep(3)">Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="bud-step" id="bStep3">
+        <div class="bud-step-title">¿Algo más?</div>
+        <div class="bud-step-desc">Marca lo que te interese o escribe abajo.</div>
+        <div class="extra-chips" id="extraChips">
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Versión en inglés</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Integración WhatsApp</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Pago online (Stripe)</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Google Analytics</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Blog / noticias</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Reservas online</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Tienda e-commerce</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')">Mantenimiento mensual</button>
+        </div>
+        <div class="bud-group">
+          <div class="bud-label">¿Algo más que decirnos?</div>
+          <textarea class="bud-input" rows="4" id="extraNotes" placeholder="Detalles extra, referencias de webs que te gusten, plazos..."></textarea>
+        </div>
+        <div class="bud-group" style="margin-top:12px">
+          <div class="bud-label">Presupuesto aproximado</div>
+          <select class="bud-input" id="budgetRange">
+            <option value="">Prefiero recibir propuesta primero</option>
+            <option>Menos de $200</option>
+            <option>$200 – $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>Más de $3,000</option>
+          </select>
+        </div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="bGoStep(2)">← Atrás</button>
+          <button class="bud-next" onclick="bGoStep(4)">Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="bud-step" id="bStep4">
+        <div class="bud-step-title">Tus datos de contacto</div>
+        <div class="bud-step-desc">Para enviarte la propuesta. Nunca compartimos tus datos.</div>
+        <div class="bud-fields">
+          <div class="bud-grid2">
+            <div class="bud-group"><div class="bud-label">Nombre <span class="bud-req">*</span></div><input class="bud-input" type="text" id="conName" placeholder="Tu nombre"></div>
+            <div class="bud-group"><div class="bud-label">Email <span class="bud-req">*</span></div><input class="bud-input" type="email" id="conEmail" placeholder="tu@email.com"></div>
+          </div>
+          <div class="bud-grid2">
+            <div class="bud-group"><div class="bud-label">Teléfono / WhatsApp</div><input class="bud-input" type="tel" id="conPhone" placeholder="+1 786 000 0000"></div>
+            <div class="bud-group"><div class="bud-label">Empresa</div><input class="bud-input" type="text" id="conCompany" placeholder="Opcional"></div>
+          </div>
+        </div>
+        <div class="bud-foot">
+          <button class="bud-back" onclick="bGoStep(3)">← Atrás</button>
+          <button class="bud-next" onclick="bSubmit()">Enviar solicitud →</button>
+        </div>
+      </div>
+
+      <div id="budSuccess">
+        <div style="width:64px;height:64px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--green);font-size:24px">✓</div>
+        <div style="font-size:22px;font-weight:900;margin-bottom:10px">¡Solicitud enviada!</div>
+        <div style="font-size:14px;color:var(--text-2);max-width:380px;margin:0 auto 28px;line-height:1.7">Te respondemos en menos de 24h con una propuesta personalizada a kodaraservi@gmail.com</div>
+        <button onclick="closeBudget()" class="cta-btn">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -1127,6 +1470,151 @@ function handleSubmit(e) {
   const body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\nServicio: ' + svc + '\n\nMensaje:\n' + msg);
   window.location.href = 'mailto:kodaraservi@gmail.com?subject=' + subject + '&body=' + body;
 }
+
+/* ====== SERVICE DATA ====== */
+const SERVICES = {
+  web: { tag:'KSE-001', name:'Diseño Web Premium', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073709_1d7c53e2-f320-40c4-bd29-2167dd86833e.png', icon:'🌐', price:'$900 – $2,000', priceShort:'$900–2K', pitch:'Web profesional diseñada a medida con animaciones GSAP, optimizada para convertir visitas en clientes. Compatible con Shopify y cualquier plataforma. Lista para publicar en 72 horas.', features:['Diseño a medida desde cero, no plantillas','Animaciones GSAP profesionales','Adaptada a móvil (responsive)','Optimizada para SEO y velocidad','Formulario de contacto funcional','Compatible con tu hosting actual','2 rondas de revisiones incluidas','Entrega en 72 horas'], demo:'clinica-norte.html' },
+  instagram: { tag:'KSE-002', name:'Instagram a Web', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073720_f0c22035-d77c-4d73-8be0-007789670bb1.png', icon:'📱', price:'$200 – $1,000', priceShort:'$200–1K', pitch:'Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Sin inventar nada. Entrega en 24-48 horas.', features:['Extraemos tus colores y fotos del perfil','Web con tu identidad visual real, no inventada','Secciones: inicio, servicios, galería, contacto','Formulario de contacto funcional','Enlace a tu Instagram integrado','Totalmente adaptada a móvil','Lista para publicar en 24-48 horas'], demo:'demo-instagram-web.html' },
+  metaads: { tag:'KSE-003', name:'Auditoría Meta Ads', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073740_e7b00a82-3883-4caa-8d72-0ce2a4591d35.png', icon:'📣', price:'$200 – $800', priceShort:'$200–800', pitch:'Detectamos qué anuncios de Facebook e Instagram están perdiendo dinero. Entregamos anuncios reescritos listos para lanzar con mejores conversiones. Entrega en 48 horas.', features:['Análisis completo de campañas activas','Detección de gasto malgastado','Anuncios reescritos por nosotros','Recomendaciones de audiencia y segmentación','Comparativa con competencia','Plan de acción priorizado','Entrega en 48 horas'], demo:'demo-auditoria-meta-ads.html' },
+  seo: { tag:'KSE-004', name:'Auditoría SEO', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073947_470207c8-1e32-46f3-94dd-6056c2d15fff.png', icon:'🔍', price:'$200 – $700', priceShort:'$200–700', pitch:'Analizamos por qué tu web no aparece en Google. Informe visual con puntuación 0-100, correcciones ordenadas por impacto y plan de acción. Entrega en 48 horas.', features:['Puntuación 0-100 de tu web','Análisis de keywords de tu sector','Detección de errores técnicos','Comparativa con competencia local','Plan de acción priorizado por impacto','Estimación de tráfico potencial','Informe visual entregado en 48h'], demo:'demo-auditoria-seo.html' },
+  auto: { tag:'KSE-005', name:'Automatizaciones', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074002_c6652c8c-38a3-44f0-811e-54f0e170066f.png', icon:'⚡', price:'$1,000 – $10,000+', priceShort:'$1K–10K+', pitch:'Automatizamos emails, reportes, seguimiento de clientes y flujos de Shopify con n8n. Todo funciona solo 24/7. Ahorra 3+ horas diarias desde el primer día.', features:['Flujos de email automáticos','Reportes que se generan solos','Seguimiento de clientes 24/7','Conexión entre tus herramientas','Alertas en Slack/WhatsApp','Construido con n8n profesional','Soporte y mantenimiento incluido'], demo:'demo-automatizaciones.html' },
+  negocio: { tag:'KSE-006', name:'Auditoría de Negocio', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074013_fb060d9f-8e20-47ac-b391-2be146e7c3e6.png', icon:'📊', price:'$500 – $3,000', priceShort:'$500–3K', pitch:'Análisis completo de tu negocio digital: web, redes, oferta, precios vs competencia. Informe con puntuación por área, mapa del embudo y plan priorizado. Entrega en 48-72 horas.', features:['Análisis web + redes + oferta + precios','Puntuación por área (0-100)','Mapa visual de tu embudo de ventas','Comparativa con 3+ competidores','Plan de acción 90 días','Quick wins para esta semana','Entrega en 48-72 horas'], demo:'demo-auditoria-negocio.html' },
+  facturas: { tag:'KSE-007', name:'Dashboard de Facturas', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074114_7b893118-7e0f-4678-bd0b-f073141fc089.png', icon:'🧾', price:'$100 – $500', priceShort:'$100–500', pitch:'Subes tus facturas en PDF y en 24 horas tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto. Sin más Excel.', features:['Procesamos tus PDFs automáticamente','Dashboard visual interactivo','Ingresos y gastos por mes','IVA calculado automáticamente','Pie chart de categorías','Tabla de transacciones','Exportable a PDF/Excel','Entrega en 24 horas'], demo:'demo-dashboard-facturas.html' },
+  prospeccion: { tag:'KSE-008', name:'Prospección de Clientes', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074127_e5423e8e-f08e-4c83-b69a-5c850897572b.png', icon:'🎯', price:'$400 – $900', priceShort:'$400–900', pitch:'Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado para cada uno. Listo para enviar.', features:['20+ leads verificados por entrega','Análisis individual de cada negocio','Datos de contacto verificados','Mensaje personalizado por empresa','Puntuación de oportunidad','Lista lista para enviar','CSV y formato HubSpot incluidos'], demo:'demo-prospeccion.html' },
+  chat: { tag:'KSE-009', name:'Chat IA para Web', img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074147_849b5757-f209-42ea-adf3-48c45402e294.png', icon:'🤖', price:'$150 – $350', priceShort:'$150–350', pitch:'Chatbot de IA en tu web que responde preguntas de clientes 24/7 y captura leads automáticamente mientras duermes.', features:['Responde 24/7 sin que estés presente','Aprende de tu web y servicios','Captura leads con email automático','Te avisa por email cuando hay cliente','Integración con WhatsApp opcional','Diseño personalizado a tu marca','Instalación en menos de 24h'], demo:'demo-chat-ia.html' }
+};
+
+/* ====== SERVICE MODAL ====== */
+let svcModalCurrent = null;
+function openSvcModal(key) {
+  const s = SERVICES[key];
+  if (!s) return;
+  svcModalCurrent = key;
+  document.getElementById('svcModalTag').textContent = s.tag;
+  document.getElementById('svcModalTitle').textContent = s.name;
+  document.getElementById('svcModalImg').src = s.img;
+  document.getElementById('svcModalImg').alt = s.name;
+  document.getElementById('svcModalPitch').textContent = s.pitch;
+  document.getElementById('svcModalPrice').textContent = s.price;
+  const list = document.getElementById('svcModalList');
+  list.innerHTML = s.features.map(f => `<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span>${f}</span></li>`).join('');
+  document.getElementById('svcModalDemo').href = s.demo;
+  document.getElementById('svcModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSvcModal() {
+  document.getElementById('svcModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ====== BUDGET MODAL ====== */
+let bSelected = [];
+let bStep = 1;
+function buildSvcSelGrid() {
+  const grid = document.getElementById('svcSelGrid');
+  grid.innerHTML = Object.entries(SERVICES).map(([k, s]) => `
+    <button class="svc-sel-card" data-key="${k}" onclick="toggleBudSvc(this)">
+      <div class="svc-sel-check">✓</div>
+      <div class="svc-sel-icon">${s.icon}</div>
+      <div class="svc-sel-name">${s.name}</div>
+      <div class="svc-sel-price">${s.priceShort}</div>
+    </button>
+  `).join('');
+}
+function toggleBudSvc(btn) {
+  const k = btn.dataset.key;
+  btn.classList.toggle('selected');
+  if (bSelected.includes(k)) { bSelected = bSelected.filter(x => x !== k); }
+  else { bSelected.push(k); }
+  const n = bSelected.length;
+  document.getElementById('svcCount').textContent = n === 0 ? 'Selecciona al menos 1 servicio' : `${n} servicio${n>1?'s':''} seleccionado${n>1?'s':''}`;
+  document.getElementById('btnStep1').disabled = n === 0;
+}
+function openBudget(preselectKey) {
+  if (bStep !== 1) bGoStep(1);
+  if (preselectKey && SERVICES[preselectKey]) {
+    // Reset selections
+    document.querySelectorAll('.svc-sel-card').forEach(c => c.classList.remove('selected'));
+    bSelected = [];
+    // Select the preselected service
+    const btn = document.querySelector(`.svc-sel-card[data-key="${preselectKey}"]`);
+    if (btn) toggleBudSvc(btn);
+  }
+  document.getElementById('budgetModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBudget() {
+  document.getElementById('budgetModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function bGoStep(n) {
+  document.getElementById('bStep' + bStep).classList.remove('active');
+  if (n === 2) buildBudStep2();
+  document.getElementById('bStep' + n).classList.add('active');
+  bStep = n;
+  for (let i = 1; i <= 4; i++) {
+    const d = document.getElementById('bDot' + i);
+    d.classList.remove('active', 'done');
+    if (i < n) d.classList.add('done');
+    else if (i === n) d.classList.add('active');
+  }
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById('bLine' + i).classList.toggle('done', i < n);
+  }
+}
+function buildBudStep2() {
+  const wrap = document.getElementById('svcDetailFields');
+  wrap.innerHTML = bSelected.map(k => {
+    const s = SERVICES[k];
+    return `<div class="svc-info-block show">
+      <div class="svc-info-hdr"><span style="font-size:18px">${s.icon}</span><div class="svc-info-name">${s.name}</div></div>
+      <div class="bud-group"><div class="bud-label">URL o info actual del negocio</div><input class="bud-input" type="text" id="d-${k}-url" placeholder="URL de tu web o tu @Instagram"></div>
+      <div class="bud-group"><div class="bud-label">¿Qué quieres conseguir con este servicio?</div><textarea class="bud-input" rows="3" id="d-${k}-goal" placeholder="Cuéntanos brevemente tu objetivo..."></textarea></div>
+    </div>`;
+  }).join('');
+}
+function bSubmit() {
+  const name = document.getElementById('conName').value.trim();
+  const email = document.getElementById('conEmail').value.trim();
+  if (!name || !email) { alert('Por favor completa nombre y email.'); return; }
+  const phone = document.getElementById('conPhone').value;
+  const company = document.getElementById('conCompany').value;
+  const notes = document.getElementById('extraNotes').value;
+  const budget = document.getElementById('budgetRange').value;
+  const extras = [...document.querySelectorAll('.extra-chip.selected')].map(c => c.textContent).join(', ');
+  let details = '';
+  bSelected.forEach(k => {
+    const s = SERVICES[k];
+    const url = document.getElementById('d-' + k + '-url')?.value || '';
+    const goal = document.getElementById('d-' + k + '-goal')?.value || '';
+    details += `\n— ${s.name} (${s.tag}) —\nURL/Info: ${url || 'no indicado'}\nObjetivo: ${goal || 'no indicado'}\n`;
+  });
+  const svcs = bSelected.map(k => SERVICES[k].name).join(', ');
+  const subject = encodeURIComponent('Solicitud Kodara — ' + name + ' — ' + svcs);
+  const body = encodeURIComponent(
+    '=== SOLICITUD KODARA SE ===\n\nCLIENTE: ' + name + '\nEMAIL: ' + email + '\nTELÉFONO: ' + (phone||'No indicado') + '\nEMPRESA: ' + (company||'No indicado') +
+    '\n\nSERVICIOS: ' + svcs +
+    '\n\n=== DETALLES ===' + details +
+    '\n=== EXTRAS ===\n' + (extras || 'Ninguno') +
+    '\n\nPRESUPUESTO: ' + (budget || 'Sin especificar') +
+    '\n\nNOTAS:\n' + (notes || 'Sin notas')
+  );
+  window.location.href = 'mailto:kodaraservi@gmail.com?subject=' + subject + '&body=' + body;
+  document.getElementById('bStep4').style.display = 'none';
+  document.getElementById('budSuccess').classList.add('show');
+}
+
+/* ====== INIT ====== */
+document.addEventListener('DOMContentLoaded', () => {
+  buildSvcSelGrid();
+  // Map service cards to service keys
+  const cardKeys = ['web','instagram','metaads','seo','auto','negocio','facturas','prospeccion','chat'];
+  document.querySelectorAll('.services-grid .svc-card').forEach((card, i) => {
+    if (cardKeys[i]) {
+      card.addEventListener('click', () => openSvcModal(cardKeys[i]));
+    }
+  });
+});
 </script>
 
 </body>
