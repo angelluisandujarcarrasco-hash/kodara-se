@@ -373,13 +373,15 @@ nav.scrolled {
 .svc-7 { grid-column: span 6; --accent: var(--cyan); --accent-bg: rgba(6,182,212,0.1); }
 .svc-8 { grid-column: span 6; --accent: var(--pink); --accent-bg: rgba(236,72,153,0.1); }
 .svc-9 { grid-column: span 6; --accent: var(--orange); --accent-bg: rgba(249,115,22,0.1); }
+.svc-10 { grid-column: span 12; --accent: var(--pink); --accent-bg: rgba(236,72,153,0.1); background: linear-gradient(135deg, var(--card), rgba(236,72,153,0.05)); }
+.svc-10::after { content: 'NUEVO'; position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, var(--pink), var(--orange)); color: #fff; font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 10px; border-radius: 999px; letter-spacing: 1px; z-index: 2; box-shadow: 0 4px 16px rgba(236,72,153,0.4); }
 @media (max-width: 960px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9 { grid-column: span 1; }
+  .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9, .svc-10 { grid-column: span 1; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
-  .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9 { grid-column: span 1; }
+  .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9, .svc-10 { grid-column: span 1; }
 }
 
 /* PROCESS */
@@ -1017,6 +1019,17 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         </div>
       </article>
 
+      <article class="svc-card svc-10 reveal">
+        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_113236_6e859e54-d51c-48fd-888a-ae9848a98b5a.png" alt="Marketing Digital"></div>
+        <span class="svc-tag" style="background:rgba(236,72,153,0.1);color:#EC4899">KSE-010 · NUEVO</span>
+        <h3 data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</h3>
+        <p data-es="Marketing completo en Instagram, TikTok, YouTube y Facebook con videos generados por IA. Para que el mundo conozca tu negocio." data-en="Complete marketing on Instagram, TikTok, YouTube and Facebook with AI-generated videos. So the world knows your business.">Marketing completo en Instagram, TikTok, YouTube y Facebook con videos generados por IA. Para que el mundo conozca tu negocio.</p>
+        <div class="svc-meta">
+          <span class="svc-price">$500 — $3K/mes</span>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1621,6 +1634,20 @@ const SERVICES = {
     ],
     needs:['URL de tu web','Tus servicios y precios','Preguntas frecuentes que reciben tus clientes','Email donde quieres recibir las alertas'],
     demo:'demo-chat-ia.html'
+  },
+  marketing: {
+    tag:'KSE-010', name:'Marketing Digital', icon:'📣',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_113236_6e859e54-d51c-48fd-888a-ae9848a98b5a.png',
+    price:'$500 – $3,000/mes', priceShort:'$500–3K/mes',
+    pitch:'Marketing digital completo en 4 plataformas (Instagram, TikTok, YouTube, Facebook) con videos generados por IA. Estrategia, contenido y métricas. Para negocios que quieren crecer en serio en redes.',
+    features:['Estrategia personalizada a 90 días','Videos cinematográficos con IA Higgsfield','36 piezas de contenido/mes en 4 plataformas','Copywriting profesional por plataforma','Reporte mensual con métricas y ROI','Meta Ads opcional integrado','Calendario editorial coordinado','Soporte directo sin intermediarios'],
+    process:[
+      {n:'01', t:'Análisis y estrategia', d:'Estudio de tu negocio, sector y competencia. Plan de contenido 90 días con KPIs claros.'},
+      {n:'02', t:'Producción mensual', d:'Creamos 36 piezas: videos IA con Higgsfield, posts, Reels, Stories, copy optimizado.'},
+      {n:'03', t:'Publicación + reportes', d:'Publicamos coordinado en las 4 plataformas. Reporte mensual con resultados y optimizaciones.'}
+    ],
+    needs:['Tu sector y mercado objetivo','Tus redes sociales actuales (si las tienes)','Logo y guía de marca (si tienes)','Presupuesto mensual de Meta Ads (opcional)'],
+    demo:'demo-marketing.html'
   }
 };
 
@@ -1752,7 +1779,7 @@ function bSubmit() {
 document.addEventListener('DOMContentLoaded', () => {
   buildSvcSelGrid();
   // Map service cards to service keys
-  const cardKeys = ['web','instagram','metaads','seo','auto','negocio','facturas','prospeccion','chat'];
+  const cardKeys = ['web','instagram','metaads','seo','auto','negocio','facturas','prospeccion','chat','marketing'];
   document.querySelectorAll('.services-grid .svc-card').forEach((card, i) => {
     if (cardKeys[i]) {
       card.addEventListener('click', () => openSvcModal(cardKeys[i]));
