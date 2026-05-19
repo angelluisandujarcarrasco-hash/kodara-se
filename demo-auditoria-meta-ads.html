@@ -3,166 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auditoría Meta Ads — Demo Kodara SE</title>
+<title>Auditoría Meta Ads Premium — Tienda Moda Élite · Kodara SE</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--green:#10B981;--red:#EF4444;--yellow:#F59E0B;--blue:#3B82F6;--purple:#7C3AED;--pink:#EC4899}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222;--blue:#4F8EF7}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
-.header{background:var(--card);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
-.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
-.h-badge{background:rgba(232,116,74,.1);border:1px solid rgba(232,116,74,.25);color:var(--orange);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
-.container{max-width:960px;margin:0 auto;padding:40px 24px}
-/* ALERT BOX */
-.alert-box{background:rgba(255,77,77,.06);border:1px solid rgba(255,77,77,.2);border-radius:14px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:28px}
-.alert-icon{font-size:24px;flex-shrink:0}
-.alert-title{font-size:15px;font-weight:700;color:var(--red);margin-bottom:4px}
-.alert-desc{font-size:13px;color:#aaa;line-height:1.6}
-/* KPI GRID */
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
-.kpi-lbl{font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-.kpi-val{font-size:26px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
-.kpi-sub{font-size:11px;color:var(--muted)}
-/* CAMPAÑAS */
-.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
-.sec-title{font-size:16px;font-weight:700;margin-bottom:20px}
-.camp-row{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
-.camp-row:last-child{border-bottom:none;padding-bottom:0}
-.camp-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.camp-name{flex:1;font-size:14px;font-weight:500}
-.camp-meta{font-size:11px;color:var(--muted);margin-top:2px}
-.camp-stat{text-align:center;min-width:70px}
-.camp-stat-val{font-family:monospace;font-size:14px;font-weight:700}
-.camp-stat-lbl{font-size:10px;color:var(--muted)}
-.verdict{font-size:10px;font-family:monospace;font-weight:700;padding:4px 12px;border-radius:20px}
-.v-stop{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
-.v-keep{background:rgba(61,255,143,.1);color:var(--green);border:1px solid rgba(61,255,143,.2)}
-.v-fix{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
-/* ANTES/DESPUÉS */
-.before-after{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-.ba-card{border-radius:14px;padding:22px}
-.ba-before{background:rgba(255,77,77,.04);border:1px solid rgba(255,77,77,.15)}
-.ba-after{background:rgba(61,255,143,.04);border:1px solid rgba(61,255,143,.15)}
-.ba-label{font-size:10px;font-family:monospace;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;font-weight:700}
-.ba-ad{background:var(--card2);border-radius:8px;padding:14px}
-.ba-ad-title{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4}
-.ba-ad-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px}
-.ba-ad-cta{display:inline-block;font-size:11px;font-family:monospace;font-weight:700;padding:5px 14px;border-radius:4px;margin-top:4px}
-.cta-bad{background:rgba(255,77,77,.15);color:var(--red)}
-.cta-good{background:rgba(61,255,143,.15);color:var(--green)}
-.ba-metrics{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
-.ba-m{text-align:center}
-.ba-m-val{font-family:monospace;font-size:15px;font-weight:700}
-.ba-m-lbl{font-size:10px;color:var(--muted)}
-/* SAVINGS BOX */
-.savings{background:linear-gradient(135deg,rgba(61,255,143,.06),rgba(232,116,74,.06));border:1px solid rgba(61,255,143,.2);border-radius:16px;padding:28px;display:flex;align-items:center;gap:32px;margin-bottom:20px}
-.sav-big{font-size:48px;font-weight:700;font-family:monospace;color:var(--green);line-height:1}
-.sav-desc{font-size:16px;font-weight:600;margin-bottom:6px}
-.sav-sub{font-size:13px;color:var(--muted);line-height:1.6}
-/* FOOTER */
-.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.live-badge{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:var(--green);font-size:11px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;gap:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-banner{position:relative;height:50vh;min-height:420px;max-height:560px;overflow:hidden;background:var(--bg-2)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(6,11,24,0.4) 60%,var(--bg) 100%);pointer-events:none}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:1px;margin-bottom:16px;width:fit-content}
+.hero-title{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px;max-width:900px}
+.hero-title .grad{background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{display:flex;gap:24px;font-size:13px;color:var(--text-2);font-family:'JetBrains Mono',monospace;flex-wrap:wrap}
+.container{max-width:1200px;margin:0 auto;padding:48px 32px}
+.alert-box{background:linear-gradient(135deg,rgba(239,68,68,0.06),rgba(249,115,22,0.04));border:1px solid rgba(239,68,68,0.2);border-radius:20px;padding:28px 32px;display:flex;gap:20px;align-items:center;margin-bottom:32px}
+.alert-icon{font-size:40px;flex-shrink:0}
+.alert-title{font-size:22px;font-weight:900;color:var(--red);margin-bottom:6px;letter-spacing:-0.3px}
+.alert-desc{font-size:14px;color:var(--text-2);line-height:1.7}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center}
+.kpi-icon{font-size:24px;margin-bottom:12px}
+.kpi-val{font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:6px}
+.kpi-lbl{font-size:11px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.kpi-sub{font-size:11px;color:var(--text-3);margin-top:6px}
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.section-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;display:flex;align-items:center;gap:12px}
+.section-icon{width:36px;height:36px;border-radius:10px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;font-size:18px}
+.section-sub{font-size:13px;color:var(--text-3);margin-top:4px}
+.section-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:5px 14px;border-radius:999px}
+.bad{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.warn{background:rgba(245,158,11,0.1);color:var(--yellow);border:1px solid rgba(245,158,11,0.2)}
+.good{background:rgba(16,185,129,0.1);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.camp-row{display:grid;grid-template-columns:auto 1fr repeat(4,80px) auto;gap:16px;align-items:center;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;transition:all 0.25s}
+.camp-row:hover{border-color:rgba(249,115,22,0.3);transform:translateX(4px)}
+.camp-status{width:10px;height:10px;border-radius:50%}
+.camp-name{font-size:14px;font-weight:600}
+.camp-meta{font-size:11px;color:var(--text-3);margin-top:2px;font-family:'JetBrains Mono',monospace}
+.camp-stat{text-align:center}
+.camp-stat-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700}
+.camp-stat-lbl{font-size:9px;color:var(--text-3);margin-top:2px;letter-spacing:0.5px}
+.verdict{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:5px 12px;border-radius:999px}
+.v-stop{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.v-keep{background:rgba(16,185,129,0.1);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.v-fix{background:rgba(245,158,11,0.1);color:var(--yellow);border:1px solid rgba(245,158,11,0.2)}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.ba-card{border-radius:16px;padding:24px;position:relative}
+.ba-before{background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.2)}
+.ba-after{background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.2)}
+.ba-label{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.ba-before .ba-label{color:var(--red)}
+.ba-after .ba-label{color:var(--green)}
+.ba-ad{background:var(--card-2);border-radius:12px;padding:18px;margin-bottom:14px}
+.ba-ad-img{height:120px;background:linear-gradient(135deg,#1E293B,#0F172A);border-radius:8px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:32px}
+.ba-ad-title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.ba-ad-desc{font-size:13px;color:var(--text-2);line-height:1.5;margin-bottom:12px}
+.ba-ad-cta{display:inline-block;font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:6px 14px;border-radius:6px}
+.cta-bad{background:rgba(239,68,68,0.15);color:var(--red)}
+.cta-good{background:rgba(16,185,129,0.15);color:var(--green)}
+.ba-metrics{display:flex;gap:16px;padding-top:12px;border-top:1px solid var(--border);margin-top:12px}
+.ba-m{text-align:center;flex:1}
+.ba-m-val{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700}
+.ba-m-lbl{font-size:10px;color:var(--text-3);margin-top:2px}
+.savings{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(249,115,22,0.08));border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:32px;display:flex;align-items:center;gap:32px;margin-bottom:24px}
+.sav-big{font-size:64px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--green);line-height:1}
+.sav-desc{font-size:18px;font-weight:700;margin-bottom:8px}
+.sav-sub{font-size:13px;color:var(--text-2);line-height:1.7}
+.action-list{display:flex;flex-direction:column;gap:14px}
+.action{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:16px;align-items:flex-start;transition:all 0.25s}
+.action:hover{border-color:rgba(249,115,22,0.4);transform:translateX(4px)}
+.action-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--orange);background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:10px;padding:8px 12px;flex-shrink:0;min-width:48px;text-align:center}
+.action-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.action-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:8px}
+.action-meta{display:flex;gap:10px;flex-wrap:wrap}
+.action-tag{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:3px 10px;border-radius:999px}
+.tag-impact-h{background:rgba(16,185,129,0.1);color:var(--green)}
+.tag-impact-m{background:rgba(245,158,11,0.1);color:var(--yellow)}
+.tag-time{background:rgba(124,58,237,0.1);color:var(--purple)}
+.cta-final{background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid rgba(249,115,22,0.3);border-radius:24px;padding:56px 48px;text-align:center;margin-top:32px;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(249,115,22,0.1),transparent 60%);pointer-events:none}
+.cta-final h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-0.8px;margin-bottom:16px;line-height:1.1}
+.cta-final p{font-size:16px;color:var(--text-2);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(249,115,22,0.35);transition:all 0.25s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(249,115,22,0.5)}
+.cta-stats{display:flex;justify-content:center;gap:48px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cta-stat-val{font-size:24px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--orange)}
+.cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+.demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+@media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr}.before-after{grid-template-columns:1fr}.savings{flex-direction:column;text-align:center}.camp-row{grid-template-columns:1fr;gap:8px;text-align:center}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="h-logo">
-    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
-    Auditoría Meta Ads
-    <div class="h-badge">DEMO KODARA SE</div>
+<div class="topnav">
+  <div class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <span>Kodara</span><span style="font-size:12px">SE</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría Meta Ads</span>
   </div>
-  <div style="font-size:12px;color:var(--muted);text-align:right">Cliente: Tienda Moda Élite · Bogotá<br>Período: Abr–May 2026</div>
+  <div class="live-badge"><div class="live-dot"></div>AUDITORÍA REAL · MAYO 2026</div>
+</div>
+
+<div class="hero-banner">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203701_6ef5a4d0-e138-455e-9152-24ca79889cda.png" alt="Auditoría Meta Ads">
+  <div class="hero-content">
+    <div class="hero-tag">// KSE-003 · AUDITORÍA META ADS</div>
+    <h1 class="hero-title">Auditoría <span class="grad">Meta Ads</span> Premium</h1>
+    <div class="hero-meta">
+      <span>🏢 Tienda Moda Élite · Bogotá</span>
+      <span>📅 Período: Abr–May 2026</span>
+      <span>⚡ Entrega 48h</span>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
+  <!-- ALERTA -->
   <div class="alert-box">
     <div class="alert-icon">🔥</div>
     <div>
-      <div class="alert-title">Encontramos $1,240 malgastados el último mes</div>
-      <div class="alert-desc">3 campañas están activas pero no convierten. El presupuesto se va en clics que no compran. Con los cambios de este informe, el mismo presupuesto puede generar el doble de ventas.</div>
+      <div class="alert-title">$1,240 malgastados el último mes</div>
+      <div class="alert-desc">3 campañas activas que no convierten. El presupuesto se va en clics que no compran. Con los cambios de este informe el mismo presupuesto generará el doble de ventas.</div>
     </div>
   </div>
 
   <!-- KPIs -->
   <div class="kpi-grid">
-    <div class="kpi">
-      <div class="kpi-lbl">Gasto total</div>
-      <div class="kpi-val" style="color:var(--white)">$3,200</div>
-      <div class="kpi-sub">Últimos 30 días</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-lbl">Gasto malgastado</div>
-      <div class="kpi-val" style="color:var(--red)">$1,240</div>
-      <div class="kpi-sub">38.7% del presupuesto</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-lbl">CPM promedio</div>
-      <div class="kpi-val" style="color:var(--yellow)">$18.40</div>
-      <div class="kpi-sub">Debería ser <$10</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-lbl">ROAS actual</div>
-      <div class="kpi-val" style="color:var(--red)">1.8x</div>
-      <div class="kpi-sub">Objetivo: 4x+</div>
-    </div>
+    <div class="kpi"><div class="kpi-icon">💸</div><div class="kpi-val" style="color:var(--white)">$3,200</div><div class="kpi-lbl">Gasto Total</div><div class="kpi-sub">Últimos 30 días</div></div>
+    <div class="kpi"><div class="kpi-icon">🚨</div><div class="kpi-val" style="color:var(--red)">$1,240</div><div class="kpi-lbl">Malgastado</div><div class="kpi-sub">38.7% del presupuesto</div></div>
+    <div class="kpi"><div class="kpi-icon">💎</div><div class="kpi-val" style="color:var(--yellow)">$18.40</div><div class="kpi-lbl">CPM Promedio</div><div class="kpi-sub">Debería ser &lt;$10</div></div>
+    <div class="kpi"><div class="kpi-icon">📈</div><div class="kpi-val" style="color:var(--red)">1.8x</div><div class="kpi-lbl">ROAS Actual</div><div class="kpi-sub">Objetivo: 4x+</div></div>
   </div>
 
   <!-- CAMPAÑAS -->
-  <div class="section">
-    <div class="sec-title">Análisis de campañas activas</div>
+  <div class="section-card">
+    <div class="section-head">
+      <div><div class="section-title"><div class="section-icon">📊</div>Análisis de campañas activas</div><div class="section-sub">3 campañas evaluadas con métricas reales del Business Manager</div></div>
+    </div>
+
     <div class="camp-row">
       <div class="camp-status" style="background:var(--red)"></div>
-      <div style="flex:1"><div class="camp-name">Campaña "Colección Verano 2026"</div><div class="camp-meta">Público: Mujeres 18-55 · Todo Colombia</div></div>
+      <div><div class="camp-name">Campaña "Colección Verano 2026"</div><div class="camp-meta">Mujeres 18-55 · Todo Colombia · Tráfico</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.8%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">$4.20</div><div class="camp-stat-lbl">CPC</div></div>
-      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.4%</div><div class="camp-stat-lbl">Conv.</div></div>
-      <div class="verdict v-stop">PAUSAR</div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.4%</div><div class="camp-stat-lbl">CONV</div></div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.8x</div><div class="camp-stat-lbl">ROAS</div></div>
+      <div class="verdict v-stop">PAUSAR YA</div>
     </div>
+
     <div class="camp-row">
       <div class="camp-status" style="background:var(--yellow)"></div>
-      <div style="flex:1"><div class="camp-name">Campaña "Descuentos Flash"</div><div class="camp-meta">Público: Interesados en moda · Bogotá</div></div>
+      <div><div class="camp-name">Campaña "Descuentos Flash"</div><div class="camp-meta">Interesados en moda · Bogotá · Conversiones</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">2.1%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">$1.80</div><div class="camp-stat-lbl">CPC</div></div>
-      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">1.2%</div><div class="camp-stat-lbl">Conv.</div></div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">1.2%</div><div class="camp-stat-lbl">CONV</div></div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">2.4x</div><div class="camp-stat-lbl">ROAS</div></div>
       <div class="verdict v-fix">OPTIMIZAR</div>
     </div>
+
     <div class="camp-row">
       <div class="camp-status" style="background:var(--green)"></div>
-      <div style="flex:1"><div class="camp-name">Retargeting "Carrito Abandonado"</div><div class="camp-meta">Público: Visitantes últimos 30 días</div></div>
+      <div><div class="camp-name">Retargeting "Carrito Abandonado"</div><div class="camp-meta">Visitantes 30 días · DPA · Conversiones</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">4.8%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">$0.90</div><div class="camp-stat-lbl">CPC</div></div>
-      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">3.6%</div><div class="camp-stat-lbl">Conv.</div></div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">3.6%</div><div class="camp-stat-lbl">CONV</div></div>
+      <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">6.2x</div><div class="camp-stat-lbl">ROAS</div></div>
       <div class="verdict v-keep">MANTENER</div>
     </div>
   </div>
 
-  <!-- ANTES / DESPUÉS -->
-  <div class="section">
-    <div class="sec-title">Anuncios reescritos — Antes vs Después</div>
+  <!-- BEFORE/AFTER -->
+  <div class="section-card">
+    <div class="section-head">
+      <div><div class="section-title"><div class="section-icon">✨</div>Anuncios reescritos por Kodara</div><div class="section-sub">Comparativa real con los anuncios actuales</div></div>
+    </div>
     <div class="before-after">
       <div class="ba-card ba-before">
-        <div class="ba-label" style="color:var(--red)">✕ Anuncio actual (no convierte)</div>
+        <div class="ba-label">✕ Anuncio actual</div>
         <div class="ba-ad">
+          <div class="ba-ad-img">👗</div>
           <div class="ba-ad-title">¡Nueva colección de verano disponible!</div>
           <div class="ba-ad-desc">Tenemos ropa para todos los gustos. Entra a nuestra tienda y encuentra lo que buscas. Envíos a todo Colombia.</div>
           <div class="ba-ad-cta cta-bad">Ver más</div>
-          <div class="ba-metrics">
-            <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">0.8%</div><div class="ba-m-lbl">CTR</div></div>
-            <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">$4.20</div><div class="ba-m-lbl">CPC</div></div>
-          </div>
+        </div>
+        <div class="ba-metrics">
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">0.8%</div><div class="ba-m-lbl">CTR</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">$4.20</div><div class="ba-m-lbl">CPC</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">0.8x</div><div class="ba-m-lbl">ROAS</div></div>
         </div>
       </div>
       <div class="ba-card ba-after">
-        <div class="ba-label" style="color:var(--green)">✓ Anuncio reescrito por Kodara</div>
+        <div class="ba-label">✓ Reescrito por Kodara</div>
         <div class="ba-ad">
-          <div class="ba-ad-title">Llega el verano ☀️ — 30% dto. solo hoy en vestidos de playa</div>
+          <div class="ba-ad-img">☀️</div>
+          <div class="ba-ad-title">Llega el verano — 30% dto. solo hoy en vestidos de playa</div>
           <div class="ba-ad-desc">Más de 200 estilos nuevos. Tallas S a XXL. Envío gratis en 24h a Bogotá. ¿Tu favorito ya tiene lista de espera?</div>
           <div class="ba-ad-cta cta-good">Ver vestidos con descuento →</div>
-          <div class="ba-metrics">
-            <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">4.2%</div><div class="ba-m-lbl">CTR est.</div></div>
-            <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">$0.95</div><div class="ba-m-lbl">CPC est.</div></div>
-          </div>
+        </div>
+        <div class="ba-metrics">
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">4.2%</div><div class="ba-m-lbl">CTR est.</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">$0.95</div><div class="ba-m-lbl">CPC est.</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">5.1x</div><div class="ba-m-lbl">ROAS est.</div></div>
         </div>
       </div>
     </div>
@@ -172,19 +228,44 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);p
   <div class="savings">
     <div>
       <div class="sav-big">$1,240</div>
-      <div style="font-size:13px;color:var(--muted);margin-top:4px;font-family:monospace">ahorro mensual estimado</div>
+      <div style="font-size:13px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:4px">AHORRO MENSUAL</div>
     </div>
     <div>
-      <div class="sav-desc">Si aplicas estos cambios esta semana, el mes que viene gastarás lo mismo pero con el doble de ventas.</div>
-      <div class="sav-sub">· Pausar 1 campaña que no convierte<br>· Reescribir 3 anuncios con copy probado<br>· Reconfigurar audiencias con segmentación precisa</div>
+      <div class="sav-desc">Si aplicas estos cambios esta semana, el mes que viene gastas lo mismo pero con el <strong style="color:var(--green)">doble de ventas</strong>.</div>
+      <div class="sav-sub">· Pausar 1 campaña que no convierte<br>· Reescribir 3 anuncios con copy probado<br>· Reconfigurar audiencias con segmentación precisa<br>· Activar retargeting dinámico (DPA)</div>
     </div>
   </div>
 
-  <div class="footer-badge">
-    <div style="font-size:13px;color:var(--muted)">Auditoría Meta Ads por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-003 · Desde $200 · Entrega en 48h</div>
-    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  <!-- ACTION PLAN -->
+  <div class="section-card">
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div>Plan de acción priorizado</div></div></div>
+    <div class="action-list">
+      <div class="action"><div class="action-num">01</div><div><div class="action-title">Pausar campaña "Colección Verano"</div><div class="action-desc">CTR del 0.8% y ROAS 0.8x. Cada $1 invertido devuelve $0.80. Pausar inmediatamente y reasignar presupuesto.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">5 MIN</span></div></div></div>
+      <div class="action"><div class="action-num">02</div><div><div class="action-title">Lanzar 3 anuncios reescritos</div><div class="action-desc">Copy y creatividades preparadas por Kodara. CTR esperado 4-5%, CPC inferior a $1.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">30 MIN</span></div></div></div>
+      <div class="action"><div class="action-num">03</div><div><div class="action-title">Configurar audiencias Lookalike</div><div class="action-desc">Crear LAL 1% a partir de compradores últimos 90 días. Audiencia más precisa que "intereses en moda".</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">1H</span></div></div></div>
+      <div class="action"><div class="action-num">04</div><div><div class="action-title">Activar Catálogo Dinámico (DPA)</div><div class="action-desc">Retargeting de productos vistos específicamente. ROAS típico 6-8x. Es lo único que funciona ya en tu cuenta.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">2H</span></div></div></div>
+      <div class="action"><div class="action-num">05</div><div><div class="action-title">Implementar Conversion API</div><div class="action-desc">Mejora la atribución post-iOS14. Sin esto Meta no aprende de tus conversiones reales.</div><div class="action-meta"><span class="action-tag tag-impact-m">IMPACTO MEDIO</span><span class="action-tag tag-time">3H</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-final">
+    <h2>¿Tu Meta Ads también <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">pierde dinero</span>?</h2>
+    <p>Auditoría completa con campañas reescritas listas para lanzar. Entrega en <strong style="color:var(--text)">48 horas</strong>. Sin compromiso.</p>
+    <a href="https://kodarase.com/?budget=metaads" class="cta-btn">Solicitar mi auditoría Meta Ads <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="cta-stats">
+      <div><div class="cta-stat-val">48h</div><div class="cta-stat-lbl">Entrega</div></div>
+      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl">Desde</div></div>
+      <div><div class="cta-stat-val">3-5</div><div class="cta-stat-lbl">Anuncios reescritos</div></div>
+      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl">Consulta inicial</div></div>
+    </div>
   </div>
 
 </div>
+
+<footer class="demo-footer">
+  Auditoría Meta Ads real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-003 · Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+</footer>
+
 </body>
 </html>

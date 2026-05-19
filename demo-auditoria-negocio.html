@@ -3,231 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auditoría de Negocio Real — Coolto Fitness Miami · Kodara SE</title>
+<title>Auditoría de Negocio Premium — Coolto Fitness Miami · Kodara SE</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--green:#10B981;--red:#EF4444;--yellow:#F59E0B;--blue:#3B82F6;--purple:#7C3AED;--pink:#EC4899}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
-.header{background:var(--card);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
-.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
-.h-badge{background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.25);color:var(--green);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
-.container{max-width:960px;margin:0 auto;padding:36px 24px}
-.real-badge{background:rgba(61,255,143,.08);border:1px solid rgba(61,255,143,.2);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px}
-.rb-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.scores-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
-.overall-score{text-align:center;flex-shrink:0}
-.overall-num{font-size:64px;font-weight:700;font-family:monospace;color:var(--yellow);line-height:1}
-.overall-lbl{font-size:12px;color:var(--muted);font-family:monospace;letter-spacing:1px;margin-top:4px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:#fff}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.live-badge{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:var(--green);font-size:11px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;gap:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-banner{position:relative;height:50vh;min-height:420px;max-height:560px;overflow:hidden;background:var(--bg-2)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(6,11,24,0.4) 60%,var(--bg) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:1px;margin-bottom:16px;width:fit-content}
+.hero-title{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px;max-width:900px}
+.hero-title .grad{background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{display:flex;gap:24px;font-size:13px;color:var(--text-2);font-family:'JetBrains Mono',monospace;flex-wrap:wrap}
+.container{max-width:1200px;margin:0 auto;padding:48px 32px}
+.scores-hero{background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid var(--border);border-radius:24px;padding:40px;margin-bottom:32px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.scores-hero::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(245,158,11,0.06),transparent 70%);pointer-events:none}
+.overall-score{text-align:center}
+.overall-num{font-size:96px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--yellow);line-height:1}
+.overall-status{font-size:16px;color:var(--yellow);font-weight:700;margin-top:4px}
+.overall-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:8px}
+.scores-info h2{font-size:28px;font-weight:900;letter-spacing:-0.5px;margin-bottom:8px}
+.scores-info .biz{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);margin-bottom:16px}
+.scores-info p{font-size:14px;color:var(--text-2);line-height:1.7;margin-bottom:20px}
 .scores-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .score-row{display:flex;align-items:center;gap:12px}
-.score-name{font-size:13px;min-width:160px}
-.score-bar{flex:1;height:8px;background:var(--card2);border-radius:4px;overflow:hidden}
-.score-fill{height:100%;border-radius:4px}
-.score-num{font-size:13px;font-family:monospace;font-weight:700;min-width:36px;text-align:right}
-.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px}
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.sec-title{font-size:16px;font-weight:700}
-.sec-badge{font-size:10px;font-family:monospace;font-weight:700;padding:4px 12px;border-radius:20px}
-.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.a-item{background:var(--card2);border-radius:10px;padding:14px}
-.a-icon{font-size:20px;margin-bottom:8px}
-.a-title{font-size:13px;font-weight:600;margin-bottom:4px}
-.a-desc{font-size:12px;color:var(--muted);line-height:1.6}
-.a-status{display:inline-block;font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:6px}
-.st-ok{background:rgba(61,255,143,.1);color:var(--green)}
-.st-warn{background:rgba(245,158,11,.1);color:var(--yellow)}
-.st-bad{background:rgba(255,77,77,.1);color:var(--red)}
-.real-fact{background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.15);border-radius:8px;padding:8px 12px;font-size:11px;color:#8BB3F7;font-family:monospace;margin-top:8px}
+.score-name{font-size:13px;min-width:160px;color:var(--text-2)}
+.score-bar{flex:1;height:8px;background:var(--bg-2);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px;transition:width 1s ease}
+.score-num{font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:700;min-width:36px;text-align:right}
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.section-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;display:flex;align-items:center;gap:12px}
+.section-icon{width:36px;height:36px;border-radius:10px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;font-size:18px}
+.section-sub{font-size:13px;color:var(--text-3);margin-top:4px}
+.section-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:5px 14px;border-radius:999px}
+.bad{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.warn{background:rgba(245,158,11,0.1);color:var(--yellow);border:1px solid rgba(245,158,11,0.2)}
+.good{background:rgba(16,185,129,0.1);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.a-item{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:20px}
+.a-item-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.a-icon{font-size:24px}
+.a-title{font-size:14px;font-weight:700}
+.a-desc{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+.a-status{display:inline-block;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:4px 10px;border-radius:999px}
+.st-ok{background:rgba(16,185,129,0.1);color:var(--green)}
+.st-warn{background:rgba(245,158,11,0.1);color:var(--yellow)}
+.st-bad{background:rgba(239,68,68,0.1);color:var(--red)}
 .funnel{display:flex;flex-direction:column;gap:0}
-.funnel-step{padding:14px 20px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border)}
-.funnel-step:last-child{border-bottom:none}
-.f-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0}
-.f-name{flex:1;font-size:14px;font-weight:500}
-.f-bar-wrap{width:160px}
-.f-bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden}
-.f-fill{height:100%;border-radius:3px}
-.f-val{font-size:12px;font-family:monospace;text-align:right;width:60px}
-.f-status{font-size:11px;font-family:monospace;font-weight:700;padding:3px 10px;border-radius:20px;flex-shrink:0}
+.funnel-step{padding:18px;display:flex;align-items:center;gap:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;margin-bottom:10px}
+.f-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange);background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:10px;padding:8px 12px;flex-shrink:0;min-width:48px;text-align:center;font-weight:700}
+.f-name{flex:1;font-size:14px;font-weight:600}
+.f-bar-wrap{width:180px}
+.f-bar{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.f-fill{height:100%;border-radius:4px}
+.f-val{font-size:13px;font-family:'JetBrains Mono',monospace;text-align:right;width:80px;font-weight:700}
+.f-status{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:4px 10px;border-radius:999px;flex-shrink:0}
 .comp-table{width:100%;border-collapse:collapse}
-th{text-align:left;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:0 0 10px;border-bottom:1px solid var(--border)}
-td{padding:11px 0;font-size:13px;border-bottom:1px solid rgba(34,34,34,.5)}
-tr:last-child td{border-bottom:none}
-.you-row td{color:var(--orange)}
-.action-list{display:flex;flex-direction:column;gap:10px}
-.action{background:var(--card2);border-radius:10px;padding:16px;display:flex;gap:14px;align-items:flex-start}
-.a-num{font-family:monospace;font-size:11px;color:var(--orange);background:rgba(232,116,74,.08);border:1px solid rgba(232,116,74,.2);border-radius:6px;padding:3px 8px;flex-shrink:0}
-.act-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.act-desc{font-size:12px;color:var(--muted);line-height:1.6}
-.impact{font-size:10px;font-family:monospace;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block}
-.imp-h{background:rgba(61,255,143,.1);color:var(--green)}
-.imp-m{background:rgba(245,158,11,.1);color:var(--yellow)}
-.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.comp-table th{text-align:left;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:0 0 14px;border-bottom:1px solid var(--border);font-weight:700}
+.comp-table td{padding:14px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.you-row{background:rgba(249,115,22,0.04)}
+.you-row td:first-child{color:var(--orange);font-weight:700;padding-left:12px;border-left:3px solid var(--orange)}
+.action-list{display:flex;flex-direction:column;gap:14px}
+.action{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:16px;transition:all 0.25s}
+.action:hover{border-color:rgba(249,115,22,0.4);transform:translateX(4px)}
+.action-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--orange);background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:10px;padding:8px 12px;flex-shrink:0;min-width:48px;text-align:center}
+.action-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.action-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:8px}
+.action-meta{display:flex;gap:10px;flex-wrap:wrap}
+.action-tag{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:3px 10px;border-radius:999px}
+.tag-impact-h{background:rgba(16,185,129,0.1);color:var(--green)}
+.tag-impact-m{background:rgba(245,158,11,0.1);color:var(--yellow)}
+.tag-time{background:rgba(124,58,237,0.1);color:var(--purple)}
+.cta-final{background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid rgba(249,115,22,0.3);border-radius:24px;padding:56px 48px;text-align:center;margin-top:32px;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(249,115,22,0.1),transparent 60%)}
+.cta-final h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-0.8px;margin-bottom:16px;line-height:1.1}
+.cta-final p{font-size:16px;color:var(--text-2);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(249,115,22,0.35)}
+.cta-stats{display:flex;justify-content:center;gap:48px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cta-stat-val{font-size:24px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--orange)}
+.cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+.demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+@media(max-width:900px){.scores-hero{grid-template-columns:1fr;text-align:center;gap:32px}.scores-grid,.analysis-grid{grid-template-columns:1fr}.funnel-step{flex-wrap:wrap}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="h-logo">
-    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
-    Auditoría de Negocio · Kodara SE
-    <div class="h-badge">✓ AUDITORÍA REAL</div>
+<div class="topnav">
+  <div class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <span>Kodara</span><span style="font-size:12px">SE</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría de Negocio</span>
   </div>
-  <div style="font-size:12px;color:var(--muted);text-align:right">Cliente analizado: Coolto Fitness Miami<br>Análisis real: Mayo 2026</div>
+  <div class="live-badge"><div class="live-dot"></div>AUDITORÍA REAL · DATOS VERIFICADOS</div>
+</div>
+
+<div class="hero-banner">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203719_aecc90b0-8ea3-4749-8cea-c23b265b8d23.png" alt="Auditoría de Negocio">
+  <div class="hero-content">
+    <div class="hero-tag">// KSE-006 · AUDITORÍA DE NEGOCIO</div>
+    <h1 class="hero-title">Auditoría <span class="grad">360°</span> de tu negocio</h1>
+    <div class="hero-meta">
+      <span>🏢 Coolto Fitness · Miami Calle 8</span>
+      <span>📅 Mayo 2026</span>
+      <span>⚡ Entrega 72h</span>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
-  <div class="real-badge">
-    <div class="rb-dot"></div>
-    <div>Auditoría de negocio realizada <strong>en tiempo real</strong> sobre <strong>Coolto Fitness Miami</strong> (gym.cooltofitness.com) — datos verificados directamente en mayo 2026.</div>
-  </div>
-
+  <!-- SCORES HERO -->
   <div class="scores-hero">
     <div class="overall-score">
       <div class="overall-num">54</div>
-      <div style="font-size:14px;color:var(--yellow);font-weight:600;margin-top:4px">Mejorable</div>
-      <div class="overall-lbl">puntuación global</div>
+      <div class="overall-status">Mejorable</div>
+      <div class="overall-lbl">/ 100 GLOBAL</div>
     </div>
-    <div class="scores-grid">
-      <div class="score-row">
-        <div class="score-name">Presencia web</div>
-        <div class="score-bar"><div class="score-fill" style="width:72%;background:var(--yellow)"></div></div>
-        <div class="score-num" style="color:var(--yellow)">72</div>
-      </div>
-      <div class="score-row">
-        <div class="score-name">Redes sociales</div>
-        <div class="score-bar"><div class="score-fill" style="width:45%;background:var(--red)"></div></div>
-        <div class="score-num" style="color:var(--red)">45</div>
-      </div>
-      <div class="score-row">
-        <div class="score-name">Prueba social</div>
-        <div class="score-bar"><div class="score-fill" style="width:60%;background:var(--yellow)"></div></div>
-        <div class="score-num" style="color:var(--yellow)">60</div>
-      </div>
-      <div class="score-row">
-        <div class="score-name">SEO y visibilidad</div>
-        <div class="score-bar"><div class="score-fill" style="width:28%;background:var(--red)"></div></div>
-        <div class="score-num" style="color:var(--red)">28</div>
-      </div>
-      <div class="score-row">
-        <div class="score-name">Conversión web</div>
-        <div class="score-bar"><div class="score-fill" style="width:65%;background:var(--yellow)"></div></div>
-        <div class="score-num" style="color:var(--yellow)">65</div>
-      </div>
-      <div class="score-row">
-        <div class="score-name">Oferta y precios</div>
-        <div class="score-bar"><div class="score-fill" style="width:55%;background:var(--yellow)"></div></div>
-        <div class="score-num" style="color:var(--yellow)">55</div>
+    <div class="scores-info">
+      <div class="biz">gym.cooltofitness.com · Miami, FL</div>
+      <h2>Diagnóstico completo del negocio digital</h2>
+      <p>Coolto Fitness tiene <strong style="color:var(--green)">algo único</strong> que su competencia no — celebridades mundiales como clientes (Maluma, Georgina Rodríguez, Zion). Pero <strong style="color:var(--orange)">no está aprovechando ese activo</strong> en SEO, marketing ni redes sociales.</p>
+      <div class="scores-grid">
+        <div class="score-row"><div class="score-name">Presencia web</div><div class="score-bar"><div class="score-fill" style="width:72%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">72</div></div>
+        <div class="score-row"><div class="score-name">Redes sociales</div><div class="score-bar"><div class="score-fill" style="width:45%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">45</div></div>
+        <div class="score-row"><div class="score-name">Prueba social</div><div class="score-bar"><div class="score-fill" style="width:60%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">60</div></div>
+        <div class="score-row"><div class="score-name">SEO local</div><div class="score-bar"><div class="score-fill" style="width:28%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">28</div></div>
+        <div class="score-row"><div class="score-name">Conversión</div><div class="score-bar"><div class="score-fill" style="width:65%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">65</div></div>
+        <div class="score-row"><div class="score-name">Oferta y precios</div><div class="score-bar"><div class="score-fill" style="width:55%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">55</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ANÁLISIS REAL -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Análisis real por área</div></div>
+  <!-- ANÁLISIS POR ÁREA -->
+  <div class="section-card">
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🔬</div>Análisis profundo por área</div><div class="section-sub">Datos verificados directamente</div></div></div>
     <div class="analysis-grid">
       <div class="a-item">
-        <div class="a-icon">🌐</div>
-        <div class="a-title">Web — gym.cooltofitness.com</div>
-        <div class="a-desc">Diseño moderno y mobile-first. Buenas imágenes. Botón de membresía con MindBodyOnline. Sin meta description. Sin blog ni contenido educativo.</div>
-        <div class="real-fact">✓ Verificado: diseño minimalista, tipografía grande, mobile-friendly</div>
+        <div class="a-item-head"><div class="a-icon">🌐</div><div class="a-title">Web · gym.cooltofitness.com</div></div>
+        <div class="a-desc">Diseño moderno mobile-first con buenas imágenes. Botón membresía vía MindBodyOnline funciona. Pero sin meta description, sin blog ni contenido educativo.</div>
         <div class="a-status st-warn">MEJORAR SEO</div>
       </div>
       <div class="a-item">
-        <div class="a-icon">📱</div>
-        <div class="a-title">Redes sociales</div>
-        <div class="a-desc">Mencionan celebridades entrenadas (Zion, Georgina Rodríguez, Maluma) pero no tienen sus propias redes sociales enlazadas directamente en la web.</div>
-        <div class="real-fact">✓ Verificado: @zion, @georginagio, @maluma como clientes mencionados</div>
+        <div class="a-item-head"><div class="a-icon">📱</div><div class="a-title">Redes sociales</div></div>
+        <div class="a-desc">Mencionan celebridades (Zion, Georgina Rodríguez, Maluma) pero no enlazan sus redes desde la web. Activo masivo desperdiciado.</div>
         <div class="a-status st-bad">CRÍTICO</div>
       </div>
       <div class="a-item">
-        <div class="a-icon">💰</div>
-        <div class="a-title">Precios reales</div>
-        <div class="a-desc">Plan Unlimited: $200/mes. Small Group 12 sesiones: $480/mes. Precios altos para Miami — necesitan justificar mejor el valor con contenido y testimonios.</div>
-        <div class="real-fact">✓ Verificado: $200 unlimited · $480 small group 12 · Abierto 24/7</div>
+        <div class="a-item-head"><div class="a-icon">💰</div><div class="a-title">Precios reales</div></div>
+        <div class="a-desc">Plan Unlimited $200/mes. Small Group 12 sesiones $480/mes. Premium para Miami pero necesitan justificar mejor el valor.</div>
         <div class="a-status st-warn">JUSTIFICAR VALOR</div>
       </div>
       <div class="a-item">
-        <div class="a-icon">⭐</div>
-        <div class="a-title">Prueba social</div>
-        <div class="a-desc">Tienen celebridades como clientes (muy potente) pero faltan testimonios de clientes ordinarios. La gente quiere ver resultados de personas como ellos, no solo de famosos.</div>
-        <div class="real-fact">✓ Verificado: "Hall of Fame" con Zion, Georgina, Maluma · Sin reseñas comunes</div>
+        <div class="a-item-head"><div class="a-icon">⭐</div><div class="a-title">Prueba social</div></div>
+        <div class="a-desc">Celebridades mundiales como clientes (muy potente) pero faltan testimonios de clientes ordinarios con foto. La gente se identifica con gente normal.</div>
         <div class="a-status st-warn">FALTA BALANCE</div>
+      </div>
+      <div class="a-item">
+        <div class="a-item-head"><div class="a-icon">🔍</div><div class="a-title">SEO local</div></div>
+        <div class="a-desc">No aparece en "gym calle 8 miami" (800 búsquedas/mes). Sin Google My Business optimizado. Sin Schema Markup.</div>
+        <div class="a-status st-bad">CRÍTICO</div>
+      </div>
+      <div class="a-item">
+        <div class="a-item-head"><div class="a-icon">📣</div><div class="a-title">Marketing</div></div>
+        <div class="a-desc">Sin Meta Ads, sin Google Ads, sin email marketing. Crecimiento solo por boca a boca y celebridades.</div>
+        <div class="a-status st-bad">OPORTUNIDAD MASIVA</div>
       </div>
     </div>
   </div>
 
   <!-- EMBUDO -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Análisis del embudo de captación</div><div class="sec-badge" style="background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)">Brecha crítica detectada</div></div>
+  <div class="section-card">
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div>Análisis del embudo de captación</div><div class="section-sub">Brecha entre tráfico y conversión</div></div><div class="section-badge bad">PÉRDIDA: 92% DE VISITANTES</div></div>
     <div class="funnel">
-      <div class="funnel-step">
-        <div class="f-num">01</div>
-        <div class="f-name">Buscan "gym calle 8 miami" en Google</div>
-        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:100%;background:var(--orange)"></div></div></div>
-        <div class="f-val" style="color:var(--white)">~800/mes</div>
-        <div class="f-status" style="background:rgba(255,77,77,.1);color:var(--red)">NO APARECE</div>
-      </div>
-      <div class="funnel-step">
-        <div class="f-num">02</div>
-        <div class="f-name">Llegan a la web (referrals, boca a boca)</div>
-        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:35%;background:var(--yellow)"></div></div></div>
-        <div class="f-val" style="color:var(--yellow)">~280/mes</div>
-        <div class="f-status" style="background:rgba(245,158,11,.1);color:var(--yellow)">BAJO</div>
-      </div>
-      <div class="funnel-step">
-        <div class="f-num">03</div>
-        <div class="f-name">Hacen clic en "Comenzar membresía"</div>
-        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:20%;background:var(--yellow)"></div></div></div>
-        <div class="f-val" style="color:var(--yellow)">~56/mes</div>
-        <div class="f-status" style="background:rgba(245,158,11,.1);color:var(--yellow)">MEJORAR</div>
-      </div>
-      <div class="funnel-step">
-        <div class="f-num">04</div>
-        <div class="f-name">Se convierten en miembros</div>
-        <div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:8%;background:var(--green)"></div></div></div>
-        <div class="f-val" style="color:var(--green)">~8/mes</div>
-        <div class="f-status" style="background:rgba(61,255,143,.1);color:var(--green)">ESTIMADO</div>
-      </div>
+      <div class="funnel-step"><div class="f-num">01</div><div class="f-name">Buscan "gym calle 8 miami"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:100%;background:var(--orange)"></div></div></div><div class="f-val" style="color:var(--white)">~800/mes</div><div class="f-status" style="background:rgba(239,68,68,0.1);color:var(--red)">NO APARECE</div></div>
+      <div class="funnel-step"><div class="f-num">02</div><div class="f-name">Llegan a la web (referrals)</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:35%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)">~280/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)">BAJO</div></div>
+      <div class="funnel-step"><div class="f-num">03</div><div class="f-name">Clic en "Comenzar membresía"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:20%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)">~56/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)">MEJORAR</div></div>
+      <div class="funnel-step"><div class="f-num">04</div><div class="f-name">Se convierten en miembros</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:8%;background:var(--green)"></div></div></div><div class="f-val" style="color:var(--green)">~8/mes</div><div class="f-status" style="background:rgba(16,185,129,0.1);color:var(--green)">14% CONV</div></div>
     </div>
-    <div style="margin-top:16px;background:rgba(232,116,74,.04);border:1px solid rgba(232,116,74,.15);border-radius:10px;padding:14px;font-size:13px;color:#aaa;line-height:1.7">
-      <strong style="color:var(--orange)">Oportunidad clave:</strong> Coolto no aparece en búsquedas de Google para su zona. Con SEO local básico podrían captar las 800 búsquedas mensuales de "gym calle 8 miami" y duplicar su tráfico web sin pagar publicidad.
-    </div>
+    <div style="margin-top:20px;background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--orange)">📊 Insight:</strong> Capturando solo el 30% de las 800 búsquedas mensuales de "gym calle 8 miami" (con SEO básico), Coolto duplicaría sus miembros nuevos sin pagar publicidad.</div>
   </div>
 
   <!-- COMPETENCIA -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Coolto vs competencia en Miami</div></div>
+  <div class="section-card">
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">⚔️</div>vs Competencia en Miami</div></div></div>
     <table class="comp-table">
-      <thead><tr><th>Gimnasio</th><th>Web</th><th>Precio/mes</th><th>Celebridades</th><th>SEO local</th><th>Blog</th></tr></thead>
+      <thead><tr><th>Gimnasio</th><th>Web</th><th>Precio/mes</th><th>Celebs</th><th>SEO local</th><th>Tráfico est.</th></tr></thead>
       <tbody>
-        <tr class="you-row"><td><strong>Coolto Fitness (analizado)</strong></td><td style="color:var(--yellow)">Buena</td><td style="color:var(--orange)">$200–480</td><td style="color:var(--green)">Maluma, Georgina</td><td style="color:var(--red)">Inexistente</td><td style="color:var(--red)">No</td></tr>
-        <tr><td>Miami Strength & Fitness</td><td style="color:var(--yellow)">Media</td><td>$80–120</td><td style="color:var(--red)">No</td><td style="color:var(--yellow)">Básico</td><td style="color:var(--red)">No</td></tr>
-        <tr><td>Planet Fitness (Westchester)</td><td style="color:var(--green)">Buena</td><td>$10–25</td><td style="color:var(--red)">No</td><td style="color:var(--green)">Excelente</td><td style="color:var(--yellow)">Poco</td></tr>
+        <tr class="you-row"><td>Coolto Fitness (tú)</td><td style="color:var(--yellow)">Buena</td><td style="color:var(--orange)">$200-480</td><td style="color:var(--green)">Maluma, Georgina</td><td style="color:var(--red)">Inexistente</td><td style="color:var(--yellow);font-weight:700">~280/mes</td></tr>
+        <tr><td>Miami Strength &amp; Fitness</td><td style="color:var(--yellow)">Media</td><td>$80-120</td><td style="color:var(--red)">No</td><td style="color:var(--yellow)">Básico</td><td style="color:var(--green);font-weight:700">~620/mes</td></tr>
+        <tr><td>Planet Fitness Westchester</td><td style="color:var(--green)">Buena</td><td>$10-25</td><td style="color:var(--red)">No</td><td style="color:var(--green)">Excelente</td><td style="color:var(--green);font-weight:700">~2,400/mes</td></tr>
       </tbody>
     </table>
-    <div style="margin-top:16px;background:rgba(61,255,143,.04);border:1px solid rgba(61,255,143,.15);border-radius:10px;padding:14px;font-size:13px;color:#aaa;line-height:1.7">
-      <strong style="color:var(--green)">Ventaja competitiva clara:</strong> Coolto tiene algo que nadie más tiene en Miami — celebridades mundiales (Maluma, Georgina Rodríguez). No están explotando eso en Google, Instagram ni en su web correctamente.
-    </div>
+    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--green)">💡 Ventaja única:</strong> Coolto tiene algo que nadie más tiene — Maluma, Georgina y Zion como clientes. No están explotando eso en Google, Instagram ni en su web.</div>
   </div>
 
-  <!-- PLAN -->
-  <div class="section">
-    <div class="sec-head"><div class="sec-title">Plan de acción — 90 días</div></div>
+  <!-- ACTION PLAN -->
+  <div class="section-card">
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🚀</div>Plan de acción 90 días</div></div></div>
     <div class="action-list">
-      <div class="action"><div class="a-num">01</div><div><div class="act-title">SEO local: aparecer en "gym calle 8 miami"</div><div class="act-desc">Optimizar meta tags, Google My Business y crear página de contenido local. Estimado: +400 visitas/mes en 8 semanas.</div><div class="impact imp-h">IMPACTO ALTO · Semanas 1-2</div></div></div>
-      <div class="action"><div class="a-num">02</div><div><div class="act-title">Activar y enlazar redes sociales desde la web</div><div class="act-desc">Instagram, TikTok y YouTube con contenido de las celebridades. El contenido ya existe (los famosos lo comparten) — hay que centralizarlo.</div><div class="impact imp-h">IMPACTO ALTO · Semana 1</div></div></div>
-      <div class="action"><div class="a-num">03</div><div><div class="act-title">Añadir testimonios de clientes reales (no solo famosos)</div><div class="act-desc">La gente se identifica con clientes normales. 5-10 testimonios reales con foto aumentan la conversión entre un 25-40%.</div><div class="impact imp-h">IMPACTO ALTO · Semanas 2-3</div></div></div>
-      <div class="action"><div class="a-num">04</div><div><div class="act-title">Landing page específica: "Entrena como Maluma en Miami"</div><div class="act-desc">Explotar el activo más poderoso: las celebridades. Una página SEO enfocada en eso generaría prensa, backlinks y búsquedas directas.</div><div class="impact imp-m">IMPACTO MEDIO-ALTO · Mes 2</div></div></div>
+      <div class="action"><div class="action-num">01</div><div><div class="action-title">SEO local: capturar "gym calle 8 miami"</div><div class="action-desc">Optimizar meta tags, Google My Business y crear página local. Estimado: +400 visitas/mes en 8 semanas.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANAS 1-2</span></div></div></div>
+      <div class="action"><div class="action-num">02</div><div><div class="action-title">Landing page "Entrena como Maluma"</div><div class="action-desc">Explotar el activo más poderoso. Una página SEO + ads enfocada en eso generaría prensa, backlinks y búsquedas directas.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANA 2</span></div></div></div>
+      <div class="action"><div class="action-num">03</div><div><div class="action-title">Activar redes y enlazarlas en web</div><div class="action-desc">Instagram + TikTok + YouTube con contenido de celebridades. El contenido ya existe — solo hay que centralizarlo.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANA 1</span></div></div></div>
+      <div class="action"><div class="action-num">04</div><div><div class="action-title">Añadir testimonios reales (no solo famosos)</div><div class="action-desc">5-10 testimonios con foto de clientes normales. Aumenta conversión 25-40%.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANAS 2-3</span></div></div></div>
+      <div class="action"><div class="action-num">05</div><div><div class="action-title">Lanzar Meta Ads de retargeting</div><div class="action-desc">Sin retargeting estás perdiendo el 70% de visitas que no convierten. ROAS típico 5-8x.</div><div class="action-meta"><span class="action-tag tag-impact-m">IMPACTO MEDIO</span><span class="action-tag tag-time">MES 2</span></div></div></div>
     </div>
   </div>
 
-  <div class="footer-badge">
-    <div style="font-size:13px;color:var(--muted)">Auditoría de Negocio real por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-006 · Desde $500 · Entrega en 48-72h</div>
-    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  <!-- CTA -->
+  <div class="cta-final">
+    <h2>¿Y tu negocio? <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Auditoría 360°</span> en 72h</h2>
+    <p>Análisis completo de web, redes, oferta y competencia. Plan accionable de 90 días con prioridades claras. Sin compromiso.</p>
+    <a href="https://kodarase.com/?budget=negocio" class="cta-btn">Solicitar mi auditoría de negocio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="cta-stats">
+      <div><div class="cta-stat-val">72h</div><div class="cta-stat-lbl">Entrega</div></div>
+      <div><div class="cta-stat-val">$500</div><div class="cta-stat-lbl">Desde</div></div>
+      <div><div class="cta-stat-val">6 áreas</div><div class="cta-stat-lbl">Analizadas</div></div>
+      <div><div class="cta-stat-val">90 días</div><div class="cta-stat-lbl">Plan accionable</div></div>
+    </div>
   </div>
 
 </div>
+
+<footer class="demo-footer">
+  Auditoría de Negocio real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-006 · Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+</footer>
+
 </body>
 </html>

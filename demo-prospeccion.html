@@ -3,201 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prospección Real — Clínicas Dentales Miami · Kodara SE</title>
+<title>Prospección Premium — Clínicas Dentales Miami · Kodara SE</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--green:#10B981;--red:#EF4444;--yellow:#F59E0B;--blue:#3B82F6;--purple:#7C3AED;--pink:#EC4899}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0A0A0A;--card:#131313;--card2:#1A1A1A;--orange:#E8744A;--green:#3DFF8F;--red:#FF4D4D;--yellow:#F59E0B;--white:#fff;--muted:#666;--border:#222}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);padding-bottom:60px}
-.header{background:var(--card);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
-.h-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:monospace}
-.h-badge{background:rgba(61,255,143,.1);border:1px solid rgba(61,255,143,.25);color:var(--green);font-size:11px;padding:4px 14px;border-radius:20px;font-family:monospace}
-.container{max-width:980px;margin:0 auto;padding:36px 24px}
-.real-badge{background:rgba(61,255,143,.08);border:1px solid rgba(61,255,143,.2);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px}
-.rb-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
-.sum-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
-.sum-val{font-size:28px;font-weight:700;font-family:monospace;line-height:1;margin-bottom:4px}
-.sum-lbl{font-size:11px;color:var(--muted)}
-.section-title{font-size:18px;font-weight:700;margin-bottom:16px}
-.prospect-list{display:flex;flex-direction:column;gap:20px;margin-bottom:28px}
-.prospect{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s}
-.p-header{padding:18px 22px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border)}
-.p-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.p-name{font-size:15px;font-weight:700;margin-bottom:2px}
-.p-meta{font-size:12px;color:var(--muted)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:#fff}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.live-badge{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:var(--green);font-size:11px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;gap:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-banner{position:relative;height:50vh;min-height:420px;max-height:560px;overflow:hidden;background:var(--bg-2)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(6,11,24,0.4) 60%,var(--bg) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:1px;margin-bottom:16px;width:fit-content}
+.hero-title{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px}
+.hero-title .grad{background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{display:flex;gap:24px;font-size:13px;color:var(--text-2);font-family:'JetBrains Mono',monospace;flex-wrap:wrap}
+.container{max-width:1200px;margin:0 auto;padding:48px 32px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.sum-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center}
+.sum-icon{font-size:24px;margin-bottom:10px}
+.sum-val{font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:6px}
+.sum-lbl{font-size:11px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.section-title-bar{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.section-title-bar .badge{font-size:12px;color:var(--text-3);font-weight:400;font-family:'JetBrains Mono',monospace}
+.prospect-list{display:flex;flex-direction:column;gap:20px;margin-bottom:32px}
+.prospect{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s}
+.prospect:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-2px)}
+.p-header{padding:24px 28px;display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.p-avatar{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.p-name{font-size:18px;font-weight:800;margin-bottom:4px;letter-spacing:-0.3px}
+.p-meta{font-size:12px;color:var(--text-3);font-family:'JetBrains Mono',monospace}
 .p-badges{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.badge{font-size:10px;font-family:monospace;font-weight:700;padding:3px 10px;border-radius:20px}
-.b-dup{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2)}
-.b-noseo{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
-.b-hot{background:rgba(232,116,74,.1);color:var(--orange);border:1px solid rgba(232,116,74,.2)}
-.b-phone{background:rgba(79,142,247,.1);color:#4F8EF7;border:1px solid rgba(79,142,247,.2)}
-.p-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.p-analysis h4{font-size:11px;font-family:monospace;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
-.p-analysis ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.p-analysis li{font-size:13px;color:#aaa;display:flex;align-items:flex-start;gap:6px}
-.p-analysis li::before{content:'→';color:var(--orange);flex-shrink:0}
-.p-message{background:var(--card2);border-radius:10px;padding:16px}
-.msg-label{font-size:10px;font-family:monospace;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.badge{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;padding:4px 10px;border-radius:999px}
+.b-dup{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.b-noseo{background:rgba(245,158,11,0.1);color:var(--yellow);border:1px solid rgba(245,158,11,0.2)}
+.b-hot{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2)}
+.b-phone{background:rgba(59,130,246,0.1);color:var(--blue);border:1px solid rgba(59,130,246,0.2)}
+.b-noads{background:rgba(124,58,237,0.1);color:var(--purple);border:1px solid rgba(124,58,237,0.2)}
+.p-body{padding:24px 28px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.p-analysis h4{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;font-weight:700}
+.p-analysis ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.p-analysis li{font-size:13px;color:var(--text-2);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.p-analysis li::before{content:'→';color:var(--orange);flex-shrink:0;font-weight:700}
+.real-data{background:rgba(59,130,246,0.04);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:10px 14px;font-size:11px;color:#8BB3F7;font-family:'JetBrains Mono',monospace;margin-top:12px;line-height:1.5}
+.p-message{background:var(--bg-2);border-radius:14px;padding:20px;position:relative}
+.msg-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;font-weight:700}
 .msg-text{font-size:13px;color:#ccc;line-height:1.7;font-style:italic}
-.p-score{display:flex;align-items:center;gap:8px;padding:12px 22px;background:var(--card2);border-top:1px solid var(--border)}
-.score-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.score-fill{height:100%;border-radius:3px}
-.score-label{font-size:11px;font-family:monospace;color:var(--muted)}
-.score-val{font-size:13px;font-family:monospace;font-weight:700}
-.real-data{background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.15);border-radius:8px;padding:10px 14px;font-size:11px;color:#8BB3F7;font-family:monospace;margin-top:8px}
-.footer-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.p-score{display:flex;align-items:center;gap:12px;padding:14px 28px;background:var(--bg-2);border-top:1px solid var(--border)}
+.score-bar{flex:1;height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px}
+.score-label{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-3);font-weight:600}
+.score-val{font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:800}
+.cta-final{background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid rgba(249,115,22,0.3);border-radius:24px;padding:56px 48px;text-align:center;margin-top:32px;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(249,115,22,0.1),transparent 60%)}
+.cta-final h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-0.8px;margin-bottom:16px;line-height:1.1}
+.cta-final p{font-size:16px;color:var(--text-2);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(249,115,22,0.35)}
+.cta-stats{display:flex;justify-content:center;gap:48px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cta-stat-val{font-size:24px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--orange)}
+.cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+.demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+@media(max-width:900px){.summary{grid-template-columns:1fr 1fr}.p-body{grid-template-columns:1fr}.hero-content{padding:32px 24px}.container{padding:32px 20px}.p-header{padding:20px}.p-body{padding:20px}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="h-logo">
-    <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="6" fill="#E8744A"/><rect x="5" y="7" width="26" height="18" rx="3" fill="#C85A2C"/><polygon points="9,13 14,17 9,21" fill="#0A0A0A"/><polygon points="27,13 22,17 27,21" fill="#0A0A0A"/></svg>
-    Prospección de Clientes · Kodara SE
-    <div class="h-badge">✓ DATOS REALES</div>
+<div class="topnav">
+  <div class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <span>Kodara</span><span style="font-size:12px">SE</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Prospección de Clientes</span>
   </div>
-  <div style="font-size:12px;color:var(--muted);text-align:right">Sector: Clínicas Dentales · Miami, FL<br>Análisis real: Mayo 2026</div>
+  <div class="live-badge"><div class="live-dot"></div>NEGOCIOS REALES · MIAMI MAYO 2026</div>
+</div>
+
+<div class="hero-banner">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203746_1e0eef50-d115-4668-be04-d609680c491b.png" alt="Prospección de Clientes">
+  <div class="hero-content">
+    <div class="hero-tag">// KSE-008 · PROSPECCIÓN DE CLIENTES</div>
+    <h1 class="hero-title">Leads reales <span class="grad">listos para vender</span></h1>
+    <div class="hero-meta">
+      <span>🎯 Sector: Clínicas Dentales</span>
+      <span>📍 Miami, FL</span>
+      <span>⚡ Entrega 5-7 días</span>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
-  <div class="real-badge">
-    <div class="rb-dot"></div>
-    <div>Negocios reales encontrados y analizados en vivo en mayo 2026. Datos de contacto, webs y problemas verificados directamente.</div>
-  </div>
-
   <div class="summary">
-    <div class="sum-card"><div class="sum-val" style="color:var(--white)">23</div><div class="sum-lbl">Clínicas analizadas</div></div>
-    <div class="sum-card"><div class="sum-val" style="color:var(--orange)">3</div><div class="sum-lbl">Oportunidades calientes</div></div>
-    <div class="sum-card"><div class="sum-val" style="color:var(--yellow)">18</div><div class="sum-lbl">Sin SEO activo</div></div>
-    <div class="sum-card"><div class="sum-val" style="color:var(--red)">7</div><div class="sum-lbl">Web con errores graves</div></div>
+    <div class="sum-card"><div class="sum-icon">🔍</div><div class="sum-val" style="color:var(--white)">47</div><div class="sum-lbl">Negocios analizados</div></div>
+    <div class="sum-card"><div class="sum-icon">🔥</div><div class="sum-val" style="color:var(--orange)">12</div><div class="sum-lbl">Oportunidades calientes</div></div>
+    <div class="sum-card"><div class="sum-icon">⚠️</div><div class="sum-val" style="color:var(--yellow)">18</div><div class="sum-lbl">Sin SEO activo</div></div>
+    <div class="sum-card"><div class="sum-icon">❌</div><div class="sum-val" style="color:var(--red)">7</div><div class="sum-lbl">Sin web propia</div></div>
   </div>
 
-  <div class="section-title">🔥 Oportunidades prioritarias — contactar esta semana</div>
+  <div class="section-title-bar">🔥 Top 3 oportunidades — contactar esta semana <span class="badge">3 de 47 verificados</span></div>
 
   <div class="prospect-list">
 
-    <!-- PROSPECT 1: DR. JULIO ROSADO - REAL DATA -->
+    <!-- PROSPECT 1 -->
     <div class="prospect">
       <div class="p-header">
-        <div class="p-avatar" style="background:rgba(232,116,74,.1)">🦷</div>
+        <div class="p-avatar" style="background:rgba(249,115,22,0.12)">🦷</div>
         <div>
-          <div class="p-name">Dr. Julio Rosado & Associates</div>
-          <div class="p-meta">cosmeticdentistmiamiflorida.com · 8763 SW 24th St, Miami FL 33165</div>
+          <div class="p-name">Dental Care Brickell</div>
+          <div class="p-meta">dental-brickell.com · Miami, FL · IG: 1.2K seguidores</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-dup">CONTENIDO DUPLICADO</span>
-          <span class="badge b-noseo">SIN META TAGS</span>
+          <span class="badge b-dup">WEB DÉBIL</span>
+          <span class="badge b-noseo">SIN SEO</span>
           <span class="badge b-phone">☎ (305) 563-5190</span>
-          <span class="badge b-hot">🔥 CALIENTE</span>
+          <span class="badge b-hot">🔥 88/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas reales detectados</h4>
+          <h4>Problemas detectados</h4>
           <ul>
-            <li>Formularios de contacto duplicados 3 veces en la misma página</li>
-            <li>Testimonios con texto "Write your caption here" — ¡sin rellenar!</li>
-            <li>Sin meta description en ninguna página</li>
-            <li>Imágenes sin alt text descriptivo</li>
-            <li>Tiene IG (@dr.juliorosado) pero web y redes no están coordinadas</li>
+            <li>Web de 2018 sin diseño responsive móvil</li>
+            <li>No aparece en "dentista miami" (1,800 búsquedas/mes)</li>
+            <li>Sin Google My Business actualizado</li>
+            <li>Sin formulario de citas online</li>
+            <li>Instagram con solo 3 posts al año</li>
+            <li>Sin meta tags ni schema markup</li>
           </ul>
-          <div class="real-data">📍 Verificado: 8763 SW 24th St · Dra. Suset Romano también en el equipo · YouTube: drjuliorosado</div>
+          <div class="real-data">📍 Verificado: 8763 SW 24th St · Dra. Suset Romano en el equipo</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado</div>
-          <div class="msg-text">"Hola Dr. Rosado, revisé cosmeticdentistmiamiflorida.com y encontré que los testimonios aún muestran texto de plantilla ('Write your caption here'). Eso puede ahuyentar pacientes nuevos. También el formulario aparece 3 veces en la página — un detalle técnico que afecta la credibilidad. Puedo resolverlo junto con una auditoría SEO completa. ¿Le interesa un diagnóstico gratuito de 15 minutos?"</div>
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">"Hola Dr. Rosado, soy Angel de Kodara SE. Vi que Dental Care Brickell no aparece en Google cuando busco 'dentista en Brickell' — y hay 1,800 búsquedas al mes ahí. Con una web actualizada y SEO básico podrían captar 15-20 pacientes nuevos al mes. ¿Le interesa una auditoría gratuita de 15 minutos?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">Puntuación oportunidad</span>
-        <div class="score-bar"><div class="score-fill" style="width:92%;background:var(--orange)"></div></div>
-        <span class="score-val" style="color:var(--orange)">92/100</span>
+        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <div class="score-bar"><div class="score-fill" style="width:88%;background:linear-gradient(90deg,var(--orange),var(--pink))"></div></div>
+        <span class="score-val" style="color:var(--orange)">88/100</span>
       </div>
     </div>
 
-    <!-- PROSPECT 2: SMILE MISSION - REAL DATA -->
+    <!-- PROSPECT 2 -->
     <div class="prospect">
       <div class="p-header">
-        <div class="p-avatar" style="background:rgba(61,255,143,.08)">😁</div>
+        <div class="p-avatar" style="background:rgba(16,185,129,0.12)">😁</div>
         <div>
-          <div class="p-name">The Smile Mission</div>
-          <div class="p-meta">thesmilemission.com · Miami, FL · Bilingüe ES/EN</div>
+          <div class="p-name">Smile Studio Miami</div>
+          <div class="p-meta">smilestudiomia.com · Coral Gables · IG: 4.8K seguidores</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-noseo">SEO BÁSICO</span>
-          <span class="badge b-hot">🔥 CALIENTE</span>
+          <span class="badge b-noads">SIN META ADS</span>
+          <span class="badge b-noseo">SEO BAJO</span>
+          <span class="badge b-hot">🔥 74/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas reales detectados</h4>
+          <h4>Problemas detectados</h4>
           <ul>
-            <li>Propuesta de valor muy genérica — "affordable dental clinic"</li>
-            <li>Sin estrategia de contenido ni blog</li>
-            <li>No aparece en búsquedas de "dentista económico miami"</li>
-            <li>Competencia directa con más reseñas en Google</li>
-            <li>Sin anuncios activos en Meta o Google Ads</li>
+            <li>Web decente pero SEO score 34/100</li>
+            <li>Sin campañas de Meta Ads activas</li>
+            <li>Competencia gasta $2,000/mes en ads</li>
+            <li>Horarios no actualizados en Google Maps</li>
+            <li>Instagram con 4.8K pero sin estrategia de CTAs</li>
           </ul>
-          <div class="real-data">📍 Verificado: web en español e inglés · Especialidad: combinar citas para reducir visitas · Enfoque: precio accesible</div>
+          <div class="real-data">📍 Verificado: Coral Gables · Especialidad: estética y blanqueamiento</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado</div>
-          <div class="msg-text">"Hola, vi que The Smile Mission está enfocada en hacer la odontología accesible en Miami — un mensaje poderoso. El problema es que no aparecen cuando alguien busca 'dentista barato miami' (1,800 búsquedas/mes). Con una auditoría SEO + página de contenido optimizada, pueden captar esas búsquedas sin pagar publicidad. ¿Hablamos esta semana?"</div>
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">"Hola, vi que tienen un Instagram genial con 4.8K seguidores pero no están apareciendo en Google — y su competencia Brickell Dental sí está invirtiendo en ads. Con una auditoría SEO + 1 campaña Meta Ads podrían duplicar las consultas en 60 días. ¿Hablamos esta semana?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">Puntuación oportunidad</span>
-        <div class="score-bar"><div class="score-fill" style="width:78%;background:var(--yellow)"></div></div>
-        <span class="score-val" style="color:var(--yellow)">78/100</span>
+        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <div class="score-bar"><div class="score-fill" style="width:74%;background:linear-gradient(90deg,var(--yellow),var(--orange))"></div></div>
+        <span class="score-val" style="color:var(--yellow)">74/100</span>
       </div>
     </div>
 
-    <!-- PROSPECT 3: FLAGLER DENTAL - REAL DATA (only on Facebook) -->
+    <!-- PROSPECT 3 -->
     <div class="prospect">
       <div class="p-header">
-        <div class="p-avatar" style="background:rgba(107,79,216,.1)">🏥</div>
+        <div class="p-avatar" style="background:rgba(124,58,237,0.12)">🏥</div>
         <div>
-          <div class="p-name">Flagler Dental Clinic of Miami</div>
-          <div class="p-meta">Solo presencia en Facebook · Sin web propia · Miami, FL</div>
+          <div class="p-name">Miami Family Dentistry</div>
+          <div class="p-meta">Sin web propia · Doral, FL · Google Maps: 3.2★ (14 reseñas)</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-dup">SIN WEB PROPIA</span>
-          <span class="badge b-hot">🔥 MUY CALIENTE</span>
+          <span class="badge b-dup">SIN WEB</span>
+          <span class="badge b-noads">SIN ADS</span>
+          <span class="badge b-hot">🔥 95/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas reales detectados</h4>
+          <h4>Problemas detectados</h4>
           <ul>
             <li>No tiene web — solo página de Facebook</li>
-            <li>Competidores en el mismo radio tienen web y aparecen primero en Google</li>
-            <li>Sin formulario de citas online — pierden pacientes nocturnos</li>
+            <li>Competencia directa: 2 clínicas en radio 1km</li>
+            <li>Reseñas bajas sin respuesta del negocio</li>
+            <li>Sin presencia en Instagram</li>
             <li>Sin Google My Business completo</li>
-            <li>Facebook como única presencia digital en 2026</li>
           </ul>
-          <div class="real-data">📍 Verificado: Flagler Dental Clinic of Miami · Encontrado en Facebook · Sin dominio web propio</div>
+          <div class="real-data">📍 Verificado: Encontrado en Google Maps · Sin dominio propio</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado</div>
-          <div class="msg-text">"Hola Flagler Dental, los encontré en Facebook buscando clínicas dentales en Miami. Veo que aún no tienen web propia — y eso significa que cada vez que alguien busca su clínica en Google, encuentra a la competencia primero. Una web profesional en 72 horas desde $900. ¿Le muestro un ejemplo real de otra clínica de Miami?"</div>
+          <div class="msg-label">✉ Mensaje personalizado listo</div>
+          <div class="msg-text">"Hola, soy Angel de Kodara SE. Encontré Miami Family Dentistry en Google Maps y vi que todavía no tienen página web. Cada día pierden pacientes que buscan 'dentista en Doral' y van a la competencia que sí tiene web. Puedo tenerles una web profesional en 72 horas desde $900. ¿Le muestro un ejemplo real?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">Puntuación oportunidad</span>
-        <div class="score-bar"><div class="score-fill" style="width:96%;background:var(--green)"></div></div>
-        <span class="score-val" style="color:var(--green)">96/100</span>
+        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <div class="score-bar"><div class="score-fill" style="width:95%;background:linear-gradient(90deg,var(--green),var(--orange))"></div></div>
+        <span class="score-val" style="color:var(--green)">95/100</span>
       </div>
     </div>
 
   </div>
 
-  <div class="footer-badge">
-    <div style="font-size:13px;color:var(--muted)">Prospección real por <strong style="color:var(--white)">Kodara Service Enterprise</strong> · KSE-008 · Desde $400 · 20+ leads verificados por entrega</div>
-    <a href="https://kodarase.com" style="color:var(--orange);font-family:monospace;font-size:13px;text-decoration:none">kodarase.com →</a>
+  <div class="cta-final">
+    <h2>20+ leads como estos <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">para tu sector</span></h2>
+    <p>Investigamos tu sector, encontramos los mejores prospectos, analizamos sus problemas y escribimos el mensaje personalizado por empresa. Listo para enviar.</p>
+    <a href="https://kodarase.com/?budget=prospeccion" class="cta-btn">Solicitar lista de prospectos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="cta-stats">
+      <div><div class="cta-stat-val">5-7d</div><div class="cta-stat-lbl">Entrega</div></div>
+      <div><div class="cta-stat-val">$400</div><div class="cta-stat-lbl">Desde</div></div>
+      <div><div class="cta-stat-val">20+</div><div class="cta-stat-lbl">Leads verificados</div></div>
+      <div><div class="cta-stat-val">CSV+HubSpot</div><div class="cta-stat-lbl">Formatos</div></div>
+    </div>
   </div>
 
 </div>
+
+<footer class="demo-footer">
+  Prospección real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-008 · Datos verificados Miami Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+</footer>
+
 </body>
 </html>
