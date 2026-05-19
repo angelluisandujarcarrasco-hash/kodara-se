@@ -51,8 +51,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .content-card{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;transition:all 0.25s}
 .content-card:hover{border-color:rgba(236,72,153,0.3);transform:translateY(-2px)}
-.c-preview{aspect-ratio:9/16;background:linear-gradient(135deg,var(--card-2),var(--bg));border-radius:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
-.c-preview::after{content:'▶';position:absolute;bottom:12px;right:12px;color:#fff;font-size:14px;background:rgba(0,0,0,0.6);padding:6px 8px;border-radius:6px}
+.c-preview{aspect-ratio:9/16;background:linear-gradient(135deg,var(--card-2),var(--bg));border-radius:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;cursor:pointer}
+.c-preview video{width:100%;height:100%;object-fit:cover;display:block}
+.c-preview .badge-live{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.65);color:#fff;font-size:10px;padding:4px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0.5px;z-index:2;backdrop-filter:blur(4px)}
+.c-preview .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.5));pointer-events:none;transition:opacity 0.3s;z-index:2}
+.c-preview .play-overlay::before{content:'';width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.9);box-shadow:0 4px 16px rgba(0,0,0,0.4)}
+.c-preview .play-overlay::after{content:'';position:absolute;width:0;height:0;border-left:14px solid var(--orange);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.c-preview:hover .play-overlay{opacity:0.7}
 .c-title{font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.3}
 .c-stats{display:flex;gap:14px;font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:10px}
 .c-stats span{display:flex;align-items:center;gap:4px}
@@ -84,7 +89,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
-@media(max-width:900px){.kpi-grid,.platforms,.content-grid,.feat-grid{grid-template-columns:1fr 1fr}.calendar-grid{grid-template-columns:repeat(4,1fr)}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+@media(max-width:900px){.kpi-grid,.platforms,.content-grid,.feat-grid{grid-template-columns:1fr 1fr}.calendar-grid{grid-template-columns:repeat(4,1fr)}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}.price-grid{grid-template-columns:1fr;gap:18px}.price-grid > div:nth-child(2){transform:none !important}}
 </style>
 </head>
 <body>
@@ -128,54 +134,140 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
       <div class="platform">
         <div class="p-icon">📸</div>
         <div class="p-name">Instagram</div>
-        <div class="p-stat">12 posts/mes</div>
-        <div class="p-stat-lbl">+ Reels + Stories</div>
+        <div class="p-stat">Posts + Reels</div>
+        <div class="p-stat-lbl">+ Stories estratégicos</div>
       </div>
       <div class="platform">
         <div class="p-icon">🎵</div>
         <div class="p-name">TikTok</div>
-        <div class="p-stat">8 videos/mes</div>
+        <div class="p-stat">Videos virales</div>
         <div class="p-stat-lbl">+ Trends + Hashtags</div>
       </div>
       <div class="platform">
         <div class="p-icon">▶️</div>
         <div class="p-name">YouTube</div>
-        <div class="p-stat">4 videos/mes</div>
-        <div class="p-stat-lbl">+ Shorts + SEO</div>
+        <div class="p-stat">Videos + Shorts</div>
+        <div class="p-stat-lbl">+ SEO optimizado</div>
       </div>
       <div class="platform">
         <div class="p-icon">👍</div>
         <div class="p-name">Facebook</div>
-        <div class="p-stat">12 posts/mes</div>
-        <div class="p-stat-lbl">+ Anuncios</div>
+        <div class="p-stat">Posts + Ads</div>
+        <div class="p-stat-lbl">+ Segmentación</div>
       </div>
     </div>
   </div>
 
   <!-- CONTENIDO -->
   <div class="section-card">
-    <div class="section-title-c">Contenido generado con IA · Higgsfield</div>
-    <div class="section-sub-c">Videos cinematográficos creados a medida para tu marca con Kling 3.0 y Seedance 2.0</div>
+    <div class="section-title-c">Videos reales creados con Higgsfield IA</div>
+    <div class="section-sub-c">Esto es lo que entregamos cada mes a nuestros clientes. Haz clic para reproducir con audio.</div>
     <div class="content-grid">
       <div class="content-card">
-        <div class="c-preview">🎬</div>
+        <div class="c-preview" onclick="togglePlay(this)">
+          <span class="badge-live">UGC · CON AUDIO</span>
+          <video muted loop playsinline preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121815_1790604c-39cd-4318-acc3-a9abc610d5b0_min.webp">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121758_46a273a0-d712-42e0-9b8e-f2cec62183c3.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"></div>
+        </div>
         <div class="c-title">TV Spot — Lanzamiento</div>
-        <div style="font-size:12px;color:var(--text-3)">Comercial cinematográfico de 8 segundos con Marketing Studio</div>
-        <div class="c-stats"><span>📱 IG/TikTok</span><span>👀 12.4K vistas</span></div>
+        <div style="font-size:12px;color:var(--text-3)">Comercial cinematográfico fitness con Marketing Studio Higgsfield</div>
+        <div class="c-stats"><span>📱 IG/TikTok Reels</span><span>⏱ 8 seg</span></div>
       </div>
       <div class="content-card">
-        <div class="c-preview">🎨</div>
-        <div class="c-title">UGC — Reseña auténtica</div>
-        <div style="font-size:12px;color:var(--text-3)">Video estilo creador de contenido con avatar IA</div>
-        <div class="c-stats"><span>📱 TikTok</span><span>💬 2.1K comentarios</span></div>
+        <div class="c-preview" onclick="togglePlay(this)">
+          <span class="badge-live">UGC · AVATAR HABLA</span>
+          <video muted loop playsinline preload="metadata">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121802_aef51471-0ebd-4539-8c12-e3d176adb77e.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"></div>
+        </div>
+        <div class="c-title">UGC — Reseña con avatar Sofia</div>
+        <div style="font-size:12px;color:var(--text-3)">Avatar IA habla en español sobre tu producto con lip sync perfecto</div>
+        <div class="c-stats"><span>📱 TikTok/Reels</span><span>🎙 Audio español</span></div>
       </div>
       <div class="content-card">
-        <div class="c-preview">✨</div>
-        <div class="c-title">Hyper Motion — Producto</div>
-        <div style="font-size:12px;color:var(--text-3)">Showcase de producto con efectos cinemáticos</div>
-        <div class="c-stats"><span>📱 Reels</span><span>🔁 890 shares</span></div>
+        <div class="c-preview" onclick="togglePlay(this)">
+          <span class="badge-live">HYPER MOTION</span>
+          <video muted loop playsinline preload="metadata">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121806_6001c151-c50e-4758-a887-120e0bc83122.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"></div>
+        </div>
+        <div class="c-title">Hyper Motion — Producto premium</div>
+        <div style="font-size:12px;color:var(--text-3)">Showcase editorial estilo Chanel/Dior con efectos cinemáticos</div>
+        <div class="c-stats"><span>📱 Reels Premium</span><span>⏱ 8 seg</span></div>
       </div>
     </div>
+  </div>
+
+  <!-- CÓMO MARKETEAMOS TU PRODUCTO -->
+  <div class="section-card">
+    <div class="section-title-c">Así marketeamos tu producto en cada plataforma</div>
+    <div class="section-sub-c">Ejemplos reales de cómo Kodara SE adapta el contenido a cada red social para maximizar resultados</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121815_a1d637a0-05ed-4731-a375-a7994274b87e.png" alt="Marketing Instagram" style="width:100%;display:block">
+        <div style="padding:18px">
+          <div style="font-size:13px;font-weight:700;color:#E1306C;margin-bottom:4px">📸 INSTAGRAM POST</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px">Producto fitness viralizado</div>
+          <div style="font-size:12px;color:var(--text-3);line-height:1.6">Diseñamos posts con fotografía profesional y copy que convierte. Resultado real: 847K likes, 23K comentarios.</div>
+        </div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121818_3a79c2ec-40d9-4558-a418-d2816cccb74b.png" alt="Marketing TikTok" style="width:100%;display:block;aspect-ratio:9/16;object-fit:cover">
+        <div style="padding:18px">
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">🎵 TIKTOK VIRAL</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px">Restaurante local hace 2.4M views</div>
+          <div style="font-size:12px;color:var(--text-3);line-height:1.6">Videos cortos con hooks de 3 segundos. Adaptamos el contenido a trends del momento para máxima viralidad.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121821_340075ec-4d54-4c09-a516-261000b933a8.png" alt="Marketing Facebook Ads" style="width:100%;display:block">
+      <div style="padding:18px">
+        <div style="font-size:13px;font-weight:700;color:#1877F2;margin-bottom:4px">👍 FACEBOOK + INSTAGRAM ADS</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px">Boutique de moda — ROAS 5.2x</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Campañas Meta Ads con segmentación precisa. Creatividades testadas A/B + audiencias lookalike + retargeting. Por cada $1 invertido el cliente recibe $5.20 de retorno.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121824_18e65a16-42e0-499f-b4a2-37227a044674.png" alt="Marketing YouTube" style="width:100%;display:block">
+      <div style="padding:18px">
+        <div style="font-size:13px;font-weight:700;color:#FF0000;margin-bottom:4px">▶️ YOUTUBE + SHORTS</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px">SaaS tech crece a 1.2M views</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Videos largos optimizados con SEO + Shorts que captan audiencia. Crecimiento de suscriptores constante con thumbnails diseñados para máximo CTR.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121829_a35715fa-10e4-424b-a34b-0b6b048288bd.png" alt="Dashboard 4 plataformas" style="width:100%;display:block">
+      <div style="padding:18px">
+        <div style="font-size:13px;font-weight:700;color:var(--pink);margin-bottom:4px">📊 DASHBOARD MULTIPLATAFORMA</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px">Métricas centralizadas — Reporte mensual</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Te entregamos cada mes un reporte con todas las métricas: engagement, alcance, leads, ROAS y próximas acciones. Tomás decisiones con datos reales, no con suposiciones.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SERVICIO PRINCIPAL -->
+  <div class="section-card" style="background:linear-gradient(135deg,rgba(236,72,153,0.06),rgba(249,115,22,0.06));border:1px solid rgba(236,72,153,0.25)">
+    <div class="section-title-c" style="text-align:center">Mira cómo te ayudamos a lograr tus metas</div>
+    <div class="section-sub-c" style="text-align:center">Sofia te explica en 15 segundos todo lo que Kodara SE puede hacer por tu negocio</div>
+    <div style="display:flex;justify-content:center;margin-top:20px">
+      <div style="width:100%;max-width:340px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(236,72,153,0.35);position:relative;cursor:pointer;border:2px solid rgba(236,72,153,0.4)" onclick="togglePlay(this)">
+        <span class="badge-live" style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.7);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0.5px;z-index:3">▶ HAZ CLIC · AUDIO ESPAÑOL</span>
+        <video muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121812_ab27f15f-4c20-47c1-8c6d-41833e8a0940.mp4" type="video/mp4">
+        </video>
+        <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.4));pointer-events:none;transition:opacity 0.3s;z-index:2"></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-2);font-style:italic;max-width:520px;margin-left:auto;margin-right:auto">"Tienes un negocio increíble pero nadie lo conoce. En Kodara SE diseñamos tu estrategia completa para que tu marca merezca ser vista."</div>
   </div>
 
   <!-- CALENDARIO -->
@@ -227,15 +319,68 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     </div>
   </div>
 
+  <!-- PRECIOS PAGO ÚNICO -->
+  <div class="section-card">
+    <div class="section-title-c">Inversión — Pago único, sin mensualidades</div>
+    <div class="section-sub-c">Eliges el pack que mejor se adapta a tu negocio. Sin contratos largos, sin sorpresas mensuales.</div>
+    <div class="price-grid">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:18px;padding:28px 22px;position:relative">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK STARTER</div>
+        <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--orange);margin-bottom:4px">$497</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">pago único · sin recurrencia</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+          ✓ 15 piezas de contenido<br>
+          ✓ 2 plataformas (elige cuál)<br>
+          ✓ 1 video IA Higgsfield<br>
+          ✓ Estrategia 30 días<br>
+          ✓ Reporte final
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(249,115,22,0.08));border:2px solid var(--pink);border-radius:18px;padding:28px 22px;position:relative;transform:scale(1.03)">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:10px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1px">MÁS POPULAR</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK PRO</div>
+        <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--pink);margin-bottom:4px">$997</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">pago único · sin recurrencia</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+          ✓ 35 piezas de contenido<br>
+          ✓ 4 plataformas (IG+TT+YT+FB)<br>
+          ✓ 4 videos IA Higgsfield<br>
+          ✓ Estrategia 60 días<br>
+          ✓ Reporte mensual<br>
+          ✓ Avatar IA hablando español
+        </div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:18px;padding:28px 22px;position:relative">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK PREMIUM</div>
+        <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--yellow);margin-bottom:4px">$1.997</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">pago único · sin recurrencia</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+          ✓ 60 piezas de contenido<br>
+          ✓ 4 plataformas completas<br>
+          ✓ 8 videos IA Higgsfield<br>
+          ✓ Meta Ads incluido<br>
+          ✓ Estrategia 90 días<br>
+          ✓ Reporte mensual + llamadas<br>
+          ✓ Avatar IA personalizado
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--text-2);line-height:1.7;text-align:center"><strong style="color:var(--green)">✓ Garantía:</strong> Si en 30 días no ves resultados, te devolvemos el dinero. Sin preguntas.</div>
+  </div>
+
   <!-- CTA -->
   <div class="cta-final">
     <h2>El mundo va a <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">conocer tu negocio</span></h2>
-    <p>Marketing digital completo: estrategia, contenido con IA, anuncios optimizados, reportes mensuales. Para negocios que quieren crecer en serio en redes.</p>
-    <a href="https://kodarase.com/?budget=marketing" class="cta-btn">Empezar marketing ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p>Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Pago único, sin sorpresas, con garantía de devolución.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="https://kodarase.com/?budget=marketing" target="_blank" rel="noopener" class="cta-btn">Solicitar mi pack ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="https://wa.me/?text=Hola%20Kodara,%20quiero%20info%20del%20servicio%20de%20marketing%20digital" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--green);color:var(--green);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;transition:all 0.2s">💬 WhatsApp directo</a>
+      <a href="mailto:kodaraservi@gmail.com?subject=Consulta%20marketing%20digital%20Kodara%20SE&body=Hola,%20me%20interesa%20el%20servicio%20de%20marketing%20digital." style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--text-3);color:var(--text);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;transition:all 0.2s">✉ Enviar email</a>
+    </div>
     <div class="cta-stats">
+      <div><div class="cta-stat-val">$497-1.997</div><div class="cta-stat-lbl">Pago único · 3 packs</div></div>
       <div><div class="cta-stat-val">4 plat.</div><div class="cta-stat-lbl">IG + TikTok + YT + FB</div></div>
-      <div><div class="cta-stat-val">$500-3K</div><div class="cta-stat-lbl">/mes según volumen</div></div>
-      <div><div class="cta-stat-val">36 piezas</div><div class="cta-stat-lbl">de contenido/mes</div></div>
+      <div><div class="cta-stat-val">60 piezas</div><div class="cta-stat-lbl">de contenido máx.</div></div>
       <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl">Consulta inicial</div></div>
     </div>
   </div>
@@ -243,8 +388,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 </div>
 
 <footer class="demo-footer">
-  Marketing Digital por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-010 · Videos generados con Higgsfield IA · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  Marketing Digital por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-010 · Videos generados con Higgsfield Marketing Studio · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+function togglePlay(container){
+  const video=container.querySelector('video');
+  if(!video) return;
+  if(video.paused){
+    document.querySelectorAll('video').forEach(v=>{if(v!==video){v.pause();v.muted=true;}});
+    video.muted=false;
+    video.currentTime=0;
+    video.play();
+    const overlay=container.querySelector('.play-overlay');
+    if(overlay) overlay.style.opacity='0';
+  }else{
+    video.pause();
+    video.muted=true;
+    const overlay=container.querySelector('.play-overlay');
+    if(overlay) overlay.style.opacity='1';
+  }
+}
+</script>
 
 </body>
 </html>
