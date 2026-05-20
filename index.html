@@ -1242,100 +1242,100 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   <div class="bud-box">
     <div class="bud-head">
       <div>
-        <div class="bud-title">Solicitar presupuesto</div>
-        <div class="bud-sub">Te respondemos en menos de 24h con propuesta sin compromiso.</div>
+        <div class="bud-title" data-es="Solicitar presupuesto" data-en="Request a quote">Solicitar presupuesto</div>
+        <div class="bud-sub" data-es="Te respondemos en menos de 24h con propuesta sin compromiso." data-en="We respond within 24h with a no-commitment proposal.">Te respondemos en menos de 24h con propuesta sin compromiso.</div>
       </div>
       <button class="svc-modal-close" onclick="closeBudget()">✕</button>
     </div>
     <div class="bud-progress">
-      <div class="bud-step-wrap"><div class="bud-dot active" id="bDot1">1</div><div class="bud-step-lbl">Servicio</div></div>
+      <div class="bud-step-wrap"><div class="bud-dot active" id="bDot1">1</div><div class="bud-step-lbl" data-es="Servicio" data-en="Service">Servicio</div></div>
       <div class="bud-line" id="bLine1"></div>
-      <div class="bud-step-wrap"><div class="bud-dot" id="bDot2">2</div><div class="bud-step-lbl">Detalles</div></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot2">2</div><div class="bud-step-lbl" data-es="Detalles" data-en="Details">Detalles</div></div>
       <div class="bud-line" id="bLine2"></div>
-      <div class="bud-step-wrap"><div class="bud-dot" id="bDot3">3</div><div class="bud-step-lbl">Extras</div></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot3">3</div><div class="bud-step-lbl" data-es="Extras" data-en="Extras">Extras</div></div>
       <div class="bud-line" id="bLine3"></div>
-      <div class="bud-step-wrap"><div class="bud-dot" id="bDot4">4</div><div class="bud-step-lbl">Contacto</div></div>
+      <div class="bud-step-wrap"><div class="bud-dot" id="bDot4">4</div><div class="bud-step-lbl" data-es="Contacto" data-en="Contact">Contacto</div></div>
     </div>
     <div class="bud-body">
 
       <div class="bud-step active" id="bStep1">
-        <div class="bud-step-title">¿Qué servicio necesitas?</div>
-        <div class="bud-step-desc">Puedes seleccionar más de uno.</div>
+        <div class="bud-step-title" data-es="¿Qué servicio necesitas?" data-en="Which service do you need?">¿Qué servicio necesitas?</div>
+        <div class="bud-step-desc" data-es="Puedes seleccionar más de uno." data-en="You can select more than one.">Puedes seleccionar más de uno.</div>
         <div class="svc-sel-grid" id="svcSelGrid"></div>
         <div class="bud-foot">
-          <span id="svcCount" style="font-size:12px;color:var(--text-3)">Selecciona al menos 1 servicio</span>
-          <button class="bud-next" id="btnStep1" onclick="bGoStep(2)" disabled>Siguiente →</button>
+          <span id="svcCount" style="font-size:12px;color:var(--text-3)" data-es="Selecciona al menos 1 servicio" data-en="Select at least 1 service">Selecciona al menos 1 servicio</span>
+          <button class="bud-next" id="btnStep1" onclick="bGoStep(2)" disabled data-es="Siguiente →" data-en="Next →">Siguiente →</button>
         </div>
       </div>
 
       <div class="bud-step" id="bStep2">
-        <div class="bud-step-title">Cuéntanos los detalles</div>
-        <div class="bud-step-desc">Esta información nos ayuda a preparar una propuesta exacta.</div>
+        <div class="bud-step-title" data-es="Cuéntanos los detalles" data-en="Tell us the details">Cuéntanos los detalles</div>
+        <div class="bud-step-desc" data-es="Esta información nos ayuda a preparar una propuesta exacta." data-en="This info helps us prepare an exact proposal.">Esta información nos ayuda a preparar una propuesta exacta.</div>
         <div id="svcDetailFields"></div>
         <div class="bud-foot">
-          <button class="bud-back" onclick="bGoStep(1)">← Atrás</button>
-          <button class="bud-next" onclick="bGoStep(3)">Siguiente →</button>
+          <button class="bud-back" onclick="bGoStep(1)" data-es="← Atrás" data-en="← Back">← Atrás</button>
+          <button class="bud-next" onclick="bGoStep(3)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
         </div>
       </div>
 
       <div class="bud-step" id="bStep3">
-        <div class="bud-step-title">¿Algo más?</div>
-        <div class="bud-step-desc">Marca lo que te interese o escribe abajo.</div>
+        <div class="bud-step-title" data-es="¿Algo más?" data-en="Anything else?">¿Algo más?</div>
+        <div class="bud-step-desc" data-es="Marca lo que te interese o escribe abajo." data-en="Check what interests you or write below.">Marca lo que te interese o escribe abajo.</div>
         <div class="extra-chips" id="extraChips">
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Versión en inglés</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Integración WhatsApp</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Pago online (Stripe)</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Google Analytics</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Blog / noticias</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Reservas online</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Tienda e-commerce</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')">Mantenimiento mensual</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Versión en inglés" data-en="English version">Versión en inglés</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Integración WhatsApp" data-en="WhatsApp integration">Integración WhatsApp</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Pago online (Stripe)" data-en="Online payment (Stripe)">Pago online (Stripe)</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Google Analytics" data-en="Google Analytics">Google Analytics</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Blog / noticias" data-en="Blog / news">Blog / noticias</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Reservas online" data-en="Online bookings">Reservas online</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Tienda e-commerce" data-en="E-commerce store">Tienda e-commerce</button>
+          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Mantenimiento mensual" data-en="Monthly maintenance">Mantenimiento mensual</button>
         </div>
         <div class="bud-group">
-          <div class="bud-label">¿Algo más que decirnos?</div>
-          <textarea class="bud-input" rows="4" id="extraNotes" placeholder="Detalles extra, referencias de webs que te gusten, plazos..."></textarea>
+          <div class="bud-label" data-es="¿Algo más que decirnos?" data-en="Anything else to tell us?">¿Algo más que decirnos?</div>
+          <textarea class="bud-input" rows="4" id="extraNotes" data-es-ph="Detalles extra, referencias de webs que te gusten, plazos..." data-en-ph="Extra details, references of sites you like, timelines..." placeholder="Detalles extra, referencias de webs que te gusten, plazos..."></textarea>
         </div>
         <div class="bud-group" style="margin-top:12px">
-          <div class="bud-label">Presupuesto aproximado</div>
+          <div class="bud-label" data-es="Presupuesto aproximado" data-en="Approximate budget">Presupuesto aproximado</div>
           <select class="bud-input" id="budgetRange">
-            <option value="">Prefiero recibir propuesta primero</option>
-            <option>Menos de $200</option>
+            <option value="" data-es="Prefiero recibir propuesta primero" data-en="I prefer to receive a proposal first">Prefiero recibir propuesta primero</option>
+            <option data-es="Menos de $200" data-en="Less than $200">Menos de $200</option>
             <option>$200 – $500</option>
             <option>$500 – $1,000</option>
             <option>$1,000 – $3,000</option>
-            <option>Más de $3,000</option>
+            <option data-es="Más de $3,000" data-en="More than $3,000">Más de $3,000</option>
           </select>
         </div>
         <div class="bud-foot">
-          <button class="bud-back" onclick="bGoStep(2)">← Atrás</button>
-          <button class="bud-next" onclick="bGoStep(4)">Siguiente →</button>
+          <button class="bud-back" onclick="bGoStep(2)" data-es="← Atrás" data-en="← Back">← Atrás</button>
+          <button class="bud-next" onclick="bGoStep(4)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
         </div>
       </div>
 
       <div class="bud-step" id="bStep4">
-        <div class="bud-step-title">Tus datos de contacto</div>
-        <div class="bud-step-desc">Para enviarte la propuesta. Nunca compartimos tus datos.</div>
+        <div class="bud-step-title" data-es="Tus datos de contacto" data-en="Your contact info">Tus datos de contacto</div>
+        <div class="bud-step-desc" data-es="Para enviarte la propuesta. Nunca compartimos tus datos." data-en="To send you the proposal. We never share your data.">Para enviarte la propuesta. Nunca compartimos tus datos.</div>
         <div class="bud-fields">
           <div class="bud-grid2">
-            <div class="bud-group"><div class="bud-label">Nombre <span class="bud-req">*</span></div><input class="bud-input" type="text" id="conName" placeholder="Tu nombre"></div>
+            <div class="bud-group"><div class="bud-label"><span data-es="Nombre" data-en="Name">Nombre</span> <span class="bud-req">*</span></div><input class="bud-input" type="text" id="conName" data-es-ph="Tu nombre" data-en-ph="Your name" placeholder="Tu nombre"></div>
             <div class="bud-group"><div class="bud-label">Email <span class="bud-req">*</span></div><input class="bud-input" type="email" id="conEmail" placeholder="tu@email.com"></div>
           </div>
           <div class="bud-grid2">
-            <div class="bud-group"><div class="bud-label">Teléfono / WhatsApp</div><input class="bud-input" type="tel" id="conPhone" placeholder="+1 786 000 0000"></div>
-            <div class="bud-group"><div class="bud-label">Empresa</div><input class="bud-input" type="text" id="conCompany" placeholder="Opcional"></div>
+            <div class="bud-group"><div class="bud-label" data-es="Teléfono / WhatsApp" data-en="Phone / WhatsApp">Teléfono / WhatsApp</div><input class="bud-input" type="tel" id="conPhone" placeholder="+1 786 000 0000"></div>
+            <div class="bud-group"><div class="bud-label" data-es="Empresa" data-en="Company">Empresa</div><input class="bud-input" type="text" id="conCompany" data-es-ph="Opcional" data-en-ph="Optional" placeholder="Opcional"></div>
           </div>
         </div>
         <div class="bud-foot">
-          <button class="bud-back" onclick="bGoStep(3)">← Atrás</button>
-          <button class="bud-next" onclick="bSubmit()">Enviar solicitud →</button>
+          <button class="bud-back" onclick="bGoStep(3)" data-es="← Atrás" data-en="← Back">← Atrás</button>
+          <button class="bud-next" onclick="bSubmit()" data-es="Enviar solicitud →" data-en="Send request →">Enviar solicitud →</button>
         </div>
       </div>
 
       <div id="budSuccess">
         <div style="width:64px;height:64px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--green);font-size:24px">✓</div>
-        <div style="font-size:22px;font-weight:900;margin-bottom:10px">¡Solicitud enviada!</div>
-        <div style="font-size:14px;color:var(--text-2);max-width:380px;margin:0 auto 28px;line-height:1.7">Te respondemos en menos de 24h con una propuesta personalizada a kodaraservi@gmail.com</div>
-        <button onclick="closeBudget()" class="cta-btn">Cerrar</button>
+        <div style="font-size:22px;font-weight:900;margin-bottom:10px" data-es="¡Solicitud enviada!" data-en="Request sent!">¡Solicitud enviada!</div>
+        <div style="font-size:14px;color:var(--text-2);max-width:380px;margin:0 auto 28px;line-height:1.7" data-es="Te respondemos en menos de 24h con una propuesta personalizada a kodaraservi@gmail.com" data-en="We'll respond within 24h with a custom proposal to kodaraservi@gmail.com">Te respondemos en menos de 24h con una propuesta personalizada a kodaraservi@gmail.com</div>
+        <button onclick="closeBudget()" class="cta-btn" data-es="Cerrar" data-en="Close">Cerrar</button>
       </div>
 
     </div>
@@ -1397,11 +1397,31 @@ let lang = 'es';
 function setLang(l) {
   lang = l;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  if (event && event.target) event.target.classList.add('active');
   document.querySelectorAll('[data-es]').forEach(el => {
-    el.textContent = el.getAttribute('data-' + l);
+    const v = el.getAttribute('data-' + l);
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-es-ph]').forEach(el => {
+    const v = el.getAttribute('data-' + l + '-ph');
+    if (v != null) el.setAttribute('placeholder', v);
   });
   document.documentElement.lang = l;
+  // Refresh dynamic content if budget modal exists
+  if (document.getElementById('svcSelGrid')) buildSvcSelGrid();
+  // Refresh service modal if open
+  if (svcModalCurrent && document.getElementById('svcModal').classList.contains('open')) {
+    openSvcModal(svcModalCurrent);
+  }
+  // Refresh budget step 2 if visible
+  if (bSelected && bSelected.length && document.getElementById('bStep2').classList.contains('active')) {
+    buildBudStep2();
+  }
+}
+// Helper: get localized field — falls back to Spanish if no _en version
+function tx(obj, field) {
+  if (lang === 'en' && obj[field + '_en'] != null) return obj[field + '_en'];
+  return obj[field];
 }
 
 // Progress bar
@@ -1452,143 +1472,223 @@ function handleSubmit(e) {
 /* ====== SERVICE DATA ====== */
 const SERVICES = {
   web: {
-    tag:'KSE-001', name:'Diseño Web Premium', icon:'🌐',
+    tag:'KSE-001', name:'Diseño Web Premium', name_en:'Premium Web Design', icon:'🌐',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073709_1d7c53e2-f320-40c4-bd29-2167dd86833e.png',
     price:'$900 – $2,000', priceShort:'$900–2K',
     pitch:'Web profesional diseñada a medida con animaciones GSAP, optimizada para convertir visitas en clientes. Compatible con Shopify y cualquier plataforma. Lista para publicar en 72 horas.',
+    pitch_en:'Custom professional website with GSAP animations, optimized to convert visits into customers. Compatible with Shopify and any platform. Ready to publish in 72 hours.',
     features:['Diseño 100% a medida desde cero, no plantillas','Animaciones GSAP profesionales','Adaptada a móvil (responsive)','Optimizada para SEO y velocidad de carga','Formulario de contacto funcional','Compatible con cualquier hosting','Hasta 5 páginas (inicio, servicios, sobre, contacto, etc.)','2 rondas de revisiones incluidas','Soporte 30 días post-entrega'],
+    features_en:['100% custom design from scratch, no templates','Professional GSAP animations','Mobile-friendly (responsive)','Optimized for SEO and loading speed','Functional contact form','Compatible with any hosting','Up to 5 pages (home, services, about, contact, etc.)','2 rounds of revisions included','30-day post-delivery support'],
     process:[
       {n:'01', t:'Briefing en 30 minutos', d:'Llamada o cuestionario para entender tu negocio, objetivos y referencias visuales.'},
       {n:'02', t:'Diseño y desarrollo (48-60h)', d:'Diseñamos y programamos. Ves avances en tiempo real para que ajustes lo que quieras.'},
       {n:'03', t:'Entrega y publicación (72h)', d:'Te entregamos el archivo final o lo publicamos directamente en tu dominio.'}
     ],
+    process_en:[
+      {n:'01', t:'30-minute briefing', d:'Call or questionnaire to understand your business, goals and visual references.'},
+      {n:'02', t:'Design & development (48-60h)', d:'We design and code. You see progress in real-time and adjust whatever you want.'},
+      {n:'03', t:'Delivery & publishing (72h)', d:'We deliver the final file or publish it directly on your domain.'}
+    ],
     needs:['Logo de tu negocio (si tienes)','3-5 fotos reales del negocio o stock que te gusten','Textos de tus servicios o productos','Acceso al dominio (si quieres que lo publiquemos)'],
+    needs_en:['Your business logo (if you have one)','3-5 real photos of your business or stock photos you like','Texts for your services or products','Domain access (if you want us to publish it)'],
     demo:'clinica-norte.html'
   },
   instagram: {
-    tag:'KSE-002', name:'Instagram a Web', icon:'📱',
+    tag:'KSE-002', name:'Instagram a Web', name_en:'Instagram to Website', icon:'📱',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073720_f0c22035-d77c-4d73-8be0-007789670bb1.png',
     price:'$200 – $1,000', priceShort:'$200–1K',
     pitch:'Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Sin inventar nada. Entrega en 24-48 horas.',
+    pitch_en:'Your Instagram profile becomes a professional website with your real photos, colors and services. Nothing made up. Delivered in 24-48 hours.',
     features:['Extraemos tus colores y fotos del perfil','Web con tu identidad visual real, no inventada','Secciones: inicio, servicios, galería, contacto','Formulario de contacto funcional','Enlace a tu Instagram integrado','Totalmente adaptada a móvil','Lista para publicar en 24-48 horas','Optimizada para SEO local'],
+    features_en:['We extract your colors and photos from the profile','Website with your real visual identity, not invented','Sections: home, services, gallery, contact','Functional contact form','Integrated Instagram link','Fully mobile-friendly','Ready to publish in 24-48 hours','Optimized for local SEO'],
     process:[
       {n:'01', t:'Nos das tu @ de Instagram', d:'Solo necesitamos tu nombre de usuario. Analizamos tu perfil y extraemos colores, fotos y bio.'},
       {n:'02', t:'Construimos la web en 24h', d:'En 24 horas tienes una web completa con todo tu contenido real. Cero inventado.'},
       {n:'03', t:'Revisas y publicas', d:'Si necesitas ajustes los hacemos. Luego recibes el archivo o lo publicamos donde quieras.'}
     ],
+    process_en:[
+      {n:'01', t:'You give us your @ Instagram', d:'We only need your username. We analyze your profile and extract colors, photos and bio.'},
+      {n:'02', t:'We build the site in 24h', d:'In 24 hours you have a complete website with all your real content. Zero made up.'},
+      {n:'03', t:'You review and publish', d:'If you need adjustments we make them. Then you get the file or we publish it wherever you want.'}
+    ],
     needs:['Tu @ de Instagram público','Lista de tus servicios y precios (si los muestras)','Información de contacto (teléfono, email, dirección)'],
+    needs_en:['Your public Instagram @','List of your services and prices (if you show them)','Contact info (phone, email, address)'],
     demo:'demo-instagram-web.html'
   },
   metaads: {
-    tag:'KSE-003', name:'Auditoría Meta Ads', icon:'📣',
+    tag:'KSE-003', name:'Auditoría Meta Ads', name_en:'Meta Ads Audit', icon:'📣',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073740_e7b00a82-3883-4caa-8d72-0ce2a4591d35.png',
     price:'$200 – $800', priceShort:'$200–800',
     pitch:'Detectamos qué anuncios de Facebook e Instagram están perdiendo dinero. Entregamos anuncios reescritos listos para lanzar con mejores conversiones. Entrega en 48 horas.',
+    pitch_en:'We detect which Facebook and Instagram ads are losing money. We deliver rewritten ads ready to launch with better conversions. Delivered in 48 hours.',
     features:['Análisis completo de campañas activas','Detección de gasto malgastado en € o $','Anuncios reescritos por nosotros (copy + estructura)','Recomendaciones de audiencia y segmentación','Comparativa con competencia del sector','Plan de acción priorizado por impacto','Estimación de ROAS potencial','Informe visual entregado en 48h'],
+    features_en:['Complete analysis of active campaigns','Detection of wasted spend in $','Ads rewritten by us (copy + structure)','Audience and targeting recommendations','Comparison with industry competition','Action plan prioritized by impact','Potential ROAS estimation','Visual report delivered in 48h'],
     process:[
       {n:'01', t:'Acceso a tu cuenta de ads', d:'Nos das acceso de solo lectura al Administrador de Anuncios. Cero riesgo para ti.'},
       {n:'02', t:'Análisis profundo (48h)', d:'Revisamos cada campaña, anuncio y audiencia. Detectamos qué pierde dinero y qué funciona.'},
       {n:'03', t:'Entrega del informe + anuncios listos', d:'Recibes el informe visual y los anuncios reescritos listos para copiar y pegar.'}
     ],
+    process_en:[
+      {n:'01', t:'Access to your ads account', d:'You give us read-only access to Ads Manager. Zero risk for you.'},
+      {n:'02', t:'Deep analysis (48h)', d:'We review every campaign, ad and audience. We detect what loses money and what works.'},
+      {n:'03', t:'Report delivery + ready ads', d:'You receive the visual report and rewritten ads ready to copy and paste.'}
+    ],
     needs:['Acceso de solo lectura al Administrador de Anuncios (Business Manager)','URL de tu Facebook/Instagram','Tu presupuesto mensual actual aproximado','Tu objetivo principal (ventas, leads, seguidores...)'],
+    needs_en:['Read-only access to Ads Manager (Business Manager)','Your Facebook/Instagram URL','Your approximate current monthly budget','Your main objective (sales, leads, followers...)'],
     demo:'demo-auditoria-meta-ads.html'
   },
   seo: {
-    tag:'KSE-004', name:'Auditoría SEO', icon:'🔍',
+    tag:'KSE-004', name:'Auditoría SEO', name_en:'SEO Audit', icon:'🔍',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073947_470207c8-1e32-46f3-94dd-6056c2d15fff.png',
     price:'$200 – $700', priceShort:'$200–700',
     pitch:'Analizamos por qué tu web no aparece en Google. Informe visual con puntuación 0-100, correcciones ordenadas por impacto y plan de acción. Entrega en 48 horas.',
+    pitch_en:'We analyze why your website does not appear on Google. Visual report with 0-100 score, fixes ordered by impact and action plan. Delivered in 48 hours.',
     features:['Puntuación 0-100 de tu web completa','Análisis de keywords de tu sector','Detección de errores técnicos (velocidad, mobile, HTTPS)','Comparativa con 3 competidores locales','Plan de acción priorizado por impacto','Estimación de tráfico potencial','Recomendaciones de contenido a crear','Informe visual entregado en 48h'],
+    features_en:['0-100 score of your full website','Keyword analysis for your industry','Detection of technical errors (speed, mobile, HTTPS)','Comparison with 3 local competitors','Action plan prioritized by impact','Potential traffic estimation','Content recommendations to create','Visual report delivered in 48h'],
     process:[
       {n:'01', t:'Análisis automático de tu web', d:'Solo necesitamos la URL. Lanzamos 50+ comprobaciones técnicas y de contenido.'},
       {n:'02', t:'Análisis manual de competencia (24h)', d:'Estudiamos qué hace tu competencia mejor que tú y dónde tienes la oportunidad.'},
       {n:'03', t:'Informe + plan de acción (48h)', d:'Recibes el informe visual con la lista priorizada de cosas a corregir esta semana.'}
     ],
+    process_en:[
+      {n:'01', t:'Automatic site analysis', d:'We only need the URL. We run 50+ technical and content checks.'},
+      {n:'02', t:'Manual competitor analysis (24h)', d:'We study what your competition does better than you and where you have opportunity.'},
+      {n:'03', t:'Report + action plan (48h)', d:'You get the visual report with the prioritized list of things to fix this week.'}
+    ],
     needs:['URL de tu web','Acceso a Google Search Console (si lo tienes — si no, no pasa nada)','Las 3-5 palabras por las que te gustaría aparecer','Tu sector y ubicación geográfica (para SEO local)'],
+    needs_en:['Your website URL','Access to Google Search Console (if you have it — if not, no worries)','The 3-5 keywords you would like to rank for','Your industry and geographic location (for local SEO)'],
     demo:'demo-auditoria-seo.html'
   },
   auto: {
-    tag:'KSE-005', name:'Automatizaciones', icon:'⚡',
+    tag:'KSE-005', name:'Automatizaciones', name_en:'Automations', icon:'⚡',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074002_c6652c8c-38a3-44f0-811e-54f0e170066f.png',
     price:'$1,000 – $10,000+', priceShort:'$1K–10K+',
     pitch:'Automatizamos emails, reportes, seguimiento de clientes y flujos de Shopify con n8n. Todo funciona solo 24/7. Ahorra 3+ horas diarias desde el primer día.',
+    pitch_en:'We automate emails, reports, customer follow-up and Shopify flows with n8n. Everything runs 24/7 on its own. Save 3+ hours daily from day one.',
     features:['Flujos de email automáticos','Reportes que se generan solos cada día/semana','Seguimiento de clientes 24/7','Conexión entre tus herramientas (Shopify, Gmail, HubSpot, etc.)','Alertas en Slack/WhatsApp/Email','Construido con n8n profesional','Panel de control para gestionar flujos','Soporte y mantenimiento 30 días incluidos'],
+    features_en:['Automatic email flows','Reports that generate themselves daily/weekly','24/7 customer follow-up','Connection between your tools (Shopify, Gmail, HubSpot, etc.)','Slack/WhatsApp/Email alerts','Built with professional n8n','Control panel to manage flows','30-day support and maintenance included'],
     process:[
       {n:'01', t:'Análisis de procesos', d:'Llamada para identificar qué tareas repetitivas te quitan tiempo cada día.'},
       {n:'02', t:'Diseño y construcción (3-7 días)', d:'Construimos el flujo en n8n y lo testeamos con casos reales antes de activarlo.'},
       {n:'03', t:'Activación + formación', d:'Activamos el flujo, te enseñamos cómo monitorizarlo y te dejamos 30 días de soporte.'}
     ],
+    process_en:[
+      {n:'01', t:'Process analysis', d:'Call to identify which repetitive tasks take your time every day.'},
+      {n:'02', t:'Design & build (3-7 days)', d:'We build the flow in n8n and test it with real cases before activating it.'},
+      {n:'03', t:'Activation + training', d:'We activate the flow, teach you how to monitor it and leave you 30 days of support.'}
+    ],
     needs:['Descripción del proceso a automatizar','Acceso a las herramientas que usas (Gmail, Shopify, etc.)','Frecuencia con la que ocurre el proceso','Ejemplos de los datos que entran y salen'],
+    needs_en:['Description of the process to automate','Access to the tools you use (Gmail, Shopify, etc.)','Frequency the process happens','Examples of the data that goes in and out'],
     demo:'demo-automatizaciones.html'
   },
   negocio: {
-    tag:'KSE-006', name:'Auditoría de Negocio', icon:'📊',
+    tag:'KSE-006', name:'Auditoría de Negocio', name_en:'Business Audit', icon:'📊',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074013_fb060d9f-8e20-47ac-b391-2be146e7c3e6.png',
     price:'$500 – $3,000', priceShort:'$500–3K',
     pitch:'Análisis completo de tu negocio digital: web, redes, oferta, precios vs competencia. Informe con puntuación por área, mapa del embudo y plan priorizado. Entrega en 48-72 horas.',
+    pitch_en:'Complete analysis of your digital business: website, social media, offer, prices vs competition. Report with score per area, funnel map and prioritized plan. Delivered in 48-72 hours.',
     features:['Análisis web + redes + oferta + precios','Puntuación por área (0-100)','Mapa visual de tu embudo de ventas','Comparativa con 3+ competidores directos','Análisis de reputación online (reseñas)','Plan de acción 90 días','Quick wins para implementar esta semana','Entrega en 48-72 horas'],
+    features_en:['Web + social + offer + pricing analysis','Score per area (0-100)','Visual map of your sales funnel','Comparison with 3+ direct competitors','Online reputation analysis (reviews)','90-day action plan','Quick wins to implement this week','Delivered in 48-72 hours'],
     process:[
       {n:'01', t:'Llamada de descubrimiento', d:'30 minutos para entender tu modelo de negocio, objetivos y problemas principales.'},
       {n:'02', t:'Análisis profundo (48h)', d:'Auditamos web, redes, oferta, precios y comparamos con la competencia.'},
       {n:'03', t:'Informe + reunión de presentación', d:'Te enviamos el informe y agendamos una llamada de 30 min para explicarte cada conclusión.'}
     ],
+    process_en:[
+      {n:'01', t:'Discovery call', d:'30 minutes to understand your business model, goals and main problems.'},
+      {n:'02', t:'Deep analysis (48h)', d:'We audit web, social, offer, prices and compare with competitors.'},
+      {n:'03', t:'Report + presentation meeting', d:'We send you the report and schedule a 30-min call to explain each conclusion.'}
+    ],
     needs:['URL de tu web','Tus redes sociales principales','Información de tu oferta y precios','Lista de 2-3 competidores que admires'],
+    needs_en:['Your website URL','Your main social media accounts','Info on your offer and pricing','List of 2-3 competitors you admire'],
     demo:'demo-auditoria-negocio.html'
   },
   facturas: {
-    tag:'KSE-007', name:'Dashboard de Facturas', icon:'🧾',
+    tag:'KSE-007', name:'Dashboard de Facturas', name_en:'Invoice Dashboard', icon:'🧾',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074114_7b893118-7e0f-4678-bd0b-f073141fc089.png',
     price:'$100 – $500', priceShort:'$100–500',
     pitch:'Subes tus facturas en PDF y en 24 horas tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto. Sin más Excel.',
+    pitch_en:'You upload your invoices as PDF and in 24 hours you have a visual dashboard with income, expenses, tax and net profit. No more Excel.',
     features:['Procesamos tus PDFs automáticamente con OCR','Dashboard visual interactivo en HTML','Ingresos y gastos por mes y trimestre','IVA calculado automáticamente','Pie chart de categorías de gastos','Tabla de últimas transacciones','Exportable a PDF/Excel','Entrega en 24 horas'],
+    features_en:['We process your PDFs automatically with OCR','Interactive visual HTML dashboard','Income and expenses by month and quarter','Tax calculated automatically','Pie chart of expense categories','Table of latest transactions','Exportable to PDF/Excel','Delivered in 24 hours'],
     process:[
       {n:'01', t:'Subes las facturas', d:'Comprime tus PDFs en una carpeta o nos los envías por email/Drive.'},
       {n:'02', t:'Procesamos y creamos el dashboard (24h)', d:'Extraemos datos de cada factura y los organizamos en un dashboard visual.'},
       {n:'03', t:'Recibes el dashboard', d:'Te entregamos el archivo HTML interactivo + PDF resumen. Actualizable cada mes.'}
     ],
+    process_en:[
+      {n:'01', t:'Upload your invoices', d:'Zip your PDFs in a folder or send them via email/Drive.'},
+      {n:'02', t:'We process and create the dashboard (24h)', d:'We extract data from each invoice and organize it into a visual dashboard.'},
+      {n:'03', t:'You receive the dashboard', d:'We deliver the interactive HTML file + PDF summary. Updateable every month.'}
+    ],
     needs:['Carpeta con tus facturas en PDF (mínimo 10)','Tu país (para el IVA correcto)','Si quieres categorías personalizadas o las automáticas'],
+    needs_en:['Folder with your PDF invoices (minimum 10)','Your country (for correct tax)','If you want custom or automatic categories'],
     demo:'demo-dashboard-facturas.html'
   },
   prospeccion: {
-    tag:'KSE-008', name:'Prospección de Clientes', icon:'🎯',
+    tag:'KSE-008', name:'Prospección de Clientes', name_en:'Client Prospecting', icon:'🎯',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074127_e5423e8e-f08e-4c83-b69a-5c850897572b.png',
     price:'$400 – $900', priceShort:'$400–900',
     pitch:'Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado para cada uno. Listo para enviar.',
+    pitch_en:'We find businesses in your sector with weak websites, analyze them and write a personalized outreach message for each one. Ready to send.',
     features:['20+ leads verificados por entrega','Análisis individual de cada negocio (web, redes, problemas)','Datos de contacto verificados (email, teléfono, decisor)','Mensaje personalizado por empresa','Puntuación de oportunidad (1-100)','Lista lista para enviar','Exportada en CSV y formato HubSpot/Pipedrive','Entrega en 5-7 días'],
+    features_en:['20+ verified leads per delivery','Individual analysis of each business (web, social, problems)','Verified contact info (email, phone, decision-maker)','Personalized message per company','Opportunity score (1-100)','List ready to send','Exported in CSV and HubSpot/Pipedrive format','Delivered in 5-7 days'],
     process:[
       {n:'01', t:'Definimos tu cliente ideal', d:'Sector, ciudad/país, tamaño del negocio y qué problemas le resuelves.'},
       {n:'02', t:'Búsqueda y análisis (3-5 días)', d:'Buscamos 50+ negocios, los analizamos uno a uno y filtramos los 20 mejores.'},
       {n:'03', t:'Entrega + mensajes', d:'Recibes la lista con datos de contacto y mensaje personalizado para cada uno.'}
     ],
+    process_en:[
+      {n:'01', t:'We define your ideal client', d:'Sector, city/country, business size and what problems you solve.'},
+      {n:'02', t:'Search & analysis (3-5 days)', d:'We search 50+ businesses, analyze them one by one and filter the 20 best.'},
+      {n:'03', t:'Delivery + messages', d:'You receive the list with contact info and personalized message for each one.'}
+    ],
     needs:['Sector exacto de tus clientes ideales','Ciudad o país objetivo','Qué les vendes (1-2 líneas)','Rango de tamaño de empresa que buscas'],
+    needs_en:['Exact sector of your ideal clients','Target city or country','What you sell them (1-2 lines)','Company size range you target'],
     demo:'demo-prospeccion.html'
   },
   chat: {
-    tag:'KSE-009', name:'Chat IA para Web', icon:'🤖',
+    tag:'KSE-009', name:'Chat IA para Web', name_en:'AI Chat for Web', icon:'🤖',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074147_849b5757-f209-42ea-adf3-48c45402e294.png',
     price:'$150 – $350', priceShort:'$150–350',
     pitch:'Chatbot de IA en tu web que responde preguntas de clientes 24/7 y captura leads automáticamente mientras duermes.',
+    pitch_en:'AI chatbot on your website that answers customer questions 24/7 and captures leads automatically while you sleep.',
     features:['Responde 24/7 sin que estés presente','Aprende de tu web, servicios y precios','Captura leads con email automático','Te avisa por email cuando hay cliente caliente','Integración con WhatsApp opcional','Diseño personalizado a tu marca','Hasta 1,000 conversaciones/mes','Instalación en menos de 24h'],
+    features_en:['Answers 24/7 without you being present','Learns from your website, services and prices','Captures leads with automatic email','Alerts you by email when there is a hot lead','Optional WhatsApp integration','Custom designed to your brand','Up to 1,000 conversations/month','Installed in less than 24h'],
     process:[
       {n:'01', t:'Entrenamiento con tu info', d:'Nos das tu web y FAQ. Entrenamos el chat con todos tus servicios, precios y horarios.'},
       {n:'02', t:'Instalación en tu web (24h)', d:'Añadimos el chat a tu web. Probamos con 50 preguntas reales antes de activarlo.'},
       {n:'03', t:'Activación + soporte', d:'Lo activamos. Recibes panel para ver conversaciones y ajustar respuestas cuando quieras.'}
     ],
+    process_en:[
+      {n:'01', t:'Training with your info', d:'You give us your website and FAQ. We train the chat with all your services, prices and hours.'},
+      {n:'02', t:'Installation on your website (24h)', d:'We add the chat to your site. We test with 50 real questions before activating.'},
+      {n:'03', t:'Activation + support', d:'We activate it. You get a dashboard to see conversations and adjust answers anytime.'}
+    ],
     needs:['URL de tu web','Tus servicios y precios','Preguntas frecuentes que reciben tus clientes','Email donde quieres recibir las alertas'],
+    needs_en:['Your website URL','Your services and prices','Frequent questions your customers ask','Email where you want to receive alerts'],
     demo:'demo-chat-ia.html'
   },
   marketing: {
-    tag:'KSE-010', name:'Marketing Digital', icon:'📣',
+    tag:'KSE-010', name:'Marketing Digital', name_en:'Digital Marketing', icon:'📣',
     img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_113236_6e859e54-d51c-48fd-888a-ae9848a98b5a.png',
     price:'$147 – $497 · 3 packs', priceShort:'$147–497',
     pitch:'Marketing digital completo en 4 plataformas (Instagram, TikTok, YouTube, Facebook) con videos generados por IA. Estrategia, contenido y métricas. Para negocios que quieren crecer en serio en redes.',
+    pitch_en:'Complete digital marketing on 4 platforms (Instagram, TikTok, YouTube, Facebook) with AI-generated videos. Strategy, content and metrics. For businesses that want to grow seriously on social media.',
     features:['Estrategia personalizada a 90 días','Videos cinematográficos con IA Higgsfield','36 piezas de contenido/mes en 4 plataformas','Copywriting profesional por plataforma','Reporte mensual con métricas y ROI','Meta Ads opcional integrado','Calendario editorial coordinado','Soporte directo sin intermediarios'],
+    features_en:['90-day custom strategy','Cinematic videos with Higgsfield AI','36 content pieces/month across 4 platforms','Professional copywriting per platform','Monthly report with metrics and ROI','Optional integrated Meta Ads','Coordinated editorial calendar','Direct support with no middlemen'],
     process:[
       {n:'01', t:'Análisis y estrategia', d:'Estudio de tu negocio, sector y competencia. Plan de contenido 90 días con KPIs claros.'},
       {n:'02', t:'Producción mensual', d:'Creamos 36 piezas: videos IA con Higgsfield, posts, Reels, Stories, copy optimizado.'},
       {n:'03', t:'Publicación + reportes', d:'Publicamos coordinado en las 4 plataformas. Reporte mensual con resultados y optimizaciones.'}
     ],
+    process_en:[
+      {n:'01', t:'Analysis & strategy', d:'Study of your business, sector and competition. 90-day content plan with clear KPIs.'},
+      {n:'02', t:'Monthly production', d:'We create 36 pieces: AI videos with Higgsfield, posts, Reels, Stories, optimized copy.'},
+      {n:'03', t:'Publishing + reports', d:'We publish coordinated across all 4 platforms. Monthly report with results and optimizations.'}
+    ],
     needs:['Tu sector y mercado objetivo','Tus redes sociales actuales (si las tienes)','Logo y guía de marca (si tienes)','Presupuesto mensual de Meta Ads (opcional)'],
+    needs_en:['Your sector and target market','Your current social media (if any)','Logo and brand guide (if you have one)','Monthly Meta Ads budget (optional)'],
     demo:'demo-marketing.html'
   }
 };
@@ -1599,18 +1699,22 @@ function openSvcModal(key) {
   const s = SERVICES[key];
   if (!s) return;
   svcModalCurrent = key;
+  const name = tx(s, 'name');
   document.getElementById('svcModalTag').textContent = s.tag;
-  document.getElementById('svcModalTitle').textContent = s.name;
+  document.getElementById('svcModalTitle').textContent = name;
   document.getElementById('svcModalImg').src = s.img;
-  document.getElementById('svcModalImg').alt = s.name;
-  document.getElementById('svcModalPitch').textContent = s.pitch;
+  document.getElementById('svcModalImg').alt = name;
+  document.getElementById('svcModalPitch').textContent = tx(s, 'pitch');
   document.getElementById('svcModalPrice').textContent = s.price;
+  const feats = tx(s, 'features');
   const list = document.getElementById('svcModalList');
-  list.innerHTML = s.features.map(f => `<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span>${f}</span></li>`).join('');
+  list.innerHTML = feats.map(f => `<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span>${f}</span></li>`).join('');
+  const proc = tx(s, 'process');
   const steps = document.getElementById('svcModalSteps');
-  steps.innerHTML = s.process.map(p => `<div class="svc-modal-step"><div class="svc-modal-step-num">${p.n}</div><div><div class="svc-modal-step-title">${p.t}</div><div class="svc-modal-step-desc">${p.d}</div></div></div>`).join('');
+  steps.innerHTML = proc.map(p => `<div class="svc-modal-step"><div class="svc-modal-step-num">${p.n}</div><div><div class="svc-modal-step-title">${p.t}</div><div class="svc-modal-step-desc">${p.d}</div></div></div>`).join('');
+  const ndz = tx(s, 'needs');
   const needs = document.getElementById('svcModalNeeds');
-  needs.innerHTML = s.needs.map((n, i) => `<li><span class="needs-num">${i+1}</span><span>${n}</span></li>`).join('');
+  needs.innerHTML = ndz.map((n, i) => `<li><span class="needs-num">${i+1}</span><span>${n}</span></li>`).join('');
   document.getElementById('svcModalDemo').href = s.demo;
   document.getElementById('svcModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1626,10 +1730,10 @@ let bStep = 1;
 function buildSvcSelGrid() {
   const grid = document.getElementById('svcSelGrid');
   grid.innerHTML = Object.entries(SERVICES).map(([k, s]) => `
-    <button class="svc-sel-card" data-key="${k}" onclick="toggleBudSvc(this)">
+    <button class="svc-sel-card${bSelected.includes(k)?' selected':''}" data-key="${k}" onclick="toggleBudSvc(this)">
       <div class="svc-sel-check">✓</div>
       <div class="svc-sel-icon">${s.icon}</div>
-      <div class="svc-sel-name">${s.name}</div>
+      <div class="svc-sel-name">${tx(s, 'name')}</div>
       <div class="svc-sel-price">${s.priceShort}</div>
     </button>
   `).join('');
@@ -1640,7 +1744,12 @@ function toggleBudSvc(btn) {
   if (bSelected.includes(k)) { bSelected = bSelected.filter(x => x !== k); }
   else { bSelected.push(k); }
   const n = bSelected.length;
-  document.getElementById('svcCount').textContent = n === 0 ? 'Selecciona al menos 1 servicio' : `${n} servicio${n>1?'s':''} seleccionado${n>1?'s':''}`;
+  const isEn = lang === 'en';
+  let txt;
+  if (n === 0) txt = isEn ? 'Select at least 1 service' : 'Selecciona al menos 1 servicio';
+  else if (isEn) txt = `${n} service${n>1?'s':''} selected`;
+  else txt = `${n} servicio${n>1?'s':''} seleccionado${n>1?'s':''}`;
+  document.getElementById('svcCount').textContent = txt;
   document.getElementById('btnStep1').disabled = n === 0;
 }
 function openBudget(preselectKey) {
@@ -1676,13 +1785,18 @@ function bGoStep(n) {
   }
 }
 function buildBudStep2() {
+  const isEn = lang === 'en';
+  const lblUrl = isEn ? 'Current business URL or info' : 'URL o info actual del negocio';
+  const phUrl = isEn ? 'Your website URL or @Instagram' : 'URL de tu web o tu @Instagram';
+  const lblGoal = isEn ? 'What do you want to achieve with this service?' : '¿Qué quieres conseguir con este servicio?';
+  const phGoal = isEn ? 'Tell us briefly your objective...' : 'Cuéntanos brevemente tu objetivo...';
   const wrap = document.getElementById('svcDetailFields');
   wrap.innerHTML = bSelected.map(k => {
     const s = SERVICES[k];
     return `<div class="svc-info-block show">
-      <div class="svc-info-hdr"><span style="font-size:18px">${s.icon}</span><div class="svc-info-name">${s.name}</div></div>
-      <div class="bud-group"><div class="bud-label">URL o info actual del negocio</div><input class="bud-input" type="text" id="d-${k}-url" placeholder="URL de tu web o tu @Instagram"></div>
-      <div class="bud-group"><div class="bud-label">¿Qué quieres conseguir con este servicio?</div><textarea class="bud-input" rows="3" id="d-${k}-goal" placeholder="Cuéntanos brevemente tu objetivo..."></textarea></div>
+      <div class="svc-info-hdr"><span style="font-size:18px">${s.icon}</span><div class="svc-info-name">${tx(s, 'name')}</div></div>
+      <div class="bud-group"><div class="bud-label">${lblUrl}</div><input class="bud-input" type="text" id="d-${k}-url" placeholder="${phUrl}"></div>
+      <div class="bud-group"><div class="bud-label">${lblGoal}</div><textarea class="bud-input" rows="3" id="d-${k}-goal" placeholder="${phGoal}"></textarea></div>
     </div>`;
   }).join('');
 }
