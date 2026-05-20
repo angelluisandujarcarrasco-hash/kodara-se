@@ -65,6 +65,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 /* Chat widget flotante real */
 #chatBtn{position:fixed;bottom:28px;right:28px;width:64px;height:64px;background:linear-gradient(135deg,var(--orange),var(--orange-light));border-radius:50%;cursor:pointer;z-index:9990;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(249,115,22,0.5);border:none;transition:transform 0.3s}
 #chatBtn:hover{transform:scale(1.08)}
@@ -98,20 +101,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Chat IA para Web</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Chat IA para Web" data-en="/ AI Chat for Web">/ Chat IA para Web</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>CHAT INTERACTIVO · PRUÉBALO ABAJO 👇</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="CHAT INTERACTIVO · PRUÉBALO ABAJO 👇" data-en="INTERACTIVE CHAT · TRY IT BELOW 👇">CHAT INTERACTIVO · PRUÉBALO ABAJO 👇</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203902_bb9a3d2c-60f9-4cb4-8db9-47a435c7023c.png" alt="Chat IA para Web">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-009 · CHAT IA PARA WEB</div>
-    <h1 class="hero-title">Atiende clientes <span class="grad">mientras duermes</span></h1>
+    <div class="hero-tag" data-es="// KSE-009 · CHAT IA PARA WEB" data-en="// KSE-009 · AI CHAT FOR WEB">// KSE-009 · CHAT IA PARA WEB</div>
+    <h1 class="hero-title"><span data-es="Atiende clientes" data-en="Serve customers">Atiende clientes</span> <span class="grad" data-es="mientras duermes" data-en="while you sleep">mientras duermes</span></h1>
     <div class="hero-meta">
-      <span>🤖 Chatbot IA 24/7</span>
-      <span>📧 Captura leads automática</span>
-      <span>⚡ Instalación 24h</span>
+      <span data-es="🤖 Chatbot IA 24/7" data-en="🤖 AI Chatbot 24/7">🤖 Chatbot IA 24/7</span>
+      <span data-es="📧 Captura leads automática" data-en="📧 Automatic lead capture">📧 Captura leads automática</span>
+      <span data-es="⚡ Instalación 24h" data-en="⚡ 24h installation">⚡ Instalación 24h</span>
     </div>
   </div>
 </div>
@@ -119,16 +125,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 <div class="container">
 
   <div class="stats-grid">
-    <div class="stat-c"><div class="stat-icon">📈</div><div class="stat-val" style="color:var(--green)">+38%</div><div class="stat-lbl">Más consultas captadas</div></div>
-    <div class="stat-c"><div class="stat-icon">🌙</div><div class="stat-val" style="color:var(--orange)">24/7</div><div class="stat-lbl">Sin que estés presente</div></div>
-    <div class="stat-c"><div class="stat-icon">⏱</div><div class="stat-val" style="color:var(--red)">-65%</div><div class="stat-lbl">Menos llamadas repetitivas</div></div>
-    <div class="stat-c"><div class="stat-icon">💬</div><div class="stat-val" style="color:var(--blue)">2s</div><div class="stat-lbl">Tiempo de respuesta</div></div>
+    <div class="stat-c"><div class="stat-icon">📈</div><div class="stat-val" style="color:var(--green)">+38%</div><div class="stat-lbl" data-es="Más consultas captadas" data-en="More inquiries captured">Más consultas captadas</div></div>
+    <div class="stat-c"><div class="stat-icon">🌙</div><div class="stat-val" style="color:var(--orange)">24/7</div><div class="stat-lbl" data-es="Sin que estés presente" data-en="Without you being present">Sin que estés presente</div></div>
+    <div class="stat-c"><div class="stat-icon">⏱</div><div class="stat-val" style="color:var(--red)">-65%</div><div class="stat-lbl" data-es="Menos llamadas repetitivas" data-en="Fewer repetitive calls">Menos llamadas repetitivas</div></div>
+    <div class="stat-c"><div class="stat-icon">💬</div><div class="stat-val" style="color:var(--blue)">2s</div><div class="stat-lbl" data-es="Tiempo de respuesta" data-en="Response time">Tiempo de respuesta</div></div>
   </div>
 
   <!-- CONVERSACIÓN EJEMPLO -->
   <div class="demo-card">
-    <div class="demo-title">Ejemplo real de conversación</div>
-    <div class="demo-sub">Así responde el chat IA en una clínica dental — conversación real</div>
+    <div class="demo-title" data-es="Ejemplo real de conversación" data-en="Real conversation example">Ejemplo real de conversación</div>
+    <div class="demo-sub" data-es="Así responde el chat IA en una clínica dental — conversación real" data-en="This is how the AI chat responds in a dental clinic — real conversation">Así responde el chat IA en una clínica dental — conversación real</div>
     <div class="chat-demo-wrap">
       <div class="chat-bubble-row">
         <div class="bubble bubble-user"><div class="bubble-name">CLIENTE — 23:42</div>¿Cuánto cuesta una limpieza dental?</div>
@@ -141,52 +147,52 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         <div class="bubble bubble-bot"><div class="bubble-name">🤖 ASISTENTE IA</div>Perfecto María 🎉. Cita confirmada para el viernes 23/05 a las 16:30. Te he enviado un SMS de confirmación y la dueña Dra. Suset recibirá tu reserva en su panel ahora mismo.</div>
       </div>
     </div>
-    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--green)">✓ Resultado:</strong> Cliente captado a las 23:43 sin que la dueña estuviera disponible. Cita confirmada automáticamente. Email de aviso enviado a la dueña.</div>
+    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--green)" data-es="✓ Resultado:" data-en="✓ Result:">✓ Resultado:</strong> <span data-es="Cliente captado a las 23:43 sin que la dueña estuviera disponible. Cita confirmada automáticamente. Email de aviso enviado a la dueña." data-en="Customer captured at 23:43 without the owner being available. Appointment confirmed automatically. Notification email sent to owner.">Cliente captado a las 23:43 sin que la dueña estuviera disponible. Cita confirmada automáticamente. Email de aviso enviado a la dueña.</span></div>
   </div>
 
   <!-- MÉTRICAS REALES -->
   <div class="metrics-grid">
     <div class="metric-card">
       <div class="m-val" style="color:var(--green)">847</div>
-      <div class="m-lbl">Conversaciones / mes</div>
-      <div class="m-sub">Mes de prueba en clínica dental</div>
+      <div class="m-lbl" data-es="Conversaciones / mes" data-en="Conversations / month">Conversaciones / mes</div>
+      <div class="m-sub" data-es="Mes de prueba en clínica dental" data-en="Trial month at dental clinic">Mes de prueba en clínica dental</div>
     </div>
     <div class="metric-card featured">
       <div class="m-val" style="color:var(--orange)">68%</div>
-      <div class="m-lbl">Fuera de horario</div>
-      <div class="m-sub">Captados después de 19:00 o fines de semana</div>
+      <div class="m-lbl" data-es="Fuera de horario" data-en="Outside business hours">Fuera de horario</div>
+      <div class="m-sub" data-es="Captados después de 19:00 o fines de semana" data-en="Captured after 7pm or weekends">Captados después de 19:00 o fines de semana</div>
     </div>
     <div class="metric-card">
       <div class="m-val" style="color:var(--blue)">142</div>
-      <div class="m-lbl">Leads cualificados</div>
-      <div class="m-sub">Con email + teléfono verificados</div>
+      <div class="m-lbl" data-es="Leads cualificados" data-en="Qualified leads">Leads cualificados</div>
+      <div class="m-sub" data-es="Con email + teléfono verificados" data-en="With verified email + phone">Con email + teléfono verificados</div>
     </div>
   </div>
 
   <!-- FEATURES -->
   <div class="demo-card">
-    <div class="demo-title">Qué hace tu Chat IA</div>
-    <div class="demo-sub">Entrenado con tu información — responde como tú</div>
+    <div class="demo-title" data-es="Qué hace tu Chat IA" data-en="What your AI Chat does">Qué hace tu Chat IA</div>
+    <div class="demo-sub" data-es="Entrenado con tu información — responde como tú" data-en="Trained with your information — responds like you">Entrenado con tu información — responde como tú</div>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon">🧠</div><div class="feat-title">Aprende de tu web</div><div class="feat-desc">Analizamos tu web y FAQ para entrenar el chat con tus servicios, precios y procesos reales.</div></div>
-      <div class="feat-card"><div class="feat-icon">📧</div><div class="feat-title">Captura leads</div><div class="feat-desc">Solicita nombre, email y teléfono cuando detecta intención de compra. Te llega todo al email.</div></div>
-      <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title">WhatsApp opcional</div><div class="feat-desc">Conexión directa con WhatsApp Business si el cliente prefiere hablar contigo en persona.</div></div>
-      <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title">Personalizado a tu marca</div><div class="feat-desc">Colores, logo, tono de voz y avatar adaptados al estilo de tu negocio.</div></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title">Panel de control</div><div class="feat-desc">Ve todas las conversaciones, ajusta respuestas y mejora el chat cuando quieras.</div></div>
-      <div class="feat-card"><div class="feat-icon">🌍</div><div class="feat-title">Multi-idioma</div><div class="feat-desc">Detecta el idioma del visitante y responde automáticamente en español o inglés.</div></div>
+      <div class="feat-card"><div class="feat-icon">🧠</div><div class="feat-title" data-es="Aprende de tu web" data-en="Learns from your website">Aprende de tu web</div><div class="feat-desc" data-es="Analizamos tu web y FAQ para entrenar el chat con tus servicios, precios y procesos reales." data-en="We analyze your website and FAQ to train the chat with your real services, prices and processes.">Analizamos tu web y FAQ para entrenar el chat con tus servicios, precios y procesos reales.</div></div>
+      <div class="feat-card"><div class="feat-icon">📧</div><div class="feat-title" data-es="Captura leads" data-en="Captures leads">Captura leads</div><div class="feat-desc" data-es="Solicita nombre, email y teléfono cuando detecta intención de compra. Te llega todo al email." data-en="Requests name, email and phone when it detects buying intent. Everything reaches your email.">Solicita nombre, email y teléfono cuando detecta intención de compra. Te llega todo al email.</div></div>
+      <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title" data-es="WhatsApp opcional" data-en="Optional WhatsApp">WhatsApp opcional</div><div class="feat-desc" data-es="Conexión directa con WhatsApp Business si el cliente prefiere hablar contigo en persona." data-en="Direct connection with WhatsApp Business if the customer prefers to talk to you in person.">Conexión directa con WhatsApp Business si el cliente prefiere hablar contigo en persona.</div></div>
+      <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title" data-es="Personalizado a tu marca" data-en="Customized to your brand">Personalizado a tu marca</div><div class="feat-desc" data-es="Colores, logo, tono de voz y avatar adaptados al estilo de tu negocio." data-en="Colors, logo, tone of voice and avatar adapted to your business style.">Colores, logo, tono de voz y avatar adaptados al estilo de tu negocio.</div></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title" data-es="Panel de control" data-en="Control panel">Panel de control</div><div class="feat-desc" data-es="Ve todas las conversaciones, ajusta respuestas y mejora el chat cuando quieras." data-en="See all conversations, adjust responses and improve the chat whenever you want.">Ve todas las conversaciones, ajusta respuestas y mejora el chat cuando quieras.</div></div>
+      <div class="feat-card"><div class="feat-icon">🌍</div><div class="feat-title" data-es="Multi-idioma" data-en="Multi-language">Multi-idioma</div><div class="feat-desc" data-es="Detecta el idioma del visitante y responde automáticamente en español o inglés." data-en="Detects the visitor's language and responds automatically in Spanish or English.">Detecta el idioma del visitante y responde automáticamente en español o inglés.</div></div>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>Tu primer empleado IA <span style="background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">trabaja 24/7</span></h2>
-    <p>Instalamos un chatbot inteligente en tu web que responde clientes y captura leads automáticamente. Sin que estés presente. Sin contestar el mismo "¿cuánto cuesta?" cien veces.</p>
-    <a href="https://kodarase.com/?budget=chat" class="cta-btn">Instalar Chat IA en mi web <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="Tu primer empleado IA" data-en="Your first AI employee">Tu primer empleado IA</span> <span style="background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="trabaja 24/7" data-en="works 24/7">trabaja 24/7</span></h2>
+    <p data-es='Instalamos un chatbot inteligente en tu web que responde clientes y captura leads automáticamente. Sin que estés presente. Sin contestar el mismo "¿cuánto cuesta?" cien veces.' data-en='We install an intelligent chatbot on your website that answers customers and captures leads automatically. Without you being present. Without answering "how much does it cost?" a hundred times.'>Instalamos un chatbot inteligente en tu web que responde clientes y captura leads automáticamente. Sin que estés presente. Sin contestar el mismo "¿cuánto cuesta?" cien veces.</p>
+    <a href="https://kodarase.com/?budget=chat" class="cta-btn"><span data-es="Instalar Chat IA en mi web" data-en="Install AI Chat on my website">Instalar Chat IA en mi web</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">24h</div><div class="cta-stat-lbl">Instalación</div></div>
-      <div><div class="cta-stat-val">$150</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">1,000</div><div class="cta-stat-lbl">Conv/mes incluidas</div></div>
-      <div><div class="cta-stat-val">24/7</div><div class="cta-stat-lbl">Sin pausa</div></div>
+      <div><div class="cta-stat-val">24h</div><div class="cta-stat-lbl" data-es="Instalación" data-en="Installation">Instalación</div></div>
+      <div><div class="cta-stat-val">$150</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val">1,000</div><div class="cta-stat-lbl" data-es="Conv/mes incluidas" data-en="Conv/month included">Conv/mes incluidas</div></div>
+      <div><div class="cta-stat-val">24/7</div><div class="cta-stat-lbl" data-es="Sin pausa" data-en="No pause">Sin pausa</div></div>
     </div>
   </div>
 
@@ -203,32 +209,47 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <div style="display:flex;align-items:center;gap:12px">
       <div class="chat-avatar">🤖</div>
       <div>
-        <div class="chat-name">Chat IA Demo</div>
-        <div class="chat-status"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block"></span>En línea</div>
+        <div class="chat-name" data-es="Chat IA Demo" data-en="AI Chat Demo">Chat IA Demo</div>
+        <div class="chat-status"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block"></span><span data-es="En línea" data-en="Online">En línea</span></div>
       </div>
     </div>
     <button class="chat-close" onclick="toggleChat()">✕</button>
   </div>
   <div id="chatMsgs">
-    <div class="msg msg-bot">¡Hola! 👋 Soy el demo del Chat IA de Kodara SE.</div>
-    <div class="msg msg-bot">Pregúntame algo sobre los servicios de Kodara y verás cómo respondería en tu web 24/7.</div>
+    <div class="msg msg-bot" data-es="¡Hola! 👋 Soy el demo del Chat IA de Kodara SE." data-en="Hi! 👋 I'm the demo of Kodara SE's AI Chat.">¡Hola! 👋 Soy el demo del Chat IA de Kodara SE.</div>
+    <div class="msg msg-bot" data-es="Pregúntame algo sobre los servicios de Kodara y verás cómo respondería en tu web 24/7." data-en="Ask me about Kodara's services and see how it would respond on your website 24/7.">Pregúntame algo sobre los servicios de Kodara y verás cómo respondería en tu web 24/7.</div>
   </div>
   <div class="chat-quicks">
-    <button class="quick-btn" onclick="sendQuick('¿Cuánto cuesta un Chat IA?')">💰 Precios</button>
-    <button class="quick-btn" onclick="sendQuick('¿En cuánto tiempo lo instaláis?')">⏱ Tiempos</button>
-    <button class="quick-btn" onclick="sendQuick('¿Sirve para mi negocio?')">🎯 Mi negocio</button>
+    <button class="quick-btn" onclick="sendQuick('¿Cuánto cuesta un Chat IA?')" data-es="💰 Precios" data-en="💰 Pricing">💰 Precios</button>
+    <button class="quick-btn" onclick="sendQuick('¿En cuánto tiempo lo instaláis?')" data-es="⏱ Tiempos" data-en="⏱ Timeline">⏱ Tiempos</button>
+    <button class="quick-btn" onclick="sendQuick('¿Sirve para mi negocio?')" data-es="🎯 Mi negocio" data-en="🎯 My business">🎯 Mi negocio</button>
   </div>
   <div class="chat-input-wrap">
-    <input id="chatField" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter')sendMsg()">
+    <input id="chatField" data-es-ph="Escribe tu pregunta..." data-en-ph="Type your question..." placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter')sendMsg()">
     <button id="chatSend" onclick="sendMsg()">→</button>
   </div>
 </div>
 
 <footer class="demo-footer">
-  Chat IA por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-009 · Desde $150 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Chat IA por" data-en="AI Chat by">Chat IA por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-009 · <span data-es="Desde $150" data-en="From $150">Desde $150</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
 
 <script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.querySelectorAll('[data-es-ph]').forEach(el=>{
+    const v=el.getAttribute('data-'+l+'-ph');
+    if(v!=null)el.setAttribute('placeholder',v);
+  });
+  document.documentElement.lang=l;
+}
 const responses={
   'precio':'💰 El Chat IA cuesta entre $150 y $350 dependiendo de las funcionalidades. Incluye:<br>• Entrenamiento con tu información<br>• 1,000 conversaciones/mes<br>• Panel de control<br>• Soporte 30 días<br><br>¿Quieres una cotización exacta?',
   'tiempo':'⚡ Instalación completa en menos de 24 horas:<br>• Hora 0-4: Análisis de tu web y servicios<br>• Hora 4-12: Entrenamiento del chat<br>• Hora 12-24: Pruebas e instalación<br><br>Tu chat estaría capturando leads mañana.',
