@@ -97,6 +97,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.scores-hero{grid-template-columns:1fr;text-align:center;gap:32px}.scores-grid,.analysis-grid{grid-template-columns:1fr}.funnel-step{flex-wrap:wrap}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}}
 </style>
 </head>
@@ -106,20 +109,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría de Negocio</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Auditoría de Negocio" data-en="/ Business Audit">/ Auditoría de Negocio</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>AUDITORÍA REAL · DATOS VERIFICADOS</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="AUDITORÍA REAL · DATOS VERIFICADOS" data-en="REAL AUDIT · VERIFIED DATA">AUDITORÍA REAL · DATOS VERIFICADOS</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203719_aecc90b0-8ea3-4749-8cea-c23b265b8d23.png" alt="Auditoría de Negocio">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-006 · AUDITORÍA DE NEGOCIO</div>
-    <h1 class="hero-title">Auditoría <span class="grad">360°</span> de tu negocio</h1>
+    <div class="hero-tag" data-es="// KSE-006 · AUDITORÍA DE NEGOCIO" data-en="// KSE-006 · BUSINESS AUDIT">// KSE-006 · AUDITORÍA DE NEGOCIO</div>
+    <h1 class="hero-title"><span data-es="Auditoría" data-en="Audit">Auditoría</span> <span class="grad">360°</span> <span data-es="de tu negocio" data-en="of your business">de tu negocio</span></h1>
     <div class="hero-meta">
       <span>🏢 Coolto Fitness · Miami Calle 8</span>
-      <span>📅 Mayo 2026</span>
-      <span>⚡ Entrega 72h</span>
+      <span data-es="📅 Mayo 2026" data-en="📅 May 2026">📅 Mayo 2026</span>
+      <span data-es="⚡ Entrega 72h" data-en="⚡ 72h delivery">⚡ Entrega 72h</span>
     </div>
   </div>
 </div>
@@ -130,117 +136,131 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <div class="scores-hero">
     <div class="overall-score">
       <div class="overall-num">54</div>
-      <div class="overall-status">Mejorable</div>
-      <div class="overall-lbl">/ 100 GLOBAL</div>
+      <div class="overall-status" data-es="Mejorable" data-en="Improvable">Mejorable</div>
+      <div class="overall-lbl" data-es="/ 100 GLOBAL" data-en="/ 100 OVERALL">/ 100 GLOBAL</div>
     </div>
     <div class="scores-info">
       <div class="biz">gym.cooltofitness.com · Miami, FL</div>
-      <h2>Diagnóstico completo del negocio digital</h2>
-      <p>Coolto Fitness tiene <strong style="color:var(--green)">algo único</strong> que su competencia no — celebridades mundiales como clientes (Maluma, Georgina Rodríguez, Zion). Pero <strong style="color:var(--orange)">no está aprovechando ese activo</strong> en SEO, marketing ni redes sociales.</p>
+      <h2 data-es="Diagnóstico completo del negocio digital" data-en="Complete digital business diagnosis">Diagnóstico completo del negocio digital</h2>
+      <p data-es="Coolto Fitness tiene algo único que su competencia no — celebridades mundiales como clientes (Maluma, Georgina Rodríguez, Zion). Pero no está aprovechando ese activo en SEO, marketing ni redes sociales." data-en="Coolto Fitness has something unique that its competition does not — world celebrities as clients (Maluma, Georgina Rodríguez, Zion). But it is not leveraging that asset in SEO, marketing or social media.">Coolto Fitness tiene <strong style="color:var(--green)">algo único</strong> que su competencia no — celebridades mundiales como clientes (Maluma, Georgina Rodríguez, Zion). Pero <strong style="color:var(--orange)">no está aprovechando ese activo</strong> en SEO, marketing ni redes sociales.</p>
       <div class="scores-grid">
-        <div class="score-row"><div class="score-name">Presencia web</div><div class="score-bar"><div class="score-fill" style="width:72%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">72</div></div>
-        <div class="score-row"><div class="score-name">Redes sociales</div><div class="score-bar"><div class="score-fill" style="width:45%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">45</div></div>
-        <div class="score-row"><div class="score-name">Prueba social</div><div class="score-bar"><div class="score-fill" style="width:60%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">60</div></div>
-        <div class="score-row"><div class="score-name">SEO local</div><div class="score-bar"><div class="score-fill" style="width:28%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">28</div></div>
-        <div class="score-row"><div class="score-name">Conversión</div><div class="score-bar"><div class="score-fill" style="width:65%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">65</div></div>
-        <div class="score-row"><div class="score-name">Oferta y precios</div><div class="score-bar"><div class="score-fill" style="width:55%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">55</div></div>
+        <div class="score-row"><div class="score-name" data-es="Presencia web" data-en="Web presence">Presencia web</div><div class="score-bar"><div class="score-fill" style="width:72%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">72</div></div>
+        <div class="score-row"><div class="score-name" data-es="Redes sociales" data-en="Social media">Redes sociales</div><div class="score-bar"><div class="score-fill" style="width:45%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">45</div></div>
+        <div class="score-row"><div class="score-name" data-es="Prueba social" data-en="Social proof">Prueba social</div><div class="score-bar"><div class="score-fill" style="width:60%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">60</div></div>
+        <div class="score-row"><div class="score-name" data-es="SEO local" data-en="Local SEO">SEO local</div><div class="score-bar"><div class="score-fill" style="width:28%;background:var(--red)"></div></div><div class="score-num" style="color:var(--red)">28</div></div>
+        <div class="score-row"><div class="score-name" data-es="Conversión" data-en="Conversion">Conversión</div><div class="score-bar"><div class="score-fill" style="width:65%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">65</div></div>
+        <div class="score-row"><div class="score-name" data-es="Oferta y precios" data-en="Offer and pricing">Oferta y precios</div><div class="score-bar"><div class="score-fill" style="width:55%;background:var(--yellow)"></div></div><div class="score-num" style="color:var(--yellow)">55</div></div>
       </div>
     </div>
   </div>
 
   <!-- ANÁLISIS POR ÁREA -->
   <div class="section-card">
-    <div class="section-head"><div><div class="section-title"><div class="section-icon">🔬</div>Análisis profundo por área</div><div class="section-sub">Datos verificados directamente</div></div></div>
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🔬</div><span data-es="Análisis profundo por área" data-en="Deep analysis by area">Análisis profundo por área</span></div><div class="section-sub" data-es="Datos verificados directamente" data-en="Directly verified data">Datos verificados directamente</div></div></div>
     <div class="analysis-grid">
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">🌐</div><div class="a-title">Web · gym.cooltofitness.com</div></div>
-        <div class="a-desc">Diseño moderno mobile-first con buenas imágenes. Botón membresía vía MindBodyOnline funciona. Pero sin meta description, sin blog ni contenido educativo.</div>
-        <div class="a-status st-warn">MEJORAR SEO</div>
+        <div class="a-item-head"><div class="a-icon">🌐</div><div class="a-title" data-es="Web · gym.cooltofitness.com" data-en="Website · gym.cooltofitness.com">Web · gym.cooltofitness.com</div></div>
+        <div class="a-desc" data-es="Diseño moderno mobile-first con buenas imágenes. Botón membresía vía MindBodyOnline funciona. Pero sin meta description, sin blog ni contenido educativo." data-en="Modern mobile-first design with good images. Membership button via MindBodyOnline works. But no meta description, no blog or educational content.">Diseño moderno mobile-first con buenas imágenes. Botón membresía vía MindBodyOnline funciona. Pero sin meta description, sin blog ni contenido educativo.</div>
+        <div class="a-status st-warn" data-es="MEJORAR SEO" data-en="IMPROVE SEO">MEJORAR SEO</div>
       </div>
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">📱</div><div class="a-title">Redes sociales</div></div>
-        <div class="a-desc">Mencionan celebridades (Zion, Georgina Rodríguez, Maluma) pero no enlazan sus redes desde la web. Activo masivo desperdiciado.</div>
-        <div class="a-status st-bad">CRÍTICO</div>
+        <div class="a-item-head"><div class="a-icon">📱</div><div class="a-title" data-es="Redes sociales" data-en="Social media">Redes sociales</div></div>
+        <div class="a-desc" data-es="Mencionan celebridades (Zion, Georgina Rodríguez, Maluma) pero no enlazan sus redes desde la web. Activo masivo desperdiciado." data-en="They mention celebrities (Zion, Georgina Rodríguez, Maluma) but don't link to their social from the website. Massive asset wasted.">Mencionan celebridades (Zion, Georgina Rodríguez, Maluma) pero no enlazan sus redes desde la web. Activo masivo desperdiciado.</div>
+        <div class="a-status st-bad" data-es="CRÍTICO" data-en="CRITICAL">CRÍTICO</div>
       </div>
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">💰</div><div class="a-title">Precios reales</div></div>
-        <div class="a-desc">Plan Unlimited $200/mes. Small Group 12 sesiones $480/mes. Premium para Miami pero necesitan justificar mejor el valor.</div>
-        <div class="a-status st-warn">JUSTIFICAR VALOR</div>
+        <div class="a-item-head"><div class="a-icon">💰</div><div class="a-title" data-es="Precios reales" data-en="Real prices">Precios reales</div></div>
+        <div class="a-desc" data-es="Plan Unlimited $200/mes. Small Group 12 sesiones $480/mes. Premium para Miami pero necesitan justificar mejor el valor." data-en="Unlimited plan $200/mo. Small Group 12 sessions $480/mo. Premium for Miami but they need to justify the value better.">Plan Unlimited $200/mes. Small Group 12 sesiones $480/mes. Premium para Miami pero necesitan justificar mejor el valor.</div>
+        <div class="a-status st-warn" data-es="JUSTIFICAR VALOR" data-en="JUSTIFY VALUE">JUSTIFICAR VALOR</div>
       </div>
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">⭐</div><div class="a-title">Prueba social</div></div>
-        <div class="a-desc">Celebridades mundiales como clientes (muy potente) pero faltan testimonios de clientes ordinarios con foto. La gente se identifica con gente normal.</div>
-        <div class="a-status st-warn">FALTA BALANCE</div>
+        <div class="a-item-head"><div class="a-icon">⭐</div><div class="a-title" data-es="Prueba social" data-en="Social proof">Prueba social</div></div>
+        <div class="a-desc" data-es="Celebridades mundiales como clientes (muy potente) pero faltan testimonios de clientes ordinarios con foto. La gente se identifica con gente normal." data-en="World celebrities as clients (very powerful) but missing testimonials from ordinary clients with photo. People relate to regular people.">Celebridades mundiales como clientes (muy potente) pero faltan testimonios de clientes ordinarios con foto. La gente se identifica con gente normal.</div>
+        <div class="a-status st-warn" data-es="FALTA BALANCE" data-en="LACKS BALANCE">FALTA BALANCE</div>
       </div>
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">🔍</div><div class="a-title">SEO local</div></div>
-        <div class="a-desc">No aparece en "gym calle 8 miami" (800 búsquedas/mes). Sin Google My Business optimizado. Sin Schema Markup.</div>
-        <div class="a-status st-bad">CRÍTICO</div>
+        <div class="a-item-head"><div class="a-icon">🔍</div><div class="a-title" data-es="SEO local" data-en="Local SEO">SEO local</div></div>
+        <div class="a-desc" data-es='No aparece en "gym calle 8 miami" (800 búsquedas/mes). Sin Google My Business optimizado. Sin Schema Markup.' data-en='Does not appear for "gym calle 8 miami" (800 searches/mo). No optimized Google My Business. No Schema Markup.'>No aparece en "gym calle 8 miami" (800 búsquedas/mes). Sin Google My Business optimizado. Sin Schema Markup.</div>
+        <div class="a-status st-bad" data-es="CRÍTICO" data-en="CRITICAL">CRÍTICO</div>
       </div>
       <div class="a-item">
-        <div class="a-item-head"><div class="a-icon">📣</div><div class="a-title">Marketing</div></div>
-        <div class="a-desc">Sin Meta Ads, sin Google Ads, sin email marketing. Crecimiento solo por boca a boca y celebridades.</div>
-        <div class="a-status st-bad">OPORTUNIDAD MASIVA</div>
+        <div class="a-item-head"><div class="a-icon">📣</div><div class="a-title" data-es="Marketing" data-en="Marketing">Marketing</div></div>
+        <div class="a-desc" data-es="Sin Meta Ads, sin Google Ads, sin email marketing. Crecimiento solo por boca a boca y celebridades." data-en="No Meta Ads, no Google Ads, no email marketing. Growth only through word of mouth and celebrities.">Sin Meta Ads, sin Google Ads, sin email marketing. Crecimiento solo por boca a boca y celebridades.</div>
+        <div class="a-status st-bad" data-es="OPORTUNIDAD MASIVA" data-en="MASSIVE OPPORTUNITY">OPORTUNIDAD MASIVA</div>
       </div>
     </div>
   </div>
 
   <!-- EMBUDO -->
   <div class="section-card">
-    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div>Análisis del embudo de captación</div><div class="section-sub">Brecha entre tráfico y conversión</div></div><div class="section-badge bad">PÉRDIDA: 92% DE VISITANTES</div></div>
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div><span data-es="Análisis del embudo de captación" data-en="Acquisition funnel analysis">Análisis del embudo de captación</span></div><div class="section-sub" data-es="Brecha entre tráfico y conversión" data-en="Gap between traffic and conversion">Brecha entre tráfico y conversión</div></div><div class="section-badge bad" data-es="PÉRDIDA: 92% DE VISITANTES" data-en="LOSS: 92% OF VISITORS">PÉRDIDA: 92% DE VISITANTES</div></div>
     <div class="funnel">
-      <div class="funnel-step"><div class="f-num">01</div><div class="f-name">Buscan "gym calle 8 miami"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:100%;background:var(--orange)"></div></div></div><div class="f-val" style="color:var(--white)">~800/mes</div><div class="f-status" style="background:rgba(239,68,68,0.1);color:var(--red)">NO APARECE</div></div>
-      <div class="funnel-step"><div class="f-num">02</div><div class="f-name">Llegan a la web (referrals)</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:35%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)">~280/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)">BAJO</div></div>
-      <div class="funnel-step"><div class="f-num">03</div><div class="f-name">Clic en "Comenzar membresía"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:20%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)">~56/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)">MEJORAR</div></div>
-      <div class="funnel-step"><div class="f-num">04</div><div class="f-name">Se convierten en miembros</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:8%;background:var(--green)"></div></div></div><div class="f-val" style="color:var(--green)">~8/mes</div><div class="f-status" style="background:rgba(16,185,129,0.1);color:var(--green)">14% CONV</div></div>
+      <div class="funnel-step"><div class="f-num">01</div><div class="f-name" data-es='Buscan "gym calle 8 miami"' data-en='Search "gym calle 8 miami"'>Buscan "gym calle 8 miami"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:100%;background:var(--orange)"></div></div></div><div class="f-val" style="color:var(--white)" data-es="~800/mes" data-en="~800/mo">~800/mes</div><div class="f-status" style="background:rgba(239,68,68,0.1);color:var(--red)" data-es="NO APARECE" data-en="NOT FOUND">NO APARECE</div></div>
+      <div class="funnel-step"><div class="f-num">02</div><div class="f-name" data-es="Llegan a la web (referrals)" data-en="Land on website (referrals)">Llegan a la web (referrals)</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:35%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)" data-es="~280/mes" data-en="~280/mo">~280/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)" data-es="BAJO" data-en="LOW">BAJO</div></div>
+      <div class="funnel-step"><div class="f-num">03</div><div class="f-name" data-es='Clic en "Comenzar membresía"' data-en='Click "Start membership"'>Clic en "Comenzar membresía"</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:20%;background:var(--yellow)"></div></div></div><div class="f-val" style="color:var(--yellow)" data-es="~56/mes" data-en="~56/mo">~56/mes</div><div class="f-status" style="background:rgba(245,158,11,0.1);color:var(--yellow)" data-es="MEJORAR" data-en="IMPROVE">MEJORAR</div></div>
+      <div class="funnel-step"><div class="f-num">04</div><div class="f-name" data-es="Se convierten en miembros" data-en="Become members">Se convierten en miembros</div><div class="f-bar-wrap"><div class="f-bar"><div class="f-fill" style="width:8%;background:var(--green)"></div></div></div><div class="f-val" style="color:var(--green)" data-es="~8/mes" data-en="~8/mo">~8/mes</div><div class="f-status" style="background:rgba(16,185,129,0.1);color:var(--green)" data-es="14% CONV" data-en="14% CONV">14% CONV</div></div>
     </div>
-    <div style="margin-top:20px;background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--orange)">📊 Insight:</strong> Capturando solo el 30% de las 800 búsquedas mensuales de "gym calle 8 miami" (con SEO básico), Coolto duplicaría sus miembros nuevos sin pagar publicidad.</div>
+    <div style="margin-top:20px;background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--orange)" data-es="📊 Insight:" data-en="📊 Insight:">📊 Insight:</strong> <span data-es='Capturando solo el 30% de las 800 búsquedas mensuales de "gym calle 8 miami" (con SEO básico), Coolto duplicaría sus miembros nuevos sin pagar publicidad.' data-en='By capturing just 30% of the 800 monthly searches for "gym calle 8 miami" (with basic SEO), Coolto would double its new members without paying for advertising.'>Capturando solo el 30% de las 800 búsquedas mensuales de "gym calle 8 miami" (con SEO básico), Coolto duplicaría sus miembros nuevos sin pagar publicidad.</span></div>
   </div>
 
   <!-- COMPETENCIA -->
   <div class="section-card">
-    <div class="section-head"><div><div class="section-title"><div class="section-icon">⚔️</div>vs Competencia en Miami</div></div></div>
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">⚔️</div><span data-es="vs Competencia en Miami" data-en="vs Competition in Miami">vs Competencia en Miami</span></div></div></div>
     <table class="comp-table">
-      <thead><tr><th>Gimnasio</th><th>Web</th><th>Precio/mes</th><th>Celebs</th><th>SEO local</th><th>Tráfico est.</th></tr></thead>
+      <thead><tr><th data-es="Gimnasio" data-en="Gym">Gimnasio</th><th data-es="Web" data-en="Website">Web</th><th data-es="Precio/mes" data-en="Price/mo">Precio/mes</th><th data-es="Celebs" data-en="Celebs">Celebs</th><th data-es="SEO local" data-en="Local SEO">SEO local</th><th data-es="Tráfico est." data-en="Est. traffic">Tráfico est.</th></tr></thead>
       <tbody>
-        <tr class="you-row"><td>Coolto Fitness (tú)</td><td style="color:var(--yellow)">Buena</td><td style="color:var(--orange)">$200-480</td><td style="color:var(--green)">Maluma, Georgina</td><td style="color:var(--red)">Inexistente</td><td style="color:var(--yellow);font-weight:700">~280/mes</td></tr>
-        <tr><td>Miami Strength &amp; Fitness</td><td style="color:var(--yellow)">Media</td><td>$80-120</td><td style="color:var(--red)">No</td><td style="color:var(--yellow)">Básico</td><td style="color:var(--green);font-weight:700">~620/mes</td></tr>
-        <tr><td>Planet Fitness Westchester</td><td style="color:var(--green)">Buena</td><td>$10-25</td><td style="color:var(--red)">No</td><td style="color:var(--green)">Excelente</td><td style="color:var(--green);font-weight:700">~2,400/mes</td></tr>
+        <tr class="you-row"><td data-es="Coolto Fitness (tú)" data-en="Coolto Fitness (you)">Coolto Fitness (tú)</td><td style="color:var(--yellow)" data-es="Buena" data-en="Good">Buena</td><td style="color:var(--orange)">$200-480</td><td style="color:var(--green)">Maluma, Georgina</td><td style="color:var(--red)" data-es="Inexistente" data-en="Non-existent">Inexistente</td><td style="color:var(--yellow);font-weight:700" data-es="~280/mes" data-en="~280/mo">~280/mes</td></tr>
+        <tr><td>Miami Strength &amp; Fitness</td><td style="color:var(--yellow)" data-es="Media" data-en="Medium">Media</td><td>$80-120</td><td style="color:var(--red)" data-es="No" data-en="No">No</td><td style="color:var(--yellow)" data-es="Básico" data-en="Basic">Básico</td><td style="color:var(--green);font-weight:700" data-es="~620/mes" data-en="~620/mo">~620/mes</td></tr>
+        <tr><td>Planet Fitness Westchester</td><td style="color:var(--green)" data-es="Buena" data-en="Good">Buena</td><td>$10-25</td><td style="color:var(--red)" data-es="No" data-en="No">No</td><td style="color:var(--green)" data-es="Excelente" data-en="Excellent">Excelente</td><td style="color:var(--green);font-weight:700" data-es="~2,400/mes" data-en="~2,400/mo">~2,400/mes</td></tr>
       </tbody>
     </table>
-    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--green)">💡 Ventaja única:</strong> Coolto tiene algo que nadie más tiene — Maluma, Georgina y Zion como clientes. No están explotando eso en Google, Instagram ni en su web.</div>
+    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--green)" data-es="💡 Ventaja única:" data-en="💡 Unique advantage:">💡 Ventaja única:</strong> <span data-es="Coolto tiene algo que nadie más tiene — Maluma, Georgina y Zion como clientes. No están explotando eso en Google, Instagram ni en su web." data-en="Coolto has something nobody else has — Maluma, Georgina and Zion as clients. They are not leveraging that on Google, Instagram or their website.">Coolto tiene algo que nadie más tiene — Maluma, Georgina y Zion como clientes. No están explotando eso en Google, Instagram ni en su web.</span></div>
   </div>
 
   <!-- ACTION PLAN -->
   <div class="section-card">
-    <div class="section-head"><div><div class="section-title"><div class="section-icon">🚀</div>Plan de acción 90 días</div></div></div>
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🚀</div><span data-es="Plan de acción 90 días" data-en="90-day action plan">Plan de acción 90 días</span></div></div></div>
     <div class="action-list">
-      <div class="action"><div class="action-num">01</div><div><div class="action-title">SEO local: capturar "gym calle 8 miami"</div><div class="action-desc">Optimizar meta tags, Google My Business y crear página local. Estimado: +400 visitas/mes en 8 semanas.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANAS 1-2</span></div></div></div>
-      <div class="action"><div class="action-num">02</div><div><div class="action-title">Landing page "Entrena como Maluma"</div><div class="action-desc">Explotar el activo más poderoso. Una página SEO + ads enfocada en eso generaría prensa, backlinks y búsquedas directas.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANA 2</span></div></div></div>
-      <div class="action"><div class="action-num">03</div><div><div class="action-title">Activar redes y enlazarlas en web</div><div class="action-desc">Instagram + TikTok + YouTube con contenido de celebridades. El contenido ya existe — solo hay que centralizarlo.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANA 1</span></div></div></div>
-      <div class="action"><div class="action-num">04</div><div><div class="action-title">Añadir testimonios reales (no solo famosos)</div><div class="action-desc">5-10 testimonios con foto de clientes normales. Aumenta conversión 25-40%.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">SEMANAS 2-3</span></div></div></div>
-      <div class="action"><div class="action-num">05</div><div><div class="action-title">Lanzar Meta Ads de retargeting</div><div class="action-desc">Sin retargeting estás perdiendo el 70% de visitas que no convierten. ROAS típico 5-8x.</div><div class="action-meta"><span class="action-tag tag-impact-m">IMPACTO MEDIO</span><span class="action-tag tag-time">MES 2</span></div></div></div>
+      <div class="action"><div class="action-num">01</div><div><div class="action-title" data-es='SEO local: capturar "gym calle 8 miami"' data-en='Local SEO: capture "gym calle 8 miami"'>SEO local: capturar "gym calle 8 miami"</div><div class="action-desc" data-es="Optimizar meta tags, Google My Business y crear página local. Estimado: +400 visitas/mes en 8 semanas." data-en="Optimize meta tags, Google My Business and create local page. Estimated: +400 visits/mo in 8 weeks.">Optimizar meta tags, Google My Business y crear página local. Estimado: +400 visitas/mes en 8 semanas.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time" data-es="SEMANAS 1-2" data-en="WEEKS 1-2">SEMANAS 1-2</span></div></div></div>
+      <div class="action"><div class="action-num">02</div><div><div class="action-title" data-es='Landing page "Entrena como Maluma"' data-en='Landing page "Train like Maluma"'>Landing page "Entrena como Maluma"</div><div class="action-desc" data-es="Explotar el activo más poderoso. Una página SEO + ads enfocada en eso generaría prensa, backlinks y búsquedas directas." data-en="Exploit the most powerful asset. An SEO + ads page focused on that would generate press, backlinks and direct searches.">Explotar el activo más poderoso. Una página SEO + ads enfocada en eso generaría prensa, backlinks y búsquedas directas.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time" data-es="SEMANA 2" data-en="WEEK 2">SEMANA 2</span></div></div></div>
+      <div class="action"><div class="action-num">03</div><div><div class="action-title" data-es="Activar redes y enlazarlas en web" data-en="Activate social media and link from website">Activar redes y enlazarlas en web</div><div class="action-desc" data-es="Instagram + TikTok + YouTube con contenido de celebridades. El contenido ya existe — solo hay que centralizarlo." data-en="Instagram + TikTok + YouTube with celebrity content. The content already exists — just need to centralize it.">Instagram + TikTok + YouTube con contenido de celebridades. El contenido ya existe — solo hay que centralizarlo.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time" data-es="SEMANA 1" data-en="WEEK 1">SEMANA 1</span></div></div></div>
+      <div class="action"><div class="action-num">04</div><div><div class="action-title" data-es="Añadir testimonios reales (no solo famosos)" data-en="Add real testimonials (not just celebs)">Añadir testimonios reales (no solo famosos)</div><div class="action-desc" data-es="5-10 testimonios con foto de clientes normales. Aumenta conversión 25-40%." data-en="5-10 testimonials with photos of regular clients. Increases conversion 25-40%.">5-10 testimonios con foto de clientes normales. Aumenta conversión 25-40%.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time" data-es="SEMANAS 2-3" data-en="WEEKS 2-3">SEMANAS 2-3</span></div></div></div>
+      <div class="action"><div class="action-num">05</div><div><div class="action-title" data-es="Lanzar Meta Ads de retargeting" data-en="Launch Meta Ads retargeting">Lanzar Meta Ads de retargeting</div><div class="action-desc" data-es="Sin retargeting estás perdiendo el 70% de visitas que no convierten. ROAS típico 5-8x." data-en="Without retargeting you are losing 70% of visits that don't convert. Typical ROAS 5-8x.">Sin retargeting estás perdiendo el 70% de visitas que no convierten. ROAS típico 5-8x.</div><div class="action-meta"><span class="action-tag tag-impact-m" data-es="IMPACTO MEDIO" data-en="MEDIUM IMPACT">IMPACTO MEDIO</span><span class="action-tag tag-time" data-es="MES 2" data-en="MONTH 2">MES 2</span></div></div></div>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>¿Y tu negocio? <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Auditoría 360°</span> en 72h</h2>
-    <p>Análisis completo de web, redes, oferta y competencia. Plan accionable de 90 días con prioridades claras. Sin compromiso.</p>
-    <a href="https://kodarase.com/?budget=negocio" class="cta-btn">Solicitar mi auditoría de negocio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="¿Y tu negocio?" data-en="And your business?">¿Y tu negocio?</span> <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="Auditoría 360°" data-en="360° Audit">Auditoría 360°</span> <span data-es="en 72h" data-en="in 72h">en 72h</span></h2>
+    <p data-es="Análisis completo de web, redes, oferta y competencia. Plan accionable de 90 días con prioridades claras. Sin compromiso." data-en="Complete analysis of web, social, offer and competition. Actionable 90-day plan with clear priorities. No commitment.">Análisis completo de web, redes, oferta y competencia. Plan accionable de 90 días con prioridades claras. Sin compromiso.</p>
+    <a href="https://kodarase.com/?budget=negocio" class="cta-btn"><span data-es="Solicitar mi auditoría de negocio" data-en="Request my business audit">Solicitar mi auditoría de negocio</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">72h</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$500</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">6 áreas</div><div class="cta-stat-lbl">Analizadas</div></div>
-      <div><div class="cta-stat-val">90 días</div><div class="cta-stat-lbl">Plan accionable</div></div>
+      <div><div class="cta-stat-val">72h</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$500</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val" data-es="6 áreas" data-en="6 areas">6 áreas</div><div class="cta-stat-lbl" data-es="Analizadas" data-en="Analyzed">Analizadas</div></div>
+      <div><div class="cta-stat-val" data-es="90 días" data-en="90 days">90 días</div><div class="cta-stat-lbl" data-es="Plan accionable" data-en="Actionable plan">Plan accionable</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Auditoría de Negocio real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-006 · Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Auditoría de Negocio real por" data-en="Real Business Audit by">Auditoría de Negocio real por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-006 · <span data-es="Mayo 2026" data-en="May 2026">Mayo 2026</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
