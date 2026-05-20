@@ -867,7 +867,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 
   <div class="hero-stats-row">
     <div class="hero-stat">
-      <div class="hero-stat-val">9</div>
+      <div class="hero-stat-val">10</div>
       <div class="hero-stat-lbl" data-es="Servicios disponibles" data-en="Available services">Servicios disponibles</div>
     </div>
     <div class="hero-stat">
@@ -912,7 +912,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 <section class="section" id="services">
   <div class="section-inner">
     <div class="section-tag reveal" data-es="// SERVICIOS" data-en="// SERVICES">// SERVICIOS</div>
-    <h2 class="section-title reveal" data-es="9 servicios que mueven<br>la aguja de tu negocio." data-en="9 services that move<br>your business forward.">9 servicios que mueven<br>la aguja de tu negocio.</h2>
+    <h2 class="section-title reveal" data-es="10 servicios que mueven<br>la aguja de tu negocio." data-en="10 services that move<br>your business forward.">10 servicios que mueven<br>la aguja de tu negocio.</h2>
     <p class="section-subtitle reveal" data-es="Cada servicio está diseñado para resolver un problema concreto. Sin paquetes inflados, sin compromisos largos." data-en="Each service is designed to solve a specific problem. No inflated packages, no long commitments.">
       Cada servicio está diseñado para resolver un problema concreto. Sin paquetes inflados, sin compromisos largos.
     </p>
@@ -1177,21 +1177,22 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
           </div>
         </div>
         <form class="c-form" onsubmit="handleSubmit(event)">
-          <input type="text" class="f-input" id="c-name" placeholder="Nombre completo" required>
+          <input type="text" class="f-input" id="c-name" data-es-ph="Nombre completo" data-en-ph="Full name" placeholder="Nombre completo" required>
           <input type="email" class="f-input" id="c-email" placeholder="Email" required>
           <select class="f-input" id="c-svc" required>
-            <option value="" disabled selected>Servicio que te interesa</option>
-            <option>Diseño Web Premium</option>
-            <option>Instagram a Web</option>
-            <option>Auditoría Meta Ads</option>
-            <option>Auditoría SEO</option>
-            <option>Automatizaciones</option>
-            <option>Auditoría de Negocio</option>
-            <option>Dashboard de Facturas</option>
-            <option>Prospección de Clientes</option>
-            <option>Chat IA para Web</option>
+            <option value="" disabled selected data-es="Servicio que te interesa" data-en="Service you're interested in">Servicio que te interesa</option>
+            <option data-es="Diseño Web Premium" data-en="Premium Web Design">Diseño Web Premium</option>
+            <option data-es="Instagram a Web" data-en="Instagram to Website">Instagram a Web</option>
+            <option data-es="Auditoría Meta Ads" data-en="Meta Ads Audit">Auditoría Meta Ads</option>
+            <option data-es="Auditoría SEO" data-en="SEO Audit">Auditoría SEO</option>
+            <option data-es="Automatizaciones" data-en="Automations">Automatizaciones</option>
+            <option data-es="Auditoría de Negocio" data-en="Business Audit">Auditoría de Negocio</option>
+            <option data-es="Dashboard de Facturas" data-en="Invoice Dashboard">Dashboard de Facturas</option>
+            <option data-es="Prospección de Clientes" data-en="Client Prospecting">Prospección de Clientes</option>
+            <option data-es="Chat IA para Web" data-en="AI Chat for Web">Chat IA para Web</option>
+            <option data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</option>
           </select>
-          <textarea class="f-input" id="c-msg" placeholder="Cuéntanos brevemente tu proyecto..." required></textarea>
+          <textarea class="f-input" id="c-msg" data-es-ph="Cuéntanos brevemente tu proyecto..." data-en-ph="Tell us briefly about your project..." placeholder="Cuéntanos brevemente tu proyecto..." required></textarea>
           <button type="submit" class="cta-btn cta-big" style="justify-content:center" data-es="Enviar mensaje →" data-en="Send message →">Enviar mensaje →</button>
         </form>
       </div>
@@ -1212,23 +1213,23 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
     <div class="svc-modal-body">
       <div class="svc-modal-img"><img id="svcModalImg" src="" alt=""></div>
       <p class="svc-modal-pitch" id="svcModalPitch"></p>
-      <div class="svc-modal-section-label">// QUÉ INCLUYE</div>
+      <div class="svc-modal-section-label" data-es="// QUÉ INCLUYE" data-en="// WHAT'S INCLUDED">// QUÉ INCLUYE</div>
       <ul class="svc-modal-list" id="svcModalList"></ul>
-      <div class="svc-modal-section-label">// CÓMO FUNCIONA</div>
+      <div class="svc-modal-section-label" data-es="// CÓMO FUNCIONA" data-en="// HOW IT WORKS">// CÓMO FUNCIONA</div>
       <div class="svc-modal-steps" id="svcModalSteps"></div>
-      <div class="svc-modal-section-label">// QUÉ NECESITAMOS DE TI</div>
+      <div class="svc-modal-section-label" data-es="// QUÉ NECESITAMOS DE TI" data-en="// WHAT WE NEED FROM YOU">// QUÉ NECESITAMOS DE TI</div>
       <ul class="svc-modal-needs" id="svcModalNeeds"></ul>
       <div class="svc-modal-foot">
         <div>
-          <div class="svc-modal-price-lbl">Inversión</div>
+          <div class="svc-modal-price-lbl" data-es="Inversión" data-en="Investment">Inversión</div>
           <div class="svc-modal-price" id="svcModalPrice">$0</div>
         </div>
         <div class="svc-modal-actions">
           <a id="svcModalDemo" href="#" target="_blank" rel="noopener" class="cta-ghost">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-            Ver demo
+            <span data-es="Ver demo" data-en="View demo">Ver demo</span>
           </a>
-          <button class="cta-btn" onclick="closeSvcModal();setTimeout(()=>openBudget(svcModalCurrent),300)">
+          <button class="cta-btn" onclick="closeSvcModal();setTimeout(()=>openBudget(svcModalCurrent),300)" data-es="Solicitar presupuesto →" data-en="Request quote →">
             Solicitar presupuesto →
           </button>
         </div>
