@@ -73,6 +73,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.summary{grid-template-columns:1fr 1fr}.p-body{grid-template-columns:1fr}.hero-content{padding:32px 24px}.container{padding:32px 20px}.p-header{padding:20px}.p-body{padding:20px}}
 </style>
 </head>
@@ -82,20 +85,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Prospección de Clientes</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Prospección de Clientes" data-en="/ Client Prospecting">/ Prospección de Clientes</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>NEGOCIOS REALES · MIAMI MAYO 2026</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="NEGOCIOS REALES · MIAMI MAYO 2026" data-en="REAL BUSINESSES · MIAMI MAY 2026">NEGOCIOS REALES · MIAMI MAYO 2026</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203746_1e0eef50-d115-4668-be04-d609680c491b.png" alt="Prospección de Clientes">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-008 · PROSPECCIÓN DE CLIENTES</div>
-    <h1 class="hero-title">Leads reales <span class="grad">listos para vender</span></h1>
+    <div class="hero-tag" data-es="// KSE-008 · PROSPECCIÓN DE CLIENTES" data-en="// KSE-008 · CLIENT PROSPECTING">// KSE-008 · PROSPECCIÓN DE CLIENTES</div>
+    <h1 class="hero-title"><span data-es="Leads reales" data-en="Real leads">Leads reales</span> <span class="grad" data-es="listos para vender" data-en="ready to sell">listos para vender</span></h1>
     <div class="hero-meta">
-      <span>🎯 Sector: Clínicas Dentales</span>
+      <span data-es="🎯 Sector: Clínicas Dentales" data-en="🎯 Sector: Dental Clinics">🎯 Sector: Clínicas Dentales</span>
       <span>📍 Miami, FL</span>
-      <span>⚡ Entrega 5-7 días</span>
+      <span data-es="⚡ Entrega 5-7 días" data-en="⚡ Delivery 5-7 days">⚡ Entrega 5-7 días</span>
     </div>
   </div>
 </div>
@@ -103,13 +109,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 <div class="container">
 
   <div class="summary">
-    <div class="sum-card"><div class="sum-icon">🔍</div><div class="sum-val" style="color:var(--white)">47</div><div class="sum-lbl">Negocios analizados</div></div>
-    <div class="sum-card"><div class="sum-icon">🔥</div><div class="sum-val" style="color:var(--orange)">12</div><div class="sum-lbl">Oportunidades calientes</div></div>
-    <div class="sum-card"><div class="sum-icon">⚠️</div><div class="sum-val" style="color:var(--yellow)">18</div><div class="sum-lbl">Sin SEO activo</div></div>
-    <div class="sum-card"><div class="sum-icon">❌</div><div class="sum-val" style="color:var(--red)">7</div><div class="sum-lbl">Sin web propia</div></div>
+    <div class="sum-card"><div class="sum-icon">🔍</div><div class="sum-val" style="color:var(--white)">47</div><div class="sum-lbl" data-es="Negocios analizados" data-en="Businesses analyzed">Negocios analizados</div></div>
+    <div class="sum-card"><div class="sum-icon">🔥</div><div class="sum-val" style="color:var(--orange)">12</div><div class="sum-lbl" data-es="Oportunidades calientes" data-en="Hot opportunities">Oportunidades calientes</div></div>
+    <div class="sum-card"><div class="sum-icon">⚠️</div><div class="sum-val" style="color:var(--yellow)">18</div><div class="sum-lbl" data-es="Sin SEO activo" data-en="No active SEO">Sin SEO activo</div></div>
+    <div class="sum-card"><div class="sum-icon">❌</div><div class="sum-val" style="color:var(--red)">7</div><div class="sum-lbl" data-es="Sin web propia" data-en="No own website">Sin web propia</div></div>
   </div>
 
-  <div class="section-title-bar">🔥 Top 3 oportunidades — contactar esta semana <span class="badge">3 de 47 verificados</span></div>
+  <div class="section-title-bar"><span data-es="🔥 Top 3 oportunidades — contactar esta semana" data-en="🔥 Top 3 opportunities — contact this week">🔥 Top 3 oportunidades — contactar esta semana</span> <span class="badge" data-es="3 de 47 verificados" data-en="3 of 47 verified">3 de 47 verificados</span></div>
 
   <div class="prospect-list">
 
@@ -119,35 +125,35 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         <div class="p-avatar" style="background:rgba(249,115,22,0.12)">🦷</div>
         <div>
           <div class="p-name">Dental Care Brickell</div>
-          <div class="p-meta">dental-brickell.com · Miami, FL · IG: 1.2K seguidores</div>
+          <div class="p-meta" data-es="dental-brickell.com · Miami, FL · IG: 1.2K seguidores" data-en="dental-brickell.com · Miami, FL · IG: 1.2K followers">dental-brickell.com · Miami, FL · IG: 1.2K seguidores</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-dup">WEB DÉBIL</span>
-          <span class="badge b-noseo">SIN SEO</span>
+          <span class="badge b-dup" data-es="WEB DÉBIL" data-en="WEAK WEBSITE">WEB DÉBIL</span>
+          <span class="badge b-noseo" data-es="SIN SEO" data-en="NO SEO">SIN SEO</span>
           <span class="badge b-phone">☎ (305) 563-5190</span>
           <span class="badge b-hot">🔥 88/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas detectados</h4>
+          <h4 data-es="Problemas detectados" data-en="Detected issues">Problemas detectados</h4>
           <ul>
-            <li>Web de 2018 sin diseño responsive móvil</li>
-            <li>No aparece en "dentista miami" (1,800 búsquedas/mes)</li>
-            <li>Sin Google My Business actualizado</li>
-            <li>Sin formulario de citas online</li>
-            <li>Instagram con solo 3 posts al año</li>
-            <li>Sin meta tags ni schema markup</li>
+            <li data-es="Web de 2018 sin diseño responsive móvil" data-en="2018 website without mobile responsive design">Web de 2018 sin diseño responsive móvil</li>
+            <li data-es='No aparece en "dentista miami" (1,800 búsquedas/mes)' data-en='Does not appear for "dentist miami" (1,800 searches/mo)'>No aparece en "dentista miami" (1,800 búsquedas/mes)</li>
+            <li data-es="Sin Google My Business actualizado" data-en="No updated Google My Business">Sin Google My Business actualizado</li>
+            <li data-es="Sin formulario de citas online" data-en="No online appointment form">Sin formulario de citas online</li>
+            <li data-es="Instagram con solo 3 posts al año" data-en="Instagram with only 3 posts per year">Instagram con solo 3 posts al año</li>
+            <li data-es="Sin meta tags ni schema markup" data-en="No meta tags or schema markup">Sin meta tags ni schema markup</li>
           </ul>
-          <div class="real-data">📍 Verificado: 8763 SW 24th St · Dra. Suset Romano en el equipo</div>
+          <div class="real-data" data-es="📍 Verificado: 8763 SW 24th St · Dra. Suset Romano en el equipo" data-en="📍 Verified: 8763 SW 24th St · Dr. Suset Romano on the team">📍 Verificado: 8763 SW 24th St · Dra. Suset Romano en el equipo</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado listo</div>
-          <div class="msg-text">"Hola Dr. Rosado, soy Angel de Kodara SE. Vi que Dental Care Brickell no aparece en Google cuando busco 'dentista en Brickell' — y hay 1,800 búsquedas al mes ahí. Con una web actualizada y SEO básico podrían captar 15-20 pacientes nuevos al mes. ¿Le interesa una auditoría gratuita de 15 minutos?"</div>
+          <div class="msg-label" data-es="✉ Mensaje personalizado listo" data-en="✉ Personalized message ready">✉ Mensaje personalizado listo</div>
+          <div class="msg-text" data-es='"Hola Dr. Rosado, soy Angel de Kodara SE. Vi que Dental Care Brickell no aparece en Google cuando busco "dentista en Brickell" — y hay 1,800 búsquedas al mes ahí. Con una web actualizada y SEO básico podrían captar 15-20 pacientes nuevos al mes. ¿Le interesa una auditoría gratuita de 15 minutos?"' data-en='"Hi Dr. Rosado, I am Angel from Kodara SE. I noticed Dental Care Brickell does not appear on Google when searching for "dentist in Brickell" — and there are 1,800 searches per month there. With an updated website and basic SEO, you could capture 15-20 new patients per month. Would you be interested in a free 15-minute audit?"'>"Hola Dr. Rosado, soy Angel de Kodara SE. Vi que Dental Care Brickell no aparece en Google cuando busco 'dentista en Brickell' — y hay 1,800 búsquedas al mes ahí. Con una web actualizada y SEO básico podrían captar 15-20 pacientes nuevos al mes. ¿Le interesa una auditoría gratuita de 15 minutos?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <span class="score-label" data-es="PUNTUACIÓN OPORTUNIDAD" data-en="OPPORTUNITY SCORE">PUNTUACIÓN OPORTUNIDAD</span>
         <div class="score-bar"><div class="score-fill" style="width:88%;background:linear-gradient(90deg,var(--orange),var(--pink))"></div></div>
         <span class="score-val" style="color:var(--orange)">88/100</span>
       </div>
@@ -159,33 +165,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         <div class="p-avatar" style="background:rgba(16,185,129,0.12)">😁</div>
         <div>
           <div class="p-name">Smile Studio Miami</div>
-          <div class="p-meta">smilestudiomia.com · Coral Gables · IG: 4.8K seguidores</div>
+          <div class="p-meta" data-es="smilestudiomia.com · Coral Gables · IG: 4.8K seguidores" data-en="smilestudiomia.com · Coral Gables · IG: 4.8K followers">smilestudiomia.com · Coral Gables · IG: 4.8K seguidores</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-noads">SIN META ADS</span>
-          <span class="badge b-noseo">SEO BAJO</span>
+          <span class="badge b-noads" data-es="SIN META ADS" data-en="NO META ADS">SIN META ADS</span>
+          <span class="badge b-noseo" data-es="SEO BAJO" data-en="LOW SEO">SEO BAJO</span>
           <span class="badge b-hot">🔥 74/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas detectados</h4>
+          <h4 data-es="Problemas detectados" data-en="Detected issues">Problemas detectados</h4>
           <ul>
-            <li>Web decente pero SEO score 34/100</li>
-            <li>Sin campañas de Meta Ads activas</li>
-            <li>Competencia gasta $2,000/mes en ads</li>
-            <li>Horarios no actualizados en Google Maps</li>
-            <li>Instagram con 4.8K pero sin estrategia de CTAs</li>
+            <li data-es="Web decente pero SEO score 34/100" data-en="Decent website but SEO score 34/100">Web decente pero SEO score 34/100</li>
+            <li data-es="Sin campañas de Meta Ads activas" data-en="No active Meta Ads campaigns">Sin campañas de Meta Ads activas</li>
+            <li data-es="Competencia gasta $2,000/mes en ads" data-en="Competition spends $2,000/mo on ads">Competencia gasta $2,000/mes en ads</li>
+            <li data-es="Horarios no actualizados en Google Maps" data-en="Hours not updated on Google Maps">Horarios no actualizados en Google Maps</li>
+            <li data-es="Instagram con 4.8K pero sin estrategia de CTAs" data-en="Instagram with 4.8K but no CTA strategy">Instagram con 4.8K pero sin estrategia de CTAs</li>
           </ul>
-          <div class="real-data">📍 Verificado: Coral Gables · Especialidad: estética y blanqueamiento</div>
+          <div class="real-data" data-es="📍 Verificado: Coral Gables · Especialidad: estética y blanqueamiento" data-en="📍 Verified: Coral Gables · Specialty: aesthetics and whitening">📍 Verificado: Coral Gables · Especialidad: estética y blanqueamiento</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado listo</div>
-          <div class="msg-text">"Hola, vi que tienen un Instagram genial con 4.8K seguidores pero no están apareciendo en Google — y su competencia Brickell Dental sí está invirtiendo en ads. Con una auditoría SEO + 1 campaña Meta Ads podrían duplicar las consultas en 60 días. ¿Hablamos esta semana?"</div>
+          <div class="msg-label" data-es="✉ Mensaje personalizado listo" data-en="✉ Personalized message ready">✉ Mensaje personalizado listo</div>
+          <div class="msg-text" data-es='"Hola, vi que tienen un Instagram genial con 4.8K seguidores pero no están apareciendo en Google — y su competencia Brickell Dental sí está invirtiendo en ads. Con una auditoría SEO + 1 campaña Meta Ads podrían duplicar las consultas en 60 días. ¿Hablamos esta semana?"' data-en='"Hi, I noticed you have a great Instagram with 4.8K followers but you are not appearing on Google — and your competitor Brickell Dental is investing in ads. With an SEO audit + 1 Meta Ads campaign you could double consultations in 60 days. Shall we talk this week?"'>"Hola, vi que tienen un Instagram genial con 4.8K seguidores pero no están apareciendo en Google — y su competencia Brickell Dental sí está invirtiendo en ads. Con una auditoría SEO + 1 campaña Meta Ads podrían duplicar las consultas en 60 días. ¿Hablamos esta semana?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <span class="score-label" data-es="PUNTUACIÓN OPORTUNIDAD" data-en="OPPORTUNITY SCORE">PUNTUACIÓN OPORTUNIDAD</span>
         <div class="score-bar"><div class="score-fill" style="width:74%;background:linear-gradient(90deg,var(--yellow),var(--orange))"></div></div>
         <span class="score-val" style="color:var(--yellow)">74/100</span>
       </div>
@@ -197,33 +203,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         <div class="p-avatar" style="background:rgba(124,58,237,0.12)">🏥</div>
         <div>
           <div class="p-name">Miami Family Dentistry</div>
-          <div class="p-meta">Sin web propia · Doral, FL · Google Maps: 3.2★ (14 reseñas)</div>
+          <div class="p-meta" data-es="Sin web propia · Doral, FL · Google Maps: 3.2★ (14 reseñas)" data-en="No own website · Doral, FL · Google Maps: 3.2★ (14 reviews)">Sin web propia · Doral, FL · Google Maps: 3.2★ (14 reseñas)</div>
         </div>
         <div class="p-badges">
-          <span class="badge b-dup">SIN WEB</span>
-          <span class="badge b-noads">SIN ADS</span>
+          <span class="badge b-dup" data-es="SIN WEB" data-en="NO WEBSITE">SIN WEB</span>
+          <span class="badge b-noads" data-es="SIN ADS" data-en="NO ADS">SIN ADS</span>
           <span class="badge b-hot">🔥 95/100</span>
         </div>
       </div>
       <div class="p-body">
         <div class="p-analysis">
-          <h4>Problemas detectados</h4>
+          <h4 data-es="Problemas detectados" data-en="Detected issues">Problemas detectados</h4>
           <ul>
-            <li>No tiene web — solo página de Facebook</li>
-            <li>Competencia directa: 2 clínicas en radio 1km</li>
-            <li>Reseñas bajas sin respuesta del negocio</li>
-            <li>Sin presencia en Instagram</li>
-            <li>Sin Google My Business completo</li>
+            <li data-es="No tiene web — solo página de Facebook" data-en="No website — only a Facebook page">No tiene web — solo página de Facebook</li>
+            <li data-es="Competencia directa: 2 clínicas en radio 1km" data-en="Direct competition: 2 clinics within 1km radius">Competencia directa: 2 clínicas en radio 1km</li>
+            <li data-es="Reseñas bajas sin respuesta del negocio" data-en="Low reviews with no response from business">Reseñas bajas sin respuesta del negocio</li>
+            <li data-es="Sin presencia en Instagram" data-en="No Instagram presence">Sin presencia en Instagram</li>
+            <li data-es="Sin Google My Business completo" data-en="No complete Google My Business">Sin Google My Business completo</li>
           </ul>
-          <div class="real-data">📍 Verificado: Encontrado en Google Maps · Sin dominio propio</div>
+          <div class="real-data" data-es="📍 Verificado: Encontrado en Google Maps · Sin dominio propio" data-en="📍 Verified: Found on Google Maps · No own domain">📍 Verificado: Encontrado en Google Maps · Sin dominio propio</div>
         </div>
         <div class="p-message">
-          <div class="msg-label">✉ Mensaje personalizado listo</div>
-          <div class="msg-text">"Hola, soy Angel de Kodara SE. Encontré Miami Family Dentistry en Google Maps y vi que todavía no tienen página web. Cada día pierden pacientes que buscan 'dentista en Doral' y van a la competencia que sí tiene web. Puedo tenerles una web profesional en 72 horas desde $900. ¿Le muestro un ejemplo real?"</div>
+          <div class="msg-label" data-es="✉ Mensaje personalizado listo" data-en="✉ Personalized message ready">✉ Mensaje personalizado listo</div>
+          <div class="msg-text" data-es='"Hola, soy Angel de Kodara SE. Encontré Miami Family Dentistry en Google Maps y vi que todavía no tienen página web. Cada día pierden pacientes que buscan "dentista en Doral" y van a la competencia que sí tiene web. Puedo tenerles una web profesional en 72 horas desde $900. ¿Le muestro un ejemplo real?"' data-en='"Hi, I am Angel from Kodara SE. I found Miami Family Dentistry on Google Maps and noticed you do not have a website yet. Every day you lose patients who search for "dentist in Doral" and go to the competition that has a website. I can have a professional website for you in 72 hours starting from $900. Want me to show you a real example?"'>"Hola, soy Angel de Kodara SE. Encontré Miami Family Dentistry en Google Maps y vi que todavía no tienen página web. Cada día pierden pacientes que buscan 'dentista en Doral' y van a la competencia que sí tiene web. Puedo tenerles una web profesional en 72 horas desde $900. ¿Le muestro un ejemplo real?"</div>
         </div>
       </div>
       <div class="p-score">
-        <span class="score-label">PUNTUACIÓN OPORTUNIDAD</span>
+        <span class="score-label" data-es="PUNTUACIÓN OPORTUNIDAD" data-en="OPPORTUNITY SCORE">PUNTUACIÓN OPORTUNIDAD</span>
         <div class="score-bar"><div class="score-fill" style="width:95%;background:linear-gradient(90deg,var(--green),var(--orange))"></div></div>
         <span class="score-val" style="color:var(--green)">95/100</span>
       </div>
@@ -232,22 +238,36 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   </div>
 
   <div class="cta-final">
-    <h2>20+ leads como estos <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">para tu sector</span></h2>
-    <p>Investigamos tu sector, encontramos los mejores prospectos, analizamos sus problemas y escribimos el mensaje personalizado por empresa. Listo para enviar.</p>
-    <a href="https://kodarase.com/?budget=prospeccion" class="cta-btn">Solicitar lista de prospectos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="20+ leads como estos" data-en="20+ leads like these">20+ leads como estos</span> <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="para tu sector" data-en="for your sector">para tu sector</span></h2>
+    <p data-es="Investigamos tu sector, encontramos los mejores prospectos, analizamos sus problemas y escribimos el mensaje personalizado por empresa. Listo para enviar." data-en="We research your sector, find the best prospects, analyze their issues and write personalized messages per company. Ready to send.">Investigamos tu sector, encontramos los mejores prospectos, analizamos sus problemas y escribimos el mensaje personalizado por empresa. Listo para enviar.</p>
+    <a href="https://kodarase.com/?budget=prospeccion" class="cta-btn"><span data-es="Solicitar lista de prospectos" data-en="Request prospect list">Solicitar lista de prospectos</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">5-7d</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$400</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">20+</div><div class="cta-stat-lbl">Leads verificados</div></div>
-      <div><div class="cta-stat-val">CSV+HubSpot</div><div class="cta-stat-lbl">Formatos</div></div>
+      <div><div class="cta-stat-val">5-7d</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$400</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val">20+</div><div class="cta-stat-lbl" data-es="Leads verificados" data-en="Verified leads">Leads verificados</div></div>
+      <div><div class="cta-stat-val">CSV+HubSpot</div><div class="cta-stat-lbl" data-es="Formatos" data-en="Formats">Formatos</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Prospección real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-008 · Datos verificados Miami Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Prospección real por" data-en="Real Prospecting by">Prospección real por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-008 · <span data-es="Datos verificados Miami Mayo 2026" data-en="Verified data Miami May 2026">Datos verificados Miami Mayo 2026</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
