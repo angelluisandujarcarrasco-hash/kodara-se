@@ -81,6 +81,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.stats-grid{grid-template-columns:1fr 1fr}.time-saved{flex-direction:column;text-align:center}.workflow{flex-direction:column}.wf-arrow{transform:rotate(90deg);padding:8px 0}.hero-content{padding:32px 24px}.container{padding:32px 20px}.workflow-card{padding:24px 20px}}
 </style>
 </head>
@@ -90,20 +93,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Automatizaciones</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Automatizaciones" data-en="/ Automations">/ Automatizaciones</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>FLUJOS ACTIVOS · CLIENTE E-COMMERCE CALI</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="FLUJOS ACTIVOS · CLIENTE E-COMMERCE CALI" data-en="ACTIVE FLOWS · E-COMMERCE CLIENT CALI">FLUJOS ACTIVOS · CLIENTE E-COMMERCE CALI</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203757_86921a86-09d3-49b6-a4aa-5e32f8a9a954.png" alt="Automatizaciones">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-005 · AUTOMATIZACIONES</div>
-    <h1 class="hero-title">Tu negocio funciona <span class="grad">solo 24/7</span></h1>
+    <div class="hero-tag" data-es="// KSE-005 · AUTOMATIZACIONES" data-en="// KSE-005 · AUTOMATIONS">// KSE-005 · AUTOMATIZACIONES</div>
+    <h1 class="hero-title"><span data-es="Tu negocio funciona" data-en="Your business runs">Tu negocio funciona</span> <span class="grad" data-es="solo 24/7" data-en="on its own 24/7">solo 24/7</span></h1>
     <div class="hero-meta">
-      <span>⚡ 4 automatizaciones activas</span>
-      <span>🤖 n8n profesional</span>
-      <span>⏱ Ahorra 96h/mes</span>
+      <span data-es="⚡ 4 automatizaciones activas" data-en="⚡ 4 active automations">⚡ 4 automatizaciones activas</span>
+      <span data-es="🤖 n8n profesional" data-en="🤖 Professional n8n">🤖 n8n profesional</span>
+      <span data-es="⏱ Ahorra 96h/mes" data-en="⏱ Save 96h/month">⏱ Ahorra 96h/mes</span>
     </div>
   </div>
 </div>
@@ -111,55 +117,55 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 <div class="container">
 
   <div class="stats-grid">
-    <div class="stat-c"><div class="stat-icon">✅</div><div class="stat-val" style="color:var(--green)">4</div><div class="stat-lbl">Automatizaciones activas</div></div>
-    <div class="stat-c"><div class="stat-icon">⏱</div><div class="stat-val" style="color:var(--orange)">3.2h</div><div class="stat-lbl">Ahorradas hoy</div></div>
-    <div class="stat-c"><div class="stat-icon">🔄</div><div class="stat-val" style="color:var(--blue)">847</div><div class="stat-lbl">Ejecuciones/mes</div></div>
-    <div class="stat-c"><div class="stat-icon">📊</div><div class="stat-val" style="color:var(--green)">99.2%</div><div class="stat-lbl">Tasa de éxito</div></div>
+    <div class="stat-c"><div class="stat-icon">✅</div><div class="stat-val" style="color:var(--green)">4</div><div class="stat-lbl" data-es="Automatizaciones activas" data-en="Active automations">Automatizaciones activas</div></div>
+    <div class="stat-c"><div class="stat-icon">⏱</div><div class="stat-val" style="color:var(--orange)">3.2h</div><div class="stat-lbl" data-es="Ahorradas hoy" data-en="Saved today">Ahorradas hoy</div></div>
+    <div class="stat-c"><div class="stat-icon">🔄</div><div class="stat-val" style="color:var(--blue)">847</div><div class="stat-lbl" data-es="Ejecuciones/mes" data-en="Executions/mo">Ejecuciones/mes</div></div>
+    <div class="stat-c"><div class="stat-icon">📊</div><div class="stat-val" style="color:var(--green)">99.2%</div><div class="stat-lbl" data-es="Tasa de éxito" data-en="Success rate">Tasa de éxito</div></div>
   </div>
 
   <!-- WORKFLOW EJEMPLO -->
   <div class="workflow-card">
     <div class="wf-head">
-      <div class="wf-title">Flujo: Recuperación de carrito abandonado</div>
-      <div class="wf-sub">Se ejecuta automáticamente cuando un cliente deja productos sin comprar · <strong style="color:var(--green)">47 recuperaciones este mes</strong></div>
+      <div class="wf-title" data-es="Flujo: Recuperación de carrito abandonado" data-en="Flow: Abandoned cart recovery">Flujo: Recuperación de carrito abandonado</div>
+      <div class="wf-sub" data-es="Se ejecuta automáticamente cuando un cliente deja productos sin comprar · 47 recuperaciones este mes" data-en="Runs automatically when a customer leaves products without buying · 47 recoveries this month">Se ejecuta automáticamente cuando un cliente deja productos sin comprar · <strong style="color:var(--green)">47 recuperaciones este mes</strong></div>
     </div>
     <div class="workflow">
       <div class="wf-node">
         <div class="wf-icon" style="background:rgba(59,130,246,0.1)">🛒</div>
-        <div><div class="wf-name">Shopify</div><div class="wf-type">Carrito abandonado</div></div>
+        <div><div class="wf-name">Shopify</div><div class="wf-type" data-es="Carrito abandonado" data-en="Abandoned cart">Carrito abandonado</div></div>
         <div class="wf-badge">TRIGGER</div>
       </div>
       <div class="wf-arrow">→</div>
       <div class="wf-node">
         <div class="wf-icon" style="background:rgba(245,158,11,0.1)">⏱</div>
-        <div><div class="wf-name">Esperar 1h</div><div class="wf-type">Temporizador</div></div>
+        <div><div class="wf-name" data-es="Esperar 1h" data-en="Wait 1h">Esperar 1h</div><div class="wf-type" data-es="Temporizador" data-en="Timer">Temporizador</div></div>
       </div>
       <div class="wf-arrow">→</div>
       <div class="wf-node">
         <div class="wf-icon" style="background:rgba(16,185,129,0.1)">📧</div>
-        <div><div class="wf-name">Email #1</div><div class="wf-type">"¿Olvidaste algo?"</div></div>
+        <div><div class="wf-name" data-es="Email #1" data-en="Email #1">Email #1</div><div class="wf-type" data-es='"¿Olvidaste algo?"' data-en='"Forgot something?"'>"¿Olvidaste algo?"</div></div>
       </div>
       <div class="wf-arrow">→</div>
       <div class="wf-node">
         <div class="wf-icon" style="background:rgba(124,58,237,0.1)">🔀</div>
-        <div><div class="wf-name">¿Compró?</div><div class="wf-type">Condición</div></div>
+        <div><div class="wf-name" data-es="¿Compró?" data-en="Did they buy?">¿Compró?</div><div class="wf-type" data-es="Condición" data-en="Condition">Condición</div></div>
       </div>
       <div class="wf-arrow">→</div>
       <div class="wf-node">
         <div class="wf-icon" style="background:rgba(249,115,22,0.1)">💸</div>
-        <div><div class="wf-name">Email #2</div><div class="wf-type">Descuento 10%</div></div>
+        <div><div class="wf-name" data-es="Email #2" data-en="Email #2">Email #2</div><div class="wf-type" data-es="Descuento 10%" data-en="10% Discount">Descuento 10%</div></div>
       </div>
     </div>
     <div class="log">
-      <div class="log-header">// LOG EN TIEMPO REAL</div>
+      <div class="log-header" data-es="// LOG EN TIEMPO REAL" data-en="// REAL-TIME LOG">// LOG EN TIEMPO REAL</div>
       <div class="log-body">
-        <div class="log-line"><span class="log-time">14:32:01</span><span class="log-event">Carrito abandonado → <strong>laura.g@gmail.com</strong></span><span class="log-ok">✓</span></div>
-        <div class="log-line"><span class="log-time">15:32:01</span><span class="log-event">Email #1 enviado → "Laura, olvidaste tu carrito 🛒"</span><span class="log-ok">✓ ABIERTO</span></div>
-        <div class="log-line"><span class="log-time">15:45:22</span><span class="log-event">Laura hizo clic en el email</span><span class="log-ok">✓ CLICK</span></div>
-        <div class="log-line"><span class="log-time">15:46:10</span><span class="log-event">Compra completada — $124.00 recuperados</span><span class="log-ok">✓ ÉXITO</span></div>
-        <div class="log-line"><span class="log-time">16:11:44</span><span class="log-event">Carrito abandonado → <strong>carlos.m@outlook.com</strong></span><span class="log-ok">✓</span></div>
-        <div class="log-line"><span class="log-time">17:11:44</span><span class="log-event">Email #1 enviado → "Carlos, olvidaste tu carrito 🛒"</span><span class="log-warn">⏳ SIN ABRIR</span></div>
-        <div class="log-line"><span class="log-time">19:11:44</span><span class="log-event">Email #2 enviado → "10% de descuento solo para ti"</span><span class="log-ok">✓ ABIERTO</span></div>
+        <div class="log-line"><span class="log-time">14:32:01</span><span class="log-event" data-es="Carrito abandonado → laura.g@gmail.com" data-en="Cart abandoned → laura.g@gmail.com">Carrito abandonado → <strong>laura.g@gmail.com</strong></span><span class="log-ok">✓</span></div>
+        <div class="log-line"><span class="log-time">15:32:01</span><span class="log-event" data-es='Email #1 enviado → "Laura, olvidaste tu carrito 🛒"' data-en='Email #1 sent → "Laura, you forgot your cart 🛒"'>Email #1 enviado → "Laura, olvidaste tu carrito 🛒"</span><span class="log-ok" data-es="✓ ABIERTO" data-en="✓ OPENED">✓ ABIERTO</span></div>
+        <div class="log-line"><span class="log-time">15:45:22</span><span class="log-event" data-es="Laura hizo clic en el email" data-en="Laura clicked the email">Laura hizo clic en el email</span><span class="log-ok">✓ CLICK</span></div>
+        <div class="log-line"><span class="log-time">15:46:10</span><span class="log-event" data-es="Compra completada — $124.00 recuperados" data-en="Purchase completed — $124.00 recovered">Compra completada — $124.00 recuperados</span><span class="log-ok" data-es="✓ ÉXITO" data-en="✓ SUCCESS">✓ ÉXITO</span></div>
+        <div class="log-line"><span class="log-time">16:11:44</span><span class="log-event" data-es="Carrito abandonado → carlos.m@outlook.com" data-en="Cart abandoned → carlos.m@outlook.com">Carrito abandonado → <strong>carlos.m@outlook.com</strong></span><span class="log-ok">✓</span></div>
+        <div class="log-line"><span class="log-time">17:11:44</span><span class="log-event" data-es='Email #1 enviado → "Carlos, olvidaste tu carrito 🛒"' data-en='Email #1 sent → "Carlos, you forgot your cart 🛒"'>Email #1 enviado → "Carlos, olvidaste tu carrito 🛒"</span><span class="log-warn" data-es="⏳ SIN ABRIR" data-en="⏳ NOT OPENED">⏳ SIN ABRIR</span></div>
+        <div class="log-line"><span class="log-time">19:11:44</span><span class="log-event" data-es='Email #2 enviado → "10% de descuento solo para ti"' data-en='Email #2 sent → "10% discount just for you"'>Email #2 enviado → "10% de descuento solo para ti"</span><span class="log-ok" data-es="✓ ABIERTO" data-en="✓ OPENED">✓ ABIERTO</span></div>
       </div>
     </div>
   </div>
@@ -168,11 +174,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <div class="time-saved">
     <div>
       <div class="ts-big">96h</div>
-      <div style="font-size:13px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:6px">AHORRADAS / MES</div>
+      <div style="font-size:13px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:6px" data-es="AHORRADAS / MES" data-en="SAVED / MONTH">AHORRADAS / MES</div>
     </div>
     <div style="flex:1">
-      <div class="ts-desc">Tiempo que ya no dedicas a tareas manuales</div>
-      <div class="ts-sub">Emails de bienvenida · Seguimiento de pedidos · Reportes de ventas · Recordatorios de reseña · Alertas de stock bajo · Notificaciones al equipo</div>
+      <div class="ts-desc" data-es="Tiempo que ya no dedicas a tareas manuales" data-en="Time you no longer spend on manual tasks">Tiempo que ya no dedicas a tareas manuales</div>
+      <div class="ts-sub" data-es="Emails de bienvenida · Seguimiento de pedidos · Reportes de ventas · Recordatorios de reseña · Alertas de stock bajo · Notificaciones al equipo" data-en="Welcome emails · Order tracking · Sales reports · Review reminders · Low stock alerts · Team notifications">Emails de bienvenida · Seguimiento de pedidos · Reportes de ventas · Recordatorios de reseña · Alertas de stock bajo · Notificaciones al equipo</div>
     </div>
   </div>
 
@@ -181,12 +187,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <div class="auto-item">
       <div class="auto-icon" style="background:rgba(59,130,246,0.1)">📧</div>
       <div class="auto-info">
-        <div class="auto-name">Email de bienvenida — nuevos clientes</div>
-        <div class="auto-desc">Cuando alguien compra por primera vez, recibe un email personalizado con su nombre y su pedido en menos de 2 minutos.</div>
+        <div class="auto-name" data-es="Email de bienvenida — nuevos clientes" data-en="Welcome email — new customers">Email de bienvenida — nuevos clientes</div>
+        <div class="auto-desc" data-es="Cuando alguien compra por primera vez, recibe un email personalizado con su nombre y su pedido en menos de 2 minutos." data-en="When someone purchases for the first time, they receive a personalized email with their name and order in less than 2 minutes.">Cuando alguien compra por primera vez, recibe un email personalizado con su nombre y su pedido en menos de 2 minutos.</div>
         <div class="auto-meta">
-          <span class="auto-tag tag-runs">312 ejecuciones</span>
-          <span class="auto-tag tag-time">Ahorra 5h/mes</span>
-          <span class="auto-tag tag-status">● ACTIVO</span>
+          <span class="auto-tag tag-runs" data-es="312 ejecuciones" data-en="312 executions">312 ejecuciones</span>
+          <span class="auto-tag tag-time" data-es="Ahorra 5h/mes" data-en="Saves 5h/mo">Ahorra 5h/mes</span>
+          <span class="auto-tag tag-status" data-es="● ACTIVO" data-en="● ACTIVE">● ACTIVO</span>
         </div>
       </div>
       <div class="toggle"></div>
@@ -194,12 +200,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <div class="auto-item">
       <div class="auto-icon" style="background:rgba(16,185,129,0.1)">📊</div>
       <div class="auto-info">
-        <div class="auto-name">Reporte de ventas diario — WhatsApp</div>
-        <div class="auto-desc">Cada día a las 20:00 recibes un mensaje en WhatsApp con las ventas del día, productos más vendidos y comparativa con ayer.</div>
+        <div class="auto-name" data-es="Reporte de ventas diario — WhatsApp" data-en="Daily sales report — WhatsApp">Reporte de ventas diario — WhatsApp</div>
+        <div class="auto-desc" data-es="Cada día a las 20:00 recibes un mensaje en WhatsApp con las ventas del día, productos más vendidos y comparativa con ayer." data-en="Every day at 8pm you receive a WhatsApp message with the day's sales, top sellers, and comparison with yesterday.">Cada día a las 20:00 recibes un mensaje en WhatsApp con las ventas del día, productos más vendidos y comparativa con ayer.</div>
         <div class="auto-meta">
-          <span class="auto-tag tag-runs">71 ejecuciones</span>
-          <span class="auto-tag tag-time">Ahorra 2h/mes</span>
-          <span class="auto-tag tag-status">● ACTIVO</span>
+          <span class="auto-tag tag-runs" data-es="71 ejecuciones" data-en="71 executions">71 ejecuciones</span>
+          <span class="auto-tag tag-time" data-es="Ahorra 2h/mes" data-en="Saves 2h/mo">Ahorra 2h/mes</span>
+          <span class="auto-tag tag-status" data-es="● ACTIVO" data-en="● ACTIVE">● ACTIVO</span>
         </div>
       </div>
       <div class="toggle"></div>
@@ -207,12 +213,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <div class="auto-item">
       <div class="auto-icon" style="background:rgba(249,115,22,0.1)">🔔</div>
       <div class="auto-info">
-        <div class="auto-name">Alerta de stock bajo — Slack</div>
-        <div class="auto-desc">Cuando un producto baja de 5 unidades, envía alerta automática al canal de Slack del equipo para reponer antes de quedarse sin stock.</div>
+        <div class="auto-name" data-es="Alerta de stock bajo — Slack" data-en="Low stock alert — Slack">Alerta de stock bajo — Slack</div>
+        <div class="auto-desc" data-es="Cuando un producto baja de 5 unidades, envía alerta automática al canal de Slack del equipo para reponer antes de quedarse sin stock." data-en="When a product drops below 5 units, sends automatic alert to team Slack channel to restock before running out.">Cuando un producto baja de 5 unidades, envía alerta automática al canal de Slack del equipo para reponer antes de quedarse sin stock.</div>
         <div class="auto-meta">
-          <span class="auto-tag tag-runs">18 ejecuciones</span>
-          <span class="auto-tag tag-time">Ahorra 3h/mes</span>
-          <span class="auto-tag tag-status">● ACTIVO</span>
+          <span class="auto-tag tag-runs" data-es="18 ejecuciones" data-en="18 executions">18 ejecuciones</span>
+          <span class="auto-tag tag-time" data-es="Ahorra 3h/mes" data-en="Saves 3h/mo">Ahorra 3h/mes</span>
+          <span class="auto-tag tag-status" data-es="● ACTIVO" data-en="● ACTIVE">● ACTIVO</span>
         </div>
       </div>
       <div class="toggle"></div>
@@ -220,12 +226,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <div class="auto-item">
       <div class="auto-icon" style="background:rgba(124,58,237,0.1)">⭐</div>
       <div class="auto-info">
-        <div class="auto-name">Solicitud de reseña automática</div>
-        <div class="auto-desc">14 días después de cada compra envía email solicitando reseña en Google. Aumentó las reseñas de 12 a 89 en 2 meses.</div>
+        <div class="auto-name" data-es="Solicitud de reseña automática" data-en="Automatic review request">Solicitud de reseña automática</div>
+        <div class="auto-desc" data-es="14 días después de cada compra envía email solicitando reseña en Google. Aumentó las reseñas de 12 a 89 en 2 meses." data-en="14 days after each purchase sends email requesting Google review. Increased reviews from 12 to 89 in 2 months.">14 días después de cada compra envía email solicitando reseña en Google. Aumentó las reseñas de 12 a 89 en 2 meses.</div>
         <div class="auto-meta">
-          <span class="auto-tag tag-runs">446 ejecuciones</span>
-          <span class="auto-tag tag-time">Ahorra 4h/mes</span>
-          <span class="auto-tag tag-status">● ACTIVO</span>
+          <span class="auto-tag tag-runs" data-es="446 ejecuciones" data-en="446 executions">446 ejecuciones</span>
+          <span class="auto-tag tag-time" data-es="Ahorra 4h/mes" data-en="Saves 4h/mo">Ahorra 4h/mes</span>
+          <span class="auto-tag tag-status" data-es="● ACTIVO" data-en="● ACTIVE">● ACTIVO</span>
         </div>
       </div>
       <div class="toggle"></div>
@@ -234,22 +240,36 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>Tu negocio puede <span style="background:linear-gradient(135deg,var(--purple),var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">funcionar solo</span> 24/7</h2>
-    <p>Conectamos tus herramientas (Shopify, Gmail, WhatsApp, Slack, HubSpot...) y construimos flujos en n8n profesional. Ahorra 3+ horas diarias desde el primer día.</p>
-    <a href="https://kodarase.com/?budget=auto" class="cta-btn">Automatizar mi negocio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="Tu negocio puede" data-en="Your business can">Tu negocio puede</span> <span style="background:linear-gradient(135deg,var(--purple),var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="funcionar solo" data-en="run itself">funcionar solo</span> 24/7</h2>
+    <p data-es="Conectamos tus herramientas (Shopify, Gmail, WhatsApp, Slack, HubSpot...) y construimos flujos en n8n profesional. Ahorra 3+ horas diarias desde el primer día." data-en="We connect your tools (Shopify, Gmail, WhatsApp, Slack, HubSpot...) and build flows in professional n8n. Save 3+ hours daily from day one.">Conectamos tus herramientas (Shopify, Gmail, WhatsApp, Slack, HubSpot...) y construimos flujos en n8n profesional. Ahorra 3+ horas diarias desde el primer día.</p>
+    <a href="https://kodarase.com/?budget=auto" class="cta-btn"><span data-es="Automatizar mi negocio" data-en="Automate my business">Automatizar mi negocio</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">3-7d</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$1K-10K+</div><div class="cta-stat-lbl">Inversión</div></div>
-      <div><div class="cta-stat-val">n8n</div><div class="cta-stat-lbl">Profesional</div></div>
-      <div><div class="cta-stat-val">24/7</div><div class="cta-stat-lbl">Funciona solo</div></div>
+      <div><div class="cta-stat-val">3-7d</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$1K-10K+</div><div class="cta-stat-lbl" data-es="Inversión" data-en="Investment">Inversión</div></div>
+      <div><div class="cta-stat-val">n8n</div><div class="cta-stat-lbl" data-es="Profesional" data-en="Professional">Profesional</div></div>
+      <div><div class="cta-stat-val">24/7</div><div class="cta-stat-lbl" data-es="Funciona solo" data-en="Runs alone">Funciona solo</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Automatizaciones por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-005 · n8n + Shopify + Make · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Automatizaciones por" data-en="Automations by">Automatizaciones por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-005 · n8n + Shopify + Make · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
