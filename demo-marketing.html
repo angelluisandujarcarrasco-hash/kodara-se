@@ -87,8 +87,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(236,72,153,0.35);cursor:pointer;transition:all 0.25s;border:none}
 .cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(236,72,153,0.55);filter:brightness(1.1)}
 .cta-btn:active{transform:translateY(-1px)}
-.cta-email{display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--text-3);color:var(--text);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;transition:all 0.25s}
+.cta-email{display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--text-3);color:var(--text);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;transition:all 0.25s;font-family:inherit}
 .cta-email:hover{border-color:var(--orange);color:var(--orange);background:rgba(249,115,22,0.08);transform:translateY(-3px)}
+.contact-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.2s}
+.contact-overlay.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.contact-modal{background:var(--card);border:1px solid var(--border);border-radius:20px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;padding:36px 32px;position:relative;animation:slideUp 0.3s}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.contact-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border);color:var(--text-2);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.contact-close:hover{background:var(--red);color:#fff;transform:rotate(90deg)}
+.contact-title{font-size:24px;font-weight:900;letter-spacing:-0.5px;margin-bottom:6px}
+.contact-sub{font-size:13px;color:var(--text-3);margin-bottom:24px}
+.contact-field{margin-bottom:14px}
+.contact-label{display:block;font-size:12px;color:var(--text-2);font-weight:600;margin-bottom:6px;letter-spacing:0.3px}
+.contact-input,.contact-textarea,.contact-select{width:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:inherit;transition:all 0.2s}
+.contact-input:focus,.contact-textarea:focus,.contact-select:focus{outline:none;border-color:var(--pink);background:var(--bg)}
+.contact-textarea{min-height:110px;resize:vertical}
+.contact-submit{width:100%;background:linear-gradient(135deg,var(--pink),var(--orange));border:none;color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;margin-top:8px;transition:all 0.25s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.contact-submit:hover{transform:translateY(-2px);filter:brightness(1.1);box-shadow:0 8px 24px rgba(236,72,153,0.4)}
+.contact-submit:disabled{opacity:0.6;cursor:wait;transform:none}
+.contact-success{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);color:var(--green);padding:20px;border-radius:12px;text-align:center;font-size:14px;line-height:1.6;display:none}
+.contact-success.show{display:block}
+.contact-foot{margin-top:16px;font-size:11px;color:var(--text-3);text-align:center;line-height:1.6}
 .cta-stats{display:flex;justify-content:center;gap:48px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
 .cta-stat-val{font-size:24px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--pink)}
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
@@ -379,7 +399,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <p>Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Sin sorpresas, con garantía de devolución.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="https://kodarase.com/?budget=marketing" target="_blank" rel="noopener" class="cta-btn">Solicitar mi pack ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="mailto:kodaraservi@gmail.com?subject=Consulta%20marketing%20digital%20Kodara%20SE&body=Hola,%20me%20interesa%20el%20servicio%20de%20marketing%20digital." class="cta-email">✉ Enviar email</a>
+      <button type="button" onclick="openContactModal()" class="cta-email">✉ Enviar email</button>
     </div>
     <div class="cta-stats">
       <div><div class="cta-stat-val">$147-497</div><div class="cta-stat-lbl">3 packs disponibles</div></div>
@@ -394,6 +414,58 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 <footer class="demo-footer">
   Marketing Digital por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-010 · Videos generados con Higgsfield Marketing Studio · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<!-- MODAL CONTACTO -->
+<div class="contact-overlay" id="contactOverlay" onclick="if(event.target===this)closeContactModal()">
+  <div class="contact-modal">
+    <button type="button" class="contact-close" onclick="closeContactModal()" aria-label="Cerrar">✕</button>
+    <div id="contactForm">
+      <div class="contact-title">Cuéntanos de tu negocio</div>
+      <div class="contact-sub">Te respondemos en menos de 24 horas con una propuesta personalizada.</div>
+      <form id="formMarketing" action="https://formsubmit.co/kodaraservi@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nueva consulta Marketing Digital — Kodara SE">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://kodarase.com/?gracias=marketing">
+        <div class="contact-field">
+          <label class="contact-label" for="cf-name">Nombre completo *</label>
+          <input class="contact-input" type="text" id="cf-name" name="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="cf-email">Email *</label>
+          <input class="contact-input" type="email" id="cf-email" name="email" required placeholder="tu@email.com">
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="cf-phone">Teléfono / WhatsApp</label>
+          <input class="contact-input" type="tel" id="cf-phone" name="telefono" placeholder="+34 600 000 000">
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="cf-pack">¿Qué pack te interesa?</label>
+          <select class="contact-select" id="cf-pack" name="pack">
+            <option value="No seguro aún">No estoy seguro todavía</option>
+            <option value="Pack Starter $147">Pack Starter — $147</option>
+            <option value="Pack Pro $297">Pack Pro — $297</option>
+            <option value="Pack Premium $497">Pack Premium — $497</option>
+          </select>
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="cf-msg">Cuéntanos de tu negocio *</label>
+          <textarea class="contact-textarea" id="cf-msg" name="mensaje" required placeholder="¿A qué te dedicas? ¿En qué redes estás ahora? ¿Cuál es tu objetivo principal?"></textarea>
+        </div>
+        <button type="submit" class="contact-submit" id="contactSubmitBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Enviar consulta
+        </button>
+        <div class="contact-foot">📩 Recibirás respuesta en kodaraservi@gmail.com en menos de 24h · Sin spam</div>
+      </form>
+    </div>
+    <div class="contact-success" id="contactSuccess">
+      <div style="font-size:36px;margin-bottom:12px">✅</div>
+      <div style="font-size:18px;font-weight:800;margin-bottom:8px;color:var(--text)">¡Mensaje enviado!</div>
+      Tu consulta llegó correctamente. Te respondemos en menos de 24h al email que nos diste.
+    </div>
+  </div>
+</div>
 
 <script>
 function togglePlay(container){
@@ -413,6 +485,44 @@ function togglePlay(container){
     if(overlay) overlay.style.opacity='1';
   }
 }
+
+function openContactModal(){
+  document.getElementById('contactOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{const f=document.getElementById('cf-name');if(f)f.focus();},250);
+}
+function closeContactModal(){
+  document.getElementById('contactOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('contactOverlay').classList.contains('open')){
+    closeContactModal();
+  }
+});
+document.getElementById('formMarketing').addEventListener('submit',function(e){
+  e.preventDefault();
+  const form=this;
+  const btn=document.getElementById('contactSubmitBtn');
+  const data=new FormData(form);
+  btn.disabled=true;
+  btn.innerHTML='Enviando…';
+  fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('contactForm').style.display='none';
+        document.getElementById('contactSuccess').classList.add('show');
+        form.reset();
+      }else{
+        throw new Error('Error');
+      }
+    })
+    .catch(function(){
+      btn.disabled=false;
+      btn.innerHTML='Reintentar — error de red';
+      btn.style.background='var(--red)';
+    });
+});
 </script>
 
 </body>
