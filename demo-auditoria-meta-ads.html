@@ -104,6 +104,9 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr}.before-after{grid-template-columns:1fr}.savings{flex-direction:column;text-align:center}.camp-row{grid-template-columns:1fr;gap:8px;text-align:center}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}}
 </style>
 </head>
@@ -113,20 +116,23 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría Meta Ads</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Auditoría Meta Ads" data-en="/ Meta Ads Audit">/ Auditoría Meta Ads</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>AUDITORÍA REAL · MAYO 2026</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="AUDITORÍA REAL · MAYO 2026" data-en="REAL AUDIT · MAY 2026">AUDITORÍA REAL · MAYO 2026</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203701_6ef5a4d0-e138-455e-9152-24ca79889cda.png" alt="Auditoría Meta Ads">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-003 · AUDITORÍA META ADS</div>
-    <h1 class="hero-title">Auditoría <span class="grad">Meta Ads</span> Premium</h1>
+    <div class="hero-tag" data-es="// KSE-003 · AUDITORÍA META ADS" data-en="// KSE-003 · META ADS AUDIT">// KSE-003 · AUDITORÍA META ADS</div>
+    <h1 class="hero-title"><span data-es="Auditoría" data-en="Audit">Auditoría</span> <span class="grad">Meta Ads</span> <span data-es="Premium" data-en="Premium">Premium</span></h1>
     <div class="hero-meta">
-      <span>🏢 Tienda Moda Élite · Bogotá</span>
-      <span>📅 Período: Abr–May 2026</span>
-      <span>⚡ Entrega 48h</span>
+      <span data-es="🏢 Tienda Moda Élite · Bogotá" data-en="🏢 Moda Élite Boutique · Bogotá">🏢 Tienda Moda Élite · Bogotá</span>
+      <span data-es="📅 Período: Abr–May 2026" data-en="📅 Period: Apr–May 2026">📅 Período: Abr–May 2026</span>
+      <span data-es="⚡ Entrega 48h" data-en="⚡ 48h delivery">⚡ Entrega 48h</span>
     </div>
   </div>
 </div>
@@ -137,69 +143,69 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
   <div class="alert-box">
     <div class="alert-icon">🔥</div>
     <div>
-      <div class="alert-title">$1,240 malgastados el último mes</div>
-      <div class="alert-desc">3 campañas activas que no convierten. El presupuesto se va en clics que no compran. Con los cambios de este informe el mismo presupuesto generará el doble de ventas.</div>
+      <div class="alert-title" data-es="$1,240 malgastados el último mes" data-en="$1,240 wasted last month">$1,240 malgastados el último mes</div>
+      <div class="alert-desc" data-es="3 campañas activas que no convierten. El presupuesto se va en clics que no compran. Con los cambios de este informe el mismo presupuesto generará el doble de ventas." data-en="3 active campaigns that do not convert. Budget is spent on clicks that do not buy. With the changes in this report, the same budget will generate twice the sales.">3 campañas activas que no convierten. El presupuesto se va en clics que no compran. Con los cambios de este informe el mismo presupuesto generará el doble de ventas.</div>
     </div>
   </div>
 
   <!-- KPIs -->
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-icon">💸</div><div class="kpi-val" style="color:var(--white)">$3,200</div><div class="kpi-lbl">Gasto Total</div><div class="kpi-sub">Últimos 30 días</div></div>
-    <div class="kpi"><div class="kpi-icon">🚨</div><div class="kpi-val" style="color:var(--red)">$1,240</div><div class="kpi-lbl">Malgastado</div><div class="kpi-sub">38.7% del presupuesto</div></div>
-    <div class="kpi"><div class="kpi-icon">💎</div><div class="kpi-val" style="color:var(--yellow)">$18.40</div><div class="kpi-lbl">CPM Promedio</div><div class="kpi-sub">Debería ser &lt;$10</div></div>
-    <div class="kpi"><div class="kpi-icon">📈</div><div class="kpi-val" style="color:var(--red)">1.8x</div><div class="kpi-lbl">ROAS Actual</div><div class="kpi-sub">Objetivo: 4x+</div></div>
+    <div class="kpi"><div class="kpi-icon">💸</div><div class="kpi-val" style="color:var(--white)">$3,200</div><div class="kpi-lbl" data-es="Gasto Total" data-en="Total Spend">Gasto Total</div><div class="kpi-sub" data-es="Últimos 30 días" data-en="Last 30 days">Últimos 30 días</div></div>
+    <div class="kpi"><div class="kpi-icon">🚨</div><div class="kpi-val" style="color:var(--red)">$1,240</div><div class="kpi-lbl" data-es="Malgastado" data-en="Wasted">Malgastado</div><div class="kpi-sub" data-es="38.7% del presupuesto" data-en="38.7% of budget">38.7% del presupuesto</div></div>
+    <div class="kpi"><div class="kpi-icon">💎</div><div class="kpi-val" style="color:var(--yellow)">$18.40</div><div class="kpi-lbl" data-es="CPM Promedio" data-en="Average CPM">CPM Promedio</div><div class="kpi-sub" data-es="Debería ser <$10" data-en="Should be <$10">Debería ser &lt;$10</div></div>
+    <div class="kpi"><div class="kpi-icon">📈</div><div class="kpi-val" style="color:var(--red)">1.8x</div><div class="kpi-lbl" data-es="ROAS Actual" data-en="Current ROAS">ROAS Actual</div><div class="kpi-sub" data-es="Objetivo: 4x+" data-en="Target: 4x+">Objetivo: 4x+</div></div>
   </div>
 
   <!-- CAMPAÑAS -->
   <div class="section-card">
     <div class="section-head">
-      <div><div class="section-title"><div class="section-icon">📊</div>Análisis de campañas activas</div><div class="section-sub">3 campañas evaluadas con métricas reales del Business Manager</div></div>
+      <div><div class="section-title"><div class="section-icon">📊</div><span data-es="Análisis de campañas activas" data-en="Active campaign analysis">Análisis de campañas activas</span></div><div class="section-sub" data-es="3 campañas evaluadas con métricas reales del Business Manager" data-en="3 campaigns evaluated with real Business Manager metrics">3 campañas evaluadas con métricas reales del Business Manager</div></div>
     </div>
 
     <div class="camp-row">
       <div class="camp-status" style="background:var(--red)"></div>
-      <div><div class="camp-name">Campaña "Colección Verano 2026"</div><div class="camp-meta">Mujeres 18-55 · Todo Colombia · Tráfico</div></div>
+      <div><div class="camp-name" data-es='Campaña "Colección Verano 2026"' data-en='Campaign "Summer Collection 2026"'>Campaña "Colección Verano 2026"</div><div class="camp-meta" data-es="Mujeres 18-55 · Todo Colombia · Tráfico" data-en="Women 18-55 · All Colombia · Traffic">Mujeres 18-55 · Todo Colombia · Tráfico</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.8%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">$4.20</div><div class="camp-stat-lbl">CPC</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.4%</div><div class="camp-stat-lbl">CONV</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--red)">0.8x</div><div class="camp-stat-lbl">ROAS</div></div>
-      <div class="verdict v-stop">PAUSAR YA</div>
+      <div class="verdict v-stop" data-es="PAUSAR YA" data-en="PAUSE NOW">PAUSAR YA</div>
     </div>
 
     <div class="camp-row">
       <div class="camp-status" style="background:var(--yellow)"></div>
-      <div><div class="camp-name">Campaña "Descuentos Flash"</div><div class="camp-meta">Interesados en moda · Bogotá · Conversiones</div></div>
+      <div><div class="camp-name" data-es='Campaña "Descuentos Flash"' data-en='Campaign "Flash Discounts"'>Campaña "Descuentos Flash"</div><div class="camp-meta" data-es="Interesados en moda · Bogotá · Conversiones" data-en="Fashion interested · Bogotá · Conversions">Interesados en moda · Bogotá · Conversiones</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">2.1%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">$1.80</div><div class="camp-stat-lbl">CPC</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">1.2%</div><div class="camp-stat-lbl">CONV</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--yellow)">2.4x</div><div class="camp-stat-lbl">ROAS</div></div>
-      <div class="verdict v-fix">OPTIMIZAR</div>
+      <div class="verdict v-fix" data-es="OPTIMIZAR" data-en="OPTIMIZE">OPTIMIZAR</div>
     </div>
 
     <div class="camp-row">
       <div class="camp-status" style="background:var(--green)"></div>
-      <div><div class="camp-name">Retargeting "Carrito Abandonado"</div><div class="camp-meta">Visitantes 30 días · DPA · Conversiones</div></div>
+      <div><div class="camp-name" data-es='Retargeting "Carrito Abandonado"' data-en='Retargeting "Abandoned Cart"'>Retargeting "Carrito Abandonado"</div><div class="camp-meta" data-es="Visitantes 30 días · DPA · Conversiones" data-en="Visitors 30 days · DPA · Conversions">Visitantes 30 días · DPA · Conversiones</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">4.8%</div><div class="camp-stat-lbl">CTR</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">$0.90</div><div class="camp-stat-lbl">CPC</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">3.6%</div><div class="camp-stat-lbl">CONV</div></div>
       <div class="camp-stat"><div class="camp-stat-val" style="color:var(--green)">6.2x</div><div class="camp-stat-lbl">ROAS</div></div>
-      <div class="verdict v-keep">MANTENER</div>
+      <div class="verdict v-keep" data-es="MANTENER" data-en="KEEP">MANTENER</div>
     </div>
   </div>
 
   <!-- BEFORE/AFTER -->
   <div class="section-card">
     <div class="section-head">
-      <div><div class="section-title"><div class="section-icon">✨</div>Anuncios reescritos por Kodara</div><div class="section-sub">Comparativa real con los anuncios actuales</div></div>
+      <div><div class="section-title"><div class="section-icon">✨</div><span data-es="Anuncios reescritos por Kodara" data-en="Ads rewritten by Kodara">Anuncios reescritos por Kodara</span></div><div class="section-sub" data-es="Comparativa real con los anuncios actuales" data-en="Real comparison with current ads">Comparativa real con los anuncios actuales</div></div>
     </div>
     <div class="before-after">
       <div class="ba-card ba-before">
-        <div class="ba-label">✕ Anuncio actual</div>
+        <div class="ba-label" data-es="✕ Anuncio actual" data-en="✕ Current ad">✕ Anuncio actual</div>
         <div class="ba-ad">
           <div class="ba-ad-img">👗</div>
-          <div class="ba-ad-title">¡Nueva colección de verano disponible!</div>
-          <div class="ba-ad-desc">Tenemos ropa para todos los gustos. Entra a nuestra tienda y encuentra lo que buscas. Envíos a todo Colombia.</div>
-          <div class="ba-ad-cta cta-bad">Ver más</div>
+          <div class="ba-ad-title" data-es="¡Nueva colección de verano disponible!" data-en="New summer collection available!">¡Nueva colección de verano disponible!</div>
+          <div class="ba-ad-desc" data-es="Tenemos ropa para todos los gustos. Entra a nuestra tienda y encuentra lo que buscas. Envíos a todo Colombia." data-en="We have clothes for all tastes. Visit our store and find what you are looking for. Shipping all over Colombia.">Tenemos ropa para todos los gustos. Entra a nuestra tienda y encuentra lo que buscas. Envíos a todo Colombia.</div>
+          <div class="ba-ad-cta cta-bad" data-es="Ver más" data-en="See more">Ver más</div>
         </div>
         <div class="ba-metrics">
           <div class="ba-m"><div class="ba-m-val" style="color:var(--red)">0.8%</div><div class="ba-m-lbl">CTR</div></div>
@@ -208,17 +214,17 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
         </div>
       </div>
       <div class="ba-card ba-after">
-        <div class="ba-label">✓ Reescrito por Kodara</div>
+        <div class="ba-label" data-es="✓ Reescrito por Kodara" data-en="✓ Rewritten by Kodara">✓ Reescrito por Kodara</div>
         <div class="ba-ad">
           <div class="ba-ad-img">☀️</div>
-          <div class="ba-ad-title">Llega el verano — 30% dto. solo hoy en vestidos de playa</div>
-          <div class="ba-ad-desc">Más de 200 estilos nuevos. Tallas S a XXL. Envío gratis en 24h a Bogotá. ¿Tu favorito ya tiene lista de espera?</div>
-          <div class="ba-ad-cta cta-good">Ver vestidos con descuento →</div>
+          <div class="ba-ad-title" data-es="Llega el verano — 30% dto. solo hoy en vestidos de playa" data-en="Summer is here — 30% off today only on beach dresses">Llega el verano — 30% dto. solo hoy en vestidos de playa</div>
+          <div class="ba-ad-desc" data-es="Más de 200 estilos nuevos. Tallas S a XXL. Envío gratis en 24h a Bogotá. ¿Tu favorito ya tiene lista de espera?" data-en="200+ new styles. Sizes S to XXL. Free shipping in 24h to Bogotá. Is your favorite already on waitlist?">Más de 200 estilos nuevos. Tallas S a XXL. Envío gratis en 24h a Bogotá. ¿Tu favorito ya tiene lista de espera?</div>
+          <div class="ba-ad-cta cta-good" data-es="Ver vestidos con descuento →" data-en="See discounted dresses →">Ver vestidos con descuento →</div>
         </div>
         <div class="ba-metrics">
-          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">4.2%</div><div class="ba-m-lbl">CTR est.</div></div>
-          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">$0.95</div><div class="ba-m-lbl">CPC est.</div></div>
-          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">5.1x</div><div class="ba-m-lbl">ROAS est.</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">4.2%</div><div class="ba-m-lbl" data-es="CTR est." data-en="Est. CTR">CTR est.</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">$0.95</div><div class="ba-m-lbl" data-es="CPC est." data-en="Est. CPC">CPC est.</div></div>
+          <div class="ba-m"><div class="ba-m-val" style="color:var(--green)">5.1x</div><div class="ba-m-lbl" data-es="ROAS est." data-en="Est. ROAS">ROAS est.</div></div>
         </div>
       </div>
     </div>
@@ -228,44 +234,58 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
   <div class="savings">
     <div>
       <div class="sav-big">$1,240</div>
-      <div style="font-size:13px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:4px">AHORRO MENSUAL</div>
+      <div style="font-size:13px;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:4px" data-es="AHORRO MENSUAL" data-en="MONTHLY SAVINGS">AHORRO MENSUAL</div>
     </div>
     <div>
-      <div class="sav-desc">Si aplicas estos cambios esta semana, el mes que viene gastas lo mismo pero con el <strong style="color:var(--green)">doble de ventas</strong>.</div>
-      <div class="sav-sub">· Pausar 1 campaña que no convierte<br>· Reescribir 3 anuncios con copy probado<br>· Reconfigurar audiencias con segmentación precisa<br>· Activar retargeting dinámico (DPA)</div>
+      <div class="sav-desc" data-es="Si aplicas estos cambios esta semana, el mes que viene gastas lo mismo pero con el doble de ventas." data-en="If you apply these changes this week, next month you spend the same but with double the sales.">Si aplicas estos cambios esta semana, el mes que viene gastas lo mismo pero con el <strong style="color:var(--green)">doble de ventas</strong>.</div>
+      <div class="sav-sub" data-es="· Pausar 1 campaña que no convierte · Reescribir 3 anuncios con copy probado · Reconfigurar audiencias con segmentación precisa · Activar retargeting dinámico (DPA)" data-en="· Pause 1 campaign that does not convert · Rewrite 3 ads with proven copy · Reconfigure audiences with precise targeting · Activate dynamic retargeting (DPA)">· Pausar 1 campaña que no convierte<br>· Reescribir 3 anuncios con copy probado<br>· Reconfigurar audiencias con segmentación precisa<br>· Activar retargeting dinámico (DPA)</div>
     </div>
   </div>
 
   <!-- ACTION PLAN -->
   <div class="section-card">
-    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div>Plan de acción priorizado</div></div></div>
+    <div class="section-head"><div><div class="section-title"><div class="section-icon">🎯</div><span data-es="Plan de acción priorizado" data-en="Prioritized action plan">Plan de acción priorizado</span></div></div></div>
     <div class="action-list">
-      <div class="action"><div class="action-num">01</div><div><div class="action-title">Pausar campaña "Colección Verano"</div><div class="action-desc">CTR del 0.8% y ROAS 0.8x. Cada $1 invertido devuelve $0.80. Pausar inmediatamente y reasignar presupuesto.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">5 MIN</span></div></div></div>
-      <div class="action"><div class="action-num">02</div><div><div class="action-title">Lanzar 3 anuncios reescritos</div><div class="action-desc">Copy y creatividades preparadas por Kodara. CTR esperado 4-5%, CPC inferior a $1.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">30 MIN</span></div></div></div>
-      <div class="action"><div class="action-num">03</div><div><div class="action-title">Configurar audiencias Lookalike</div><div class="action-desc">Crear LAL 1% a partir de compradores últimos 90 días. Audiencia más precisa que "intereses en moda".</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">1H</span></div></div></div>
-      <div class="action"><div class="action-num">04</div><div><div class="action-title">Activar Catálogo Dinámico (DPA)</div><div class="action-desc">Retargeting de productos vistos específicamente. ROAS típico 6-8x. Es lo único que funciona ya en tu cuenta.</div><div class="action-meta"><span class="action-tag tag-impact-h">IMPACTO ALTO</span><span class="action-tag tag-time">2H</span></div></div></div>
-      <div class="action"><div class="action-num">05</div><div><div class="action-title">Implementar Conversion API</div><div class="action-desc">Mejora la atribución post-iOS14. Sin esto Meta no aprende de tus conversiones reales.</div><div class="action-meta"><span class="action-tag tag-impact-m">IMPACTO MEDIO</span><span class="action-tag tag-time">3H</span></div></div></div>
+      <div class="action"><div class="action-num">01</div><div><div class="action-title" data-es='Pausar campaña "Colección Verano"' data-en='Pause "Summer Collection" campaign'>Pausar campaña "Colección Verano"</div><div class="action-desc" data-es="CTR del 0.8% y ROAS 0.8x. Cada $1 invertido devuelve $0.80. Pausar inmediatamente y reasignar presupuesto." data-en="0.8% CTR and 0.8x ROAS. Every $1 invested returns $0.80. Pause immediately and reallocate budget.">CTR del 0.8% y ROAS 0.8x. Cada $1 invertido devuelve $0.80. Pausar inmediatamente y reasignar presupuesto.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time">5 MIN</span></div></div></div>
+      <div class="action"><div class="action-num">02</div><div><div class="action-title" data-es="Lanzar 3 anuncios reescritos" data-en="Launch 3 rewritten ads">Lanzar 3 anuncios reescritos</div><div class="action-desc" data-es="Copy y creatividades preparadas por Kodara. CTR esperado 4-5%, CPC inferior a $1." data-en="Copy and creatives prepared by Kodara. Expected CTR 4-5%, CPC below $1.">Copy y creatividades preparadas por Kodara. CTR esperado 4-5%, CPC inferior a $1.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time">30 MIN</span></div></div></div>
+      <div class="action"><div class="action-num">03</div><div><div class="action-title" data-es="Configurar audiencias Lookalike" data-en="Configure Lookalike audiences">Configurar audiencias Lookalike</div><div class="action-desc" data-es='Crear LAL 1% a partir de compradores últimos 90 días. Audiencia más precisa que "intereses en moda".' data-en='Create LAL 1% from buyers in last 90 days. More precise audience than "fashion interests".'>Crear LAL 1% a partir de compradores últimos 90 días. Audiencia más precisa que "intereses en moda".</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time">1H</span></div></div></div>
+      <div class="action"><div class="action-num">04</div><div><div class="action-title" data-es="Activar Catálogo Dinámico (DPA)" data-en="Activate Dynamic Catalog (DPA)">Activar Catálogo Dinámico (DPA)</div><div class="action-desc" data-es="Retargeting de productos vistos específicamente. ROAS típico 6-8x. Es lo único que funciona ya en tu cuenta." data-en="Retargeting of specifically viewed products. Typical ROAS 6-8x. It is the only thing that already works in your account.">Retargeting de productos vistos específicamente. ROAS típico 6-8x. Es lo único que funciona ya en tu cuenta.</div><div class="action-meta"><span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span><span class="action-tag tag-time">2H</span></div></div></div>
+      <div class="action"><div class="action-num">05</div><div><div class="action-title" data-es="Implementar Conversion API" data-en="Implement Conversion API">Implementar Conversion API</div><div class="action-desc" data-es="Mejora la atribución post-iOS14. Sin esto Meta no aprende de tus conversiones reales." data-en="Improves attribution post-iOS14. Without this Meta does not learn from your real conversions.">Mejora la atribución post-iOS14. Sin esto Meta no aprende de tus conversiones reales.</div><div class="action-meta"><span class="action-tag tag-impact-m" data-es="IMPACTO MEDIO" data-en="MEDIUM IMPACT">IMPACTO MEDIO</span><span class="action-tag tag-time">3H</span></div></div></div>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>¿Tu Meta Ads también <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">pierde dinero</span>?</h2>
-    <p>Auditoría completa con campañas reescritas listas para lanzar. Entrega en <strong style="color:var(--text)">48 horas</strong>. Sin compromiso.</p>
-    <a href="https://kodarase.com/?budget=metaads" class="cta-btn">Solicitar mi auditoría Meta Ads <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="¿Tu Meta Ads también" data-en="Does your Meta Ads also">¿Tu Meta Ads también</span> <span style="background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="pierde dinero" data-en="lose money">pierde dinero</span>?</h2>
+    <p data-es="Auditoría completa con campañas reescritas listas para lanzar. Entrega en 48 horas. Sin compromiso." data-en="Complete audit with rewritten campaigns ready to launch. Delivered in 48 hours. No commitment.">Auditoría completa con campañas reescritas listas para lanzar. Entrega en <strong style="color:var(--text)">48 horas</strong>. Sin compromiso.</p>
+    <a href="https://kodarase.com/?budget=metaads" class="cta-btn"><span data-es="Solicitar mi auditoría Meta Ads" data-en="Request my Meta Ads audit">Solicitar mi auditoría Meta Ads</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">48h</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">3-5</div><div class="cta-stat-lbl">Anuncios reescritos</div></div>
-      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl">Consulta inicial</div></div>
+      <div><div class="cta-stat-val">48h</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val">3-5</div><div class="cta-stat-lbl" data-es="Anuncios reescritos" data-en="Ads rewritten">Anuncios reescritos</div></div>
+      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl" data-es="Consulta inicial" data-en="Initial consult">Consulta inicial</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Auditoría Meta Ads real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-003 · Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Auditoría Meta Ads real por" data-en="Real Meta Ads Audit by">Auditoría Meta Ads real por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-003 · <span data-es="Mayo 2026" data-en="May 2026">Mayo 2026</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
