@@ -83,7 +83,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(236,72,153,0.1),transparent 60%)}
 .cta-final h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-0.8px;margin-bottom:16px;line-height:1.1}
 .cta-final p{font-size:16px;color:var(--text-2);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(236,72,153,0.35)}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;padding:18px 36px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 8px 24px rgba(236,72,153,0.35);cursor:pointer;transition:all 0.25s;border:none}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(236,72,153,0.55);filter:brightness(1.1)}
+.cta-btn:active{transform:translateY(-1px)}
+.cta-email{display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--text-3);color:var(--text);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;transition:all 0.25s}
+.cta-email:hover{border-color:var(--orange);color:var(--orange);background:rgba(249,115,22,0.08);transform:translateY(-3px)}
 .cta-stats{display:flex;justify-content:center;gap:48px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
 .cta-stat-val{font-size:24px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--pink)}
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
@@ -373,8 +377,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <h2>El mundo va a <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">conocer tu negocio</span></h2>
     <p>Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Pago único, sin sorpresas, con garantía de devolución.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://kodarase.com/?budget=marketing" class="cta-btn">Solicitar mi pack ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="mailto:kodaraservi@gmail.com?subject=Consulta%20marketing%20digital%20Kodara%20SE&body=Hola,%20me%20interesa%20el%20servicio%20de%20marketing%20digital." style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:2px solid var(--text-3);color:var(--text);padding:16px 28px;border-radius:14px;font-weight:700;font-size:15px;transition:all 0.2s">✉ Enviar email</a>
+      <a href="https://kodarase.com/?budget=marketing" target="_blank" rel="noopener" class="cta-btn">Solicitar mi pack ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:kodaraservi@gmail.com?subject=Consulta%20marketing%20digital%20Kodara%20SE&body=Hola,%20me%20interesa%20el%20servicio%20de%20marketing%20digital." class="cta-email">✉ Enviar email</a>
     </div>
     <div class="cta-stats">
       <div><div class="cta-stat-val">$147-497</div><div class="cta-stat-lbl">Pago único · 3 packs</div></div>
