@@ -81,6 +81,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.transformation{grid-template-columns:1fr;gap:24px}.arrow-mid{transform:rotate(90deg);margin:0 auto}.process,.feat-grid{grid-template-columns:1fr}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}.t-side{padding:20px}}
 </style>
 </head>
@@ -90,20 +93,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Instagram a Web</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Instagram a Web" data-en="/ Instagram to Website">/ Instagram a Web</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>EJEMPLO REAL · @sofiafoto.mx</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="EJEMPLO REAL · @sofiafoto.mx" data-en="REAL EXAMPLE · @sofiafoto.mx">EJEMPLO REAL · @sofiafoto.mx</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203916_5cd04a33-0a67-456e-bdcd-329425ec25c1.png" alt="Instagram a Web">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-002 · INSTAGRAM A WEB</div>
-    <h1 class="hero-title">Tu Instagram, <span class="grad">tu nueva web</span></h1>
+    <div class="hero-tag" data-es="// KSE-002 · INSTAGRAM A WEB" data-en="// KSE-002 · INSTAGRAM TO WEBSITE">// KSE-002 · INSTAGRAM A WEB</div>
+    <h1 class="hero-title"><span data-es="Tu Instagram," data-en="Your Instagram,">Tu Instagram,</span> <span class="grad" data-es="tu nueva web" data-en="your new website">tu nueva web</span></h1>
     <div class="hero-meta">
-      <span>📱 De perfil a página profesional</span>
-      <span>⚡ Entrega 24-48h</span>
-      <span>🎨 100% tu identidad</span>
+      <span data-es="📱 De perfil a página profesional" data-en="📱 From profile to professional page">📱 De perfil a página profesional</span>
+      <span data-es="⚡ Entrega 24-48h" data-en="⚡ Delivery 24-48h">⚡ Entrega 24-48h</span>
+      <span data-es="🎨 100% tu identidad" data-en="🎨 100% your identity">🎨 100% tu identidad</span>
     </div>
   </div>
 </div>
@@ -113,13 +119,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <!-- TRANSFORMACIÓN -->
   <div class="transformation">
     <div class="t-side">
-      <h3 class="h3-grad">ANTES — TU INSTAGRAM</h3>
+      <h3 class="h3-grad" data-es="ANTES — TU INSTAGRAM" data-en="BEFORE — YOUR INSTAGRAM">ANTES — TU INSTAGRAM</h3>
       <div class="ig-mockup">
         <div class="ig-header">
           <div class="ig-avatar"><div class="ig-avatar-inner">📸</div></div>
           <div class="ig-info">
             <div class="ig-name">@sofiafoto.mx</div>
-            <div class="ig-handle">340K seguidores · Fotografía</div>
+            <div class="ig-handle" data-es="340K seguidores · Fotografía" data-en="340K followers · Photography">340K seguidores · Fotografía</div>
           </div>
         </div>
         <div class="ig-grid">
@@ -129,91 +135,105 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         </div>
       </div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Tus 340K seguidores</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Tus fotos reales</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Tu estilo visual</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Tu bio y servicios</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Tus 340K seguidores" data-en="Your 340K followers">Tus 340K seguidores</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Tus fotos reales" data-en="Your real photos">Tus fotos reales</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Tu estilo visual" data-en="Your visual style">Tu estilo visual</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Tu bio y servicios" data-en="Your bio and services">Tu bio y servicios</span></li>
       </ul>
     </div>
 
     <div class="arrow-mid">→</div>
 
     <div class="t-side">
-      <h3 class="h3-orange">DESPUÉS — TU WEB</h3>
+      <h3 class="h3-orange" data-es="DESPUÉS — TU WEB" data-en="AFTER — YOUR WEBSITE">DESPUÉS — TU WEB</h3>
       <div class="web-mockup">
         <div class="web-header">
           <div class="web-dot r"></div><div class="web-dot y"></div><div class="web-dot g"></div>
           <div class="web-url">sofiafoto.mx</div>
         </div>
-        <div class="web-hero">Sofía Morales<br><span style="font-size:11px;font-weight:400;opacity:0.8">Fotografía profesional</span></div>
+        <div class="web-hero">Sofía Morales<br><span style="font-size:11px;font-weight:400;opacity:0.8" data-es="Fotografía profesional" data-en="Professional photography">Fotografía profesional</span></div>
         <div class="web-sections">
-          <div class="web-sec">Inicio</div><div class="web-sec">Servicios</div><div class="web-sec">Galería</div>
+          <div class="web-sec" data-es="Inicio" data-en="Home">Inicio</div><div class="web-sec" data-es="Servicios" data-en="Services">Servicios</div><div class="web-sec" data-es="Galería" data-en="Gallery">Galería</div>
         </div>
       </div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Web profesional propia</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Galería con tus fotos</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Formulario de contacto</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>SEO + Google Maps</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Web profesional propia" data-en="Your own professional website">Web profesional propia</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Galería con tus fotos" data-en="Gallery with your photos">Galería con tus fotos</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="Formulario de contacto" data-en="Contact form">Formulario de contacto</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg><span data-es="SEO + Google Maps" data-en="SEO + Google Maps">SEO + Google Maps</span></li>
       </ul>
     </div>
   </div>
 
   <!-- PROCESO -->
   <div class="section-card">
-    <div class="section-title-c">Cómo funciona — 3 pasos</div>
-    <div class="section-sub-c">En 24-48 horas tienes tu web lista para publicar</div>
+    <div class="section-title-c" data-es="Cómo funciona — 3 pasos" data-en="How it works — 3 steps">Cómo funciona — 3 pasos</div>
+    <div class="section-sub-c" data-es="En 24-48 horas tienes tu web lista para publicar" data-en="In 24-48 hours you have your website ready to publish">En 24-48 horas tienes tu web lista para publicar</div>
     <div class="process">
       <div class="proc-step">
         <div class="proc-num">01</div>
-        <div class="proc-title">Nos das tu @</div>
-        <div class="proc-desc">Solo necesitamos tu @ de Instagram. Analizamos tu perfil, fotos, colores y bio automáticamente.</div>
+        <div class="proc-title" data-es="Nos das tu @" data-en="You give us your @">Nos das tu @</div>
+        <div class="proc-desc" data-es="Solo necesitamos tu @ de Instagram. Analizamos tu perfil, fotos, colores y bio automáticamente." data-en="We only need your Instagram @. We analyze your profile, photos, colors and bio automatically.">Solo necesitamos tu @ de Instagram. Analizamos tu perfil, fotos, colores y bio automáticamente.</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">02</div>
-        <div class="proc-title">Construimos en 24h</div>
-        <div class="proc-desc">En 24 horas tienes una web completa con tu contenido real — cero inventado, cero plantillas.</div>
+        <div class="proc-title" data-es="Construimos en 24h" data-en="We build it in 24h">Construimos en 24h</div>
+        <div class="proc-desc" data-es="En 24 horas tienes una web completa con tu contenido real — cero inventado, cero plantillas." data-en="In 24 hours you have a complete website with your real content — zero made up, zero templates.">En 24 horas tienes una web completa con tu contenido real — cero inventado, cero plantillas.</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">03</div>
-        <div class="proc-title">Revisas y publicas</div>
-        <div class="proc-desc">2 rondas de revisiones incluidas. Luego recibes el archivo o lo publicamos donde quieras.</div>
+        <div class="proc-title" data-es="Revisas y publicas" data-en="You review and publish">Revisas y publicas</div>
+        <div class="proc-desc" data-es="2 rondas de revisiones incluidas. Luego recibes el archivo o lo publicamos donde quieras." data-en="2 rounds of revisions included. Then you receive the file or we publish it wherever you want.">2 rondas de revisiones incluidas. Luego recibes el archivo o lo publicamos donde quieras.</div>
       </div>
     </div>
   </div>
 
   <!-- FEATURES -->
   <div class="section-card">
-    <div class="section-title-c">Lo que incluye</div>
-    <div class="section-sub-c">Todo lo que necesita una web profesional</div>
+    <div class="section-title-c" data-es="Lo que incluye" data-en="What's included">Lo que incluye</div>
+    <div class="section-sub-c" data-es="Todo lo que necesita una web profesional" data-en="Everything a professional website needs">Todo lo que necesita una web profesional</div>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title">Tu identidad visual real</div><div class="feat-desc">Extraemos los colores y estilo exactos de tu perfil de Instagram.</div></div>
-      <div class="feat-card"><div class="feat-icon">📸</div><div class="feat-title">Tus fotos como galería</div><div class="feat-desc">Las mejores fotos de tu Instagram organizadas como portfolio profesional.</div></div>
-      <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title">Responsive móvil</div><div class="feat-desc">Diseño que se adapta perfectamente a móvil, tablet y desktop.</div></div>
-      <div class="feat-card"><div class="feat-icon">✉️</div><div class="feat-title">Formulario contacto</div><div class="feat-desc">Recibe consultas directamente en tu email. No más DMs perdidos.</div></div>
-      <div class="feat-card"><div class="feat-icon">🔍</div><div class="feat-title">SEO local optimizado</div><div class="feat-desc">Configurada para aparecer en Google con tu ciudad y servicio.</div></div>
-      <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Velocidad premium</div><div class="feat-desc">Carga en menos de 2 segundos. Optimizada para Google PageSpeed.</div></div>
+      <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title" data-es="Tu identidad visual real" data-en="Your real visual identity">Tu identidad visual real</div><div class="feat-desc" data-es="Extraemos los colores y estilo exactos de tu perfil de Instagram." data-en="We extract the exact colors and style from your Instagram profile.">Extraemos los colores y estilo exactos de tu perfil de Instagram.</div></div>
+      <div class="feat-card"><div class="feat-icon">📸</div><div class="feat-title" data-es="Tus fotos como galería" data-en="Your photos as a gallery">Tus fotos como galería</div><div class="feat-desc" data-es="Las mejores fotos de tu Instagram organizadas como portfolio profesional." data-en="The best photos from your Instagram organized as a professional portfolio.">Las mejores fotos de tu Instagram organizadas como portfolio profesional.</div></div>
+      <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title" data-es="Responsive móvil" data-en="Mobile responsive">Responsive móvil</div><div class="feat-desc" data-es="Diseño que se adapta perfectamente a móvil, tablet y desktop." data-en="Design that adapts perfectly to mobile, tablet and desktop.">Diseño que se adapta perfectamente a móvil, tablet y desktop.</div></div>
+      <div class="feat-card"><div class="feat-icon">✉️</div><div class="feat-title" data-es="Formulario contacto" data-en="Contact form">Formulario contacto</div><div class="feat-desc" data-es="Recibe consultas directamente en tu email. No más DMs perdidos." data-en="Receive inquiries directly to your email. No more lost DMs.">Recibe consultas directamente en tu email. No más DMs perdidos.</div></div>
+      <div class="feat-card"><div class="feat-icon">🔍</div><div class="feat-title" data-es="SEO local optimizado" data-en="Optimized local SEO">SEO local optimizado</div><div class="feat-desc" data-es="Configurada para aparecer en Google con tu ciudad y servicio." data-en="Configured to appear on Google with your city and service.">Configurada para aparecer en Google con tu ciudad y servicio.</div></div>
+      <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title" data-es="Velocidad premium" data-en="Premium speed">Velocidad premium</div><div class="feat-desc" data-es="Carga en menos de 2 segundos. Optimizada para Google PageSpeed." data-en="Loads in under 2 seconds. Optimized for Google PageSpeed.">Carga en menos de 2 segundos. Optimizada para Google PageSpeed.</div></div>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>De tu @Instagram a <span style="background:linear-gradient(135deg,#FF1B6B,var(--pink),var(--purple),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">web profesional</span> en 24h</h2>
-    <p>Sin diseñador. Sin desarrollador. Sin Wix. Te entregamos una web profesional con tu identidad real desde tu Instagram. En 24-48 horas. Lista para publicar.</p>
-    <a href="https://kodarase.com/?budget=instagram" class="cta-btn">Convertir mi Instagram en web <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="De tu @Instagram a" data-en="From your @Instagram to">De tu @Instagram a</span> <span style="background:linear-gradient(135deg,#FF1B6B,var(--pink),var(--purple),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="web profesional" data-en="professional website">web profesional</span> <span data-es="en 24h" data-en="in 24h">en 24h</span></h2>
+    <p data-es="Sin diseñador. Sin desarrollador. Sin Wix. Te entregamos una web profesional con tu identidad real desde tu Instagram. En 24-48 horas. Lista para publicar." data-en="No designer. No developer. No Wix. We deliver a professional website with your real identity from your Instagram. In 24-48 hours. Ready to publish.">Sin diseñador. Sin desarrollador. Sin Wix. Te entregamos una web profesional con tu identidad real desde tu Instagram. En 24-48 horas. Lista para publicar.</p>
+    <a href="https://kodarase.com/?budget=instagram" class="cta-btn"><span data-es="Convertir mi Instagram en web" data-en="Convert my Instagram into a website">Convertir mi Instagram en web</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">24-48h</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">Tus fotos</div><div class="cta-stat-lbl">Reales</div></div>
-      <div><div class="cta-stat-val">2 revisiones</div><div class="cta-stat-lbl">Incluidas</div></div>
+      <div><div class="cta-stat-val">24-48h</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val" data-es="Tus fotos" data-en="Your photos">Tus fotos</div><div class="cta-stat-lbl" data-es="Reales" data-en="Real">Reales</div></div>
+      <div><div class="cta-stat-val" data-es="2 revisiones" data-en="2 revisions">2 revisiones</div><div class="cta-stat-lbl" data-es="Incluidas" data-en="Included">Incluidas</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Instagram a Web por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-002 · Desde $200 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Instagram a Web por" data-en="Instagram to Website by">Instagram a Web por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-002 · <span data-es="Desde $200" data-en="From $200">Desde $200</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>

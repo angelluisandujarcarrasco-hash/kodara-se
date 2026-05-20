@@ -81,6 +81,9 @@ tr:last-child td{border-bottom:none}
 .cta-stat-lbl{font-size:11px;color:var(--text-3);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 @media(max-width:900px){.kpi-grid,.iva-grid{grid-template-columns:1fr 1fr}.charts-row{grid-template-columns:1fr}.hero-content{padding:32px 24px}.container{padding:32px 20px}.chart-card,.table-card{padding:20px}}
 </style>
 </head>
@@ -90,20 +93,23 @@ tr:last-child td{border-bottom:none}
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Dashboard de Facturas</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Dashboard de Facturas" data-en="/ Invoice Dashboard">/ Dashboard de Facturas</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>DASHBOARD INTERACTIVO · 47 FACTURAS PROCESADAS</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="DASHBOARD INTERACTIVO · 47 FACTURAS PROCESADAS" data-en="INTERACTIVE DASHBOARD · 47 INVOICES PROCESSED">DASHBOARD INTERACTIVO · 47 FACTURAS PROCESADAS</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203734_b93be4bf-3eb2-43b1-91de-5201f02c6d97.png" alt="Dashboard de Facturas">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-007 · DASHBOARD DE FACTURAS</div>
-    <h1 class="hero-title">Tus facturas, <span class="grad">visualmente</span></h1>
+    <div class="hero-tag" data-es="// KSE-007 · DASHBOARD DE FACTURAS" data-en="// KSE-007 · INVOICE DASHBOARD">// KSE-007 · DASHBOARD DE FACTURAS</div>
+    <h1 class="hero-title"><span data-es="Tus facturas," data-en="Your invoices,">Tus facturas,</span> <span class="grad" data-es="visualmente" data-en="visualized">visualmente</span></h1>
     <div class="hero-meta">
-      <span>📊 47 facturas procesadas</span>
-      <span>📅 Año 2025 completo</span>
-      <span>⚡ Entrega 24h</span>
+      <span data-es="📊 47 facturas procesadas" data-en="📊 47 invoices processed">📊 47 facturas procesadas</span>
+      <span data-es="📅 Año 2025 completo" data-en="📅 Full year 2025">📅 Año 2025 completo</span>
+      <span data-es="⚡ Entrega 24h" data-en="⚡ 24h delivery">⚡ Entrega 24h</span>
     </div>
   </div>
 </div>
@@ -111,16 +117,16 @@ tr:last-child td{border-bottom:none}
 <div class="container">
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-lbl">Ingresos totales</div><div class="kpi-val" style="color:var(--green)">$48,320</div><div class="kpi-delta up">↑ +22% vs 2024</div></div>
-    <div class="kpi"><div class="kpi-lbl">Gastos totales</div><div class="kpi-val" style="color:var(--red)">$18,740</div><div class="kpi-delta down">↑ +8% vs 2024</div></div>
-    <div class="kpi"><div class="kpi-lbl">Beneficio neto</div><div class="kpi-val" style="color:var(--orange)">$29,580</div><div class="kpi-delta up">↑ +34% vs 2024</div></div>
-    <div class="kpi"><div class="kpi-lbl">IVA a declarar</div><div class="kpi-val" style="color:var(--purple)">$5,327</div><div class="kpi-delta" style="color:var(--text-3)">Trimestre Q4</div></div>
+    <div class="kpi"><div class="kpi-lbl" data-es="Ingresos totales" data-en="Total income">Ingresos totales</div><div class="kpi-val" style="color:var(--green)">$48,320</div><div class="kpi-delta up" data-es="↑ +22% vs 2024" data-en="↑ +22% vs 2024">↑ +22% vs 2024</div></div>
+    <div class="kpi"><div class="kpi-lbl" data-es="Gastos totales" data-en="Total expenses">Gastos totales</div><div class="kpi-val" style="color:var(--red)">$18,740</div><div class="kpi-delta down" data-es="↑ +8% vs 2024" data-en="↑ +8% vs 2024">↑ +8% vs 2024</div></div>
+    <div class="kpi"><div class="kpi-lbl" data-es="Beneficio neto" data-en="Net profit">Beneficio neto</div><div class="kpi-val" style="color:var(--orange)">$29,580</div><div class="kpi-delta up" data-es="↑ +34% vs 2024" data-en="↑ +34% vs 2024">↑ +34% vs 2024</div></div>
+    <div class="kpi"><div class="kpi-lbl" data-es="IVA a declarar" data-en="Tax to declare">IVA a declarar</div><div class="kpi-val" style="color:var(--purple)">$5,327</div><div class="kpi-delta" style="color:var(--text-3)" data-es="Trimestre Q4" data-en="Q4 quarter">Trimestre Q4</div></div>
   </div>
 
   <div class="charts-row">
     <div class="chart-card">
-      <div class="chart-title">Ingresos vs Gastos mensuales</div>
-      <div class="chart-sub">Comparativa mensual 2025 — datos extraídos automáticamente</div>
+      <div class="chart-title" data-es="Ingresos vs Gastos mensuales" data-en="Monthly income vs expenses">Ingresos vs Gastos mensuales</div>
+      <div class="chart-sub" data-es="Comparativa mensual 2025 — datos extraídos automáticamente" data-en="Monthly comparison 2025 — data extracted automatically">Comparativa mensual 2025 — datos extraídos automáticamente</div>
       <div class="bar-chart">
         <div class="bar-wrap"><div class="bar-val">3.2k</div><div class="bar" style="height:60%;background:linear-gradient(180deg,#3DFF8F,#10B981)"></div><div class="bar-lbl">ENE</div></div>
         <div class="bar-wrap"><div class="bar-val">2.8k</div><div class="bar" style="height:52%;background:linear-gradient(180deg,#3DFF8F,#10B981)"></div><div class="bar-lbl">FEB</div></div>
@@ -137,8 +143,8 @@ tr:last-child td{border-bottom:none}
       </div>
     </div>
     <div class="chart-card">
-      <div class="chart-title">Distribución de gastos</div>
-      <div class="chart-sub">Por categoría</div>
+      <div class="chart-title" data-es="Distribución de gastos" data-en="Expense breakdown">Distribución de gastos</div>
+      <div class="chart-sub" data-es="Por categoría" data-en="By category">Por categoría</div>
       <div class="donut-row">
         <svg class="donut-svg" width="160" height="160" viewBox="0 0 160 160">
           <circle cx="80" cy="80" r="60" fill="none" stroke="#0A1424" stroke-width="24"/>
@@ -150,10 +156,10 @@ tr:last-child td{border-bottom:none}
           <text x="80" y="94" text-anchor="middle" fill="#6B7689" font-size="10" font-family="monospace">FACTURAS</text>
         </svg>
         <div class="donut-legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--orange)"></div>Proveedores<span class="leg-val">40%</span></div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Software<span class="leg-val">24%</span></div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--purple)"></div>Marketing<span class="leg-val">18%</span></div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>Otros<span class="leg-val">18%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--orange)"></div><span data-es="Proveedores" data-en="Suppliers">Proveedores</span><span class="leg-val">40%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div><span data-es="Software" data-en="Software">Software</span><span class="leg-val">24%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--purple)"></div><span data-es="Marketing" data-en="Marketing">Marketing</span><span class="leg-val">18%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div><span data-es="Otros" data-en="Other">Otros</span><span class="leg-val">18%</span></div>
         </div>
       </div>
     </div>
@@ -161,60 +167,74 @@ tr:last-child td{border-bottom:none}
 
   <div class="iva-grid">
     <div class="iva-card green">
-      <div class="iva-lbl">IVA repercutido (cobrado)</div>
+      <div class="iva-lbl" data-es="IVA repercutido (cobrado)" data-en="Output tax (collected)">IVA repercutido (cobrado)</div>
       <div class="iva-val" style="color:var(--green)">$8,698</div>
-      <div class="iva-sub">21% sobre $41,418 facturado</div>
+      <div class="iva-sub" data-es="21% sobre $41,418 facturado" data-en="21% on $41,418 invoiced">21% sobre $41,418 facturado</div>
     </div>
     <div class="iva-card red">
-      <div class="iva-lbl">IVA soportado (pagado)</div>
+      <div class="iva-lbl" data-es="IVA soportado (pagado)" data-en="Input tax (paid)">IVA soportado (pagado)</div>
       <div class="iva-val" style="color:var(--red)">$3,371</div>
-      <div class="iva-sub">21% sobre $16,052 en gastos</div>
+      <div class="iva-sub" data-es="21% sobre $16,052 en gastos" data-en="21% on $16,052 in expenses">21% sobre $16,052 en gastos</div>
     </div>
     <div class="iva-card featured">
-      <div class="iva-lbl">IVA a pagar a Hacienda</div>
+      <div class="iva-lbl" data-es="IVA a pagar a Hacienda" data-en="Tax owed to authority">IVA a pagar a Hacienda</div>
       <div class="iva-val" style="color:var(--orange)">$5,327</div>
-      <div class="iva-sub">Próxima declaración Q4 2025</div>
+      <div class="iva-sub" data-es="Próxima declaración Q4 2025" data-en="Next return Q4 2025">Próxima declaración Q4 2025</div>
     </div>
   </div>
 
   <div class="table-card">
     <div class="table-head">
       <div>
-        <div class="table-title">Últimas transacciones</div>
-        <div class="table-sub">Extraídas automáticamente de tus PDFs con OCR</div>
+        <div class="table-title" data-es="Últimas transacciones" data-en="Latest transactions">Últimas transacciones</div>
+        <div class="table-sub" data-es="Extraídas automáticamente de tus PDFs con OCR" data-en="Extracted automatically from your PDFs with OCR">Extraídas automáticamente de tus PDFs con OCR</div>
       </div>
-      <div class="table-link">Ver todas las 47 →</div>
+      <div class="table-link" data-es="Ver todas las 47 →" data-en="View all 47 →">Ver todas las 47 →</div>
     </div>
     <table>
-      <thead><tr><th>Fecha</th><th>Concepto</th><th>Cliente/Proveedor</th><th>Tipo</th><th style="text-align:right">Importe</th></tr></thead>
+      <thead><tr><th data-es="Fecha" data-en="Date">Fecha</th><th data-es="Concepto" data-en="Concept">Concepto</th><th data-es="Cliente/Proveedor" data-en="Client/Supplier">Cliente/Proveedor</th><th data-es="Tipo" data-en="Type">Tipo</th><th style="text-align:right" data-es="Importe" data-en="Amount">Importe</th></tr></thead>
       <tbody>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">15 Nov 2025</td><td>Diseño web premium</td><td>Restaurante La Palma</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$1,400</td></tr>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">12 Nov 2025</td><td>Suscripción Adobe CC</td><td>Adobe Inc.</td><td><span class="tag tag-out">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$54</td></tr>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">08 Nov 2025</td><td>Auditoría SEO + Plan</td><td>Clínica Dental Bernal</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$700</td></tr>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">05 Nov 2025</td><td>Automatización CRM</td><td>Tech Startup MX</td><td><span class="tag tag-in">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$2,200</td></tr>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">03 Nov 2025</td><td>Publicidad Meta Ads</td><td>Meta Platforms</td><td><span class="tag tag-out">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$320</td></tr>
-        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">01 Nov 2025</td><td>IVA Q3 declarado</td><td>Agencia Tributaria</td><td><span class="tag tag-iva">IVA</span></td><td style="text-align:right;font-family:monospace;color:var(--orange);font-weight:700">-$1,248</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">15 Nov 2025</td><td data-es="Diseño web premium" data-en="Premium web design">Diseño web premium</td><td data-es="Restaurante La Palma" data-en="La Palma Restaurant">Restaurante La Palma</td><td><span class="tag tag-in" data-es="INGRESO" data-en="INCOME">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$1,400</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">12 Nov 2025</td><td data-es="Suscripción Adobe CC" data-en="Adobe CC subscription">Suscripción Adobe CC</td><td>Adobe Inc.</td><td><span class="tag tag-out" data-es="GASTO" data-en="EXPENSE">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$54</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">08 Nov 2025</td><td data-es="Auditoría SEO + Plan" data-en="SEO Audit + Plan">Auditoría SEO + Plan</td><td data-es="Clínica Dental Bernal" data-en="Bernal Dental Clinic">Clínica Dental Bernal</td><td><span class="tag tag-in" data-es="INGRESO" data-en="INCOME">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$700</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">05 Nov 2025</td><td data-es="Automatización CRM" data-en="CRM Automation">Automatización CRM</td><td>Tech Startup MX</td><td><span class="tag tag-in" data-es="INGRESO" data-en="INCOME">INGRESO</span></td><td style="text-align:right;font-family:monospace;color:var(--green);font-weight:700">+$2,200</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">03 Nov 2025</td><td data-es="Publicidad Meta Ads" data-en="Meta Ads advertising">Publicidad Meta Ads</td><td>Meta Platforms</td><td><span class="tag tag-out" data-es="GASTO" data-en="EXPENSE">GASTO</span></td><td style="text-align:right;font-family:monospace;color:var(--red);font-weight:700">-$320</td></tr>
+        <tr><td style="color:var(--text-3);font-family:monospace;font-size:12px">01 Nov 2025</td><td data-es="IVA Q3 declarado" data-en="Q3 tax declared">IVA Q3 declarado</td><td data-es="Agencia Tributaria" data-en="Tax Agency">Agencia Tributaria</td><td><span class="tag tag-iva">IVA</span></td><td style="text-align:right;font-family:monospace;color:var(--orange);font-weight:700">-$1,248</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="cta-final">
-    <h2>Sube tus facturas, <span style="background:linear-gradient(135deg,var(--green),var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">en 24h tienes esto</span></h2>
-    <p>Procesamos tus PDFs con OCR y te entregamos un dashboard visual interactivo con todas tus métricas financieras. Sin Excel. Sin contadores caros.</p>
-    <a href="https://kodarase.com/?budget=facturas" class="cta-btn">Solicitar mi dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2><span data-es="Sube tus facturas," data-en="Upload your invoices,">Sube tus facturas,</span> <span style="background:linear-gradient(135deg,var(--green),var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="en 24h tienes esto" data-en="in 24h you get this">en 24h tienes esto</span></h2>
+    <p data-es="Procesamos tus PDFs con OCR y te entregamos un dashboard visual interactivo con todas tus métricas financieras. Sin Excel. Sin contadores caros." data-en="We process your PDFs with OCR and deliver an interactive visual dashboard with all your financial metrics. No Excel. No expensive accountants.">Procesamos tus PDFs con OCR y te entregamos un dashboard visual interactivo con todas tus métricas financieras. Sin Excel. Sin contadores caros.</p>
+    <a href="https://kodarase.com/?budget=facturas" class="cta-btn"><span data-es="Solicitar mi dashboard" data-en="Request my dashboard">Solicitar mi dashboard</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">24h</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$100</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">PDF/Excel</div><div class="cta-stat-lbl">Exportable</div></div>
-      <div><div class="cta-stat-val">IVA</div><div class="cta-stat-lbl">Automático</div></div>
+      <div><div class="cta-stat-val">24h</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$100</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val">PDF/Excel</div><div class="cta-stat-lbl" data-es="Exportable" data-en="Exportable">Exportable</div></div>
+      <div><div class="cta-stat-val" data-es="IVA" data-en="Tax">IVA</div><div class="cta-stat-lbl" data-es="Automático" data-en="Automatic">Automático</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Dashboard generado por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-007 · 47 facturas procesadas · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Dashboard generado por" data-en="Dashboard generated by">Dashboard generado por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-007 · <span data-es="47 facturas procesadas" data-en="47 invoices processed">47 facturas procesadas</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
