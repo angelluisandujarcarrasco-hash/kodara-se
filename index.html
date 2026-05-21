@@ -380,6 +380,30 @@ nav.scrolled {
 }
 .svc-card:hover .svc-arrow::before { opacity: 1; }
 .svc-card:hover .svc-arrow svg { transform: translateX(3px); }
+.svc-demo-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px; border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid var(--accent, var(--orange));
+  color: var(--accent, var(--orange));
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.svc-demo-btn:hover {
+  background: var(--accent, var(--orange));
+  color: #fff;
+  transform: translateY(-2px);
+}
+.svc-meta-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .svc-meta { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .svc-meta-btns { width: 100%; justify-content: flex-end; }
+}
 @keyframes pulseBtn {
   0%, 100% { box-shadow: 0 6px 20px var(--accent-bg, rgba(249,115,22,0.3)); }
   50% { box-shadow: 0 6px 24px var(--accent-bg, rgba(249,115,22,0.5)); }
@@ -2094,8 +2118,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Map service cards to service keys
   const cardKeys = ['web','instagram','metaads','seo','auto','negocio','facturas','prospeccion','chat','marketing'];
   document.querySelectorAll('.services-grid .svc-card').forEach((card, i) => {
-    if (cardKeys[i]) {
-      card.addEventListener('click', () => openSvcModal(cardKeys[i]));
+    const key = cardKeys[i];
+    if (!key) return;
+    card.addEventListener('click', () => openSvcModal(key));
+    // Inyectar botón "Ver demo" en svc-meta
+    const meta = card.querySelector('.svc-meta');
+    const arrow = card.querySelector('.svc-arrow');
+    const svc = SERVICES[key];
+    if (meta && arrow && svc && svc.demo) {
+      const demoBtn = document.createElement('a');
+      demoBtn.className = 'svc-demo-btn';
+      demoBtn.href = svc.demo;
+      demoBtn.target = '_blank';
+      demoBtn.rel = 'noopener';
+      demoBtn.setAttribute('data-es', '▶ Ver demo');
+      demoBtn.setAttribute('data-en', '▶ View demo');
+      demoBtn.textContent = '▶ Ver demo';
+      demoBtn.addEventListener('click', (e) => e.stopPropagation()); // No abrir modal al clic
+      // Envolver arrow + demoBtn en un wrapper
+      const wrap = document.createElement('div');
+      wrap.className = 'svc-meta-btns';
+      arrow.parentNode.insertBefore(wrap, arrow);
+      wrap.appendChild(demoBtn);
+      wrap.appendChild(arrow);
     }
   });
   // Auto-open budget modal from URL parameter (e.g. ?budget=seo)
