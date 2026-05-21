@@ -115,6 +115,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--pink);color:#fff}
 @media(max-width:900px){.kpi-grid,.platforms,.content-grid,.feat-grid{grid-template-columns:1fr 1fr}.calendar-grid{grid-template-columns:repeat(4,1fr)}.hero-content{padding:32px 24px}.container{padding:32px 20px}.section-card{padding:24px 20px}.price-grid{grid-template-columns:1fr;gap:18px}.price-grid > div:nth-child(2){transform:none !important}}
 </style>
 </head>
@@ -124,20 +127,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Marketing Digital</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Marketing Digital" data-en="/ Digital Marketing">/ Marketing Digital</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>NUEVO SERVICIO · LANZAMIENTO MAYO 2026</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="NUEVO SERVICIO · LANZAMIENTO MAYO 2026" data-en="NEW SERVICE · LAUNCH MAY 2026">NUEVO SERVICIO · LANZAMIENTO MAYO 2026</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_113323_1f4a4ced-8c06-4d9b-9c5d-90bf36309b6c.png" alt="Marketing Digital">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-010 · MARKETING DIGITAL</div>
-    <h1 class="hero-title">Que el mundo <span class="grad">conozca tu negocio</span></h1>
+    <div class="hero-tag" data-es="// KSE-010 · MARKETING DIGITAL" data-en="// KSE-010 · DIGITAL MARKETING">// KSE-010 · MARKETING DIGITAL</div>
+    <h1 class="hero-title"><span data-es="Que el mundo" data-en="Let the world">Que el mundo</span> <span class="grad" data-es="conozca tu negocio" data-en="know your business">conozca tu negocio</span></h1>
     <div class="hero-meta">
-      <span>📱 4 plataformas: IG, TikTok, YouTube, Facebook</span>
-      <span>🎬 Videos IA con Higgsfield</span>
-      <span>⚡ Estrategia + contenido + métricas</span>
+      <span data-es="📱 4 plataformas: IG, TikTok, YouTube, Facebook" data-en="📱 4 platforms: IG, TikTok, YouTube, Facebook">📱 4 plataformas: IG, TikTok, YouTube, Facebook</span>
+      <span data-es="🎬 Videos IA con Higgsfield" data-en="🎬 AI videos with Higgsfield">🎬 Videos IA con Higgsfield</span>
+      <span data-es="⚡ Estrategia + contenido + métricas" data-en="⚡ Strategy + content + metrics">⚡ Estrategia + contenido + métricas</span>
     </div>
   </div>
 </div>
@@ -145,108 +151,108 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 <div class="container">
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-icon">📈</div><div class="kpi-val" style="color:var(--pink)">+340%</div><div class="kpi-lbl">Engagement promedio</div></div>
-    <div class="kpi"><div class="kpi-icon">👥</div><div class="kpi-val" style="color:var(--orange)">+12K</div><div class="kpi-lbl">Seguidores nuevos/mes</div></div>
-    <div class="kpi"><div class="kpi-icon">🎯</div><div class="kpi-val" style="color:var(--green)">+87</div><div class="kpi-lbl">Leads cualificados/mes</div></div>
-    <div class="kpi"><div class="kpi-icon">💰</div><div class="kpi-val" style="color:var(--blue)">5.2x</div><div class="kpi-lbl">ROAS promedio</div></div>
+    <div class="kpi"><div class="kpi-icon">📈</div><div class="kpi-val" style="color:var(--pink)">+340%</div><div class="kpi-lbl" data-es="Engagement promedio" data-en="Average engagement">Engagement promedio</div></div>
+    <div class="kpi"><div class="kpi-icon">👥</div><div class="kpi-val" style="color:var(--orange)">+12K</div><div class="kpi-lbl" data-es="Seguidores nuevos/mes" data-en="New followers/mo">Seguidores nuevos/mes</div></div>
+    <div class="kpi"><div class="kpi-icon">🎯</div><div class="kpi-val" style="color:var(--green)">+87</div><div class="kpi-lbl" data-es="Leads cualificados/mes" data-en="Qualified leads/mo">Leads cualificados/mes</div></div>
+    <div class="kpi"><div class="kpi-icon">💰</div><div class="kpi-val" style="color:var(--blue)">5.2x</div><div class="kpi-lbl" data-es="ROAS promedio" data-en="Average ROAS">ROAS promedio</div></div>
   </div>
 
   <!-- PLATAFORMAS -->
   <div class="section-card">
-    <div class="section-title-c">Marketing en 4 plataformas</div>
-    <div class="section-sub-c">Estrategia coordinada multi-canal con contenido optimizado por plataforma</div>
+    <div class="section-title-c" data-es="Marketing en 4 plataformas" data-en="Marketing on 4 platforms">Marketing en 4 plataformas</div>
+    <div class="section-sub-c" data-es="Estrategia coordinada multi-canal con contenido optimizado por plataforma" data-en="Coordinated multi-channel strategy with content optimized per platform">Estrategia coordinada multi-canal con contenido optimizado por plataforma</div>
     <div class="platforms">
       <div class="platform">
         <div class="p-icon">📸</div>
         <div class="p-name">Instagram</div>
-        <div class="p-stat">Posts + Reels</div>
-        <div class="p-stat-lbl">+ Stories estratégicos</div>
+        <div class="p-stat" data-es="Posts + Reels" data-en="Posts + Reels">Posts + Reels</div>
+        <div class="p-stat-lbl" data-es="+ Stories estratégicos" data-en="+ Strategic Stories">+ Stories estratégicos</div>
       </div>
       <div class="platform">
         <div class="p-icon">🎵</div>
         <div class="p-name">TikTok</div>
-        <div class="p-stat">Videos virales</div>
-        <div class="p-stat-lbl">+ Trends + Hashtags</div>
+        <div class="p-stat" data-es="Videos virales" data-en="Viral videos">Videos virales</div>
+        <div class="p-stat-lbl" data-es="+ Trends + Hashtags" data-en="+ Trends + Hashtags">+ Trends + Hashtags</div>
       </div>
       <div class="platform">
         <div class="p-icon">▶️</div>
         <div class="p-name">YouTube</div>
-        <div class="p-stat">Videos + Shorts</div>
-        <div class="p-stat-lbl">+ SEO optimizado</div>
+        <div class="p-stat" data-es="Videos + Shorts" data-en="Videos + Shorts">Videos + Shorts</div>
+        <div class="p-stat-lbl" data-es="+ SEO optimizado" data-en="+ SEO optimized">+ SEO optimizado</div>
       </div>
       <div class="platform">
         <div class="p-icon">👍</div>
         <div class="p-name">Facebook</div>
-        <div class="p-stat">Posts + Ads</div>
-        <div class="p-stat-lbl">+ Segmentación</div>
+        <div class="p-stat" data-es="Posts + Ads" data-en="Posts + Ads">Posts + Ads</div>
+        <div class="p-stat-lbl" data-es="+ Segmentación" data-en="+ Targeting">+ Segmentación</div>
       </div>
     </div>
   </div>
 
   <!-- CONTENIDO -->
   <div class="section-card">
-    <div class="section-title-c">Videos reales creados con Higgsfield IA</div>
-    <div class="section-sub-c">Esto es lo que entregamos cada mes a nuestros clientes. Haz clic para reproducir con audio.</div>
+    <div class="section-title-c" data-es="Videos reales creados con Higgsfield IA" data-en="Real videos made with Higgsfield AI">Videos reales creados con Higgsfield IA</div>
+    <div class="section-sub-c" data-es="Esto es lo que entregamos cada mes a nuestros clientes. Haz clic para reproducir con audio." data-en="This is what we deliver each month to our clients. Click to play with audio.">Esto es lo que entregamos cada mes a nuestros clientes. Haz clic para reproducir con audio.</div>
     <div class="content-grid">
       <div class="content-card">
         <div class="c-preview" onclick="togglePlay(this)">
-          <span class="badge-live">UGC · CON AUDIO</span>
+          <span class="badge-live" data-es="UGC · CON AUDIO" data-en="UGC · WITH AUDIO">UGC · CON AUDIO</span>
           <video muted loop playsinline preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121815_1790604c-39cd-4318-acc3-a9abc610d5b0_min.webp">
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121758_46a273a0-d712-42e0-9b8e-f2cec62183c3.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"></div>
         </div>
-        <div class="c-title">TV Spot — Lanzamiento</div>
-        <div style="font-size:12px;color:var(--text-3)">Comercial cinematográfico fitness con Marketing Studio Higgsfield</div>
-        <div class="c-stats"><span>📱 IG/TikTok Reels</span><span>⏱ 8 seg</span></div>
+        <div class="c-title" data-es="TV Spot — Lanzamiento" data-en="TV Spot — Launch">TV Spot — Lanzamiento</div>
+        <div style="font-size:12px;color:var(--text-3)" data-es="Comercial cinematográfico fitness con Marketing Studio Higgsfield" data-en="Cinematic fitness commercial with Higgsfield Marketing Studio">Comercial cinematográfico fitness con Marketing Studio Higgsfield</div>
+        <div class="c-stats"><span data-es="📱 IG/TikTok Reels" data-en="📱 IG/TikTok Reels">📱 IG/TikTok Reels</span><span data-es="⏱ 8 seg" data-en="⏱ 8 sec">⏱ 8 seg</span></div>
       </div>
       <div class="content-card">
         <div class="c-preview" onclick="togglePlay(this)">
-          <span class="badge-live">UGC · AVATAR HABLA</span>
+          <span class="badge-live" data-es="UGC · AVATAR HABLA" data-en="UGC · AVATAR SPEAKS">UGC · AVATAR HABLA</span>
           <video muted loop playsinline preload="metadata">
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121802_aef51471-0ebd-4539-8c12-e3d176adb77e.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"></div>
         </div>
-        <div class="c-title">UGC — Reseña con avatar Sofia</div>
-        <div style="font-size:12px;color:var(--text-3)">Avatar IA habla en español sobre tu producto con lip sync perfecto</div>
-        <div class="c-stats"><span>📱 TikTok/Reels</span><span>🎙 Audio español</span></div>
+        <div class="c-title" data-es="UGC — Reseña con avatar Sofia" data-en="UGC — Review with avatar Sofia">UGC — Reseña con avatar Sofia</div>
+        <div style="font-size:12px;color:var(--text-3)" data-es="Avatar IA habla en español sobre tu producto con lip sync perfecto" data-en="AI Avatar speaks in Spanish about your product with perfect lip sync">Avatar IA habla en español sobre tu producto con lip sync perfecto</div>
+        <div class="c-stats"><span data-es="📱 TikTok/Reels" data-en="📱 TikTok/Reels">📱 TikTok/Reels</span><span data-es="🎙 Audio español" data-en="🎙 Spanish audio">🎙 Audio español</span></div>
       </div>
       <div class="content-card">
         <div class="c-preview" onclick="togglePlay(this)">
-          <span class="badge-live">HYPER MOTION</span>
+          <span class="badge-live" data-es="HYPER MOTION" data-en="HYPER MOTION">HYPER MOTION</span>
           <video muted loop playsinline preload="metadata">
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121806_6001c151-c50e-4758-a887-120e0bc83122.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"></div>
         </div>
-        <div class="c-title">Hyper Motion — Producto premium</div>
-        <div style="font-size:12px;color:var(--text-3)">Showcase editorial estilo Chanel/Dior con efectos cinemáticos</div>
-        <div class="c-stats"><span>📱 Reels Premium</span><span>⏱ 8 seg</span></div>
+        <div class="c-title" data-es="Hyper Motion — Producto premium" data-en="Hyper Motion — Premium product">Hyper Motion — Producto premium</div>
+        <div style="font-size:12px;color:var(--text-3)" data-es="Showcase editorial estilo Chanel/Dior con efectos cinemáticos" data-en="Editorial showcase Chanel/Dior style with cinematic effects">Showcase editorial estilo Chanel/Dior con efectos cinemáticos</div>
+        <div class="c-stats"><span data-es="📱 Reels Premium" data-en="📱 Premium Reels">📱 Reels Premium</span><span data-es="⏱ 8 seg" data-en="⏱ 8 sec">⏱ 8 seg</span></div>
       </div>
     </div>
   </div>
 
   <!-- CÓMO MARKETEAMOS TU PRODUCTO -->
   <div class="section-card">
-    <div class="section-title-c">Así marketeamos tu producto en cada plataforma</div>
-    <div class="section-sub-c">Ejemplos reales de cómo Kodara SE adapta el contenido a cada red social para maximizar resultados</div>
+    <div class="section-title-c" data-es="Así marketeamos tu producto en cada plataforma" data-en="How we market your product on each platform">Así marketeamos tu producto en cada plataforma</div>
+    <div class="section-sub-c" data-es="Ejemplos reales de cómo Kodara SE adapta el contenido a cada red social para maximizar resultados" data-en="Real examples of how Kodara SE adapts content to each social network to maximize results">Ejemplos reales de cómo Kodara SE adapta el contenido a cada red social para maximizar resultados</div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
       <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
         <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121815_a1d637a0-05ed-4731-a375-a7994274b87e.png" alt="Marketing Instagram" style="width:100%;display:block">
         <div style="padding:18px">
-          <div style="font-size:13px;font-weight:700;color:#E1306C;margin-bottom:4px">📸 INSTAGRAM POST</div>
-          <div style="font-size:14px;font-weight:700;margin-bottom:6px">Producto fitness viralizado</div>
-          <div style="font-size:12px;color:var(--text-3);line-height:1.6">Diseñamos posts con fotografía profesional y copy que convierte. Resultado real: 847K likes, 23K comentarios.</div>
+          <div style="font-size:13px;font-weight:700;color:#E1306C;margin-bottom:4px" data-es="📸 INSTAGRAM POST" data-en="📸 INSTAGRAM POST">📸 INSTAGRAM POST</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px" data-es="Producto fitness viralizado" data-en="Fitness product gone viral">Producto fitness viralizado</div>
+          <div style="font-size:12px;color:var(--text-3);line-height:1.6" data-es="Diseñamos posts con fotografía profesional y copy que convierte. Resultado real: 847K likes, 23K comentarios." data-en="We design posts with professional photography and copy that converts. Real result: 847K likes, 23K comments.">Diseñamos posts con fotografía profesional y copy que convierte. Resultado real: 847K likes, 23K comentarios.</div>
         </div>
       </div>
       <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
         <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121818_3a79c2ec-40d9-4558-a418-d2816cccb74b.png" alt="Marketing TikTok" style="width:100%;display:block;aspect-ratio:9/16;object-fit:cover">
         <div style="padding:18px">
-          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">🎵 TIKTOK VIRAL</div>
-          <div style="font-size:14px;font-weight:700;margin-bottom:6px">Restaurante local hace 2.4M views</div>
-          <div style="font-size:12px;color:var(--text-3);line-height:1.6">Videos cortos con hooks de 3 segundos. Adaptamos el contenido a trends del momento para máxima viralidad.</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px" data-es="🎵 TIKTOK VIRAL" data-en="🎵 TIKTOK VIRAL">🎵 TIKTOK VIRAL</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px" data-es="Restaurante local hace 2.4M views" data-en="Local restaurant hits 2.4M views">Restaurante local hace 2.4M views</div>
+          <div style="font-size:12px;color:var(--text-3);line-height:1.6" data-es="Videos cortos con hooks de 3 segundos. Adaptamos el contenido a trends del momento para máxima viralidad." data-en="Short videos with 3-second hooks. We adapt content to current trends for maximum virality.">Videos cortos con hooks de 3 segundos. Adaptamos el contenido a trends del momento para máxima viralidad.</div>
         </div>
       </div>
     </div>
@@ -255,8 +261,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
       <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121821_340075ec-4d54-4c09-a516-261000b933a8.png" alt="Marketing Facebook Ads" style="width:100%;display:block">
       <div style="padding:18px">
         <div style="font-size:13px;font-weight:700;color:#1877F2;margin-bottom:4px">👍 FACEBOOK + INSTAGRAM ADS</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:6px">Boutique de moda — ROAS 5.2x</div>
-        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Campañas Meta Ads con segmentación precisa. Creatividades testadas A/B + audiencias lookalike + retargeting. Por cada $1 invertido el cliente recibe $5.20 de retorno.</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px" data-es="Boutique de moda — ROAS 5.2x" data-en="Fashion boutique — ROAS 5.2x">Boutique de moda — ROAS 5.2x</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6" data-es="Campañas Meta Ads con segmentación precisa. Creatividades testadas A/B + audiencias lookalike + retargeting. Por cada $1 invertido el cliente recibe $5.20 de retorno." data-en="Meta Ads campaigns with precise targeting. A/B tested creatives + lookalike audiences + retargeting. For every $1 invested, the client receives $5.20 in return.">Campañas Meta Ads con segmentación precisa. Creatividades testadas A/B + audiencias lookalike + retargeting. Por cada $1 invertido el cliente recibe $5.20 de retorno.</div>
       </div>
     </div>
 
@@ -264,49 +270,49 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
       <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121824_18e65a16-42e0-499f-b4a2-37227a044674.png" alt="Marketing YouTube" style="width:100%;display:block">
       <div style="padding:18px">
         <div style="font-size:13px;font-weight:700;color:#FF0000;margin-bottom:4px">▶️ YOUTUBE + SHORTS</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:6px">SaaS tech crece a 1.2M views</div>
-        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Videos largos optimizados con SEO + Shorts que captan audiencia. Crecimiento de suscriptores constante con thumbnails diseñados para máximo CTR.</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px" data-es="SaaS tech crece a 1.2M views" data-en="Tech SaaS grows to 1.2M views">SaaS tech crece a 1.2M views</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6" data-es="Videos largos optimizados con SEO + Shorts que captan audiencia. Crecimiento de suscriptores constante con thumbnails diseñados para máximo CTR." data-en="Long videos optimized with SEO + Shorts that capture audience. Consistent subscriber growth with thumbnails designed for maximum CTR.">Videos largos optimizados con SEO + Shorts que captan audiencia. Crecimiento de suscriptores constante con thumbnails diseñados para máximo CTR.</div>
       </div>
     </div>
 
     <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden">
       <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121829_a35715fa-10e4-424b-a34b-0b6b048288bd.png" alt="Dashboard 4 plataformas" style="width:100%;display:block">
       <div style="padding:18px">
-        <div style="font-size:13px;font-weight:700;color:var(--pink);margin-bottom:4px">📊 DASHBOARD MULTIPLATAFORMA</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:6px">Métricas centralizadas — Reporte mensual</div>
-        <div style="font-size:12px;color:var(--text-3);line-height:1.6">Te entregamos cada mes un reporte con todas las métricas: engagement, alcance, leads, ROAS y próximas acciones. Tomás decisiones con datos reales, no con suposiciones.</div>
+        <div style="font-size:13px;font-weight:700;color:var(--pink);margin-bottom:4px" data-es="📊 DASHBOARD MULTIPLATAFORMA" data-en="📊 MULTI-PLATFORM DASHBOARD">📊 DASHBOARD MULTIPLATAFORMA</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px" data-es="Métricas centralizadas — Reporte mensual" data-en="Centralized metrics — Monthly report">Métricas centralizadas — Reporte mensual</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.6" data-es="Te entregamos cada mes un reporte con todas las métricas: engagement, alcance, leads, ROAS y próximas acciones. Tomás decisiones con datos reales, no con suposiciones." data-en="Each month we deliver a report with all metrics: engagement, reach, leads, ROAS and next actions. Make decisions with real data, not assumptions.">Te entregamos cada mes un reporte con todas las métricas: engagement, alcance, leads, ROAS y próximas acciones. Tomás decisiones con datos reales, no con suposiciones.</div>
       </div>
     </div>
   </div>
 
   <!-- VIDEO SERVICIO PRINCIPAL -->
   <div class="section-card" style="background:linear-gradient(135deg,rgba(236,72,153,0.06),rgba(249,115,22,0.06));border:1px solid rgba(236,72,153,0.25)">
-    <div class="section-title-c" style="text-align:center">Mira cómo te ayudamos a lograr tus metas</div>
-    <div class="section-sub-c" style="text-align:center">Sofia te explica en 15 segundos todo lo que Kodara SE puede hacer por tu negocio</div>
+    <div class="section-title-c" style="text-align:center" data-es="Mira cómo te ayudamos a lograr tus metas" data-en="See how we help you reach your goals">Mira cómo te ayudamos a lograr tus metas</div>
+    <div class="section-sub-c" style="text-align:center" data-es="Sofia te explica en 15 segundos todo lo que Kodara SE puede hacer por tu negocio" data-en="Sofia explains in 15 seconds everything Kodara SE can do for your business">Sofia te explica en 15 segundos todo lo que Kodara SE puede hacer por tu negocio</div>
     <div style="display:flex;justify-content:center;margin-top:20px">
       <div style="width:100%;max-width:340px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(236,72,153,0.35);position:relative;cursor:pointer;border:2px solid rgba(236,72,153,0.4)" onclick="togglePlay(this)">
-        <span class="badge-live" style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.7);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0.5px;z-index:3">▶ HAZ CLIC · AUDIO ESPAÑOL</span>
+        <span class="badge-live" style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.7);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0.5px;z-index:3" data-es="▶ HAZ CLIC · AUDIO ESPAÑOL" data-en="▶ CLICK · SPANISH AUDIO">▶ HAZ CLIC · AUDIO ESPAÑOL</span>
         <video muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover">
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_121812_ab27f15f-4c20-47c1-8c6d-41833e8a0940.mp4" type="video/mp4">
         </video>
         <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.4));pointer-events:none;transition:opacity 0.3s;z-index:2"></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-2);font-style:italic;max-width:520px;margin-left:auto;margin-right:auto">"Tienes un negocio increíble pero nadie lo conoce. En Kodara SE diseñamos tu estrategia completa para que tu marca merezca ser vista."</div>
+    <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-2);font-style:italic;max-width:520px;margin-left:auto;margin-right:auto" data-es='"Tienes un negocio increíble pero nadie lo conoce. En Kodara SE diseñamos tu estrategia completa para que tu marca merezca ser vista."' data-en='"You have an incredible business but nobody knows it. At Kodara SE we design your complete strategy so your brand deserves to be seen."'>"Tienes un negocio increíble pero nadie lo conoce. En Kodara SE diseñamos tu estrategia completa para que tu marca merezca ser vista."</div>
   </div>
 
   <!-- CALENDARIO -->
   <div class="section-card">
-    <div class="section-title-c">Calendario editorial — Esta semana</div>
-    <div class="section-sub-c">Publicaciones coordinadas en todas las plataformas</div>
+    <div class="section-title-c" data-es="Calendario editorial — Esta semana" data-en="Editorial calendar — This week">Calendario editorial — Esta semana</div>
+    <div class="section-sub-c" data-es="Publicaciones coordinadas en todas las plataformas" data-en="Coordinated publications across all platforms">Publicaciones coordinadas en todas las plataformas</div>
     <div class="calendar-grid">
-      <div class="cal-day has"><div class="cal-day-label">LUN</div><div class="cal-day-num">19</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-tk"></span></div>
-      <div class="cal-day has"><div class="cal-day-label">MAR</div><div class="cal-day-num">20</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-fb"></span></div>
-      <div class="cal-day has"><div class="cal-day-label">MIÉ</div><div class="cal-day-num">21</div><span class="cal-dot cal-yt"></span></div>
-      <div class="cal-day has"><div class="cal-day-label">JUE</div><div class="cal-day-num">22</div><span class="cal-dot cal-tk"></span><span class="cal-dot cal-ig"></span><span class="cal-dot cal-fb"></span></div>
-      <div class="cal-day has"><div class="cal-day-label">VIE</div><div class="cal-day-num">23</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-tk"></span></div>
-      <div class="cal-day"><div class="cal-day-label">SÁB</div><div class="cal-day-num">24</div></div>
-      <div class="cal-day has"><div class="cal-day-label">DOM</div><div class="cal-day-num">25</div><span class="cal-dot cal-yt"></span><span class="cal-dot cal-fb"></span></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="LUN" data-en="MON">LUN</div><div class="cal-day-num">19</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-tk"></span></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="MAR" data-en="TUE">MAR</div><div class="cal-day-num">20</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-fb"></span></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="MIÉ" data-en="WED">MIÉ</div><div class="cal-day-num">21</div><span class="cal-dot cal-yt"></span></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="JUE" data-en="THU">JUE</div><div class="cal-day-num">22</div><span class="cal-dot cal-tk"></span><span class="cal-dot cal-ig"></span><span class="cal-dot cal-fb"></span></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="VIE" data-en="FRI">VIE</div><div class="cal-day-num">23</div><span class="cal-dot cal-ig"></span><span class="cal-dot cal-tk"></span></div>
+      <div class="cal-day"><div class="cal-day-label" data-es="SÁB" data-en="SAT">SÁB</div><div class="cal-day-num">24</div></div>
+      <div class="cal-day has"><div class="cal-day-label" data-es="DOM" data-en="SUN">DOM</div><div class="cal-day-num">25</div><span class="cal-dot cal-yt"></span><span class="cal-dot cal-fb"></span></div>
     </div>
     <div style="display:flex;gap:20px;justify-content:center;margin-top:20px;flex-wrap:wrap;font-size:11px;color:var(--text-2);font-family:'JetBrains Mono',monospace">
       <span><span class="cal-dot cal-ig" style="display:inline-block;margin-right:6px"></span>Instagram</span>
@@ -318,42 +324,42 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 
   <!-- CRECIMIENTO -->
   <div class="section-card">
-    <div class="section-title-c">Crecimiento real — Primer trimestre</div>
-    <div class="section-sub-c">Engagement total acumulado por mes (likes + comments + shares + saves)</div>
+    <div class="section-title-c" data-es="Crecimiento real — Primer trimestre" data-en="Real growth — First quarter">Crecimiento real — Primer trimestre</div>
+    <div class="section-sub-c" data-es="Engagement total acumulado por mes (likes + comments + shares + saves)" data-en="Total accumulated engagement per month (likes + comments + shares + saves)">Engagement total acumulado por mes (likes + comments + shares + saves)</div>
     <div class="growth-chart">
-      <div class="growth-bar"><div class="gb-val">2.1K</div><div class="gb-vis" style="height:10%"></div><div class="gb-lbl">ENE</div></div>
-      <div class="growth-bar"><div class="gb-val">4.6K</div><div class="gb-vis" style="height:22%"></div><div class="gb-lbl">FEB</div></div>
-      <div class="growth-bar"><div class="gb-val">8.9K</div><div class="gb-vis" style="height:42%"></div><div class="gb-lbl">MAR</div></div>
-      <div class="growth-bar"><div class="gb-val">14.2K</div><div class="gb-vis" style="height:68%"></div><div class="gb-lbl">ABR</div></div>
-      <div class="growth-bar"><div class="gb-val">21.8K</div><div class="gb-vis" style="height:100%"></div><div class="gb-lbl">MAY</div></div>
+      <div class="growth-bar"><div class="gb-val">2.1K</div><div class="gb-vis" style="height:10%"></div><div class="gb-lbl" data-es="ENE" data-en="JAN">ENE</div></div>
+      <div class="growth-bar"><div class="gb-val">4.6K</div><div class="gb-vis" style="height:22%"></div><div class="gb-lbl" data-es="FEB" data-en="FEB">FEB</div></div>
+      <div class="growth-bar"><div class="gb-val">8.9K</div><div class="gb-vis" style="height:42%"></div><div class="gb-lbl" data-es="MAR" data-en="MAR">MAR</div></div>
+      <div class="growth-bar"><div class="gb-val">14.2K</div><div class="gb-vis" style="height:68%"></div><div class="gb-lbl" data-es="ABR" data-en="APR">ABR</div></div>
+      <div class="growth-bar"><div class="gb-val">21.8K</div><div class="gb-vis" style="height:100%"></div><div class="gb-lbl" data-es="MAY" data-en="MAY">MAY</div></div>
     </div>
-    <div style="margin-top:16px;background:rgba(236,72,153,0.05);border:1px solid rgba(236,72,153,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--pink)">📈 Resultado:</strong> 10x más engagement en 5 meses. Combinación de contenido orgánico optimizado, anuncios Meta Ads dirigidos y campañas TikTok con creadores.</div>
+    <div style="margin-top:16px;background:rgba(236,72,153,0.05);border:1px solid rgba(236,72,153,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:var(--pink)" data-es="📈 Resultado:" data-en="📈 Result:">📈 Resultado:</strong> <span data-es="10x más engagement en 5 meses. Combinación de contenido orgánico optimizado, anuncios Meta Ads dirigidos y campañas TikTok con creadores." data-en="10x more engagement in 5 months. Combination of optimized organic content, targeted Meta Ads and TikTok campaigns with creators.">10x más engagement en 5 meses. Combinación de contenido orgánico optimizado, anuncios Meta Ads dirigidos y campañas TikTok con creadores.</span></div>
   </div>
 
   <!-- FEATURES -->
   <div class="section-card">
-    <div class="section-title-c">Lo que incluye el servicio</div>
-    <div class="section-sub-c">Marketing 360 — estrategia, contenido y métricas</div>
+    <div class="section-title-c" data-es="Lo que incluye el servicio" data-en="What's included in the service">Lo que incluye el servicio</div>
+    <div class="section-sub-c" data-es="Marketing 360 — estrategia, contenido y métricas" data-en="360 Marketing — strategy, content and metrics">Marketing 360 — estrategia, contenido y métricas</div>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon">🎯</div><div class="feat-title">Estrategia personalizada</div><div class="feat-desc">Análisis de tu negocio, sector y competencia. Plan de contenido a 90 días con KPIs claros.</div></div>
-      <div class="feat-card"><div class="feat-icon">🎬</div><div class="feat-title">Videos con IA Higgsfield</div><div class="feat-desc">Videos cinematográficos con Kling 3.0, Seedance 2.0, Veo 3.1 y Marketing Studio TV Spots.</div></div>
-      <div class="feat-card"><div class="feat-icon">📝</div><div class="feat-title">Copywriting profesional</div><div class="feat-desc">Textos optimizados por plataforma. Hooks que convierten en los primeros 3 segundos.</div></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title">Reporte mensual</div><div class="feat-desc">Métricas de cada plataforma, leads conseguidos, ROI y próximas optimizaciones.</div></div>
-      <div class="feat-card"><div class="feat-icon">📣</div><div class="feat-title">Meta Ads opcional</div><div class="feat-desc">Campañas Facebook + Instagram Ads con segmentación precisa y creatividades testadas.</div></div>
-      <div class="feat-card"><div class="feat-icon">🤝</div><div class="feat-title">Soporte directo</div><div class="feat-desc">Hablas con la persona que hace el trabajo. Sin intermediarios. Respuesta en menos de 24h.</div></div>
+      <div class="feat-card"><div class="feat-icon">🎯</div><div class="feat-title" data-es="Estrategia personalizada" data-en="Custom strategy">Estrategia personalizada</div><div class="feat-desc" data-es="Análisis de tu negocio, sector y competencia. Plan de contenido a 90 días con KPIs claros." data-en="Analysis of your business, sector and competition. 90-day content plan with clear KPIs.">Análisis de tu negocio, sector y competencia. Plan de contenido a 90 días con KPIs claros.</div></div>
+      <div class="feat-card"><div class="feat-icon">🎬</div><div class="feat-title" data-es="Videos con IA Higgsfield" data-en="Videos with Higgsfield AI">Videos con IA Higgsfield</div><div class="feat-desc" data-es="Videos cinematográficos con Kling 3.0, Seedance 2.0, Veo 3.1 y Marketing Studio TV Spots." data-en="Cinematic videos with Kling 3.0, Seedance 2.0, Veo 3.1 and Marketing Studio TV Spots.">Videos cinematográficos con Kling 3.0, Seedance 2.0, Veo 3.1 y Marketing Studio TV Spots.</div></div>
+      <div class="feat-card"><div class="feat-icon">📝</div><div class="feat-title" data-es="Copywriting profesional" data-en="Professional copywriting">Copywriting profesional</div><div class="feat-desc" data-es="Textos optimizados por plataforma. Hooks que convierten en los primeros 3 segundos." data-en="Texts optimized per platform. Hooks that convert in the first 3 seconds.">Textos optimizados por plataforma. Hooks que convierten en los primeros 3 segundos.</div></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title" data-es="Reporte mensual" data-en="Monthly report">Reporte mensual</div><div class="feat-desc" data-es="Métricas de cada plataforma, leads conseguidos, ROI y próximas optimizaciones." data-en="Metrics for each platform, leads obtained, ROI and next optimizations.">Métricas de cada plataforma, leads conseguidos, ROI y próximas optimizaciones.</div></div>
+      <div class="feat-card"><div class="feat-icon">📣</div><div class="feat-title" data-es="Meta Ads opcional" data-en="Optional Meta Ads">Meta Ads opcional</div><div class="feat-desc" data-es="Campañas Facebook + Instagram Ads con segmentación precisa y creatividades testadas." data-en="Facebook + Instagram Ads campaigns with precise targeting and tested creatives.">Campañas Facebook + Instagram Ads con segmentación precisa y creatividades testadas.</div></div>
+      <div class="feat-card"><div class="feat-icon">🤝</div><div class="feat-title" data-es="Soporte directo" data-en="Direct support">Soporte directo</div><div class="feat-desc" data-es="Hablas con la persona que hace el trabajo. Sin intermediarios. Respuesta en menos de 24h." data-en="You talk to the person doing the work. No middlemen. Response in less than 24h.">Hablas con la persona que hace el trabajo. Sin intermediarios. Respuesta en menos de 24h.</div></div>
     </div>
   </div>
 
-  <!-- PRECIOS PAGO ÚNICO -->
+  <!-- PRECIOS -->
   <div class="section-card">
-    <div class="section-title-c">Inversión</div>
-    <div class="section-sub-c">Eliges el pack que mejor se adapta a tu negocio. Sin contratos largos, sin sorpresas.</div>
+    <div class="section-title-c" data-es="Inversión" data-en="Investment">Inversión</div>
+    <div class="section-sub-c" data-es="Eliges el pack que mejor se adapta a tu negocio. Sin contratos largos, sin sorpresas." data-en="Pick the pack that best fits your business. No long contracts, no surprises.">Eliges el pack que mejor se adapta a tu negocio. Sin contratos largos, sin sorpresas.</div>
     <div class="price-grid">
       <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:18px;padding:28px 22px;position:relative">
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK STARTER</div>
         <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--orange);margin-bottom:4px">$147</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">inversión total del pack</div>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px" data-es="inversión total del pack" data-en="total pack investment">inversión total del pack</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9" data-es="✓ 15 piezas de contenido | ✓ 2 plataformas (elige cuál) | ✓ 1 video IA Higgsfield | ✓ Estrategia 30 días | ✓ Reporte final" data-en="✓ 15 content pieces | ✓ 2 platforms (choose which) | ✓ 1 Higgsfield AI video | ✓ 30-day strategy | ✓ Final report">
           ✓ 15 piezas de contenido<br>
           ✓ 2 plataformas (elige cuál)<br>
           ✓ 1 video IA Higgsfield<br>
@@ -362,11 +368,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         </div>
       </div>
       <div style="background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(249,115,22,0.08));border:2px solid var(--pink);border-radius:18px;padding:28px 22px;position:relative;transform:scale(1.03)">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:10px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1px">MÁS POPULAR</div>
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:10px;padding:5px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1px" data-es="MÁS POPULAR" data-en="MOST POPULAR">MÁS POPULAR</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK PRO</div>
         <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--pink);margin-bottom:4px">$297</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">inversión total del pack</div>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px" data-es="inversión total del pack" data-en="total pack investment">inversión total del pack</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9" data-es="✓ 35 piezas de contenido | ✓ 4 plataformas (IG+TT+YT+FB) | ✓ 4 videos IA Higgsfield | ✓ Estrategia 60 días | ✓ Reporte mensual | ✓ Avatar IA hablando español" data-en="✓ 35 content pieces | ✓ 4 platforms (IG+TT+YT+FB) | ✓ 4 Higgsfield AI videos | ✓ 60-day strategy | ✓ Monthly report | ✓ AI Avatar speaking Spanish">
           ✓ 35 piezas de contenido<br>
           ✓ 4 plataformas (IG+TT+YT+FB)<br>
           ✓ 4 videos IA Higgsfield<br>
@@ -378,8 +384,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
       <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:18px;padding:28px 22px;position:relative">
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:1px;font-weight:700;margin-bottom:8px">PACK PREMIUM</div>
         <div style="font-size:36px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--yellow);margin-bottom:4px">$497</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px">inversión total del pack</div>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:18px" data-es="inversión total del pack" data-en="total pack investment">inversión total del pack</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9" data-es="✓ 60 piezas de contenido | ✓ 4 plataformas completas | ✓ 8 videos IA Higgsfield | ✓ Meta Ads incluido | ✓ Estrategia 90 días | ✓ Reporte mensual + llamadas | ✓ Avatar IA personalizado" data-en="✓ 60 content pieces | ✓ 4 full platforms | ✓ 8 Higgsfield AI videos | ✓ Meta Ads included | ✓ 90-day strategy | ✓ Monthly report + calls | ✓ Custom AI Avatar">
           ✓ 60 piezas de contenido<br>
           ✓ 4 plataformas completas<br>
           ✓ 8 videos IA Higgsfield<br>
@@ -390,29 +396,29 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
         </div>
       </div>
     </div>
-    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--text-2);line-height:1.7;text-align:center"><strong style="color:var(--green)">✓ Garantía:</strong> Si en 30 días no ves resultados, te devolvemos el dinero. Sin preguntas.</div>
+    <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--text-2);line-height:1.7;text-align:center"><strong style="color:var(--green)" data-es="✓ Garantía:" data-en="✓ Guarantee:">✓ Garantía:</strong> <span data-es="Si en 30 días no ves resultados, te devolvemos el dinero. Sin preguntas." data-en="If in 30 days you don't see results, we refund your money. No questions asked.">Si en 30 días no ves resultados, te devolvemos el dinero. Sin preguntas.</span></div>
   </div>
 
   <!-- CTA -->
   <div class="cta-final">
-    <h2>El mundo va a <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">conocer tu negocio</span></h2>
-    <p>Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Sin sorpresas, con garantía de devolución.</p>
+    <h2><span data-es="El mundo va a" data-en="The world will">El mundo va a</span> <span style="background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="conocer tu negocio" data-en="know your business">conocer tu negocio</span></h2>
+    <p data-es="Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Sin sorpresas, con garantía de devolución." data-en="Complete digital marketing: strategy, AI content, optimized ads. No surprises, with money-back guarantee.">Marketing digital completo: estrategia, contenido con IA, anuncios optimizados. Sin sorpresas, con garantía de devolución.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://kodarase.com/?budget=marketing" target="_blank" rel="noopener" class="cta-btn">Solicitar mi pack ahora <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <button type="button" onclick="openContactModal()" class="cta-email">✉ Enviar email</button>
+      <a href="https://kodarase.com/?budget=marketing" target="_blank" rel="noopener" class="cta-btn"><span data-es="Solicitar mi pack ahora" data-en="Request my pack now">Solicitar mi pack ahora</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <button type="button" onclick="openContactModal()" class="cta-email"><span data-es="✉ Enviar email" data-en="✉ Send email">✉ Enviar email</span></button>
     </div>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">$147-497</div><div class="cta-stat-lbl">3 packs disponibles</div></div>
+      <div><div class="cta-stat-val">$147-497</div><div class="cta-stat-lbl" data-es="3 packs disponibles" data-en="3 packs available">3 packs disponibles</div></div>
       <div><div class="cta-stat-val">4 plat.</div><div class="cta-stat-lbl">IG + TikTok + YT + FB</div></div>
-      <div><div class="cta-stat-val">60 piezas</div><div class="cta-stat-lbl">de contenido máx.</div></div>
-      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl">Consulta inicial</div></div>
+      <div><div class="cta-stat-val" data-es="60 piezas" data-en="60 pieces">60 piezas</div><div class="cta-stat-lbl" data-es="de contenido máx." data-en="of content max.">de contenido máx.</div></div>
+      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl" data-es="Consulta inicial" data-en="Initial consult">Consulta inicial</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Marketing Digital por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-010 · Videos generados con Higgsfield Marketing Studio · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Marketing Digital por" data-en="Digital Marketing by">Marketing Digital por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-010 · <span data-es="Videos generados con Higgsfield Marketing Studio" data-en="Videos generated with Higgsfield Marketing Studio">Videos generados con Higgsfield Marketing Studio</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
 
 <!-- MODAL CONTACTO -->
@@ -420,54 +426,69 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   <div class="contact-modal">
     <button type="button" class="contact-close" onclick="closeContactModal()" aria-label="Cerrar">✕</button>
     <div id="contactForm">
-      <div class="contact-title">Cuéntanos de tu negocio</div>
-      <div class="contact-sub">Te respondemos en menos de 24 horas con una propuesta personalizada.</div>
+      <div class="contact-title" data-es="Cuéntanos de tu negocio" data-en="Tell us about your business">Cuéntanos de tu negocio</div>
+      <div class="contact-sub" data-es="Te respondemos en menos de 24 horas con una propuesta personalizada." data-en="We respond within 24 hours with a personalized proposal.">Te respondemos en menos de 24 horas con una propuesta personalizada.</div>
       <form id="formMarketing" action="https://formsubmit.co/kodaraservi@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nueva consulta Marketing Digital — Kodara SE">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://kodarase.com/?gracias=marketing">
         <div class="contact-field">
-          <label class="contact-label" for="cf-name">Nombre completo *</label>
-          <input class="contact-input" type="text" id="cf-name" name="nombre" required placeholder="Tu nombre">
+          <label class="contact-label" for="cf-name" data-es="Nombre completo *" data-en="Full name *">Nombre completo *</label>
+          <input class="contact-input" type="text" id="cf-name" name="nombre" required data-es-ph="Tu nombre" data-en-ph="Your name" placeholder="Tu nombre">
         </div>
         <div class="contact-field">
-          <label class="contact-label" for="cf-email">Email *</label>
+          <label class="contact-label" for="cf-email" data-es="Email *" data-en="Email *">Email *</label>
           <input class="contact-input" type="email" id="cf-email" name="email" required placeholder="tu@email.com">
         </div>
         <div class="contact-field">
-          <label class="contact-label" for="cf-phone">Teléfono / WhatsApp</label>
+          <label class="contact-label" for="cf-phone" data-es="Teléfono / WhatsApp" data-en="Phone / WhatsApp">Teléfono / WhatsApp</label>
           <input class="contact-input" type="tel" id="cf-phone" name="telefono" placeholder="+34 600 000 000">
         </div>
         <div class="contact-field">
-          <label class="contact-label" for="cf-pack">¿Qué pack te interesa?</label>
+          <label class="contact-label" for="cf-pack" data-es="¿Qué pack te interesa?" data-en="Which pack interests you?">¿Qué pack te interesa?</label>
           <select class="contact-select" id="cf-pack" name="pack">
-            <option value="No seguro aún">No estoy seguro todavía</option>
+            <option value="No seguro aún" data-es="No estoy seguro todavía" data-en="Not sure yet">No estoy seguro todavía</option>
             <option value="Pack Starter $147">Pack Starter — $147</option>
             <option value="Pack Pro $297">Pack Pro — $297</option>
             <option value="Pack Premium $497">Pack Premium — $497</option>
           </select>
         </div>
         <div class="contact-field">
-          <label class="contact-label" for="cf-msg">Cuéntanos de tu negocio *</label>
-          <textarea class="contact-textarea" id="cf-msg" name="mensaje" required placeholder="¿A qué te dedicas? ¿En qué redes estás ahora? ¿Cuál es tu objetivo principal?"></textarea>
+          <label class="contact-label" for="cf-msg" data-es="Cuéntanos de tu negocio *" data-en="Tell us about your business *">Cuéntanos de tu negocio *</label>
+          <textarea class="contact-textarea" id="cf-msg" name="mensaje" required data-es-ph="¿A qué te dedicas? ¿En qué redes estás ahora? ¿Cuál es tu objetivo principal?" data-en-ph="What do you do? Which social networks are you on? What is your main objective?" placeholder="¿A qué te dedicas? ¿En qué redes estás ahora? ¿Cuál es tu objetivo principal?"></textarea>
         </div>
         <button type="submit" class="contact-submit" id="contactSubmitBtn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          Enviar consulta
+          <span data-es="Enviar consulta" data-en="Send inquiry">Enviar consulta</span>
         </button>
-        <div class="contact-foot">📩 Recibirás respuesta en kodaraservi@gmail.com en menos de 24h · Sin spam</div>
+        <div class="contact-foot" data-es="📩 Recibirás respuesta en kodaraservi@gmail.com en menos de 24h · Sin spam" data-en="📩 You will receive a response at kodaraservi@gmail.com within 24h · No spam">📩 Recibirás respuesta en kodaraservi@gmail.com en menos de 24h · Sin spam</div>
       </form>
     </div>
     <div class="contact-success" id="contactSuccess">
       <div style="font-size:36px;margin-bottom:12px">✅</div>
-      <div style="font-size:18px;font-weight:800;margin-bottom:8px;color:var(--text)">¡Mensaje enviado!</div>
-      Tu consulta llegó correctamente. Te respondemos en menos de 24h al email que nos diste.
+      <div style="font-size:18px;font-weight:800;margin-bottom:8px;color:var(--text)" data-es="¡Mensaje enviado!" data-en="Message sent!">¡Mensaje enviado!</div>
+      <span data-es="Tu consulta llegó correctamente. Te respondemos en menos de 24h al email que nos diste." data-en="Your inquiry was received correctly. We'll respond within 24h to the email you provided.">Tu consulta llegó correctamente. Te respondemos en menos de 24h al email que nos diste.</span>
     </div>
   </div>
 </div>
 
 <script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.querySelectorAll('[data-es-ph]').forEach(el=>{
+    const v=el.getAttribute('data-'+l+'-ph');
+    if(v!=null)el.setAttribute('placeholder',v);
+  });
+  document.documentElement.lang=l;
+}
 function togglePlay(container){
   const video=container.querySelector('video');
   if(!video) return;
@@ -506,7 +527,7 @@ document.getElementById('formMarketing').addEventListener('submit',function(e){
   const btn=document.getElementById('contactSubmitBtn');
   const data=new FormData(form);
   btn.disabled=true;
-  btn.innerHTML='Enviando…';
+  btn.innerHTML=lang==='en'?'Sending…':'Enviando…';
   fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
     .then(function(r){
       if(r.ok){
@@ -519,7 +540,7 @@ document.getElementById('formMarketing').addEventListener('submit',function(e){
     })
     .catch(function(){
       btn.disabled=false;
-      btn.innerHTML='Reintentar — error de red';
+      btn.innerHTML=lang==='en'?'Retry — network error':'Reintentar — error de red';
       btn.style.background='var(--red)';
     });
 });
