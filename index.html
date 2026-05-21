@@ -1481,16 +1481,44 @@ document.querySelectorAll('.svc-card').forEach(card => {
   });
 });
 
-// Form submit
+// Form submit — envía directo via Formsubmit (sin abrir app de email)
 function handleSubmit(e) {
   e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const originalBtnHTML = btn.innerHTML;
   const name = document.getElementById('c-name').value;
   const email = document.getElementById('c-email').value;
   const svc = document.getElementById('c-svc').value;
   const msg = document.getElementById('c-msg').value;
-  const subject = encodeURIComponent('Nuevo contacto Kodara SE — ' + name + ' — ' + svc);
-  const body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\nServicio: ' + svc + '\n\nMensaje:\n' + msg);
-  window.location.href = 'mailto:kodaraservi@gmail.com?subject=' + subject + '&body=' + body;
+  const fd = new FormData();
+  fd.append('nombre', name);
+  fd.append('email', email);
+  fd.append('servicio', svc);
+  fd.append('mensaje', msg);
+  fd.append('_subject', 'Nuevo contacto Kodara SE — ' + name + ' — ' + svc);
+  fd.append('_captcha', 'false');
+  fd.append('_template', 'table');
+  btn.disabled = true;
+  btn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…';
+  fetch('https://formsubmit.co/ajax/kodaraservi@gmail.com', {
+    method: 'POST',
+    body: fd,
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(() => {
+      btn.innerHTML = lang === 'en' ? '✓ Sent — we respond in <24h' : '✓ Enviado — respondemos en <24h';
+      btn.style.background = '#10B981';
+      form.reset();
+      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; btn.disabled = false; }, 5000);
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.innerHTML = lang === 'en' ? 'Retry — network error' : 'Reintentar — error de red';
+      btn.style.background = '#EF4444';
+      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; }, 3000);
+    });
 }
 
 /* ====== SERVICE DATA ====== */
@@ -1827,7 +1855,7 @@ function buildBudStep2() {
 function bSubmit() {
   const name = document.getElementById('conName').value.trim();
   const email = document.getElementById('conEmail').value.trim();
-  if (!name || !email) { alert('Por favor completa nombre y email.'); return; }
+  if (!name || !email) { alert(lang === 'en' ? 'Please complete name and email.' : 'Por favor completa nombre y email.'); return; }
   const phone = document.getElementById('conPhone').value;
   const company = document.getElementById('conCompany').value;
   const notes = document.getElementById('extraNotes').value;
@@ -1841,18 +1869,41 @@ function bSubmit() {
     details += `\n— ${s.name} (${s.tag}) —\nURL/Info: ${url || 'no indicado'}\nObjetivo: ${goal || 'no indicado'}\n`;
   });
   const svcs = bSelected.map(k => SERVICES[k].name).join(', ');
-  const subject = encodeURIComponent('Solicitud Kodara — ' + name + ' — ' + svcs);
-  const body = encodeURIComponent(
-    '=== SOLICITUD KODARA SE ===\n\nCLIENTE: ' + name + '\nEMAIL: ' + email + '\nTELÉFONO: ' + (phone||'No indicado') + '\nEMPRESA: ' + (company||'No indicado') +
-    '\n\nSERVICIOS: ' + svcs +
-    '\n\n=== DETALLES ===' + details +
-    '\n=== EXTRAS ===\n' + (extras || 'Ninguno') +
-    '\n\nPRESUPUESTO: ' + (budget || 'Sin especificar') +
-    '\n\nNOTAS:\n' + (notes || 'Sin notas')
-  );
-  window.location.href = 'mailto:kodaraservi@gmail.com?subject=' + subject + '&body=' + body;
-  document.getElementById('bStep4').style.display = 'none';
-  document.getElementById('budSuccess').classList.add('show');
+  const fd = new FormData();
+  fd.append('nombre', name);
+  fd.append('email', email);
+  fd.append('telefono', phone || 'No indicado');
+  fd.append('empresa', company || 'No indicado');
+  fd.append('servicios', svcs);
+  fd.append('detalles', details);
+  fd.append('extras', extras || 'Ninguno');
+  fd.append('presupuesto', budget || 'Sin especificar');
+  fd.append('notas', notes || 'Sin notas');
+  fd.append('_subject', 'Solicitud Kodara — ' + name + ' — ' + svcs);
+  fd.append('_captcha', 'false');
+  fd.append('_template', 'table');
+  // Botón en step 4 — mostrar estado
+  const sendBtn = document.querySelector('#bStep4 .bud-next');
+  const originalHTML = sendBtn ? sendBtn.innerHTML : '';
+  if (sendBtn) { sendBtn.disabled = true; sendBtn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…'; }
+  fetch('https://formsubmit.co/ajax/kodaraservi@gmail.com', {
+    method: 'POST',
+    body: fd,
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(() => {
+      document.getElementById('bStep4').style.display = 'none';
+      document.getElementById('budSuccess').classList.add('show');
+    })
+    .catch(() => {
+      if (sendBtn) {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = lang === 'en' ? 'Retry — network error' : 'Reintentar — error de red';
+        sendBtn.style.background = '#EF4444';
+        setTimeout(() => { sendBtn.innerHTML = originalHTML; sendBtn.style.background = ''; }, 3000);
+      }
+    });
 }
 
 /* ====== INIT ====== */
