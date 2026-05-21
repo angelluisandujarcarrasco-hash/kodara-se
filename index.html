@@ -1896,11 +1896,33 @@ function bValidateStep(n) {
 
   if (n === 2) {
     bSelected.forEach(k => {
+      const urlEl = document.getElementById('d-' + k + '-url');
       const goalEl = document.getElementById('d-' + k + '-goal');
-      if (goalEl && !goalEl.value.trim()) {
-        showFieldError(goalEl, isEn ? 'Please describe what you want to achieve' : 'Por favor describe tu objetivo');
-        if (!firstErrorEl) firstErrorEl = goalEl;
-        valid = false;
+      // URL obligatoria: debe contener "." o "@" y al menos 4 caracteres (web o @handle)
+      if (urlEl) {
+        const urlVal = urlEl.value.trim();
+        if (!urlVal) {
+          showFieldError(urlEl, isEn ? 'URL or @handle is required' : 'URL o @ obligatorio');
+          if (!firstErrorEl) firstErrorEl = urlEl;
+          valid = false;
+        } else if (urlVal.length < 4 || (!urlVal.includes('.') && !urlVal.includes('@'))) {
+          showFieldError(urlEl, isEn ? 'Enter a valid URL (e.g. mybusiness.com) or @handle' : 'Pon una URL válida (ej. minegocio.com) o @handle');
+          if (!firstErrorEl) firstErrorEl = urlEl;
+          valid = false;
+        }
+      }
+      // Objetivo obligatorio: mínimo 15 caracteres
+      if (goalEl) {
+        const goalVal = goalEl.value.trim();
+        if (!goalVal) {
+          showFieldError(goalEl, isEn ? 'Please describe what you want to achieve' : 'Por favor describe tu objetivo');
+          if (!firstErrorEl) firstErrorEl = goalEl;
+          valid = false;
+        } else if (goalVal.length < 15) {
+          showFieldError(goalEl, isEn ? 'Please describe in more detail (min 15 characters)' : 'Por favor describe con más detalle (mínimo 15 caracteres)');
+          if (!firstErrorEl) firstErrorEl = goalEl;
+          valid = false;
+        }
       }
     });
   }
@@ -1913,32 +1935,49 @@ function bValidateStep(n) {
       showFieldError(notesEl, isEn ? 'Select an extra, choose a budget or write a note' : 'Selecciona un extra, elige presupuesto o escribe una nota');
       if (!firstErrorEl) firstErrorEl = notesEl;
       valid = false;
+    } else if (notes && notes.length > 0 && notes.length < 5) {
+      // Si escribe notas pero muy cortas, exigir más detalle
+      const notesEl = document.getElementById('extraNotes');
+      showFieldError(notesEl, isEn ? 'Note too short (min 5 characters)' : 'Nota muy corta (mínimo 5 caracteres)');
+      if (!firstErrorEl) firstErrorEl = notesEl;
+      valid = false;
     }
   }
   if (n === 4) {
     const nameEl = document.getElementById('conName');
     const emailEl = document.getElementById('conEmail');
     const phoneEl = document.getElementById('conPhone');
-    if (!nameEl.value.trim()) {
+    // Nombre: mínimo 2 caracteres Y que contenga al menos una letra
+    const nameVal = nameEl.value.trim();
+    if (!nameVal) {
       showFieldError(nameEl, isEn ? 'Name is required' : 'El nombre es obligatorio');
       if (!firstErrorEl) firstErrorEl = nameEl;
       valid = false;
+    } else if (nameVal.length < 2 || !/[a-záéíóúñA-ZÁÉÍÓÚÑ]/.test(nameVal)) {
+      showFieldError(nameEl, isEn ? 'Enter a valid name (at least 2 letters)' : 'Pon un nombre válido (al menos 2 letras)');
+      if (!firstErrorEl) firstErrorEl = nameEl;
+      valid = false;
     }
+    // Email: regex estricto con TLD válido
     const emailVal = emailEl.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailVal) {
       showFieldError(emailEl, isEn ? 'Email is required' : 'El email es obligatorio');
       if (!firstErrorEl) firstErrorEl = emailEl;
       valid = false;
     } else if (!emailRegex.test(emailVal)) {
-      showFieldError(emailEl, isEn ? 'Enter a valid email' : 'Introduce un email válido');
+      showFieldError(emailEl, isEn ? 'Enter a valid email (e.g. you@email.com)' : 'Pon un email válido (ej. tu@email.com)');
       if (!firstErrorEl) firstErrorEl = emailEl;
       valid = false;
     }
-    if (phoneEl.value.trim() && !/^[+]?[\d\s()-]{7,}$/.test(phoneEl.value.trim())) {
-      showFieldError(phoneEl, isEn ? 'Invalid phone format' : 'Formato de teléfono inválido');
-      if (!firstErrorEl) firstErrorEl = phoneEl;
-      valid = false;
+    // Teléfono: si lo pone, mínimo 7 dígitos
+    if (phoneEl.value.trim()) {
+      const phoneClean = phoneEl.value.replace(/[\s()-]/g, '');
+      if (!/^[+]?\d{7,15}$/.test(phoneClean)) {
+        showFieldError(phoneEl, isEn ? 'Invalid phone (7-15 digits)' : 'Teléfono inválido (7-15 dígitos)');
+        if (!firstErrorEl) firstErrorEl = phoneEl;
+        valid = false;
+      }
     }
   }
   if (!valid && firstErrorEl) {
