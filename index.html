@@ -1521,18 +1521,25 @@ function handleSubmit(e) {
     body: fd,
     headers: { 'Accept': 'application/json' }
   })
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(() => {
-      btn.innerHTML = lang === 'en' ? '✓ Sent — we respond in <24h' : '✓ Enviado — respondemos en <24h';
-      btn.style.background = '#10B981';
-      form.reset();
-      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; btn.disabled = false; }, 5000);
+    .then(r => r.json())
+    .then(data => {
+      console.log('FormSubmit response:', data);
+      if (data && (data.success === 'true' || data.success === true)) {
+        btn.innerHTML = lang === 'en' ? '✓ Sent — we respond in <24h' : '✓ Enviado — respondemos en <24h';
+        btn.style.background = '#10B981';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; btn.disabled = false; }, 5000);
+      } else {
+        throw new Error(data && data.message ? data.message : 'Error desconocido');
+      }
     })
-    .catch(() => {
+    .catch(err => {
+      console.error('FormSubmit error:', err);
       btn.disabled = false;
-      btn.innerHTML = lang === 'en' ? 'Retry — network error' : 'Reintentar — error de red';
+      btn.innerHTML = lang === 'en' ? '⚠ Error — try again' : '⚠ Error — reintentar';
       btn.style.background = '#EF4444';
-      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; }, 3000);
+      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; }, 4000);
+      alert((lang === 'en' ? 'Could not send. Error: ' : 'No se pudo enviar. Error: ') + (err.message || err));
     });
 }
 
@@ -2031,18 +2038,25 @@ function bSubmit() {
     body: fd,
     headers: { 'Accept': 'application/json' }
   })
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(() => {
-      document.getElementById('bStep4').style.display = 'none';
-      document.getElementById('budSuccess').classList.add('show');
+    .then(r => r.json())
+    .then(data => {
+      console.log('FormSubmit response:', data);
+      if (data && (data.success === 'true' || data.success === true)) {
+        document.getElementById('bStep4').style.display = 'none';
+        document.getElementById('budSuccess').classList.add('show');
+      } else {
+        throw new Error(data && data.message ? data.message : 'Error desconocido');
+      }
     })
-    .catch(() => {
+    .catch(err => {
+      console.error('FormSubmit error:', err);
       if (sendBtn) {
         sendBtn.disabled = false;
-        sendBtn.innerHTML = lang === 'en' ? 'Retry — network error' : 'Reintentar — error de red';
+        sendBtn.innerHTML = lang === 'en' ? '⚠ Error — try again' : '⚠ Error — reintentar';
         sendBtn.style.background = '#EF4444';
-        setTimeout(() => { sendBtn.innerHTML = originalHTML; sendBtn.style.background = ''; }, 3000);
+        setTimeout(() => { sendBtn.innerHTML = originalHTML; sendBtn.style.background = ''; }, 4000);
       }
+      alert((lang === 'en' ? 'Could not send. Error: ' : 'No se pudo enviar. Error: ') + (err.message || err));
     });
 }
 
