@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad · Kodara SE</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--green:#10B981}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:#fff}a{color:var(--orange);text-decoration:none}a:hover{text-decoration:underline}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
+.hero{padding:80px 32px 40px;text-align:center;background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+.hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);padding:6px 14px;border-radius:999px;letter-spacing:1.5px;margin-bottom:20px;text-transform:uppercase;font-weight:700}
+.hero h1{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1.2px;line-height:1.05;margin-bottom:16px}
+.hero p{font-size:15px;color:var(--text-2);max-width:600px;margin:0 auto}
+.container{max-width:880px;margin:0 auto;padding:48px 32px 80px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;margin-bottom:20px}
+.section h2{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.section h2 .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:rgba(249,115,22,0.1);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:13px;border-radius:8px;border:1px solid rgba(249,115,22,0.2)}
+.section h3{font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--text)}
+.section p{font-size:14px;color:var(--text-2);margin-bottom:12px}
+.section ul{list-style:none;margin-top:8px}
+.section ul li{font-size:14px;color:var(--text-2);padding-left:22px;margin-bottom:8px;position:relative}
+.section ul li::before{content:'→';position:absolute;left:0;color:var(--orange);font-weight:700}
+.section strong{color:var(--text);font-weight:700}
+.section code{background:var(--bg-2);padding:2px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange)}
+.meta-box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);letter-spacing:0.5px}
+.meta-box strong{color:var(--text);font-weight:700;font-family:'Inter',sans-serif}
+.demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+.demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+@media(max-width:700px){.hero{padding:48px 20px 32px}.container{padding:32px 20px}.section{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <span>Kodara</span><span style="font-size:12px">SE</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Política de Privacidad" data-en="/ Privacy Policy">/ Política de Privacidad</span>
+  </a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag" data-es="// LEGAL · GDPR COMPLIANT" data-en="// LEGAL · GDPR COMPLIANT">// LEGAL · GDPR COMPLIANT</div>
+  <h1 data-es="Política de Privacidad" data-en="Privacy Policy">Política de Privacidad</h1>
+  <p data-es="Cómo protegemos tu información cuando usas kodarase.com o nuestros servicios." data-en="How we protect your information when you use kodarase.com or our services.">Cómo protegemos tu información cuando usas kodarase.com o nuestros servicios.</p>
+</div>
+
+<div class="container">
+
+  <div class="meta-box">
+    <div><strong data-es="Última actualización:" data-en="Last updated:">Última actualización:</strong> <span data-es="21 de mayo de 2026" data-en="May 21, 2026">21 de mayo de 2026</span></div>
+    <div style="margin-top:4px"><strong data-es="Responsable:" data-en="Data controller:">Responsable:</strong> Kodara Service Enterprise</div>
+    <div style="margin-top:4px"><strong data-es="Contacto:" data-en="Contact:">Contacto:</strong> kodaraservice@gmail.com</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">01</span><span data-es="¿Quiénes somos?" data-en="Who we are?">¿Quiénes somos?</span></h2>
+    <p data-es="Kodara Service Enterprise (Kodara SE) es una agencia digital propiedad de Angel Luis Andújar Carrasco, que opera desde kodarase.com. Esta política explica qué datos personales recopilamos, para qué los usamos y los derechos que tienes sobre ellos." data-en="Kodara Service Enterprise (Kodara SE) is a digital agency owned by Angel Luis Andújar Carrasco, operating from kodarase.com. This policy explains what personal data we collect, what we use it for, and the rights you have over it.">Kodara Service Enterprise (Kodara SE) es una agencia digital propiedad de Angel Luis Andújar Carrasco, que opera desde kodarase.com. Esta política explica qué datos personales recopilamos, para qué los usamos y los derechos que tienes sobre ellos.</p>
+    <p data-es="Si tienes cualquier duda sobre esta política o sobre el tratamiento de tus datos, escríbenos a kodaraservice@gmail.com." data-en="If you have any questions about this policy or how we handle your data, write to us at kodaraservice@gmail.com.">Si tienes cualquier duda sobre esta política o sobre el tratamiento de tus datos, escríbenos a <code>kodaraservice@gmail.com</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">02</span><span data-es="¿Qué datos recopilamos?" data-en="What data we collect?">¿Qué datos recopilamos?</span></h2>
+    <p data-es="Solo recopilamos datos que tú nos proporcionas voluntariamente al rellenar nuestros formularios de contacto o solicitud de presupuesto:" data-en="We only collect data that you voluntarily provide when filling out our contact or quote request forms:">Solo recopilamos datos que tú nos proporcionas voluntariamente al rellenar nuestros formularios de contacto o solicitud de presupuesto:</p>
+    <ul>
+      <li><strong data-es="Nombre completo" data-en="Full name">Nombre completo</strong></li>
+      <li><strong data-es="Email" data-en="Email">Email</strong></li>
+      <li><strong data-es="Teléfono / WhatsApp" data-en="Phone / WhatsApp">Teléfono / WhatsApp</strong> <span data-es="(opcional)" data-en="(optional)">(opcional)</span></li>
+      <li><strong data-es="Empresa" data-en="Company">Empresa</strong> <span data-es="(opcional)" data-en="(optional)">(opcional)</span></li>
+      <li><strong data-es="URL de tu web/perfil y descripción de tu objetivo" data-en="Your website/profile URL and description of your goal">URL de tu web/perfil y descripción de tu objetivo</strong></li>
+      <li><strong data-es="Servicios que te interesan y presupuesto aproximado" data-en="Services you're interested in and approximate budget">Servicios que te interesan y presupuesto aproximado</strong></li>
+    </ul>
+    <p data-es="No usamos cookies de seguimiento, ni recopilamos tu dirección IP, ubicación o comportamiento de navegación." data-en="We do not use tracking cookies, nor collect your IP address, location or browsing behavior.">No usamos cookies de seguimiento, ni recopilamos tu dirección IP, ubicación o comportamiento de navegación.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">03</span><span data-es="¿Para qué usamos tus datos?" data-en="What we use your data for?">¿Para qué usamos tus datos?</span></h2>
+    <p data-es="Tus datos los usamos exclusivamente para:" data-en="We use your data exclusively to:">Tus datos los usamos exclusivamente para:</p>
+    <ul>
+      <li data-es="Responder a tu consulta o solicitud" data-en="Respond to your inquiry or request">Responder a tu consulta o solicitud</li>
+      <li data-es="Preparar y enviarte una propuesta personalizada de servicios" data-en="Prepare and send you a personalized service proposal">Preparar y enviarte una propuesta personalizada de servicios</li>
+      <li data-es="Mantener comunicación contigo durante el desarrollo del proyecto (si nos contratas)" data-en="Maintain communication with you during project development (if you hire us)">Mantener comunicación contigo durante el desarrollo del proyecto (si nos contratas)</li>
+      <li data-es="Cumplir obligaciones legales y fiscales relacionadas con la facturación" data-en="Comply with legal and tax obligations related to billing">Cumplir obligaciones legales y fiscales relacionadas con la facturación</li>
+    </ul>
+    <p data-es="No usamos tus datos para publicidad, marketing masivo, ni los compartimos con terceros para sus propios fines comerciales." data-en="We do not use your data for advertising, mass marketing, nor do we share it with third parties for their own commercial purposes.">No usamos tus datos para publicidad, marketing masivo, ni los compartimos con terceros para sus propios fines comerciales.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">04</span><span data-es="¿Con quién compartimos tus datos?" data-en="Who do we share your data with?">¿Con quién compartimos tus datos?</span></h2>
+    <p data-es="Tus datos solo los gestionan estos proveedores técnicos cuando es estrictamente necesario para que el servicio funcione:" data-en="Your data is only handled by these technical providers when strictly necessary for the service to work:">Tus datos solo los gestionan estos proveedores técnicos cuando es estrictamente necesario para que el servicio funcione:</p>
+    <ul>
+      <li><strong>FormSubmit</strong> <span data-es="— procesa los formularios y nos los reenvía por email. Política:" data-en="— processes the forms and forwards them to us by email. Policy:">— procesa los formularios y nos los reenvía por email. Política:</span> <a href="https://formsubmit.co/legal" target="_blank" rel="noopener">formsubmit.co/legal</a></li>
+      <li><strong>Google Gmail</strong> <span data-es="— recibe los emails con tus datos. Política:" data-en="— receives the emails with your data. Policy:">— recibe los emails con tus datos. Política:</span> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+      <li><strong>GitHub Pages</strong> <span data-es="— aloja la web kodarase.com. Política:" data-en="— hosts kodarase.com. Policy:">— aloja la web kodarase.com. Política:</span> <a href="https://docs.github.com/site-policy/privacy-policies" target="_blank" rel="noopener">github.com/privacy</a></li>
+      <li><strong>HubSpot CRM</strong> <span data-es="— guarda tus datos como cliente potencial. Política:" data-en="— stores your data as a potential client. Policy:">— guarda tus datos como cliente potencial. Política:</span> <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">hubspot.com/privacy</a></li>
+    </ul>
+    <p data-es="Ninguno de estos proveedores usa tus datos para sus propios fines comerciales. Solo los procesan en nuestro nombre." data-en="None of these providers uses your data for their own commercial purposes. They only process it on our behalf.">Ninguno de estos proveedores usa tus datos para sus propios fines comerciales. Solo los procesan en nuestro nombre.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">05</span><span data-es="¿Cuánto tiempo guardamos tus datos?" data-en="How long do we keep your data?">¿Cuánto tiempo guardamos tus datos?</span></h2>
+    <ul>
+      <li><strong data-es="Si no llegas a contratarnos:" data-en="If you don't end up hiring us:">Si no llegas a contratarnos:</strong> <span data-es="hasta 12 meses, por si retomas la conversación. Luego se eliminan." data-en="up to 12 months, in case you resume the conversation. Then they are deleted.">hasta 12 meses, por si retomas la conversación. Luego se eliminan.</span></li>
+      <li><strong data-es="Si trabajamos juntos:" data-en="If we work together:">Si trabajamos juntos:</strong> <span data-es="durante toda la relación comercial + el tiempo necesario para cumplir obligaciones fiscales (mínimo 6 años en España, 5 años en USA, según jurisdicción)." data-en="for the entire commercial relationship + the time necessary to comply with tax obligations (minimum 6 years in Spain, 5 years in USA, depending on jurisdiction).">durante toda la relación comercial + el tiempo necesario para cumplir obligaciones fiscales (mínimo 6 años en España, 5 años en USA, según jurisdicción).</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">06</span><span data-es="¿Qué derechos tienes?" data-en="What rights do you have?">¿Qué derechos tienes?</span></h2>
+    <p data-es="Tienes los siguientes derechos sobre tus datos personales, en cualquier momento y de forma gratuita:" data-en="You have the following rights over your personal data, at any time and free of charge:">Tienes los siguientes derechos sobre tus datos personales, en cualquier momento y de forma gratuita:</p>
+    <ul>
+      <li><strong data-es="Acceso:" data-en="Access:">Acceso:</strong> <span data-es="saber qué datos tenemos sobre ti." data-en="know what data we have about you.">saber qué datos tenemos sobre ti.</span></li>
+      <li><strong data-es="Rectificación:" data-en="Rectification:">Rectificación:</strong> <span data-es="corregir datos incorrectos o desactualizados." data-en="correct incorrect or outdated data.">corregir datos incorrectos o desactualizados.</span></li>
+      <li><strong data-es="Eliminación:" data-en="Deletion:">Eliminación:</strong> <span data-es='pedirnos que borremos tus datos ("derecho al olvido").' data-en='ask us to delete your data ("right to be forgotten").'>pedirnos que borremos tus datos ("derecho al olvido").</span></li>
+      <li><strong data-es="Limitación:" data-en="Restriction:">Limitación:</strong> <span data-es="pedir que limitemos el uso de tus datos." data-en="ask us to limit the use of your data.">pedir que limitemos el uso de tus datos.</span></li>
+      <li><strong data-es="Portabilidad:" data-en="Portability:">Portabilidad:</strong> <span data-es="recibir tus datos en un formato que puedas llevar a otro proveedor." data-en="receive your data in a format you can take to another provider.">recibir tus datos en un formato que puedas llevar a otro proveedor.</span></li>
+      <li><strong data-es="Oposición:" data-en="Objection:">Oposición:</strong> <span data-es="oponerte al tratamiento de tus datos." data-en="object to the processing of your data.">oponerte al tratamiento de tus datos.</span></li>
+    </ul>
+    <p data-es="Para ejercer cualquiera de estos derechos, escríbenos a kodaraservice@gmail.com. Te responderemos en un máximo de 30 días." data-en="To exercise any of these rights, write to us at kodaraservice@gmail.com. We will respond within a maximum of 30 days.">Para ejercer cualquiera de estos derechos, escríbenos a <code>kodaraservice@gmail.com</code>. Te responderemos en un máximo de 30 días.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">07</span><span data-es="Cookies" data-en="Cookies">Cookies</span></h2>
+    <p data-es="Esta web NO usa cookies de seguimiento ni publicidad. Solo se usan cookies estrictamente necesarias para el funcionamiento técnico (por ejemplo, el toggle ES/EN del idioma, que se guarda solo en tu navegador y nunca se envía a servidores)." data-en="This site does NOT use tracking or advertising cookies. Only strictly necessary cookies are used for technical operation (e.g., the ES/EN language toggle, which is stored only in your browser and never sent to servers).">Esta web NO usa cookies de seguimiento ni publicidad. Solo se usan cookies estrictamente necesarias para el funcionamiento técnico (por ejemplo, el toggle ES/EN del idioma, que se guarda solo en tu navegador y nunca se envía a servidores).</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">08</span><span data-es="Cambios en esta política" data-en="Changes to this policy">Cambios en esta política</span></h2>
+    <p data-es="Si actualizamos esta política, cambiaremos la fecha de 'Última actualización' arriba. Los cambios importantes los anunciaremos por email a quienes hayan compartido el suyo con nosotros." data-en="If we update this policy, we will change the 'Last updated' date above. Important changes will be announced by email to those who have shared theirs with us.">Si actualizamos esta política, cambiaremos la fecha de "Última actualización" arriba. Los cambios importantes los anunciaremos por email a quienes hayan compartido el suyo con nosotros.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">09</span><span data-es="Reclamaciones" data-en="Complaints">Reclamaciones</span></h2>
+    <p data-es="Si crees que no tratamos tus datos correctamente, puedes presentar una reclamación ante la autoridad de protección de datos de tu país:" data-en="If you believe we are not handling your data correctly, you can file a complaint with the data protection authority of your country:">Si crees que no tratamos tus datos correctamente, puedes presentar una reclamación ante la autoridad de protección de datos de tu país:</p>
+    <ul>
+      <li><strong>España:</strong> <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos (AEPD)</a></li>
+      <li><strong>USA:</strong> <a href="https://www.ftc.gov" target="_blank" rel="noopener">Federal Trade Commission (FTC)</a></li>
+      <li><strong data-es="Otros países UE:" data-en="Other EU countries:">Otros países UE:</strong> <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">EDPB</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer class="demo-footer">
+  <span data-es="Política de Privacidad por" data-en="Privacy Policy by">Política de Privacidad por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · <a href="mailto:kodaraservice@gmail.com">kodaraservice@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+</footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
+
+</body>
+</html>
