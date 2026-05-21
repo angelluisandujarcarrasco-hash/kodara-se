@@ -343,23 +343,25 @@ nav.scrolled {
 .svc-meta {
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 16px; border-top: 1px solid var(--border);
-  margin-top: auto; gap: 12px;
+  margin-top: auto; gap: 10px; flex-wrap: wrap;
 }
 .svc-price {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px; font-weight: 700;
+  font-size: 13px; font-weight: 700;
   color: var(--accent, var(--orange));
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 .svc-arrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 18px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
   border-radius: 999px;
   background: var(--accent, var(--orange));
   color: #fff;
   font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 0.3px;
-  box-shadow: 0 6px 20px var(--accent-bg, rgba(249,115,22,0.3));
+  box-shadow: 0 4px 14px var(--accent-bg, rgba(249,115,22,0.3));
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
@@ -381,13 +383,13 @@ nav.scrolled {
 .svc-card:hover .svc-arrow::before { opacity: 1; }
 .svc-card:hover .svc-arrow svg { transform: translateX(3px); }
 .svc-demo-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 14px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px; border-radius: 999px;
   background: transparent;
   border: 1.5px solid var(--accent, var(--orange));
   color: var(--accent, var(--orange));
   font-family: 'Inter', sans-serif;
-  font-size: 12px; font-weight: 700;
+  font-size: 11px; font-weight: 700;
   letter-spacing: 0.3px;
   cursor: pointer;
   text-decoration: none;
@@ -399,10 +401,10 @@ nav.scrolled {
   color: #fff;
   transform: translateY(-2px);
 }
-.svc-meta-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-@media (max-width: 600px) {
-  .svc-meta { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .svc-meta-btns { width: 100%; justify-content: flex-end; }
+.svc-meta-btns {
+  display: flex; gap: 6px; align-items: center;
+  flex: 1 1 auto; justify-content: flex-end;
+  flex-wrap: nowrap;
 }
 @keyframes pulseBtn {
   0%, 100% { box-shadow: 0 6px 20px var(--accent-bg, rgba(249,115,22,0.3)); }
