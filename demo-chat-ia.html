@@ -231,7 +231,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 </div>
 
 <footer class="demo-footer">
-  <span data-es="Chat IA por" data-en="AI Chat by">Chat IA por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-009 · <span data-es="Desde $150" data-en="From $150">Desde $150</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Chat IA por" data-en="AI Chat by">Chat IA por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-009 · <span data-es="Desde $150" data-en="From $150">Desde $150</span> · <a href="mailto:kodaraservice@gmail.com">kodaraservice@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
 
 <script>
@@ -254,7 +254,7 @@ const responses={
   'precio':'💰 El Chat IA cuesta entre $150 y $350 dependiendo de las funcionalidades. Incluye:<br>• Entrenamiento con tu información<br>• 1,000 conversaciones/mes<br>• Panel de control<br>• Soporte 30 días<br><br>¿Quieres una cotización exacta?',
   'tiempo':'⚡ Instalación completa en menos de 24 horas:<br>• Hora 0-4: Análisis de tu web y servicios<br>• Hora 4-12: Entrenamiento del chat<br>• Hora 12-24: Pruebas e instalación<br><br>Tu chat estaría capturando leads mañana.',
   'negocio':'🎯 El Chat IA funciona perfecto para:<br>• Clínicas y consultas (dental, médico, estética)<br>• Restaurantes y hostelería<br>• E-commerce y tiendas online<br>• Servicios profesionales<br>• Gimnasios y centros<br><br>¿Cuál es tu sector? Te digo cómo se aplicaría.',
-  'default':'Buena pregunta. Para darte una respuesta completa te recomiendo escribir a <strong>kodaraservi@gmail.com</strong> o solicitar el presupuesto en <strong>kodarase.com</strong>. ¡Te respondemos en menos de 24h! 🙌'
+  'default':'Buena pregunta. Para darte una respuesta completa te recomiendo escribir a <strong>kodaraservice@gmail.com</strong> o solicitar el presupuesto en <strong>kodarase.com</strong>. ¡Te respondemos en menos de 24h! 🙌'
 };
 function getReply(m){const t=m.toLowerCase();if(/precio|cost|cuant/.test(t))return responses.precio;if(/tiempo|instal|tarda|dura/.test(t))return responses.tiempo;if(/negoc|sirve|mi|funciona/.test(t))return responses.negocio;return responses.default}
 let open=false;
