@@ -1517,7 +1517,7 @@ function handleSubmit(e) {
   fd.append('_template', 'table');
   btn.disabled = true;
   btn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…';
-  fetch('https://formsubmit.co/ajax/kodaraservice@gmail.com', {
+  fetch('https://formsubmit.co/ajax/20f20afbdef7396ac92de0eb3cc83b25', {
     method: 'POST',
     body: fd,
     headers: { 'Accept': 'application/json' }
@@ -2027,7 +2027,7 @@ function bSubmit() {
   const sendBtn = document.querySelector('#bStep4 .bud-next');
   const originalHTML = sendBtn ? sendBtn.innerHTML : '';
   if (sendBtn) { sendBtn.disabled = true; sendBtn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…'; }
-  fetch('https://formsubmit.co/ajax/kodaraservice@gmail.com', {
+  fetch('https://formsubmit.co/ajax/20f20afbdef7396ac92de0eb3cc83b25', {
     method: 'POST',
     body: fd,
     headers: { 'Accept': 'application/json' }
