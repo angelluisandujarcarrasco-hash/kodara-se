@@ -782,6 +782,22 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   outline: none; transition: border-color 0.2s; width: 100%;
 }
 .bud-input:focus { border-color: var(--orange); }
+.bud-input.error, .extra-chip.error-shake {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  animation: shakeError 0.4s ease;
+}
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.bud-error {
+  color: #EF4444; font-size: 12px; margin-top: 6px;
+  font-family: 'Inter', sans-serif; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.bud-error::before { content: '⚠'; font-size: 14px; }
 .bud-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .svc-info-block { display: none; }
 .svc-info-block.show { display: flex; flex-direction: column; gap: 14px; margin-bottom: 16px; }
@@ -1298,7 +1314,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <div id="svcDetailFields"></div>
         <div class="bud-foot">
           <button class="bud-back" onclick="bGoStep(1)" data-es="← Atrás" data-en="← Back">← Atrás</button>
-          <button class="bud-next" onclick="bGoStep(3)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
+          <button class="bud-next" onclick="bValidateAndGo(3)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
         </div>
       </div>
 
@@ -1332,7 +1348,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         </div>
         <div class="bud-foot">
           <button class="bud-back" onclick="bGoStep(2)" data-es="← Atrás" data-en="← Back">← Atrás</button>
-          <button class="bud-next" onclick="bGoStep(4)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
+          <button class="bud-next" onclick="bValidateAndGo(4)" data-es="Siguiente →" data-en="Next →">Siguiente →</button>
         </div>
       </div>
 
@@ -1351,7 +1367,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         </div>
         <div class="bud-foot">
           <button class="bud-back" onclick="bGoStep(3)" data-es="← Atrás" data-en="← Back">← Atrás</button>
-          <button class="bud-next" onclick="bSubmit()" data-es="Enviar solicitud →" data-en="Send request →">Enviar solicitud →</button>
+          <button class="bud-next" onclick="bValidateSubmit()" data-es="Enviar solicitud →" data-en="Send request →">Enviar solicitud →</button>
         </div>
       </div>
 
@@ -1852,6 +1868,92 @@ function buildBudStep2() {
     </div>`;
   }).join('');
 }
+// ====== VALIDACIÓN POR PASO ======
+function clearBudErrors() {
+  document.querySelectorAll('.bud-input.error').forEach(el => el.classList.remove('error'));
+  document.querySelectorAll('.bud-error').forEach(el => el.remove());
+}
+function showFieldError(el, msg) {
+  el.classList.add('error');
+  const next = el.nextElementSibling;
+  if (next && next.classList.contains('bud-error')) next.remove();
+  const errEl = document.createElement('div');
+  errEl.className = 'bud-error';
+  errEl.textContent = msg;
+  el.parentNode.insertBefore(errEl, el.nextSibling);
+  el.addEventListener('input', function handler() {
+    el.classList.remove('error');
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('bud-error')) next.remove();
+    el.removeEventListener('input', handler);
+  });
+}
+function bValidateStep(n) {
+  clearBudErrors();
+  let valid = true;
+  let firstErrorEl = null;
+  const isEn = lang === 'en';
+
+  if (n === 2) {
+    bSelected.forEach(k => {
+      const goalEl = document.getElementById('d-' + k + '-goal');
+      if (goalEl && !goalEl.value.trim()) {
+        showFieldError(goalEl, isEn ? 'Please describe what you want to achieve' : 'Por favor describe tu objetivo');
+        if (!firstErrorEl) firstErrorEl = goalEl;
+        valid = false;
+      }
+    });
+  }
+  if (n === 3) {
+    const extrasSelected = document.querySelectorAll('.extra-chip.selected').length;
+    const notes = document.getElementById('extraNotes').value.trim();
+    const budget = document.getElementById('budgetRange').value;
+    if (!extrasSelected && !notes && !budget) {
+      const notesEl = document.getElementById('extraNotes');
+      showFieldError(notesEl, isEn ? 'Select an extra, choose a budget or write a note' : 'Selecciona un extra, elige presupuesto o escribe una nota');
+      if (!firstErrorEl) firstErrorEl = notesEl;
+      valid = false;
+    }
+  }
+  if (n === 4) {
+    const nameEl = document.getElementById('conName');
+    const emailEl = document.getElementById('conEmail');
+    const phoneEl = document.getElementById('conPhone');
+    if (!nameEl.value.trim()) {
+      showFieldError(nameEl, isEn ? 'Name is required' : 'El nombre es obligatorio');
+      if (!firstErrorEl) firstErrorEl = nameEl;
+      valid = false;
+    }
+    const emailVal = emailEl.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailVal) {
+      showFieldError(emailEl, isEn ? 'Email is required' : 'El email es obligatorio');
+      if (!firstErrorEl) firstErrorEl = emailEl;
+      valid = false;
+    } else if (!emailRegex.test(emailVal)) {
+      showFieldError(emailEl, isEn ? 'Enter a valid email' : 'Introduce un email válido');
+      if (!firstErrorEl) firstErrorEl = emailEl;
+      valid = false;
+    }
+    if (phoneEl.value.trim() && !/^[+]?[\d\s()-]{7,}$/.test(phoneEl.value.trim())) {
+      showFieldError(phoneEl, isEn ? 'Invalid phone format' : 'Formato de teléfono inválido');
+      if (!firstErrorEl) firstErrorEl = phoneEl;
+      valid = false;
+    }
+  }
+  if (!valid && firstErrorEl) {
+    setTimeout(() => firstErrorEl.scrollIntoView({behavior:'smooth', block:'center'}), 100);
+    firstErrorEl.focus();
+  }
+  return valid;
+}
+function bValidateAndGo(toStep) {
+  if (bValidateStep(toStep - 1)) bGoStep(toStep);
+}
+function bValidateSubmit() {
+  if (bValidateStep(4)) bSubmit();
+}
+
 function bSubmit() {
   const name = document.getElementById('conName').value.trim();
   const email = document.getElementById('conEmail').value.trim();
