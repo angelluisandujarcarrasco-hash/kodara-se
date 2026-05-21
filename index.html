@@ -1344,16 +1344,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 
       <div class="bud-step" id="bStep3">
         <div class="bud-step-title" data-es="¿Algo más?" data-en="Anything else?">¿Algo más?</div>
-        <div class="bud-step-desc" data-es="Marca lo que te interese o escribe abajo." data-en="Check what interests you or write below.">Marca lo que te interese o escribe abajo.</div>
-        <div class="extra-chips" id="extraChips">
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Versión en inglés" data-en="English version">Versión en inglés</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Integración WhatsApp" data-en="WhatsApp integration">Integración WhatsApp</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Pago online (Stripe)" data-en="Online payment (Stripe)">Pago online (Stripe)</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Google Analytics" data-en="Google Analytics">Google Analytics</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Blog / noticias" data-en="Blog / news">Blog / noticias</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Reservas online" data-en="Online bookings">Reservas online</button>
-          <button class="extra-chip" onclick="this.classList.toggle('selected')" data-es="Mantenimiento mensual" data-en="Monthly maintenance">Mantenimiento mensual</button>
-        </div>
+        <div class="bud-step-desc" data-es="Cuéntanos detalles extra, tu presupuesto y plazos." data-en="Tell us extra details, your budget and timelines.">Cuéntanos detalles extra, tu presupuesto y plazos.</div>
         <div class="bud-group">
           <div class="bud-label" data-es="¿Algo más que decirnos?" data-en="Anything else to tell us?">¿Algo más que decirnos?</div>
           <textarea class="bud-input" rows="4" id="extraNotes" data-es-ph="Detalles extra, referencias de webs que te gusten, plazos..." data-en-ph="Extra details, references of sites you like, timelines..." placeholder="Detalles extra, referencias de webs que te gusten, plazos..."></textarea>
@@ -1998,16 +1989,14 @@ function bValidateStep(n) {
     });
   }
   if (n === 3) {
-    const extrasSelected = document.querySelectorAll('.extra-chip.selected').length;
     const notes = document.getElementById('extraNotes').value.trim();
     const budget = document.getElementById('budgetRange').value;
-    if (!extrasSelected && !notes && !budget) {
+    if (!notes && !budget) {
       const notesEl = document.getElementById('extraNotes');
-      showFieldError(notesEl, isEn ? 'Select an extra, choose a budget or write a note' : 'Selecciona un extra, elige presupuesto o escribe una nota');
+      showFieldError(notesEl, isEn ? 'Choose a budget or write a note' : 'Elige presupuesto o escribe una nota');
       if (!firstErrorEl) firstErrorEl = notesEl;
       valid = false;
     } else if (notes && notes.length > 0 && notes.length < 5) {
-      // Si escribe notas pero muy cortas, exigir más detalle
       const notesEl = document.getElementById('extraNotes');
       showFieldError(notesEl, isEn ? 'Note too short (min 5 characters)' : 'Nota muy corta (mínimo 5 caracteres)');
       if (!firstErrorEl) firstErrorEl = notesEl;
@@ -2072,7 +2061,6 @@ function bSubmit() {
   const company = document.getElementById('conCompany').value;
   const notes = document.getElementById('extraNotes').value;
   const budget = document.getElementById('budgetRange').value;
-  const extras = [...document.querySelectorAll('.extra-chip.selected')].map(c => c.textContent).join(', ');
   let details = '';
   bSelected.forEach(k => {
     const s = SERVICES[k];
@@ -2088,7 +2076,6 @@ function bSubmit() {
   fd.append('empresa', company || 'No indicado');
   fd.append('servicios', svcs);
   fd.append('detalles', details);
-  fd.append('extras', extras || 'Ninguno');
   fd.append('presupuesto', budget || 'Sin especificar');
   fd.append('notas', notes || 'Sin notas');
   fd.append('_subject', 'Solicitud Kodara — ' + name + ' — ' + svcs);
