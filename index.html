@@ -1397,7 +1397,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <div id="budSuccess">
         <div style="width:64px;height:64px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--green);font-size:24px">✓</div>
         <div style="font-size:22px;font-weight:900;margin-bottom:10px" data-es="¡Solicitud enviada!" data-en="Request sent!">¡Solicitud enviada!</div>
-        <div style="font-size:14px;color:var(--text-2);max-width:420px;margin:0 auto 28px;line-height:1.7" data-es="Te abrimos tu Gmail con todo escrito. Solo dale al botón 'Enviar' en Gmail y nos llega tu solicitud. Te respondemos en menos de 24h." data-en="We opened your Gmail with everything written. Just click 'Send' in Gmail and we'll receive your request. We respond within 24h.">Te abrimos tu Gmail con todo escrito. Solo dale al botón "Enviar" en Gmail y nos llega tu solicitud. Te respondemos en menos de 24h.</div>
+        <div style="font-size:14px;color:var(--text-2);max-width:380px;margin:0 auto 28px;line-height:1.7" data-es="Te respondemos en menos de 24h con una propuesta personalizada a kodaraservice@gmail.com" data-en="We'll respond within 24h with a custom proposal to kodaraservice@gmail.com">Te respondemos en menos de 24h con una propuesta personalizada a kodaraservice@gmail.com</div>
         <button onclick="closeBudget()" class="cta-btn" data-es="Cerrar" data-en="Close">Cerrar</button>
       </div>
 
@@ -1540,21 +1540,32 @@ function handleSubmit(e) {
   fd.append('_template', 'table');
   btn.disabled = true;
   btn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…';
-  // Construir mensaje formateado
-  const subject = 'Nuevo contacto Kodara SE — ' + name + ' — ' + svc;
-  const bodyText = 'Nombre: ' + name + '\nEmail: ' + email + '\nServicio: ' + svc + '\n\nMensaje:\n' + msg;
-  // Backup AJAX a FormSubmit (sin bloquear)
+  // Añadir _replyto para que el reply vaya al cliente
+  fd.append('_replyto', email);
+  fd.append('_autoresponse', 'Gracias por contactar Kodara SE. Hemos recibido tu mensaje y te responderemos en menos de 24 horas. — Kodara Service Enterprise');
+  // Envío silencioso
   fetch('https://formsubmit.co/ajax/kodaraservice@gmail.com', {
     method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
-  }).catch(() => {});
-  // Abrir Gmail Web compose con todo rellenado
-  const gmailURL = 'https://mail.google.com/mail/?view=cm&fs=1&to=kodaraservice@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
-  window.open(gmailURL, '_blank', 'noopener');
-  // Mostrar éxito
-  btn.innerHTML = lang === 'en' ? '✓ Gmail opened — click Send' : '✓ Gmail abierto — dale a Enviar';
-  btn.style.background = '#10B981';
-  form.reset();
-  setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; btn.disabled = false; }, 5000);
+  })
+    .then(r => r.json())
+    .then(data => {
+      console.log('FormSubmit response:', data);
+      if (data && (data.success === 'true' || data.success === true)) {
+        btn.innerHTML = lang === 'en' ? '✓ Sent — we respond in <24h' : '✓ Enviado — respondemos en <24h';
+        btn.style.background = '#10B981';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; btn.disabled = false; }, 5000);
+      } else {
+        throw new Error(data && data.message ? data.message : 'Error');
+      }
+    })
+    .catch(err => {
+      console.error('FormSubmit error:', err);
+      btn.disabled = false;
+      btn.innerHTML = lang === 'en' ? '⚠ Error — try again' : '⚠ Error — reintentar';
+      btn.style.background = '#EF4444';
+      setTimeout(() => { btn.innerHTML = originalBtnHTML; btn.style.background = ''; }, 4000);
+    });
 }
 
 /* ====== SERVICE DATA ====== */
@@ -2087,29 +2098,32 @@ function bSubmit() {
   const sendBtn = document.querySelector('#bStep4 .bud-next');
   const originalHTML = sendBtn ? sendBtn.innerHTML : '';
   if (sendBtn) { sendBtn.disabled = true; sendBtn.innerHTML = lang === 'en' ? 'Sending…' : 'Enviando…'; }
-  // Construir mensaje formateado para Gmail
-  const bodyText =
-    '=== SOLICITUD KODARA SE ===\n\n' +
-    'CLIENTE: ' + name + '\n' +
-    'EMAIL: ' + email + '\n' +
-    'TELÉFONO: ' + (phone || 'No indicado') + '\n' +
-    'EMPRESA: ' + (company || 'No indicado') + '\n\n' +
-    'SERVICIOS: ' + svcs + '\n\n' +
-    '=== DETALLES ===' + details + '\n' +
-    '=== EXTRAS ===\n' + (extras || 'Ninguno') + '\n\n' +
-    'PRESUPUESTO: ' + (budget || 'Sin especificar') + '\n\n' +
-    'NOTAS:\n' + (notes || 'Sin notas');
-  const subject = 'Solicitud Kodara — ' + name + ' — ' + svcs;
-  // Backup AJAX a FormSubmit (no bloqueamos al usuario por esto)
+  // Añadir _replyto para que el reply vaya al cliente (más legítimo, menos spam)
+  fd.append('_replyto', email);
+  fd.append('_autoresponse', 'Gracias por contactar Kodara SE. Hemos recibido tu solicitud y te responderemos en menos de 24 horas con una propuesta personalizada. — Kodara Service Enterprise');
+  // Envío silencioso a FormSubmit
   fetch('https://formsubmit.co/ajax/kodaraservice@gmail.com', {
     method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
-  }).catch(() => {});
-  // Abrir Gmail Web compose en pestaña nueva con todo rellenado
-  const gmailURL = 'https://mail.google.com/mail/?view=cm&fs=1&to=kodaraservice@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
-  window.open(gmailURL, '_blank', 'noopener');
-  // Mostrar éxito
-  document.getElementById('bStep4').style.display = 'none';
-  document.getElementById('budSuccess').classList.add('show');
+  })
+    .then(r => r.json())
+    .then(data => {
+      console.log('FormSubmit response:', data);
+      if (data && (data.success === 'true' || data.success === true)) {
+        document.getElementById('bStep4').style.display = 'none';
+        document.getElementById('budSuccess').classList.add('show');
+      } else {
+        throw new Error(data && data.message ? data.message : 'Error');
+      }
+    })
+    .catch(err => {
+      console.error('FormSubmit error:', err);
+      if (sendBtn) {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = lang === 'en' ? '⚠ Error — try again' : '⚠ Error — reintentar';
+        sendBtn.style.background = '#EF4444';
+        setTimeout(() => { sendBtn.innerHTML = originalHTML; sendBtn.style.background = ''; }, 4000);
+      }
+    });
 }
 
 /* ====== INIT ====== */
