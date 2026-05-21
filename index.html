@@ -343,7 +343,7 @@ nav.scrolled {
 .svc-meta {
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 16px; border-top: 1px solid var(--border);
-  margin-top: auto;
+  margin-top: auto; gap: 12px;
 }
 .svc-price {
   font-family: 'JetBrains Mono', monospace;
@@ -351,17 +351,40 @@ nav.scrolled {
   color: var(--accent, var(--orange));
 }
 .svc-arrow {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent, var(--orange));
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 20px var(--accent-bg, rgba(249,115,22,0.3));
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.svc-arrow svg { width: 14px; height: 14px; color: #fff; transition: transform 0.25s; flex-shrink: 0; }
+.svc-arrow::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+  opacity: 0; transition: opacity 0.25s;
 }
 .svc-card:hover .svc-arrow {
-  background: var(--accent, var(--orange));
-  border-color: var(--accent, var(--orange));
-  transform: rotate(-45deg);
+  transform: translateX(4px) scale(1.06);
+  box-shadow: 0 10px 30px var(--accent-bg, rgba(249,115,22,0.5));
+  filter: brightness(1.15);
 }
-.svc-card:hover .svc-arrow svg { color: #fff; }
+.svc-card:hover .svc-arrow::before { opacity: 1; }
+.svc-card:hover .svc-arrow svg { transform: translateX(3px); }
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 6px 20px var(--accent-bg, rgba(249,115,22,0.3)); }
+  50% { box-shadow: 0 6px 24px var(--accent-bg, rgba(249,115,22,0.5)); }
+}
+.svc-arrow { animation: pulseBtn 2.8s ease-in-out infinite; }
 
 /* Bento sizes */
 .svc-1 { grid-column: span 6; --accent: var(--orange); --accent-bg: rgba(249,115,22,0.1); }
@@ -926,7 +949,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Web profesional con animaciones GSAP, diseño a medida y optimizada para convertir visitas en clientes. Lista en 72 horas." data-en="Professional website with GSAP animations, custom design and optimized to convert visitors into customers. Ready in 72 hours.">Web profesional con animaciones GSAP, diseño a medida y optimizada para convertir visitas en clientes. Lista en 72 horas.</p>
         <div class="svc-meta">
           <span class="svc-price">$900 — $2,000</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -937,7 +960,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Entrega en 24-48 horas." data-en="Your Instagram profile becomes a professional website with your real photos, colors and services. Delivered in 24-48 hours.">Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Entrega en 24-48 horas.</p>
         <div class="svc-meta">
           <span class="svc-price">$200 — $1,000</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -948,7 +971,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Detectamos qué anuncios pierden dinero. Entregamos anuncios reescritos listos para lanzar en 48h." data-en="We detect which ads lose money. We deliver rewritten ads ready to launch in 48h.">Detectamos qué anuncios pierden dinero. Entregamos anuncios reescritos listos para lanzar en 48h.</p>
         <div class="svc-meta">
           <span class="svc-price">$200 — $800</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -959,7 +982,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Informe con puntuación 0-100 y plan de acción priorizado. Entrega en 48 horas." data-en="Report with 0-100 score and prioritized action plan. Delivery in 48 hours.">Informe con puntuación 0-100 y plan de acción priorizado. Entrega en 48 horas.</p>
         <div class="svc-meta">
           <span class="svc-price">$200 — $700</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -970,7 +993,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Emails, reportes y seguimiento con n8n. Funciona 24/7. Ahorra 3+ horas diarias." data-en="Emails, reports and follow-ups with n8n. Runs 24/7. Save 3+ hours daily.">Emails, reportes y seguimiento con n8n. Funciona 24/7. Ahorra 3+ horas diarias.</p>
         <div class="svc-meta">
           <span class="svc-price">$1,000 — $10,000+</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -981,7 +1004,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Análisis completo: web, redes, oferta, precios vs competencia. Informe con puntuación por área y plan priorizado." data-en="Complete analysis: web, social, offer, prices vs competition. Report with score by area and prioritized plan.">Análisis completo: web, redes, oferta, precios vs competencia. Informe con puntuación por área y plan priorizado.</p>
         <div class="svc-meta">
           <span class="svc-price">$500 — $3,000</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -992,7 +1015,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Subes tus facturas PDF y en 24h tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto." data-en="Upload your PDF invoices and in 24h you get a visual dashboard with income, expenses, VAT and net profit.">Subes tus facturas PDF y en 24h tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto.</p>
         <div class="svc-meta">
           <span class="svc-price">$100 — $500</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -1003,7 +1026,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado." data-en="We find businesses in your sector with weak web, analyze them and write personalized contact messages.">Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado.</p>
         <div class="svc-meta">
           <span class="svc-price">$400 — $900</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -1014,7 +1037,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Chatbot de IA en tu web que responde clientes 24/7 y captura leads automáticamente mientras duermes." data-en="AI chatbot on your website that answers clients 24/7 and captures leads automatically while you sleep.">Chatbot de IA en tu web que responde clientes 24/7 y captura leads automáticamente mientras duermes.</p>
         <div class="svc-meta">
           <span class="svc-price">$150 — $350</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
@@ -1025,7 +1048,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <p data-es="Marketing completo en Instagram, TikTok, YouTube y Facebook con videos generados por IA. Para que el mundo conozca tu negocio." data-en="Complete marketing on Instagram, TikTok, YouTube and Facebook with AI-generated videos. So the world knows your business.">Marketing completo en Instagram, TikTok, YouTube y Facebook con videos generados por IA. Para que el mundo conozca tu negocio.</p>
         <div class="svc-meta">
           <span class="svc-price">$147 — $497</span>
-          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </article>
 
