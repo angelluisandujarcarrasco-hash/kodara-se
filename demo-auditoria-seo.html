@@ -193,6 +193,9 @@ img{max-width:100%;display:block}
 /* FOOTER */
 .demo-footer{background:var(--bg-2);border-top:1px solid var(--border);padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
 .demo-footer a{color:var(--orange);font-family:'JetBrains Mono',monospace}
+.lang-toggle{display:inline-flex;gap:4px;background:var(--bg-2);border:1px solid var(--border);border-radius:999px;padding:3px}
+.lang-btn{background:transparent;border:none;color:var(--text-3);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;transition:all 0.2s}
+.lang-btn.active{background:var(--orange);color:#fff}
 
 @media(max-width:900px){
   .exec-grid{grid-template-columns:1fr;gap:32px;text-align:center}
@@ -214,21 +217,24 @@ img{max-width:100%;display:block}
   <a href="https://kodarase.com" class="topnav-logo" style="cursor:pointer;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" title="Volver al inicio">
     <img src="logo-kodara.jpeg" alt="Kodara SE">
     <span>Kodara</span><span style="font-size:12px">SE</span>
-    <span style="color:var(--text-3);font-weight:400;margin-left:8px">/ Auditoría SEO Premium</span>
+    <span style="color:var(--text-3);font-weight:400;margin-left:8px" data-es="/ Auditoría SEO Premium" data-en="/ Premium SEO Audit">/ Auditoría SEO Premium</span>
   </a>
-  <div class="live-badge"><div class="live-dot"></div>DATOS REALES VERIFICADOS · MAYO 2026</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <div class="live-badge"><div class="live-dot"></div><span data-es="DATOS REALES VERIFICADOS · MAYO 2026" data-en="VERIFIED REAL DATA · MAY 2026">DATOS REALES VERIFICADOS · MAYO 2026</span></div>
+  </div>
 </div>
 
 <div class="hero-banner">
   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_203647_8a747412-699b-4b8b-a124-0ba86bb2e5cb.png" alt="Auditoría SEO Premium">
   <div class="hero-content">
-    <div class="hero-tag">// KSE-004 · AUDITORÍA SEO PREMIUM</div>
-    <h1 class="hero-title">Auditoría SEO <span class="grad">Profesional</span></h1>
+    <div class="hero-tag" data-es="// KSE-004 · AUDITORÍA SEO PREMIUM" data-en="// KSE-004 · PREMIUM SEO AUDIT">// KSE-004 · AUDITORÍA SEO PREMIUM</div>
+    <h1 class="hero-title"><span data-es="Auditoría SEO" data-en="SEO Audit">Auditoría SEO</span> <span class="grad" data-es="Profesional" data-en="Professional">Profesional</span></h1>
     <div class="hero-meta">
       <span>🏢 La Vasca Deli Miami</span>
-      <span>📅 Mayo 2026</span>
-      <span>⚡ Entrega 48h</span>
-      <span>📊 +20 métricas analizadas</span>
+      <span data-es="📅 Mayo 2026" data-en="📅 May 2026">📅 Mayo 2026</span>
+      <span data-es="⚡ Entrega 48h" data-en="⚡ 48h delivery">⚡ Entrega 48h</span>
+      <span data-es="📊 +20 métricas analizadas" data-en="📊 +20 metrics analyzed">📊 +20 métricas analizadas</span>
     </div>
   </div>
 </div>
@@ -239,12 +245,12 @@ img{max-width:100%;display:block}
   <div class="exec-summary">
     <div class="exec-header">
       <div>
-        <div class="exec-tag">// RESUMEN EJECUTIVO</div>
-        <div class="exec-title">Diagnóstico general del sitio</div>
+        <div class="exec-tag" data-es="// RESUMEN EJECUTIVO" data-en="// EXECUTIVE SUMMARY">// RESUMEN EJECUTIVO</div>
+        <div class="exec-title" data-es="Diagnóstico general del sitio" data-en="General site diagnosis">Diagnóstico general del sitio</div>
       </div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);text-align:right">
-        <div>Reporte ID: KSE-004-2026-LVD-0518</div>
-        <div>Auditor: Kodara SE</div>
+        <div data-es="Reporte ID: KSE-004-2026-LVD-0518" data-en="Report ID: KSE-004-2026-LVD-0518">Reporte ID: KSE-004-2026-LVD-0518</div>
+        <div data-es="Auditor: Kodara SE" data-en="Auditor: Kodara SE">Auditor: Kodara SE</div>
       </div>
     </div>
     <div class="exec-grid">
@@ -267,8 +273,8 @@ img{max-width:100%;display:block}
       <div class="exec-info">
         <div class="url">lavascadelimiami.com</div>
         <div class="biz">📍 3407 SW 8th St, Miami, FL 33135 · ☎ (786) 334-0873</div>
-        <h1>Puntuación SEO: Crítica</h1>
-        <p>La Vasca Deli tiene un producto auténtico y un local prime en Calle 8, pero su web es <strong style="color:var(--text)">prácticamente invisible para Google</strong>. Sin meta tags, sin estructura de contenido y sin blog, pierde <strong style="color:var(--orange)">cientos de búsquedas mensuales</strong> de "restaurante español miami" que su competencia sí captura.</p>
+        <h1 data-es="Puntuación SEO: Crítica" data-en="SEO Score: Critical">Puntuación SEO: Crítica</h1>
+        <p data-es='La Vasca Deli tiene un producto auténtico y un local prime en Calle 8, pero su web es prácticamente invisible para Google. Sin meta tags, sin estructura de contenido y sin blog, pierde cientos de búsquedas mensuales de "restaurante español miami" que su competencia sí captura.' data-en='La Vasca Deli has an authentic product and a prime location on Calle 8, but its website is practically invisible to Google. With no meta tags, no content structure and no blog, it loses hundreds of monthly searches for "spanish restaurant miami" that its competition does capture.'>La Vasca Deli tiene un producto auténtico y un local prime en Calle 8, pero su web es <strong style="color:var(--text)">prácticamente invisible para Google</strong>. Sin meta tags, sin estructura de contenido y sin blog, pierde <strong style="color:var(--orange)">cientos de búsquedas mensuales</strong> de "restaurante español miami" que su competencia sí captura.</p>
       </div>
     </div>
   </div>
@@ -278,57 +284,57 @@ img{max-width:100%;display:block}
     <div class="qstat">
       <div class="qstat-icon">📉</div>
       <div class="qstat-val" style="color:var(--red)">6</div>
-      <div class="qstat-lbl">Errores críticos</div>
-      <div class="qstat-sub">Bloquean tu visibilidad</div>
+      <div class="qstat-lbl" data-es="Errores críticos" data-en="Critical errors">Errores críticos</div>
+      <div class="qstat-sub" data-es="Bloquean tu visibilidad" data-en="Blocking your visibility">Bloquean tu visibilidad</div>
     </div>
     <div class="qstat">
       <div class="qstat-icon">⚠️</div>
       <div class="qstat-val" style="color:var(--yellow)">4</div>
-      <div class="qstat-lbl">Advertencias</div>
-      <div class="qstat-sub">Mejorables</div>
+      <div class="qstat-lbl" data-es="Advertencias" data-en="Warnings">Advertencias</div>
+      <div class="qstat-sub" data-es="Mejorables" data-en="Improvable">Mejorables</div>
     </div>
     <div class="qstat">
       <div class="qstat-icon">📊</div>
       <div class="qstat-val" style="color:var(--orange)">~6,000</div>
-      <div class="qstat-lbl">Búsquedas/mes</div>
-      <div class="qstat-sub">Que estás perdiendo</div>
+      <div class="qstat-lbl" data-es="Búsquedas/mes" data-en="Searches/mo">Búsquedas/mes</div>
+      <div class="qstat-sub" data-es="Que estás perdiendo" data-en="That you are losing">Que estás perdiendo</div>
     </div>
     <div class="qstat">
       <div class="qstat-icon">🎯</div>
       <div class="qstat-val" style="color:var(--green)">+340%</div>
-      <div class="qstat-lbl">Tráfico potencial</div>
-      <div class="qstat-sub">En 8-12 semanas</div>
+      <div class="qstat-lbl" data-es="Tráfico potencial" data-en="Potential traffic">Tráfico potencial</div>
+      <div class="qstat-sub" data-es="En 8-12 semanas" data-en="In 8-12 weeks">En 8-12 semanas</div>
     </div>
   </div>
 
   <!-- BREAKDOWN POR ÁREA -->
   <div class="mini-grid">
     <div class="mini"><div class="mini-val" style="color:var(--red)">0/10</div><div class="mini-lbl">Meta Tags</div></div>
-    <div class="mini"><div class="mini-val" style="color:var(--red)">28</div><div class="mini-lbl">Rendimiento</div></div>
-    <div class="mini"><div class="mini-val" style="color:var(--yellow)">61</div><div class="mini-lbl">Accesibilidad</div></div>
-    <div class="mini"><div class="mini-val" style="color:var(--yellow)">52</div><div class="mini-lbl">Buenas prácticas</div></div>
-    <div class="mini"><div class="mini-val" style="color:var(--red)">22</div><div class="mini-lbl">SEO técnico</div></div>
-    <div class="mini"><div class="mini-val" style="color:var(--green)">✓</div><div class="mini-lbl">Formulario</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--red)">28</div><div class="mini-lbl" data-es="Rendimiento" data-en="Performance">Rendimiento</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--yellow)">61</div><div class="mini-lbl" data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--yellow)">52</div><div class="mini-lbl" data-es="Buenas prácticas" data-en="Best practices">Buenas prácticas</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--red)">22</div><div class="mini-lbl" data-es="SEO técnico" data-en="Technical SEO">SEO técnico</div></div>
+    <div class="mini"><div class="mini-val" style="color:var(--green)">✓</div><div class="mini-lbl" data-es="Formulario" data-en="Form">Formulario</div></div>
   </div>
 
   <!-- PAGE SPEED -->
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">⚡</div>Análisis de velocidad de carga</div>
-        <div class="section-sub">Google penaliza webs que cargan en más de 3 segundos</div>
+        <div class="section-title"><div class="section-icon">⚡</div><span data-es="Análisis de velocidad de carga" data-en="Loading speed analysis">Análisis de velocidad de carga</span></div>
+        <div class="section-sub" data-es="Google penaliza webs que cargan en más de 3 segundos" data-en="Google penalizes websites that load in more than 3 seconds">Google penaliza webs que cargan en más de 3 segundos</div>
       </div>
-      <div class="section-badge bad">CRÍTICO</div>
+      <div class="section-badge bad" data-es="CRÍTICO" data-en="CRITICAL">CRÍTICO</div>
     </div>
     <div class="speed-wrap">
       <div class="speed-head">
         <div>
           <div class="speed-score">8.2s</div>
-          <div class="speed-label">TIEMPO TOTAL DE CARGA</div>
+          <div class="speed-label" data-es="TIEMPO TOTAL DE CARGA" data-en="TOTAL LOAD TIME">TIEMPO TOTAL DE CARGA</div>
         </div>
         <div style="text-align:right;font-size:12px;color:var(--text-2)">
-          <div style="color:var(--green)">⚡ Objetivo: &lt; 2.5s</div>
-          <div style="color:var(--red);margin-top:4px">3.3× más lento que la competencia</div>
+          <div style="color:var(--green)" data-es="⚡ Objetivo: < 2.5s" data-en="⚡ Target: < 2.5s">⚡ Objetivo: &lt; 2.5s</div>
+          <div style="color:var(--red);margin-top:4px" data-es="3.3× más lento que la competencia" data-en="3.3× slower than the competition">3.3× más lento que la competencia</div>
         </div>
       </div>
       <div class="timeline-row">
@@ -347,18 +353,18 @@ img{max-width:100%;display:block}
         <div class="timeline-val" style="color:var(--orange)">3.4s</div>
       </div>
       <div class="timeline-row">
-        <div class="timeline-label">Imágenes cargadas</div>
+        <div class="timeline-label" data-es="Imágenes cargadas" data-en="Images loaded">Imágenes cargadas</div>
         <div class="timeline"><div class="timeline-fill" style="width:75%;background:linear-gradient(90deg,#EF4444,#B91C1C)"></div></div>
         <div class="timeline-val" style="color:var(--red)">6.1s</div>
       </div>
       <div class="timeline-row">
-        <div class="timeline-label">Carga completa</div>
+        <div class="timeline-label" data-es="Carga completa" data-en="Full load">Carga completa</div>
         <div class="timeline"><div class="timeline-fill" style="width:100%;background:linear-gradient(90deg,#DC2626,#7F1D1D)"></div></div>
         <div class="timeline-val" style="color:var(--red)">8.2s</div>
       </div>
     </div>
     <div style="margin-top:16px;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7">
-      <strong style="color:var(--red)">⚠ Impacto en negocio:</strong> El 53% de visitantes abandona webs que cargan en más de 3 segundos. La Vasca pierde aproximadamente <strong style="color:var(--orange)">130 visitas/mes</strong> solo por esto.
+      <strong style="color:var(--red)" data-es="⚠ Impacto en negocio:" data-en="⚠ Business impact:">⚠ Impacto en negocio:</strong> <span data-es="El 53% de visitantes abandona webs que cargan en más de 3 segundos. La Vasca pierde aproximadamente 130 visitas/mes solo por esto." data-en="53% of visitors abandon websites that load in more than 3 seconds. La Vasca loses approximately 130 visits/mo just because of this.">El 53% de visitantes abandona webs que cargan en más de 3 segundos. La Vasca pierde aproximadamente <strong style="color:var(--orange)">130 visitas/mes</strong> solo por esto.</span>
     </div>
   </div>
 
@@ -366,10 +372,10 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">📱</div>Comparativa Móvil vs Desktop</div>
-        <div class="section-sub">El 67% de búsquedas locales se hacen en móvil</div>
+        <div class="section-title"><div class="section-icon">📱</div><span data-es="Comparativa Móvil vs Desktop" data-en="Mobile vs Desktop comparison">Comparativa Móvil vs Desktop</span></div>
+        <div class="section-sub" data-es="El 67% de búsquedas locales se hacen en móvil" data-en="67% of local searches are made on mobile">El 67% de búsquedas locales se hacen en móvil</div>
       </div>
-      <div class="section-badge bad">DESEQUILIBRIO GRAVE</div>
+      <div class="section-badge bad" data-es="DESEQUILIBRIO GRAVE" data-en="SEVERE IMBALANCE">DESEQUILIBRIO GRAVE</div>
     </div>
     <div class="device-grid">
       <div class="device-card">
@@ -385,7 +391,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="device-card">
         <div class="device-icon">📱</div>
-        <div class="device-name">MÓVIL</div>
+        <div class="device-name" data-es="MÓVIL" data-en="MOBILE">MÓVIL</div>
         <div style="font-size:48px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--red);line-height:1">23</div>
         <div class="device-score-bar"><div class="device-score-fill" style="width:23%;background:linear-gradient(90deg,#EF4444,#991B1B)"></div></div>
         <div class="device-metrics">
@@ -396,7 +402,7 @@ img{max-width:100%;display:block}
       </div>
     </div>
     <div style="margin-top:16px;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7">
-      <strong style="color:var(--red)">⚠ Crítico para SEO local:</strong> Google indexa primero la versión móvil. Con un score de 23/100 en móvil, La Vasca no aparece en búsquedas desde smartphones donde están el 67% de tus clientes potenciales.
+      <strong style="color:var(--red)" data-es="⚠ Crítico para SEO local:" data-en="⚠ Critical for local SEO:">⚠ Crítico para SEO local:</strong> <span data-es="Google indexa primero la versión móvil. Con un score de 23/100 en móvil, La Vasca no aparece en búsquedas desde smartphones donde están el 67% de tus clientes potenciales." data-en="Google indexes the mobile version first. With a 23/100 mobile score, La Vasca does not appear in searches from smartphones where 67% of your potential customers are.">Google indexa primero la versión móvil. Con un score de 23/100 en móvil, La Vasca no aparece en búsquedas desde smartphones donde están el 67% de tus clientes potenciales.</span>
     </div>
   </div>
 
@@ -404,69 +410,69 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">🚨</div>Errores críticos detectados</div>
-        <div class="section-sub">Bloquean tu visibilidad en Google</div>
+        <div class="section-title"><div class="section-icon">🚨</div><span data-es="Errores críticos detectados" data-en="Critical errors detected">Errores críticos detectados</span></div>
+        <div class="section-sub" data-es="Bloquean tu visibilidad en Google" data-en="Blocking your visibility on Google">Bloquean tu visibilidad en Google</div>
       </div>
-      <div class="section-badge bad">6 problemas</div>
+      <div class="section-badge bad" data-es="6 problemas" data-en="6 issues">6 problemas</div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
       <div style="flex:1">
-        <div class="issue-title">Sin Title Tag — Google no sabe cómo llamar a tu web</div>
-        <div class="issue-desc">El &lt;title&gt; es lo primero que Google lee. La Vasca no tiene uno definido, así que Google inventa uno con texto aleatorio. Resultado: nadie hace clic.</div>
-        <div class="evidence"><span>&lt;title&gt;</span> — No encontrado en el HTML</div>
-        <div class="issue-fix">→ Solución: &lt;title&gt;La Vasca Deli Miami — Restaurante Español en Calle 8&lt;/title&gt; · +22 puntos</div>
-      </div>
-    </div>
-
-    <div class="issue">
-      <div class="ic ic-bad">✕</div>
-      <div style="flex:1">
-        <div class="issue-title">Sin Meta Description — Google elige el texto por ti</div>
-        <div class="issue-desc">El meta description es el texto bajo el nombre de tu web en Google. Sin él, Google coge frases aleatorias que no convencen a nadie.</div>
-        <div class="evidence"><span>&lt;meta name="description"&gt;</span> — No encontrado</div>
-        <div class="issue-fix">→ Impacto CTR: +35% más clics · +18 puntos SEO</div>
+        <div class="issue-title" data-es="Sin Title Tag — Google no sabe cómo llamar a tu web" data-en="No Title Tag — Google does not know how to label your site">Sin Title Tag — Google no sabe cómo llamar a tu web</div>
+        <div class="issue-desc" data-es="El <title> es lo primero que Google lee. La Vasca no tiene uno definido, así que Google inventa uno con texto aleatorio. Resultado: nadie hace clic." data-en="The <title> is the first thing Google reads. La Vasca has none defined, so Google invents one with random text. Result: nobody clicks.">El &lt;title&gt; es lo primero que Google lee. La Vasca no tiene uno definido, así que Google inventa uno con texto aleatorio. Resultado: nadie hace clic.</div>
+        <div class="evidence" data-es="<title> — No encontrado en el HTML" data-en="<title> — Not found in HTML"><span>&lt;title&gt;</span> — No encontrado en el HTML</div>
+        <div class="issue-fix" data-es='→ Solución: <title>La Vasca Deli Miami — Restaurante Español en Calle 8</title> · +22 puntos' data-en='→ Solution: <title>La Vasca Deli Miami — Spanish Restaurant on Calle 8</title> · +22 points'>→ Solución: &lt;title&gt;La Vasca Deli Miami — Restaurante Español en Calle 8&lt;/title&gt; · +22 puntos</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
       <div style="flex:1">
-        <div class="issue-title">Imágenes sin Alt Text — Google no ve tus fotos</div>
-        <div class="issue-desc">12+ imágenes de platos y local sin descripción. Google no puede "leer" imágenes, necesita el texto alt. Estas fotos no aportan al SEO.</div>
-        <div class="evidence">Imágenes detectadas: 12+ · Alt text presente: <span>0</span></div>
-        <div class="issue-fix">→ Añadir alt descriptivo a cada imagen · +10 puntos</div>
+        <div class="issue-title" data-es="Sin Meta Description — Google elige el texto por ti" data-en="No Meta Description — Google picks the text for you">Sin Meta Description — Google elige el texto por ti</div>
+        <div class="issue-desc" data-es="El meta description es el texto bajo el nombre de tu web en Google. Sin él, Google coge frases aleatorias que no convencen a nadie." data-en="The meta description is the text under your site's name on Google. Without it, Google grabs random phrases that convince nobody.">El meta description es el texto bajo el nombre de tu web en Google. Sin él, Google coge frases aleatorias que no convencen a nadie.</div>
+        <div class="evidence" data-es='<meta name="description"> — No encontrado' data-en='<meta name="description"> — Not found'><span>&lt;meta name="description"&gt;</span> — No encontrado</div>
+        <div class="issue-fix" data-es="→ Impacto CTR: +35% más clics · +18 puntos SEO" data-en="→ CTR impact: +35% more clicks · +18 SEO points">→ Impacto CTR: +35% más clics · +18 puntos SEO</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
       <div style="flex:1">
-        <div class="issue-title">Sin HTTPS · Conexión no segura</div>
-        <div class="issue-desc">Chrome marca tu web como "No segura" y Google la penaliza automáticamente en el ranking. Solución: certificado SSL gratuito.</div>
-        <div class="evidence">Protocolo: <span>HTTP</span> (debería ser HTTPS)</div>
-        <div class="issue-fix">→ Instalar Let's Encrypt SSL · +8 puntos · 30 minutos de trabajo</div>
+        <div class="issue-title" data-es="Imágenes sin Alt Text — Google no ve tus fotos" data-en="Images without Alt Text — Google can't see your photos">Imágenes sin Alt Text — Google no ve tus fotos</div>
+        <div class="issue-desc" data-es='12+ imágenes de platos y local sin descripción. Google no puede "leer" imágenes, necesita el texto alt. Estas fotos no aportan al SEO.' data-en='12+ photos of dishes and venue without descriptions. Google can\'t "read" images, it needs alt text. These photos contribute nothing to SEO.'>12+ imágenes de platos y local sin descripción. Google no puede "leer" imágenes, necesita el texto alt. Estas fotos no aportan al SEO.</div>
+        <div class="evidence" data-es="Imágenes detectadas: 12+ · Alt text presente: 0" data-en="Images detected: 12+ · Alt text present: 0">Imágenes detectadas: 12+ · Alt text presente: <span>0</span></div>
+        <div class="issue-fix" data-es="→ Añadir alt descriptivo a cada imagen · +10 puntos" data-en="→ Add descriptive alt to each image · +10 points">→ Añadir alt descriptivo a cada imagen · +10 puntos</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
       <div style="flex:1">
-        <div class="issue-title">Estructura H1/H2/H3 rota</div>
-        <div class="issue-desc">Google usa los encabezados para entender de qué trata cada sección. La Vasca no tiene jerarquía clara — el contenido está sin estructura.</div>
-        <div class="evidence">H1 detectados: <span>0 correctos</span> · Estructura: desorganizada</div>
-        <div class="issue-fix">→ Crear H1: "Restaurante Español Auténtico en Calle 8 Miami" · +12 puntos</div>
+        <div class="issue-title" data-es="Sin HTTPS · Conexión no segura" data-en="No HTTPS · Insecure connection">Sin HTTPS · Conexión no segura</div>
+        <div class="issue-desc" data-es='Chrome marca tu web como "No segura" y Google la penaliza automáticamente en el ranking. Solución: certificado SSL gratuito.' data-en='Chrome flags your site as "Not Secure" and Google automatically penalizes it in rankings. Solution: free SSL certificate.'>Chrome marca tu web como "No segura" y Google la penaliza automáticamente en el ranking. Solución: certificado SSL gratuito.</div>
+        <div class="evidence" data-es="Protocolo: HTTP (debería ser HTTPS)" data-en="Protocol: HTTP (should be HTTPS)">Protocolo: <span>HTTP</span> (debería ser HTTPS)</div>
+        <div class="issue-fix" data-es="→ Instalar Let's Encrypt SSL · +8 puntos · 30 minutos de trabajo" data-en="→ Install Let's Encrypt SSL · +8 points · 30 minutes of work">→ Instalar Let's Encrypt SSL · +8 puntos · 30 minutos de trabajo</div>
       </div>
     </div>
 
     <div class="issue">
       <div class="ic ic-bad">✕</div>
       <div style="flex:1">
-        <div class="issue-title">Solo 4 páginas — contenido insuficiente</div>
-        <div class="issue-desc">La web tiene solo Home, About, Menu, Contact. Sin páginas para platos estrella, sin blog, sin eventos. La competencia con más contenido te supera.</div>
-        <div class="evidence">Páginas indexables: <span>4</span> · Competidores: 8+ páginas de media</div>
-        <div class="issue-fix">→ Crear /tapas, /vinos, /eventos, /reservas-grupo · +240 visitas/mes estimadas</div>
+        <div class="issue-title" data-es="Estructura H1/H2/H3 rota" data-en="Broken H1/H2/H3 structure">Estructura H1/H2/H3 rota</div>
+        <div class="issue-desc" data-es="Google usa los encabezados para entender de qué trata cada sección. La Vasca no tiene jerarquía clara — el contenido está sin estructura." data-en="Google uses headings to understand what each section is about. La Vasca has no clear hierarchy — content lacks structure.">Google usa los encabezados para entender de qué trata cada sección. La Vasca no tiene jerarquía clara — el contenido está sin estructura.</div>
+        <div class="evidence" data-es="H1 detectados: 0 correctos · Estructura: desorganizada" data-en="H1 detected: 0 correct · Structure: disorganized">H1 detectados: <span>0 correctos</span> · Estructura: desorganizada</div>
+        <div class="issue-fix" data-es='→ Crear H1: "Restaurante Español Auténtico en Calle 8 Miami" · +12 puntos' data-en='→ Create H1: "Authentic Spanish Restaurant on Calle 8 Miami" · +12 points'>→ Crear H1: "Restaurante Español Auténtico en Calle 8 Miami" · +12 puntos</div>
+      </div>
+    </div>
+
+    <div class="issue">
+      <div class="ic ic-bad">✕</div>
+      <div style="flex:1">
+        <div class="issue-title" data-es="Solo 4 páginas — contenido insuficiente" data-en="Only 4 pages — insufficient content">Solo 4 páginas — contenido insuficiente</div>
+        <div class="issue-desc" data-es="La web tiene solo Home, About, Menu, Contact. Sin páginas para platos estrella, sin blog, sin eventos. La competencia con más contenido te supera." data-en="The site has only Home, About, Menu, Contact. No pages for star dishes, no blog, no events. Competitors with more content beat you.">La web tiene solo Home, About, Menu, Contact. Sin páginas para platos estrella, sin blog, sin eventos. La competencia con más contenido te supera.</div>
+        <div class="evidence" data-es="Páginas indexables: 4 · Competidores: 8+ páginas de media" data-en="Indexable pages: 4 · Competitors: 8+ pages average">Páginas indexables: <span>4</span> · Competidores: 8+ páginas de media</div>
+        <div class="issue-fix" data-es="→ Crear /tapas, /vinos, /eventos, /reservas-grupo · +240 visitas/mes estimadas" data-en="→ Create /tapas, /wines, /events, /group-bookings · +240 estimated visits/mo">→ Crear /tapas, /vinos, /eventos, /reservas-grupo · +240 visitas/mes estimadas</div>
       </div>
     </div>
   </div>
@@ -475,19 +481,19 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">🔍</div>Oportunidades de palabras clave</div>
-        <div class="section-sub">Búsquedas en Google donde podrías aparecer</div>
+        <div class="section-title"><div class="section-icon">🔍</div><span data-es="Oportunidades de palabras clave" data-en="Keyword opportunities">Oportunidades de palabras clave</span></div>
+        <div class="section-sub" data-es="Búsquedas en Google donde podrías aparecer" data-en="Google searches where you could appear">Búsquedas en Google donde podrías aparecer</div>
       </div>
-      <div class="section-badge warn">6,000+ búsquedas/mes</div>
+      <div class="section-badge warn" data-es="6,000+ búsquedas/mes" data-en="6,000+ searches/mo">6,000+ búsquedas/mes</div>
     </div>
     <table class="kw-table">
-      <thead><tr><th>Keyword</th><th>Volumen/mes</th><th>Dificultad</th><th>Posición actual</th><th>Tráfico potencial</th></tr></thead>
+      <thead><tr><th>Keyword</th><th data-es="Volumen/mes" data-en="Volume/mo">Volumen/mes</th><th data-es="Dificultad" data-en="Difficulty">Dificultad</th><th data-es="Posición actual" data-en="Current position">Posición actual</th><th data-es="Tráfico potencial" data-en="Potential traffic">Tráfico potencial</th></tr></thead>
       <tbody>
-        <tr><td><strong>restaurante español miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:90%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">3,600/mes</div></td><td style="color:var(--yellow);font-family:'JetBrains Mono',monospace;font-size:12px">MEDIA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">+540/mes</td></tr>
-        <tr><td><strong>restaurante calle 8 miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:65%;background:var(--orange)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">1,200/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">+360/mes</td></tr>
-        <tr><td><strong>tapas miami little havana</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:45%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">720/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">+216/mes</td></tr>
-        <tr><td><strong>jamon iberico miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:35%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">480/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">+144/mes</td></tr>
-        <tr><td><strong>paella valenciana miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:25%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px">320/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace">No posiciona</td><td style="color:var(--green);font-weight:700">+96/mes</td></tr>
+        <tr><td><strong>restaurante español miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:90%;background:var(--green)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px" data-es="3,600/mes" data-en="3,600/mo">3,600/mes</div></td><td style="color:var(--yellow);font-family:'JetBrains Mono',monospace;font-size:12px" data-es="MEDIA" data-en="MEDIUM">MEDIA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace" data-es="No posiciona" data-en="Not ranking">No posiciona</td><td style="color:var(--green);font-weight:700" data-es="+540/mes" data-en="+540/mo">+540/mes</td></tr>
+        <tr><td><strong>restaurante calle 8 miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:65%;background:var(--orange)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px" data-es="1,200/mes" data-en="1,200/mo">1,200/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px" data-es="BAJA" data-en="LOW">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace" data-es="No posiciona" data-en="Not ranking">No posiciona</td><td style="color:var(--green);font-weight:700" data-es="+360/mes" data-en="+360/mo">+360/mes</td></tr>
+        <tr><td><strong>tapas miami little havana</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:45%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px" data-es="720/mes" data-en="720/mo">720/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px" data-es="BAJA" data-en="LOW">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace" data-es="No posiciona" data-en="Not ranking">No posiciona</td><td style="color:var(--green);font-weight:700" data-es="+216/mes" data-en="+216/mo">+216/mes</td></tr>
+        <tr><td><strong>jamon iberico miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:35%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px" data-es="480/mes" data-en="480/mo">480/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px" data-es="BAJA" data-en="LOW">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace" data-es="No posiciona" data-en="Not ranking">No posiciona</td><td style="color:var(--green);font-weight:700" data-es="+144/mes" data-en="+144/mo">+144/mes</td></tr>
+        <tr><td><strong>paella valenciana miami</strong></td><td><div class="vol-bar"><div class="vol-fill" style="width:25%;background:var(--yellow)"></div></div><div style="font-size:11px;color:var(--text-3);margin-top:4px" data-es="320/mes" data-en="320/mo">320/mes</div></td><td style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px" data-es="BAJA" data-en="LOW">BAJA</td><td style="color:var(--red);font-family:'JetBrains Mono',monospace" data-es="No posiciona" data-en="Not ranking">No posiciona</td><td style="color:var(--green);font-weight:700" data-es="+96/mes" data-en="+96/mo">+96/mes</td></tr>
       </tbody>
     </table>
   </div>
@@ -496,21 +502,21 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">⚔️</div>Competencia directa en Miami</div>
-        <div class="section-sub">Cómo te comparas con otros 3 restaurantes españoles</div>
+        <div class="section-title"><div class="section-icon">⚔️</div><span data-es="Competencia directa en Miami" data-en="Direct competition in Miami">Competencia directa en Miami</span></div>
+        <div class="section-sub" data-es="Cómo te comparas con otros 3 restaurantes españoles" data-en="How you compare to 3 other Spanish restaurants">Cómo te comparas con otros 3 restaurantes españoles</div>
       </div>
     </div>
     <table class="competitor-table">
-      <thead><tr><th>Restaurante</th><th>SEO Score</th><th>Velocidad</th><th>Páginas</th><th>Reseñas Google</th><th>Tráfico est.</th></tr></thead>
+      <thead><tr><th data-es="Restaurante" data-en="Restaurant">Restaurante</th><th>SEO Score</th><th data-es="Velocidad" data-en="Speed">Velocidad</th><th data-es="Páginas" data-en="Pages">Páginas</th><th data-es="Reseñas Google" data-en="Google Reviews">Reseñas Google</th><th data-es="Tráfico est." data-en="Est. traffic">Tráfico est.</th></tr></thead>
       <tbody>
-        <tr class="you-row"><td>La Vasca Deli (tú)</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:38%;background:var(--red)"></span></span>38</td><td style="color:var(--red)">8.2s</td><td>4</td><td style="color:var(--yellow)">4.4★ (87)</td><td style="color:var(--red);font-weight:700">~400/mes</td></tr>
-        <tr><td>Casa Juancho</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:72%;background:var(--green)"></span></span>72</td><td style="color:var(--green)">2.1s</td><td>11</td><td style="color:var(--green)">4.6★ (1,240)</td><td style="color:var(--green);font-weight:700">~3,200/mes</td></tr>
-        <tr><td>Xixón Café</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:64%;background:var(--green)"></span></span>64</td><td style="color:var(--yellow)">3.4s</td><td>8</td><td style="color:var(--green)">4.5★ (892)</td><td style="color:var(--green);font-weight:700">~2,100/mes</td></tr>
-        <tr><td>El Toro Loco</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:55%;background:var(--yellow)"></span></span>55</td><td style="color:var(--yellow)">4.2s</td><td>6</td><td style="color:var(--yellow)">4.3★ (456)</td><td style="color:var(--yellow);font-weight:700">~1,500/mes</td></tr>
+        <tr class="you-row"><td data-es="La Vasca Deli (tú)" data-en="La Vasca Deli (you)">La Vasca Deli (tú)</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:38%;background:var(--red)"></span></span>38</td><td style="color:var(--red)">8.2s</td><td>4</td><td style="color:var(--yellow)">4.4★ (87)</td><td style="color:var(--red);font-weight:700" data-es="~400/mes" data-en="~400/mo">~400/mes</td></tr>
+        <tr><td>Casa Juancho</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:72%;background:var(--green)"></span></span>72</td><td style="color:var(--green)">2.1s</td><td>11</td><td style="color:var(--green)">4.6★ (1,240)</td><td style="color:var(--green);font-weight:700" data-es="~3,200/mes" data-en="~3,200/mo">~3,200/mes</td></tr>
+        <tr><td>Xixón Café</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:64%;background:var(--green)"></span></span>64</td><td style="color:var(--yellow)">3.4s</td><td>8</td><td style="color:var(--green)">4.5★ (892)</td><td style="color:var(--green);font-weight:700" data-es="~2,100/mes" data-en="~2,100/mo">~2,100/mes</td></tr>
+        <tr><td>El Toro Loco</td><td><span class="metric-bar"><span class="metric-bar-fill" style="width:55%;background:var(--yellow)"></span></span>55</td><td style="color:var(--yellow)">4.2s</td><td>6</td><td style="color:var(--yellow)">4.3★ (456)</td><td style="color:var(--yellow);font-weight:700" data-es="~1,500/mes" data-en="~1,500/mo">~1,500/mes</td></tr>
       </tbody>
     </table>
     <div style="margin-top:20px;background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.2);border-radius:12px;padding:16px;font-size:13px;color:var(--text-2);line-height:1.7">
-      <strong style="color:var(--orange)">📊 Insight:</strong> Casa Juancho tiene 8× más tráfico que La Vasca con la mitad de calidad de producto. La diferencia es <strong style="color:var(--text)">100% SEO</strong>. Con las correcciones de esta auditoría podrías superarlos.
+      <strong style="color:var(--orange)" data-es="📊 Insight:" data-en="📊 Insight:">📊 Insight:</strong> <span data-es="Casa Juancho tiene 8× más tráfico que La Vasca con la mitad de calidad de producto. La diferencia es 100% SEO. Con las correcciones de esta auditoría podrías superarlos." data-en="Casa Juancho has 8× more traffic than La Vasca with half the product quality. The difference is 100% SEO. With these audit fixes you could surpass them.">Casa Juancho tiene 8× más tráfico que La Vasca con la mitad de calidad de producto. La diferencia es <strong style="color:var(--text)">100% SEO</strong>. Con las correcciones de esta auditoría podrías superarlos.</span>
     </div>
   </div>
 
@@ -518,23 +524,23 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">📈</div>Proyección de tráfico — 6 meses</div>
-        <div class="section-sub">Resultado estimado aplicando todas las correcciones</div>
+        <div class="section-title"><div class="section-icon">📈</div><span data-es="Proyección de tráfico — 6 meses" data-en="Traffic projection — 6 months">Proyección de tráfico — 6 meses</span></div>
+        <div class="section-sub" data-es="Resultado estimado aplicando todas las correcciones" data-en="Estimated result applying all corrections">Resultado estimado aplicando todas las correcciones</div>
       </div>
-      <div class="section-badge good">+340% potencial</div>
+      <div class="section-badge good" data-es="+340% potencial" data-en="+340% potential">+340% potencial</div>
     </div>
     <div class="projection-chart">
-      <div class="proj-bar"><div class="proj-val-top">400</div><div class="proj-bar-vis"><div class="proj-bar-fill-current" style="height:20%"></div></div><div class="proj-month">HOY</div></div>
-      <div class="proj-bar"><div class="proj-val-top">620</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:31%"></div></div><div class="proj-month">MES 1</div></div>
-      <div class="proj-bar"><div class="proj-val-top">890</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:44%"></div></div><div class="proj-month">MES 2</div></div>
-      <div class="proj-bar"><div class="proj-val-top">1,180</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:59%"></div></div><div class="proj-month">MES 3</div></div>
-      <div class="proj-bar"><div class="proj-val-top">1,420</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:71%"></div></div><div class="proj-month">MES 4</div></div>
-      <div class="proj-bar"><div class="proj-val-top">1,580</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:79%"></div></div><div class="proj-month">MES 5</div></div>
-      <div class="proj-bar"><div class="proj-val-top">1,760</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:88%"></div></div><div class="proj-month">MES 6</div></div>
+      <div class="proj-bar"><div class="proj-val-top">400</div><div class="proj-bar-vis"><div class="proj-bar-fill-current" style="height:20%"></div></div><div class="proj-month" data-es="HOY" data-en="TODAY">HOY</div></div>
+      <div class="proj-bar"><div class="proj-val-top">620</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:31%"></div></div><div class="proj-month" data-es="MES 1" data-en="MONTH 1">MES 1</div></div>
+      <div class="proj-bar"><div class="proj-val-top">890</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:44%"></div></div><div class="proj-month" data-es="MES 2" data-en="MONTH 2">MES 2</div></div>
+      <div class="proj-bar"><div class="proj-val-top">1,180</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:59%"></div></div><div class="proj-month" data-es="MES 3" data-en="MONTH 3">MES 3</div></div>
+      <div class="proj-bar"><div class="proj-val-top">1,420</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:71%"></div></div><div class="proj-month" data-es="MES 4" data-en="MONTH 4">MES 4</div></div>
+      <div class="proj-bar"><div class="proj-val-top">1,580</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:79%"></div></div><div class="proj-month" data-es="MES 5" data-en="MONTH 5">MES 5</div></div>
+      <div class="proj-bar"><div class="proj-val-top">1,760</div><div class="proj-bar-vis"><div class="proj-bar-fill-projected" style="height:88%"></div></div><div class="proj-month" data-es="MES 6" data-en="MONTH 6">MES 6</div></div>
     </div>
     <div class="proj-legend">
-      <span><span class="proj-leg-dot" style="background:#EF4444"></span>Tráfico actual</span>
-      <span><span class="proj-leg-dot" style="background:#10B981"></span>Tráfico proyectado tras correcciones</span>
+      <span><span class="proj-leg-dot" style="background:#EF4444"></span><span data-es="Tráfico actual" data-en="Current traffic">Tráfico actual</span></span>
+      <span><span class="proj-leg-dot" style="background:#10B981"></span><span data-es="Tráfico proyectado tras correcciones" data-en="Projected traffic after fixes">Tráfico proyectado tras correcciones</span></span>
     </div>
   </div>
 
@@ -542,29 +548,29 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">💰</div>ROI estimado del proyecto SEO</div>
-        <div class="section-sub">Retorno de inversión calculado con datos del sector restauración</div>
+        <div class="section-title"><div class="section-icon">💰</div><span data-es="ROI estimado del proyecto SEO" data-en="Estimated SEO project ROI">ROI estimado del proyecto SEO</span></div>
+        <div class="section-sub" data-es="Retorno de inversión calculado con datos del sector restauración" data-en="Return on investment calculated with restaurant industry data">Retorno de inversión calculado con datos del sector restauración</div>
       </div>
     </div>
     <div class="roi-grid">
       <div class="roi-card">
-        <div class="roi-label">Inversión</div>
+        <div class="roi-label" data-es="Inversión" data-en="Investment">Inversión</div>
         <div class="roi-val" style="color:var(--orange)">$500</div>
-        <div class="roi-sub">Auditoría + plan de acción</div>
+        <div class="roi-sub" data-es="Auditoría + plan de acción" data-en="Audit + action plan">Auditoría + plan de acción</div>
       </div>
       <div class="roi-card featured">
-        <div class="roi-label">Tráfico ganado/mes</div>
+        <div class="roi-label" data-es="Tráfico ganado/mes" data-en="Traffic gained/mo">Tráfico ganado/mes</div>
         <div class="roi-val" style="color:var(--green)">+1,360</div>
-        <div class="roi-sub">Visitas nuevas en mes 6</div>
+        <div class="roi-sub" data-es="Visitas nuevas en mes 6" data-en="New visits in month 6">Visitas nuevas en mes 6</div>
       </div>
       <div class="roi-card">
-        <div class="roi-label">Clientes/mes estimados</div>
+        <div class="roi-label" data-es="Clientes/mes estimados" data-en="Estimated customers/mo">Clientes/mes estimados</div>
         <div class="roi-val" style="color:var(--purple)">+40-65</div>
-        <div class="roi-sub">A 3-5% conversión típica</div>
+        <div class="roi-sub" data-es="A 3-5% conversión típica" data-en="At 3-5% typical conversion">A 3-5% conversión típica</div>
       </div>
     </div>
     <div style="margin-top:20px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:20px;font-size:13px;color:var(--text-2);line-height:1.75">
-      <strong style="color:var(--green)">💡 Cálculo:</strong> 1,360 visitas nuevas/mes × 3-5% conversión a reserva × ticket promedio $42 = <strong style="color:var(--green);font-size:16px">$1,700-$2,860 ingresos extra/mes</strong>. La auditoría se paga sola en menos de 2 semanas.
+      <strong style="color:var(--green)" data-es="💡 Cálculo:" data-en="💡 Calculation:">💡 Cálculo:</strong> <span data-es="1,360 visitas nuevas/mes × 3-5% conversión a reserva × ticket promedio $42 = $1,700-$2,860 ingresos extra/mes. La auditoría se paga sola en menos de 2 semanas." data-en="1,360 new visits/mo × 3-5% booking conversion × $42 average ticket = $1,700-$2,860 extra income/mo. The audit pays for itself in less than 2 weeks.">1,360 visitas nuevas/mes × 3-5% conversión a reserva × ticket promedio $42 = <strong style="color:var(--green);font-size:16px">$1,700-$2,860 ingresos extra/mes</strong>. La auditoría se paga sola en menos de 2 semanas.</span>
     </div>
   </div>
 
@@ -572,46 +578,46 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">📝</div>Análisis de contenido faltante</div>
-        <div class="section-sub">Páginas que tu competencia tiene y tú no</div>
+        <div class="section-title"><div class="section-icon">📝</div><span data-es="Análisis de contenido faltante" data-en="Missing content analysis">Análisis de contenido faltante</span></div>
+        <div class="section-sub" data-es="Páginas que tu competencia tiene y tú no" data-en="Pages your competition has and you don't">Páginas que tu competencia tiene y tú no</div>
       </div>
     </div>
     <div class="gap-grid">
       <div class="gap-item">
         <div class="gap-icon">🍤</div>
-        <div class="gap-title">Página de Tapas</div>
-        <div class="gap-desc">Casa Juancho tiene página dedicada con 12 tapas, fotos y precios. Posiciona en "tapas miami".</div>
-        <div class="gap-impact">+216 visitas/mes</div>
+        <div class="gap-title" data-es="Página de Tapas" data-en="Tapas Page">Página de Tapas</div>
+        <div class="gap-desc" data-es='Casa Juancho tiene página dedicada con 12 tapas, fotos y precios. Posiciona en "tapas miami".' data-en='Casa Juancho has a dedicated page with 12 tapas, photos and prices. Ranks for "tapas miami".'>Casa Juancho tiene página dedicada con 12 tapas, fotos y precios. Posiciona en "tapas miami".</div>
+        <div class="gap-impact" data-es="+216 visitas/mes" data-en="+216 visits/mo">+216 visitas/mes</div>
       </div>
       <div class="gap-item">
         <div class="gap-icon">🍷</div>
-        <div class="gap-title">Vinos Españoles</div>
-        <div class="gap-desc">Lista de vinos con maridajes. Xixón Café aparece #2 en Google por esta keyword.</div>
-        <div class="gap-impact">+180 visitas/mes</div>
+        <div class="gap-title" data-es="Vinos Españoles" data-en="Spanish Wines">Vinos Españoles</div>
+        <div class="gap-desc" data-es="Lista de vinos con maridajes. Xixón Café aparece #2 en Google por esta keyword." data-en="Wine list with pairings. Xixón Café appears #2 on Google for this keyword.">Lista de vinos con maridajes. Xixón Café aparece #2 en Google por esta keyword.</div>
+        <div class="gap-impact" data-es="+180 visitas/mes" data-en="+180 visits/mo">+180 visitas/mes</div>
       </div>
       <div class="gap-item">
         <div class="gap-icon">🎉</div>
-        <div class="gap-title">Eventos & Grupos</div>
-        <div class="gap-desc">Reservas para grupos, cumpleaños, eventos corporativos. Keyword infrautilizada.</div>
-        <div class="gap-impact">+95 visitas/mes</div>
+        <div class="gap-title" data-es="Eventos & Grupos" data-en="Events & Groups">Eventos & Grupos</div>
+        <div class="gap-desc" data-es="Reservas para grupos, cumpleaños, eventos corporativos. Keyword infrautilizada." data-en="Group bookings, birthdays, corporate events. Underutilized keyword.">Reservas para grupos, cumpleaños, eventos corporativos. Keyword infrautilizada.</div>
+        <div class="gap-impact" data-es="+95 visitas/mes" data-en="+95 visits/mo">+95 visitas/mes</div>
       </div>
       <div class="gap-item">
         <div class="gap-icon">📰</div>
-        <div class="gap-title">Blog gastronómico</div>
-        <div class="gap-desc">Recetas, historia de platos, tradición española. Google premia contenido educativo.</div>
-        <div class="gap-impact">+420 visitas/mes</div>
+        <div class="gap-title" data-es="Blog gastronómico" data-en="Gastronomy blog">Blog gastronómico</div>
+        <div class="gap-desc" data-es="Recetas, historia de platos, tradición española. Google premia contenido educativo." data-en="Recipes, dish history, Spanish tradition. Google rewards educational content.">Recetas, historia de platos, tradición española. Google premia contenido educativo.</div>
+        <div class="gap-impact" data-es="+420 visitas/mes" data-en="+420 visits/mo">+420 visitas/mes</div>
       </div>
       <div class="gap-item">
         <div class="gap-icon">📸</div>
-        <div class="gap-title">Galería de platos</div>
-        <div class="gap-desc">Página de fotografía gastronómica profesional. Reduce tasa de abandono un 25%.</div>
-        <div class="gap-impact">+120 visitas/mes</div>
+        <div class="gap-title" data-es="Galería de platos" data-en="Dish gallery">Galería de platos</div>
+        <div class="gap-desc" data-es="Página de fotografía gastronómica profesional. Reduce tasa de abandono un 25%." data-en="Professional food photography page. Reduces bounce rate by 25%.">Página de fotografía gastronómica profesional. Reduce tasa de abandono un 25%.</div>
+        <div class="gap-impact" data-es="+120 visitas/mes" data-en="+120 visits/mo">+120 visitas/mes</div>
       </div>
       <div class="gap-item">
         <div class="gap-icon">📍</div>
-        <div class="gap-title">Ubicación detallada</div>
-        <div class="gap-desc">Página con mapa, fotos del local, parking, transporte público. Mejora SEO local.</div>
-        <div class="gap-impact">+85 visitas/mes</div>
+        <div class="gap-title" data-es="Ubicación detallada" data-en="Detailed location">Ubicación detallada</div>
+        <div class="gap-desc" data-es="Página con mapa, fotos del local, parking, transporte público. Mejora SEO local." data-en="Page with map, venue photos, parking, public transport. Improves local SEO.">Página con mapa, fotos del local, parking, transporte público. Mejora SEO local.</div>
+        <div class="gap-impact" data-es="+85 visitas/mes" data-en="+85 visits/mo">+85 visitas/mes</div>
       </div>
     </div>
   </div>
@@ -620,92 +626,92 @@ img{max-width:100%;display:block}
   <div class="section-card">
     <div class="section-head">
       <div>
-        <div class="section-title"><div class="section-icon">🎯</div>Plan de acción priorizado</div>
-        <div class="section-sub">Por impacto y orden de ejecución</div>
+        <div class="section-title"><div class="section-icon">🎯</div><span data-es="Plan de acción priorizado" data-en="Prioritized action plan">Plan de acción priorizado</span></div>
+        <div class="section-sub" data-es="Por impacto y orden de ejecución" data-en="By impact and order of execution">Por impacto y orden de ejecución</div>
       </div>
     </div>
     <div class="action-list">
       <div class="action">
         <div class="action-num">01</div>
         <div>
-          <div class="action-title">Añadir Title Tag + Meta Description</div>
-          <div class="action-desc">30 minutos de trabajo. Cambio visible en Google en 48-72 horas. Aumenta el CTR un 35%.</div>
+          <div class="action-title" data-es="Añadir Title Tag + Meta Description" data-en="Add Title Tag + Meta Description">Añadir Title Tag + Meta Description</div>
+          <div class="action-desc" data-es="30 minutos de trabajo. Cambio visible en Google en 48-72 horas. Aumenta el CTR un 35%." data-en="30 minutes of work. Change visible on Google in 48-72 hours. Increases CTR by 35%.">30 minutos de trabajo. Cambio visible en Google en 48-72 horas. Aumenta el CTR un 35%.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">30 MIN</span>
-            <span class="action-tag tag-effort">FÁCIL</span>
+            <span class="action-tag tag-effort" data-es="FÁCIL" data-en="EASY">FÁCIL</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">02</div>
         <div>
-          <div class="action-title">Instalar certificado SSL (HTTPS)</div>
-          <div class="action-desc">Let's Encrypt gratuito. Quita el aviso "No seguro" de Chrome y mejora el ranking.</div>
+          <div class="action-title" data-es="Instalar certificado SSL (HTTPS)" data-en="Install SSL certificate (HTTPS)">Instalar certificado SSL (HTTPS)</div>
+          <div class="action-desc" data-es='Let\'s Encrypt gratuito. Quita el aviso "No seguro" de Chrome y mejora el ranking.' data-en='Free Let\'s Encrypt. Removes Chrome\'s "Not Secure" warning and improves ranking.'>Let's Encrypt gratuito. Quita el aviso "No seguro" de Chrome y mejora el ranking.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">30 MIN</span>
-            <span class="action-tag tag-effort">FÁCIL</span>
+            <span class="action-tag tag-effort" data-es="FÁCIL" data-en="EASY">FÁCIL</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">03</div>
         <div>
-          <div class="action-title">Alt text en las 12+ imágenes</div>
-          <div class="action-desc">Describir cada foto con keywords locales. Google indexará en búsquedas de imágenes Miami.</div>
+          <div class="action-title" data-es="Alt text en las 12+ imágenes" data-en="Alt text on 12+ images">Alt text en las 12+ imágenes</div>
+          <div class="action-desc" data-es="Describir cada foto con keywords locales. Google indexará en búsquedas de imágenes Miami." data-en="Describe each photo with local keywords. Google will index Miami image searches.">Describir cada foto con keywords locales. Google indexará en búsquedas de imágenes Miami.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">1H</span>
-            <span class="action-tag tag-effort">FÁCIL</span>
+            <span class="action-tag tag-effort" data-es="FÁCIL" data-en="EASY">FÁCIL</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">04</div>
         <div>
-          <div class="action-title">Optimizar imágenes (WebP, compresión)</div>
-          <div class="action-desc">Reducir peso de 12 imágenes de 4MB a 300KB. Velocidad de carga pasa de 8.2s a 2.5s.</div>
+          <div class="action-title" data-es="Optimizar imágenes (WebP, compresión)" data-en="Optimize images (WebP, compression)">Optimizar imágenes (WebP, compresión)</div>
+          <div class="action-desc" data-es="Reducir peso de 12 imágenes de 4MB a 300KB. Velocidad de carga pasa de 8.2s a 2.5s." data-en="Reduce 12 images from 4MB to 300KB. Load speed drops from 8.2s to 2.5s.">Reducir peso de 12 imágenes de 4MB a 300KB. Velocidad de carga pasa de 8.2s a 2.5s.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">2H</span>
-            <span class="action-tag tag-effort">MEDIO</span>
+            <span class="action-tag tag-effort" data-es="MEDIO" data-en="MEDIUM">MEDIO</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">05</div>
         <div>
-          <div class="action-title">Optimizar Google My Business</div>
-          <div class="action-desc">Verificar, añadir horarios, fotos de calidad, responder reseñas. Principal fuente de clientes locales.</div>
+          <div class="action-title" data-es="Optimizar Google My Business" data-en="Optimize Google My Business">Optimizar Google My Business</div>
+          <div class="action-desc" data-es="Verificar, añadir horarios, fotos de calidad, responder reseñas. Principal fuente de clientes locales." data-en="Verify, add hours, quality photos, reply to reviews. Main source of local customers.">Verificar, añadir horarios, fotos de calidad, responder reseñas. Principal fuente de clientes locales.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">4H</span>
-            <span class="action-tag tag-effort">MEDIO</span>
+            <span class="action-tag tag-effort" data-es="MEDIO" data-en="MEDIUM">MEDIO</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">06</div>
         <div>
-          <div class="action-title">Crear páginas /tapas /vinos /eventos</div>
-          <div class="action-desc">3 páginas nuevas optimizadas SEO. Estimado: +500 visitas/mes en 8 semanas.</div>
+          <div class="action-title" data-es="Crear páginas /tapas /vinos /eventos" data-en="Create /tapas /wines /events pages">Crear páginas /tapas /vinos /eventos</div>
+          <div class="action-desc" data-es="3 páginas nuevas optimizadas SEO. Estimado: +500 visitas/mes en 8 semanas." data-en="3 new SEO-optimized pages. Estimated: +500 visits/mo in 8 weeks.">3 páginas nuevas optimizadas SEO. Estimado: +500 visitas/mes en 8 semanas.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-h">IMPACTO ALTO</span>
+            <span class="action-tag tag-impact-h" data-es="IMPACTO ALTO" data-en="HIGH IMPACT">IMPACTO ALTO</span>
             <span class="action-tag tag-time">8H</span>
-            <span class="action-tag tag-effort">MEDIO</span>
+            <span class="action-tag tag-effort" data-es="MEDIO" data-en="MEDIUM">MEDIO</span>
           </div>
         </div>
       </div>
       <div class="action">
         <div class="action-num">07</div>
         <div>
-          <div class="action-title">Lanzar blog gastronómico</div>
-          <div class="action-desc">2 posts/mes sobre historia, recetas, tradición. Posiciona en long-tail keywords.</div>
+          <div class="action-title" data-es="Lanzar blog gastronómico" data-en="Launch gastronomy blog">Lanzar blog gastronómico</div>
+          <div class="action-desc" data-es="2 posts/mes sobre historia, recetas, tradición. Posiciona en long-tail keywords." data-en="2 posts/mo about history, recipes, tradition. Ranks for long-tail keywords.">2 posts/mes sobre historia, recetas, tradición. Posiciona en long-tail keywords.</div>
           <div class="action-meta">
-            <span class="action-tag tag-impact-m">IMPACTO MEDIO</span>
-            <span class="action-tag tag-time">RECURRENTE</span>
-            <span class="action-tag tag-effort">MEDIO</span>
+            <span class="action-tag tag-impact-m" data-es="IMPACTO MEDIO" data-en="MEDIUM IMPACT">IMPACTO MEDIO</span>
+            <span class="action-tag tag-time" data-es="RECURRENTE" data-en="RECURRING">RECURRENTE</span>
+            <span class="action-tag tag-effort" data-es="MEDIO" data-en="MEDIUM">MEDIO</span>
           </div>
         </div>
       </div>
@@ -714,25 +720,39 @@ img{max-width:100%;display:block}
 
   <!-- CTA FINAL -->
   <div class="cta-final">
-    <h2>¿Tu web también <span style="background:linear-gradient(135deg,var(--orange),#EC4899,var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">pierde clientes</span> en Google?</h2>
-    <p>Te entregamos una auditoría SEO profesional como esta en <strong style="color:var(--text)">menos de 48 horas</strong>. Sin compromiso. Sin letra pequeña. Solo data real para tomar decisiones.</p>
+    <h2><span data-es="¿Tu web también" data-en="Does your website also">¿Tu web también</span> <span style="background:linear-gradient(135deg,var(--orange),#EC4899,var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-es="pierde clientes" data-en="lose customers">pierde clientes</span> <span data-es="en Google?" data-en="on Google?">en Google?</span></h2>
+    <p data-es="Te entregamos una auditoría SEO profesional como esta en menos de 48 horas. Sin compromiso. Sin letra pequeña. Solo data real para tomar decisiones." data-en="We deliver a professional SEO audit like this in less than 48 hours. No commitment. No fine print. Only real data to make decisions.">Te entregamos una auditoría SEO profesional como esta en <strong style="color:var(--text)">menos de 48 horas</strong>. Sin compromiso. Sin letra pequeña. Solo data real para tomar decisiones.</p>
     <a href="https://kodarase.com/?budget=seo" class="cta-btn">
-      Solicitar mi auditoría SEO
+      <span data-es="Solicitar mi auditoría SEO" data-en="Request my SEO audit">Solicitar mi auditoría SEO</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <div class="cta-stats">
-      <div><div class="cta-stat-val">48h</div><div class="cta-stat-lbl">Entrega</div></div>
-      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl">Desde</div></div>
-      <div><div class="cta-stat-val">20+</div><div class="cta-stat-lbl">Métricas</div></div>
-      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl">Consulta inicial</div></div>
+      <div><div class="cta-stat-val">48h</div><div class="cta-stat-lbl" data-es="Entrega" data-en="Delivery">Entrega</div></div>
+      <div><div class="cta-stat-val">$200</div><div class="cta-stat-lbl" data-es="Desde" data-en="From">Desde</div></div>
+      <div><div class="cta-stat-val">20+</div><div class="cta-stat-lbl" data-es="Métricas" data-en="Metrics">Métricas</div></div>
+      <div><div class="cta-stat-val">$0</div><div class="cta-stat-lbl" data-es="Consulta inicial" data-en="Initial consult">Consulta inicial</div></div>
     </div>
   </div>
 
 </div>
 
 <footer class="demo-footer">
-  Auditoría SEO real por <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-004 · Datos verificados Mayo 2026 · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
+  <span data-es="Auditoría SEO real por" data-en="Real SEO Audit by">Auditoría SEO real por</span> <strong style="color:var(--text)">Kodara Service Enterprise</strong> · KSE-004 · <span data-es="Datos verificados Mayo 2026" data-en="Verified data May 2026">Datos verificados Mayo 2026</span> · <a href="mailto:kodaraservi@gmail.com">kodaraservi@gmail.com</a> · <a href="https://kodarase.com">kodarase.com</a>
 </footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(event&&event.target)event.target.classList.add('active');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!=null)el.textContent=v;
+  });
+  document.documentElement.lang=l;
+}
+</script>
 
 </body>
 </html>
