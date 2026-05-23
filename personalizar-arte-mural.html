@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalizar Arte Mural · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;
+  --border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);
+  --text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;
+  --orange:#F97316;--orange-light:#FB923C;
+  --pink:#EC4899;--purple:#7C3AED;--yellow:#F59E0B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ===== TOP NAV ===== */
+.topnav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap
+}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.topnav-back{
+  background:transparent;border:1px solid var(--border-2);color:var(--text-2);
+  font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;
+  transition:all 0.2s
+}
+.topnav-back:hover{border-color:var(--orange);color:var(--orange)}
+
+/* ===== PAGE HEADER ===== */
+.page-header{
+  position:relative;padding:80px 32px 60px;text-align:center;
+  background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),
+             radial-gradient(ellipse at bottom, rgba(249,115,22,0.08), transparent 60%),
+             var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.page-header::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask:radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask:radial-gradient(ellipse at center, black 30%, transparent 70%);
+  pointer-events:none
+}
+.page-header-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.page-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);
+  color:var(--orange);font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;
+  letter-spacing:1px;margin-bottom:20px;text-transform:uppercase
+}
+.page-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.page-title{
+  font-size:clamp(32px,5vw,56px);font-weight:900;
+  letter-spacing:-1.5px;line-height:1.12;margin-bottom:18px
+}
+.page-title .grad{
+  background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  display:inline-block;padding-bottom:0.08em
+}
+.page-sub{
+  font-size:clamp(15px,1.6vw,18px);color:var(--text-2);
+  max-width:560px;margin:0 auto;line-height:1.55
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content{
+  max-width:1100px;margin:0 auto;padding:60px 32px 100px;
+}
+
+/* ===== SUB-SERVICE CARD (compact) ===== */
+.sub-services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,260px));gap:18px;justify-content:center}
+.sub-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;overflow:hidden;
+  transition:all 0.3s ease;
+  display:flex;flex-direction:column;
+}
+.sub-card:hover{
+  transform:translateY(-4px);border-color:var(--orange);
+  box-shadow:0 12px 36px rgba(249,115,22,0.15);
+}
+.sub-card-img{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  background:var(--bg-2);
+}
+.sub-card-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:opacity 0.45s ease, transform 0.6s ease;
+}
+.sub-card-img .img-base{opacity:1;z-index:1}
+.sub-card-img .img-hover{opacity:0;z-index:2}
+.sub-card:hover .img-base{opacity:0}
+.sub-card:hover .img-hover{opacity:1;transform:scale(1.04)}
+.sub-card-badge{
+  position:absolute;top:10px;left:10px;
+  background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);
+  color:#fff;font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:700;padding:5px 10px;
+  border-radius:999px;letter-spacing:1px;text-transform:uppercase;
+  z-index:3;
+}
+.sub-card-body{padding:16px;display:flex;flex-direction:column;gap:12px}
+.sub-card-title{
+  font-size:16px;font-weight:800;letter-spacing:-0.3px;
+  line-height:1.2;text-align:center;
+}
+.sub-card-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  background:linear-gradient(135deg, var(--orange), var(--pink));
+  color:#fff;font-size:13px;font-weight:700;
+  padding:11px 18px;border-radius:999px;
+  transition:all 0.25s;
+}
+.sub-card-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+.sub-card-cta::after{content:'→';font-size:14px}
+
+/* ===== FOOTER ===== */
+.footer{
+  border-top:1px solid var(--border);
+  padding:32px;text-align:center;color:var(--text-3);font-size:13px
+}
+.footer a{color:var(--orange)}
+
+@media(max-width:640px){
+  .topnav{padding:12px 18px}
+  .page-header{padding:60px 20px 40px}
+  .main-content{padding:40px 20px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="topnav">
+  <a href="empezar-proyecto.html" class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+  <a href="empezar-proyecto.html" class="topnav-back">← Volver al catálogo</a>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Sub-servicio · Arte Mural</div>
+    <h1 class="page-title">
+      Personaliza tu <span class="grad">póster</span>.
+    </h1>
+    <p class="page-sub">
+      Tu frase, tu foto o tu diseño impreso en papel mate prémium con colgador de madera listo para colgar.
+    </p>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content">
+  <div class="sub-services">
+
+    <!-- 01 · IMPRESIÓN ARTÍSTICA -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131538_0dbf5b3a-4e95-4027-832e-e080f6c4254f.png" alt="Impresión artística">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130808_122543d5-ded5-4b05-8788-c018d2818b73.png" alt="Impresión artística en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Impresión Artística</h2>
+        <a href="arte-mural-impresion-artistica.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 02 · PÓSTERES -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131540_d703ef4c-736b-436a-841e-af4e54c52705.png" alt="Pósteres">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130810_8c7446d6-67f5-4571-91bb-3851e6eb4ad1.png" alt="Pósteres en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Pósteres</h2>
+        <a href="arte-mural-posteres.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 03 · PÓSTERES CON MARCO DE MADERA -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131543_01438790-fbae-4918-81d9-7818f4292dda.png" alt="Póster con marco de madera">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130813_a510b50f-ce1a-4c34-9374-288b8a9eee0b.png" alt="Póster con marco en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Marco de Madera</h2>
+        <a href="arte-mural-marco-madera.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 04 · PÓSTERES PRÉMIUM ENMARCADOS EN MADERA -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131546_2c58d3cd-3107-4f98-b81c-62a155a61d0b.png" alt="Póster prémium enmarcado en madera">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131746_1a9a2d01-b3b9-45c5-a7bb-247972fd6816.png" alt="Póster prémium en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Prémium Madera</h2>
+        <a href="arte-mural-premium-madera.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 05 · PÓSTERES CON MARCO DE METAL -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131549_3175f3e2-35b4-4ed9-abee-3bc71309b878.png" alt="Póster con marco de metal">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130819_848cbe6a-4682-41fe-a3ef-d048c5bfd8f9.png" alt="Póster con marco de metal en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Marco de Metal</h2>
+        <a href="arte-mural-marco-metal.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 06 · PÓSTERES CON COLGADORES -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131551_12c48e0c-c13d-430f-b78d-5a496e5b95eb.png" alt="Póster con colgadores">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130821_c2c78b5f-5d29-4c1d-951e-1e740d33c64c.png" alt="Póster con colgadores en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Con Colgadores</h2>
+        <a href="arte-mural-colgadores.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 07 · LIENZOS -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131554_d69a5888-bda1-4b42-9267-54b1093b1807.png" alt="Lienzo">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130824_070fd9a2-514c-460e-991c-93fbebee8a31.png" alt="Lienzo en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Lienzos</h2>
+        <a href="arte-mural-lienzos.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 08 · LIENZOS ENMARCADOS -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131557_a47bcb9f-f223-4c1c-95a1-e91e469b5cae.png" alt="Lienzo enmarcado">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130827_b25697d2-f1f0-4c41-b208-6ec8f35e6923.png" alt="Lienzo enmarcado en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Lienzos Enmarcados</h2>
+        <a href="arte-mural-lienzos-enmarcados.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 09 · IMPRESIÓN EN ALUMINIO -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131559_e7fde052-6657-4051-9e5f-884e4775a92b.png" alt="Impresión en aluminio">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130830_45e2b9de-0879-4e0c-adb6-1075927b4821.png" alt="Aluminio en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">En Aluminio</h2>
+        <a href="arte-mural-aluminio.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 10 · IMPRESIÓN EN PLEXIGLÁS -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131602_3242f713-c804-494f-9e77-5d5980c71342.png" alt="Impresión en plexiglás">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130832_7f55b37b-e7ac-4078-8899-d1da94149866.png" alt="Plexiglás en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">En Plexiglás</h2>
+        <a href="arte-mural-plexiglas.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 11 · IMPRESIÓN EN ESPUMA -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131605_a4800f28-d6be-4890-9f0f-2077b9170021.png" alt="Impresión en espuma">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130835_d77804ae-81f7-49c6-90b0-109afaa94d67.png" alt="Espuma en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">En Espuma</h2>
+        <a href="arte-mural-espuma.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+    <!-- 12 · IMPRESIONES EN MADERA -->
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131607_dbb1e904-1536-4649-9e69-81ba6de00481.png" alt="Impresión en madera">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130838_94c20168-a592-4f3e-b393-0cfa1b54f99e.png" alt="Madera en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">En Madera</h2>
+        <a href="arte-mural-madera.html" class="sub-card-cta">Elegir</a>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+</body>
+</html>

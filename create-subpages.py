@@ -1,0 +1,118 @@
+import os
+
+OUT_DIR = r"C:\Users\lucie\kodara-se"
+
+pages = [
+    ("arte-mural-impresion-artistica.html", "Impresión Artística", "Impresion Artistica"),
+    ("arte-mural-posteres.html", "Pósteres", "Posteres"),
+    ("arte-mural-marco-madera.html", "Pósteres con marco de madera", "Marco de Madera"),
+    ("arte-mural-premium-madera.html", "Pósteres prémium enmarcados en madera", "Premium Madera"),
+    ("arte-mural-marco-metal.html", "Pósteres con marco de metal", "Marco de Metal"),
+    ("arte-mural-colgadores.html", "Pósteres con colgadores", "Con Colgadores"),
+    ("arte-mural-lienzos.html", "Lienzos", "Lienzos"),
+    ("arte-mural-lienzos-enmarcados.html", "Lienzos enmarcados", "Lienzos Enmarcados"),
+    ("arte-mural-aluminio.html", "Impresión en aluminio", "En Aluminio"),
+    ("arte-mural-plexiglas.html", "Impresión en plexiglás", "En Plexiglas"),
+    ("arte-mural-espuma.html", "Impresión en espuma", "En Espuma"),
+    ("arte-mural-madera.html", "Impresiones en madera", "En Madera"),
+]
+
+template = '''<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{full_name} · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{{
+  --bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;
+  --border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);
+  --text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;
+  --orange:#F97316;--orange-light:#FB923C;
+  --pink:#EC4899;--purple:#7C3AED;--yellow:#F59E0B;
+}}
+*{{margin:0;padding:0;box-sizing:border-box}}
+html{{scroll-behavior:smooth}}
+body{{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}}
+::selection{{background:var(--orange);color:#fff}}
+a{{color:inherit;text-decoration:none}}
+img{{max-width:100%;display:block}}
+.topnav{{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}}
+.topnav-logo{{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}}
+.topnav-logo img{{width:36px;height:36px;border-radius:8px}}
+.topnav-logo span{{color:var(--orange);font-size:12px;font-weight:600}}
+.topnav-back{{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}}
+.topnav-back:hover{{border-color:var(--orange);color:var(--orange)}}
+.page-header{{position:relative;padding:80px 32px 60px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),radial-gradient(ellipse at bottom, rgba(249,115,22,0.08), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}}
+.page-header::before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);background-size:64px 64px;mask:radial-gradient(ellipse at center, black 30%, transparent 70%);-webkit-mask:radial-gradient(ellipse at center, black 30%, transparent 70%);pointer-events:none}}
+.page-header-inner{{position:relative;z-index:2;max-width:800px;margin:0 auto}}
+.page-tag{{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:20px;text-transform:uppercase}}
+.page-tag::before{{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}}
+.page-title{{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1.5px;line-height:1.12;margin-bottom:18px}}
+.page-title .grad{{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-bottom:0.08em}}
+.page-sub{{font-size:clamp(15px,1.6vw,18px);color:var(--text-2);max-width:560px;margin:0 auto;line-height:1.55}}
+.main-content{{max-width:1100px;margin:0 auto;padding:60px 32px 100px;min-height:40vh}}
+.placeholder{{border:2px dashed var(--border-2);border-radius:24px;padding:60px 32px;text-align:center;color:var(--text-3);font-size:14px}}
+.placeholder strong{{color:var(--orange);display:block;margin-bottom:8px;font-size:16px}}
+.footer{{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}}
+.footer a{{color:var(--orange)}}
+@media(max-width:640px){{
+  .topnav{{padding:12px 18px}}
+  .page-header{{padding:60px 20px 40px}}
+  .main-content{{padding:40px 20px 60px}}
+}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="personalizar-arte-mural.html" class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+  <a href="personalizar-arte-mural.html" class="topnav-back">← Volver a Arte Mural</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Arte Mural · {short_name}</div>
+    <h1 class="page-title">
+      Personaliza tu <span class="grad">{full_name_lower}</span>.
+    </h1>
+    <p class="page-sub">
+      Lo añadimos despacio. Tú dime qué pongo aquí primero.
+    </p>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="placeholder">
+    <strong>Aquí va el contenido de {full_name}</strong>
+    Página vacía a propósito — lista para añadir contenido cuando me lo digas.
+  </div>
+</main>
+
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+</body>
+</html>
+'''
+
+for filename, full_name, short_name in pages:
+    full_name_lower = full_name.lower()
+    content = template.format(
+        full_name=full_name,
+        full_name_lower=full_name_lower,
+        short_name=short_name,
+    )
+    out_path = os.path.join(OUT_DIR, filename)
+    with open(out_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"OK {filename}")
+
+print("\nDONE - 12 sub-pages created")

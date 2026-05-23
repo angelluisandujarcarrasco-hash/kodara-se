@@ -1,0 +1,218 @@
+"""
+Construye:
+1. arte-mural-premium-madera.html con las 3 tarjetas (doble imagen + link directo a pedido)
+2. 3 paginas pedido-premium-madera-XXX.html (basadas en pedido-marco-madera-mate-premium.html como template)
+   - Modifica el paso 'Color del marco' para tener SOLO 3 colores (Blanco, Madera natural, Negro)
+"""
+import os
+import re
+
+OUT_DIR = r"C:\Users\lucie\kodara-se"
+
+# 3 productos
+products = [
+    ("mate-premium",
+     "Póster con marco de madera prémium con papel mate prémium",
+     "Mate Premium",
+     "papel mate prémium",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183143_d9679dab-acd8-425c-aff8-b1363a6c3450.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183151_1e738066-dbc5-4de7-b894-cf5cfeaa15b0.png"),
+    ("mate-museo",
+     "Póster con marco de madera prémium con papel mate de calidad museo",
+     "Mate Museo",
+     "papel mate calidad museo",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183146_d6def062-f45a-4baa-bf87-18ccaaa5f0bb.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183154_b75050f5-456e-481a-a0d9-fddb9769e73a.png"),
+    ("semibrillante-premium",
+     "Póster con marco de madera prémium con papel semibrillante prémium",
+     "Semibrillante Premium",
+     "papel semibrillante prémium",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183149_6871b333-ddb8-4fd7-9ef1-e27d5adc1894.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_183157_d27ce945-ead6-4658-b86c-e305fe6f2b1c.png"),
+]
+
+# ============ 1. CATÁLOGO ============
+catalogo = '''<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco de Madera Prémium · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--pink:#EC4899;--purple:#7C3AED;--yellow:#F59E0B}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.topnav-back{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}
+.topnav-back:hover{border-color:var(--orange);color:var(--orange)}
+.page-header{position:relative;padding:80px 32px 60px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),radial-gradient(ellipse at bottom, rgba(249,115,22,0.08), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);background-size:64px 64px;mask:radial-gradient(ellipse at center, black 30%, transparent 70%);-webkit-mask:radial-gradient(ellipse at center, black 30%, transparent 70%);pointer-events:none}
+.page-header-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.page-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:20px;text-transform:uppercase}
+.page-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.page-title{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1.5px;line-height:1.12;margin-bottom:18px}
+.page-title .grad{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-bottom:0.08em}
+.page-sub{font-size:clamp(15px,1.6vw,18px);color:var(--text-2);max-width:560px;margin:0 auto;line-height:1.55}
+.main-content{max-width:1100px;margin:0 auto;padding:60px 32px 100px;min-height:40vh}
+.sub-services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,260px));gap:18px;justify-content:center}
+.sub-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.3s ease;display:flex;flex-direction:column}
+.sub-card:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 12px 36px rgba(249,115,22,0.15)}
+.sub-card-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--bg-2)}
+.sub-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.45s ease, transform 0.6s ease}
+.sub-card-img .img-base{opacity:1;z-index:1}
+.sub-card-img .img-hover{opacity:0;z-index:2}
+.sub-card:hover .img-base{opacity:0}
+.sub-card:hover .img-hover{opacity:1;transform:scale(1.04)}
+.sub-card-body{padding:16px;display:flex;flex-direction:column;gap:12px}
+.sub-card-title{font-size:15px;font-weight:800;letter-spacing:-0.3px;line-height:1.25;text-align:center}
+.sub-card-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-size:13px;font-weight:700;padding:11px 18px;border-radius:999px;transition:all 0.25s}
+.sub-card-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+.sub-card-cta::after{content:'→';font-size:14px}
+.footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
+.footer a{color:var(--orange)}
+@media(max-width:640px){.topnav{padding:12px 18px}.page-header{padding:60px 20px 40px}.main-content{padding:40px 20px 60px}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="personalizar-arte-mural.html" class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+  <a href="personalizar-arte-mural.html" class="topnav-back">← Volver a Arte Mural</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Arte Mural · Marco Madera Prémium</div>
+    <h1 class="page-title">
+      Personaliza tu <span class="grad">marco prémium</span>.
+    </h1>
+    <p class="page-sub">
+      Pósteres con marco de madera prémium más grueso y acabado luxury. Listos para colgar.
+    </p>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="sub-services">
+
+'''
+
+for key, full, short, lower, base, hover in products:
+    catalogo += f'''    <article class="sub-card">
+      <div class="sub-card-img">
+        <img class="img-base" src="{base}" alt="{full}">
+        <img class="img-hover" src="{hover}" alt="{full} en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">{full}</h2>
+        <a href="pedido-premium-madera-{key}.html" class="sub-card-cta">Personalizar</a>
+      </div>
+    </article>
+
+'''
+
+catalogo += '''  </div>
+</main>
+
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+</body>
+</html>
+'''
+
+with open(os.path.join(OUT_DIR, "arte-mural-premium-madera.html"), "w", encoding="utf-8") as f:
+    f.write(catalogo)
+print("OK CATÁLOGO arte-mural-premium-madera.html")
+
+
+# ============ 2. PÁGINAS DE PEDIDO ============
+template_path = os.path.join(OUT_DIR, "pedido-marco-madera-mate-premium.html")
+with open(template_path, "r", encoding="utf-8") as f:
+    template = f.read()
+
+# Bloque actual de 4 colores (con Madera oscura)
+old_frame_block = '''      <label class="frame-opt">
+        <input type="radio" name="color_marco" value="Madera natural">
+        <div class="frame-swatch" style="background:linear-gradient(135deg, #D4A977 0%, #B5854F 100%)"></div>
+        <div class="frame-label">Madera natural</div>
+      </label>
+      <label class="frame-opt">
+        <input type="radio" name="color_marco" value="Madera oscura">
+        <div class="frame-swatch" style="background:linear-gradient(135deg, #6B4423 0%, #3D2814 100%)"></div>
+        <div class="frame-label">Madera oscura</div>
+      </label>'''
+
+# Bloque nuevo de SOLO 3 colores (sin Madera oscura)
+new_frame_block = '''      <label class="frame-opt">
+        <input type="radio" name="color_marco" value="Madera natural">
+        <div class="frame-swatch" style="background:linear-gradient(135deg, #D4A977 0%, #B5854F 100%)"></div>
+        <div class="frame-label">Madera natural</div>
+      </label>'''
+
+# También cambiar grid de 4 columnas a 3
+old_grid_css = '.frame-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}'
+new_grid_css = '.frame-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}'
+
+for key, full, short, lower, base, hover in products:
+    pedido_file = f"pedido-premium-madera-{key}.html"
+    new_html = template
+
+    # 1. Cambiar bloque de colores (4 → 3)
+    new_html = new_html.replace(old_frame_block, new_frame_block)
+
+    # 2. Cambiar grid CSS (4 columnas → 3)
+    new_html = new_html.replace(old_grid_css, new_grid_css)
+
+    # 3. Title
+    new_html = re.sub(
+        r'<title>Hacer mi pedido · [^<]+</title>',
+        f'<title>Hacer mi pedido · {full} · Kodara Print</title>',
+        new_html
+    )
+
+    # 4. Topnav links (logo + back) → apuntar a arte-mural-premium-madera.html
+    new_html = new_html.replace(
+        'href="arte-mural-marco-madera.html"',
+        'href="arte-mural-premium-madera.html"'
+    )
+
+    # 5. Texto del botón Volver
+    new_html = new_html.replace(
+        '<a href="arte-mural-premium-madera.html" class="topnav-back">← Volver a Marco de Madera</a>',
+        '<a href="arte-mural-premium-madera.html" class="topnav-back">← Volver a Marco Prémium</a>'
+    )
+
+    # 6. Page tag
+    new_html = re.sub(
+        r'<div class="page-tag">Pedido · [^<]+</div>',
+        f'<div class="page-tag">Pedido · {full}</div>',
+        new_html
+    )
+
+    # 7. Web3Forms subject
+    new_html = re.sub(
+        r'value="Nuevo pedido · [^"]+ · Kodara Print"',
+        f'value="Nuevo pedido · {full} · Kodara Print"',
+        new_html
+    )
+
+    with open(os.path.join(OUT_DIR, pedido_file), "w", encoding="utf-8") as f:
+        f.write(new_html)
+    print(f"OK PEDIDO  {pedido_file}  (3 colores)")
+
+print("\nDONE — catálogo + 3 paginas de pedido (precios temporales heredados de Marco de Madera Mate Prémium)")
