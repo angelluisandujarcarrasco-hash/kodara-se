@@ -134,6 +134,11 @@ img{max-width:100%;display:block}
 }
 .sub-card-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
 .sub-card-cta::after{content:'→';font-size:14px}
+.sub-card.coming{opacity:0.55;cursor:default}
+.sub-card.coming:hover{transform:none;border-color:var(--border);box-shadow:none}
+.sub-card.coming .sub-card-img img{filter:grayscale(0.4)}
+.sub-card-soon{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);color:var(--text-2);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;padding:6px 12px;border-radius:999px;letter-spacing:1.5px;text-transform:uppercase;z-index:3;border:1px solid rgba(255,255,255,0.12)}
+.sub-card-cta-disabled{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,0.06);color:var(--text-3);font-size:13px;font-weight:700;padding:11px 18px;border-radius:999px;cursor:not-allowed;border:1px solid var(--border-2)}
 
 /* ===== FOOTER ===== */
 .footer{
@@ -226,98 +231,106 @@ img{max-width:100%;display:block}
     </article>
 
     <!-- 05 · PÓSTERES CON MARCO DE METAL -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131549_3175f3e2-35b4-4ed9-abee-3bc71309b878.png" alt="Póster con marco de metal">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130819_848cbe6a-4682-41fe-a3ef-d048c5bfd8f9.png" alt="Póster con marco de metal en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Marco de Metal</h2>
-        <a href="arte-mural-marco-metal.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 06 · PÓSTERES CON COLGADORES -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131551_12c48e0c-c13d-430f-b78d-5a496e5b95eb.png" alt="Póster con colgadores">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130821_c2c78b5f-5d29-4c1d-951e-1e740d33c64c.png" alt="Póster con colgadores en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Con Colgadores</h2>
-        <a href="arte-mural-colgadores.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 07 · LIENZOS -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131554_d69a5888-bda1-4b42-9267-54b1093b1807.png" alt="Lienzo">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130824_070fd9a2-514c-460e-991c-93fbebee8a31.png" alt="Lienzo en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Lienzos</h2>
-        <a href="arte-mural-lienzos.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 08 · LIENZOS ENMARCADOS -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131557_a47bcb9f-f223-4c1c-95a1-e91e469b5cae.png" alt="Lienzo enmarcado">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130827_b25697d2-f1f0-4c41-b208-6ec8f35e6923.png" alt="Lienzo enmarcado en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Lienzos Enmarcados</h2>
-        <a href="arte-mural-lienzos-enmarcados.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 09 · IMPRESIÓN EN ALUMINIO -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131559_e7fde052-6657-4051-9e5f-884e4775a92b.png" alt="Impresión en aluminio">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130830_45e2b9de-0879-4e0c-adb6-1075927b4821.png" alt="Aluminio en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">En Aluminio</h2>
-        <a href="arte-mural-aluminio.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 10 · IMPRESIÓN EN PLEXIGLÁS -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131602_3242f713-c804-494f-9e77-5d5980c71342.png" alt="Impresión en plexiglás">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130832_7f55b37b-e7ac-4078-8899-d1da94149866.png" alt="Plexiglás en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">En Plexiglás</h2>
-        <a href="arte-mural-plexiglas.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 11 · IMPRESIÓN EN ESPUMA -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131605_a4800f28-d6be-4890-9f0f-2077b9170021.png" alt="Impresión en espuma">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130835_d77804ae-81f7-49c6-90b0-109afaa94d67.png" alt="Espuma en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">En Espuma</h2>
-        <a href="arte-mural-espuma.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
     <!-- 12 · IMPRESIONES EN MADERA -->
-    <article class="sub-card">
+    <article class="sub-card coming">
       <div class="sub-card-img">
+        <span class="sub-card-soon">Próximamente</span>
         <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_131607_dbb1e904-1536-4649-9e69-81ba6de00481.png" alt="Impresión en madera">
         <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260523_130838_94c20168-a592-4f3e-b393-0cfa1b54f99e.png" alt="Madera en pared">
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">En Madera</h2>
-        <a href="arte-mural-madera.html" class="sub-card-cta">Elegir</a>
+        <span class="sub-card-cta-disabled">Próximamente</span>
       </div>
     </article>
 
