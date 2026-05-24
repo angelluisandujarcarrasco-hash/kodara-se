@@ -72,30 +72,13 @@ function updateCartBadge() {
   });
 }
 
-// Inyecta el icono carrito en el topnav (si hay) Y un boton flotante siempre visible
+// Inyecta SOLO el FAB flotante en bottom-right (sin icono en topnav)
 function injectCartIcon() {
-  // 1. Inyectar en topnav si existe
-  const nav = document.querySelector('.topnav');
-  if (nav && !nav.querySelector('.cart-icon')) {
-    const backBtn = nav.querySelector('.topnav-back');
-    const cartHTML = `
-      <a href="carrito.html" class="cart-icon" title="Ver carrito" aria-label="Ver carrito">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span class="cart-badge">0</span>
-      </a>
-    `;
-    if (backBtn) {
-      backBtn.insertAdjacentHTML('beforebegin', cartHTML);
-    } else {
-      nav.insertAdjacentHTML('beforeend', cartHTML);
-    }
-  }
+  // Quitar el cart-icon del topnav si existe (legacy)
+  const existingTopnavCart = document.querySelector('.topnav .cart-icon');
+  if (existingTopnavCart) existingTopnavCart.remove();
 
-  // 2. Inyectar el FAB (Floating Action Button) en bottom-right — siempre visible
+  // Inyectar el FAB (Floating Action Button) en bottom-right — siempre visible
   if (!document.querySelector('.cart-fab')) {
     const fabHTML = `
       <a href="carrito.html" class="cart-fab" title="Ver carrito" aria-label="Ver carrito">
