@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu carrito · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--pink:#EC4899;--purple:#7C3AED;--green:#10B981;--red:#EF4444}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.topnav-back{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}
+.topnav-back:hover{border-color:var(--orange);color:var(--orange)}
+
+.page-header{padding:60px 32px 30px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.page-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:18px;text-transform:uppercase}
+.page-title{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.15}
+.page-title .grad{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.wrap{max-width:980px;margin:0 auto;padding:40px 24px 80px}
+
+.empty{text-align:center;padding:80px 20px;color:var(--text-2)}
+.empty-icon{font-size:80px;margin-bottom:20px;opacity:0.4}
+.empty h2{font-size:24px;font-weight:800;margin-bottom:10px;color:var(--text)}
+.empty p{margin-bottom:24px;font-size:15px}
+.empty-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-weight:700;padding:14px 28px;border-radius:999px;transition:all 0.25s}
+.empty-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,0.35)}
+
+.cart-grid{display:grid;grid-template-columns:1fr 350px;gap:24px}
+@media(max-width:900px){.cart-grid{grid-template-columns:1fr}}
+
+.cart-items{display:flex;flex-direction:column;gap:14px}
+.cart-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center}
+.cart-item-img{width:90px;height:90px;border-radius:10px;object-fit:cover;background:var(--bg-2);border:1px solid var(--border)}
+.cart-item-info{min-width:0}
+.cart-item-title{font-weight:800;font-size:15px;margin-bottom:4px}
+.cart-item-config{font-size:12px;color:var(--text-3);margin-bottom:8px;line-height:1.5}
+.cart-item-config strong{color:var(--text-2);font-weight:600}
+.cart-item-price{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:18px;color:var(--orange)}
+.cart-item-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.qty-control{display:flex;align-items:center;gap:0;border:1px solid var(--border-2);border-radius:10px;overflow:hidden}
+.qty-btn{width:32px;height:32px;background:transparent;color:var(--text-2);border:none;cursor:pointer;font-size:16px;font-weight:800;transition:all 0.2s}
+.qty-btn:hover{background:rgba(249,115,22,0.15);color:var(--orange)}
+.qty-input{width:42px;height:32px;background:transparent;color:var(--text);border:none;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px}
+.qty-input:focus{outline:none}
+.remove-btn{background:transparent;border:1px solid rgba(239,68,68,0.3);color:#FCA5A5;font-size:11px;padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:600;transition:all 0.2s}
+.remove-btn:hover{background:rgba(239,68,68,0.1);border-color:var(--red)}
+
+.summary{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;position:sticky;top:90px;height:fit-content}
+.summary h3{font-size:18px;font-weight:800;margin-bottom:18px}
+.summary-row{display:flex;justify-content:space-between;padding:10px 0;color:var(--text-2);font-size:14px;border-bottom:1px solid var(--border)}
+.summary-row.total{border-bottom:none;padding-top:16px;font-size:18px;font-weight:800;color:var(--text)}
+.summary-row.total .amount{font-family:'JetBrains Mono',monospace;font-size:24px;background:linear-gradient(135deg, var(--orange), var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.shipping-note{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10B981;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:700;margin:14px 0}
+.checkout-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-weight:800;padding:16px 24px;border-radius:999px;border:none;cursor:pointer;width:100%;font-size:15px;font-family:inherit;transition:all 0.25s;margin-top:6px}
+.checkout-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(249,115,22,0.35)}
+.checkout-btn::after{content:'→';font-size:18px;font-weight:800}
+.continue-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text-2);border:1px solid var(--border-2);font-weight:600;padding:12px 24px;border-radius:999px;cursor:pointer;width:100%;font-size:13px;font-family:inherit;transition:all 0.25s;margin-top:10px;text-decoration:none}
+.continue-btn:hover{border-color:var(--orange);color:var(--orange)}
+
+.clear-all{display:inline-block;margin-top:14px;color:var(--text-3);font-size:11px;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit}
+.clear-all:hover{color:var(--red)}
+
+.footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
+.footer a{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+  <a href="empezar-proyecto.html" class="topnav-back">← Seguir comprando</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-tag">Tu carrito</div>
+  <h1 class="page-title">Tu <span class="grad">carrito</span></h1>
+</header>
+
+<main class="wrap" id="cart-wrap">
+  <!-- Contenido inyectado por JS -->
+</main>
+
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+function renderCart() {
+  const items = getCart();
+  const wrap = document.getElementById('cart-wrap');
+
+  if (items.length === 0) {
+    wrap.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🛒</div>
+        <h2>Tu carrito está vacío</h2>
+        <p>Agrega productos al carrito desde el catálogo y aparecerán aquí.</p>
+        <a href="empezar-proyecto.html" class="empty-cta">Ver catálogo →</a>
+      </div>
+    `;
+    return;
+  }
+
+  const subtotal = getCartTotal();
+  const itemsHTML = items.map(item => {
+    const configHTML = [
+      item.tamano ? `<strong>Tamaño:</strong> ${item.tamano}` : '',
+      item.color ? `<strong>Color:</strong> ${item.color}` : '',
+      item.orientacion ? `<strong>Orientación:</strong> ${item.orientacion}` : '',
+      item.grosor ? `<strong>Grosor:</strong> ${item.grosor}` : '',
+      item.color_marco ? `<strong>Marco:</strong> ${item.color_marco}` : '',
+      item.color_colgador ? `<strong>Colgador:</strong> ${item.color_colgador}` : '',
+      item.color_panel ? `<strong>Panel:</strong> ${item.color_panel}` : '',
+    ].filter(Boolean).join(' · ');
+
+    return `
+      <article class="cart-item" data-id="${item.id}">
+        <img class="cart-item-img" src="${item.imagen_url || 'logo-kodara.jpeg'}" alt="">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${item.producto || 'Producto'}</div>
+          <div class="cart-item-config">${configHTML || ''}</div>
+          <div class="cart-item-price">$${item.precio_num}</div>
+        </div>
+        <div class="cart-item-actions">
+          <div class="qty-control">
+            <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+            <input type="number" class="qty-input" min="1" value="${item.cantidad || 1}"
+                   onchange="setQty('${item.id}', this.value)">
+            <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+          <button type="button" class="remove-btn" onclick="removeItem('${item.id}')">Quitar</button>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  wrap.innerHTML = `
+    <div class="cart-grid">
+      <div class="cart-items">
+        ${itemsHTML}
+        <button class="clear-all" onclick="if(confirm('¿Vaciar carrito?')) { clearCart(); renderCart(); }">
+          Vaciar carrito
+        </button>
+      </div>
+      <aside class="summary">
+        <h3>Resumen del pedido</h3>
+        <div class="summary-row">
+          <span>${getCartCount()} producto${getCartCount() !== 1 ? 's' : ''}</span>
+          <span>$${subtotal}</span>
+        </div>
+        <div class="shipping-note">
+          <span>🚚</span>
+          <span>Envío gratis incluido</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span class="amount">$${subtotal}</span>
+        </div>
+        <button class="checkout-btn" onclick="window.location.href='checkout.html'">
+          Finalizar pedido
+        </button>
+        <a href="empezar-proyecto.html" class="continue-btn">Seguir comprando</a>
+      </aside>
+    </div>
+  `;
+}
+
+function changeQty(id, delta) {
+  const items = getCart();
+  const item = items.find(i => i.id === id);
+  if (item) {
+    const newQty = Math.max(1, (item.cantidad || 1) + delta);
+    updateQuantity(id, newQty);
+    renderCart();
+  }
+}
+function setQty(id, value) {
+  updateQuantity(id, value);
+  renderCart();
+}
+function removeItem(id) {
+  if (confirm('¿Quitar este producto del carrito?')) {
+    removeFromCart(id);
+    renderCart();
+  }
+}
+
+renderCart();
+</script>
+</body>
+</html>

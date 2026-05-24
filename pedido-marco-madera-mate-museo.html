@@ -220,7 +220,7 @@ img{max-width:100%;display:block}
 </header>
 
 <!-- ===== FORM ===== -->
-<form class="form-wrap" action="https://api.web3forms.com/submit" method="POST">
+<form class="form-wrap" action="#" method="POST" novalidate>
 
   <!-- Web3Forms config -->
   <input type="hidden" name="access_key" value="2e5a1c54-e4bf-41f4-b04c-7f4c30dace33">
@@ -362,115 +362,8 @@ img{max-width:100%;display:block}
     <input type="hidden" name="imagen_url" id="imagen-url" required>
   </div>
 
-  <!-- 5 · TUS DATOS DE ENVÍO -->
-  <div class="form-step">
-    <div class="step-head">
-      <div class="step-num">5</div>
-      <div class="step-title">Tus datos de envío</div>
-    </div>
-    <p class="step-sub">Necesitamos estos datos para enviarte tu pedido (los mismos que pide Gelato).</p>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre"
-          required minlength="2" maxlength="40"
-          pattern="[A-Za-zÀ-ÿñÑ\s'\-]{2,40}"
-          title="Solo letras, espacios, apóstrofes o guiones. Mínimo 2 letras.">
-      </div>
-      <div class="field">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido"
-          required minlength="2" maxlength="60"
-          pattern="[A-Za-zÀ-ÿñÑ\s'\-]{2,60}"
-          title="Solo letras, espacios, apóstrofes o guiones. Mínimo 2 letras.">
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="direccion-1">Dirección, línea 1</label>
-        <input type="text" id="direccion-1" name="direccion_1"
-          required minlength="5" maxlength="100"
-          placeholder="Calle, número"
-          title="Mínimo 5 caracteres.">
-      </div>
-      <div class="field">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email"
-          required maxlength="80"
-          pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
-          placeholder="tucorreo@ejemplo.com"
-          title="Email válido (ej: nombre@dominio.com).">
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="direccion-2">Dirección, línea 2 <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
-        <input type="text" id="direccion-2" name="direccion_2"
-          maxlength="100"
-          placeholder="Piso, puerta, escalera">
-      </div>
-      <div class="field">
-        <label for="empresa">Nombre de empresa <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
-        <input type="text" id="empresa" name="empresa" maxlength="60">
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="codigo-postal">Código postal</label>
-        <input type="text" id="codigo-postal" name="codigo_postal"
-          required minlength="3" maxlength="10"
-          pattern="[A-Za-z0-9\s\-]{3,10}"
-          placeholder="08001 / 10001 / SW1A 1AA"
-          title="Código postal válido. Letras, números o guiones.">
-      </div>
-      <div class="field">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono"
-          required minlength="7" maxlength="20"
-          pattern="[\d\s\(\)\-\+]{7,20}"
-          placeholder="+1 (201) 555-0123"
-          title="Solo números, espacios, paréntesis, guiones o +. Mínimo 7 dígitos.">
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="ciudad">Ciudad</label>
-        <input type="text" id="ciudad" name="ciudad"
-          required minlength="2" maxlength="60"
-          pattern="[A-Za-zÀ-ÿñÑ\s'\-\.]{2,60}"
-          title="Solo letras, espacios, apóstrofes o guiones.">
-      </div>
-      <div class="field">
-        <label for="estado">Estado / Provincia / Región</label>
-        <input type="text" id="estado" name="estado"
-          required minlength="2" maxlength="60"
-          pattern="[A-Za-zÀ-ÿñÑ\s'\-\.]{2,60}"
-          title="Solo letras, espacios, apóstrofes o guiones.">
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="pais">País</label>
-      <input type="text" id="pais" name="pais"
-        required minlength="2" maxlength="60"
-        pattern="[A-Za-zÀ-ÿñÑ\s'\-\.]{2,60}"
-        placeholder="España / Estados Unidos / México..."
-        title="Solo letras, espacios, apóstrofes o guiones.">
-    </div>
-
-    <div class="field">
-      <label for="notas">Notas / instrucciones <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
-      <textarea id="notas" name="notas" placeholder="¿Algo que tengamos que tener en cuenta? (color, contraste, recorte, etc.)"></textarea>
-    </div>
-  </div>
-
   <div class="form-alert" id="form-alert"></div>
-  <button type="submit" class="submit-btn" id="submit-btn">Enviar pedido</button>
+  <button type="submit" class="submit-btn" id="submit-btn">Agregar al carrito</button>
   <p class="privacy-note">Al enviar aceptas nuestra <a href="politica-privacidad.html">política de privacidad</a>. No spam, solo tu pedido.</p>
 
 </form>
@@ -697,46 +590,137 @@ img{max-width:100%;display:block}
     }
   });
 
-  // ===== FORM SUBMIT VALIDATION =====
-  const form = document.querySelector('form.form-wrap');
-  const alertBox = document.getElementById('form-alert');
+  
+// ===== ADD TO CART (reemplaza submit de Web3Forms) =====
+function getProductName() {
+  // Obtiene el nombre del producto desde el subject hidden o el page-tag
+  const subj = document.querySelector('input[name="subject"]');
+  if (subj && subj.value) {
+    return subj.value.replace('Nuevo pedido · ', '').replace(' · Kodara Print', '').trim();
+  }
+  const tag = document.querySelector('.page-tag');
+  if (tag) return tag.textContent.replace('Pedido · ', '').trim();
+  return 'Producto Kodara Print';
+}
 
-  function showAlert(msg) {
-    alertBox.textContent = '⚠ ' + msg;
-    alertBox.classList.add('show');
-    alertBox.scrollIntoView({behavior:'smooth', block:'center'});
-    setTimeout(() => alertBox.classList.remove('show'), 6000);
+const form = document.querySelector('form.form-wrap');
+const alertBox = document.getElementById('form-alert');
+const submitBtn = document.getElementById('submit-btn');
+
+function showAlert(msg){
+  if (!alertBox) { alert(msg); return; }
+  alertBox.textContent = '⚠ ' + msg;
+  alertBox.classList.add('show');
+  alertBox.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>alertBox.classList.remove('show'), 6000);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Validar selecciones obligatorias
+  const radiosByName = {};
+  form.querySelectorAll('input[type="radio"][required]').forEach(r => {
+    if (!radiosByName[r.name]) radiosByName[r.name] = r.checked;
+    else radiosByName[r.name] = radiosByName[r.name] || r.checked;
+  });
+  for (const [name, checked] of Object.entries(radiosByName)) {
+    const anyChecked = form.querySelector(`input[name="${name}"]:checked`);
+    if (!anyChecked) {
+      showAlert(`Elige una opción de ${name.replace('_', ' ')}.`);
+      return;
+    }
   }
 
-  form.addEventListener('submit', (e) => {
-    // 1. Validar tamaño seleccionado
-    const tamano = form.querySelector('[name="tamano"]');
-    if (!tamano.value) {
-      e.preventDefault();
-      showAlert('Tienes que elegir un tamaño (paso 1).');
-      tamano.focus();
-      return;
+  // Validar select de tamano
+  const tamano = form.querySelector('[name="tamano"]');
+  if (tamano && !tamano.value) {
+    showAlert('Tienes que elegir un tamaño.');
+    tamano.focus();
+    return;
+  }
+
+  // Validar imagen
+  const urlField = form.querySelector('#imagen-url');
+  if (urlField && (!urlField.value || !urlField.value.startsWith('https://res.cloudinary.com/'))) {
+    showAlert('Tienes que subir una imagen.');
+    const zone = document.getElementById('upload-zone');
+    if (zone) zone.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Validar que no esta subiendo aun
+  const zone = document.getElementById('upload-zone');
+  if (zone && zone.classList.contains('uploading')) {
+    showAlert('Espera a que termine de subirse la imagen.');
+    return;
+  }
+
+  // Construir item del carrito
+  const item = {
+    producto: getProductName(),
+    pedido_page: window.location.pathname.split('/').pop()
+  };
+
+  // Capturar todos los radios checked
+  form.querySelectorAll('input[type="radio"]:checked').forEach(r => {
+    item[r.name] = r.value;
+  });
+
+  // Capturar select
+  if (tamano && tamano.value) item.tamano = tamano.value;
+
+  // Capturar precio del precio-hidden o del data-price del option
+  const precioHidden = form.querySelector('#precio-hidden');
+  if (precioHidden && precioHidden.value) {
+    item.precio_str = precioHidden.value;
+    const match = precioHidden.value.match(/\$(\d+)/);
+    if (match) item.precio_num = parseInt(match[1]);
+  }
+
+  // Capturar imagen
+  if (urlField) item.imagen_url = urlField.value;
+
+  // Capturar notas si existen
+  const notas = form.querySelector('[name="notas"]');
+  if (notas && notas.value.trim()) item.notas_producto = notas.value.trim();
+
+  // Agregar al carrito
+  if (!item.precio_num) {
+    showAlert('No se pudo determinar el precio. Selecciona un tamaño.');
+    return;
+  }
+
+  addToCart(item);
+  showCartToast('¡Agregado al carrito!', 'Ver carrito →', 'carrito.html');
+
+  // Resetear form para permitir agregar otro
+  setTimeout(() => {
+    if (confirm('¿Agregar otro producto similar o ir al carrito?\n\nOK = Ir al carrito\nCancelar = Seguir agregando')) {
+      window.location.href = 'carrito.html';
+    } else {
+      // Reset solo imagen y notas, mantener seleccion
+      if (urlField) urlField.value = '';
+      const previewImg = document.getElementById('upload-preview');
+      const uploadIcon = document.getElementById('upload-icon');
+      const uploadText = document.getElementById('upload-text');
+      const uploadHint = document.getElementById('upload-hint');
+      const status = document.getElementById('upload-status');
+      const clearBtn = document.getElementById('upload-clear');
+      if (zone) zone.classList.remove('done', 'uploading');
+      if (uploadIcon) { uploadIcon.style.display = ''; uploadIcon.textContent = '📁'; }
+      if (uploadText) { uploadText.style.display = ''; uploadText.textContent = 'Arrastra tu imagen aquí o haz clic para elegirla'; }
+      if (uploadHint) uploadHint.style.display = '';
+      if (previewImg) { previewImg.style.display = 'none'; previewImg.src = ''; }
+      if (status) status.textContent = '';
+      if (clearBtn) clearBtn.style.display = 'none';
+      const fileInput = document.getElementById('file-input');
+      if (fileInput) fileInput.value = '';
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
-    // 2. Validar orientación
-    const orient = form.querySelector('[name="orientacion"]:checked');
-    if (!orient) {
-      e.preventDefault();
-      showAlert('Tienes que elegir orientación: vertical u horizontal (paso 2).');
-      return;
-    }
-    // 3. Validar color del marco
-    const colorMarco = form.querySelector('[name="color_marco"]:checked');
-    if (!colorMarco) {
-      e.preventDefault();
-      showAlert('Tienes que elegir el color del marco (paso 3).');
-      return;
-    }
-    // 4. Validar imagen subida a Cloudinary
-    if (!urlField.value || !urlField.value.startsWith('https://res.cloudinary.com/')) {
-      e.preventDefault();
-      showAlert('Tienes que subir una imagen (paso 3). Arrástrala o haz clic en la caja.');
-      zone.scrollIntoView({behavior:'smooth', block:'center'});
-      return;
+  }, 1200);
+});
+return;
     }
     // 5. Validar que la zona no esté en estado de subida
     if (zone.classList.contains('uploading')) {
@@ -828,5 +812,6 @@ img{max-width:100%;display:block}
   refreshLocks();
 })();
 </script>
+<script src="cart.js"></script>
 </body>
 </html>

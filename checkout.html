@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar pedido · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--pink:#EC4899;--purple:#7C3AED;--green:#10B981;--red:#EF4444}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+.topnav{position:sticky;top:0;z-index:100;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--orange);font-size:12px;font-weight:600}
+.topnav-back{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}
+.topnav-back:hover{border-color:var(--orange);color:var(--orange)}
+
+.page-header{padding:50px 32px 30px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.page-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:18px}
+.page-title{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.15}
+.page-title .grad{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.wrap{max-width:980px;margin:0 auto;padding:40px 24px 80px}
+.grid{display:grid;grid-template-columns:1fr 380px;gap:24px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.section{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;margin-bottom:18px}
+.section h3{font-size:18px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section h3::before{content:'';width:6px;height:24px;background:linear-gradient(135deg,var(--orange),var(--pink));border-radius:99px}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;letter-spacing:0.3px;text-transform:uppercase}
+.field input,.field textarea{width:100%;background:var(--bg-2);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:14px;transition:border 0.2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange)}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field input:not(:placeholder-shown):invalid,.field textarea:not(:placeholder-shown):invalid{border-color:var(--red)}
+.field input:not(:placeholder-shown):valid{border-color:rgba(16,185,129,0.4)}
+
+.form-alert{display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.4);color:#FCA5A5;border-radius:12px;padding:14px 18px;font-size:14px;font-weight:600;margin:14px 0;text-align:center}
+.form-alert.show{display:block}
+
+.summary{position:sticky;top:90px;height:fit-content}
+.summary-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}
+.summary-item:last-of-type{border-bottom:none}
+.summary-item img{width:50px;height:50px;border-radius:8px;object-fit:cover;background:var(--bg-2);flex-shrink:0}
+.summary-item-info{flex:1;min-width:0}
+.summary-item-title{font-weight:700;font-size:13px;line-height:1.3;margin-bottom:3px}
+.summary-item-config{font-size:11px;color:var(--text-3)}
+.summary-item-price{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:var(--orange);white-space:nowrap}
+.summary-row{display:flex;justify-content:space-between;padding:10px 0;color:var(--text-2);font-size:14px;border-bottom:1px solid var(--border)}
+.summary-row.total{border-bottom:none;padding-top:14px;font-size:18px;font-weight:800;color:var(--text)}
+.summary-row.total .amount{font-family:'JetBrains Mono',monospace;font-size:24px;background:linear-gradient(135deg, var(--orange), var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.shipping-note{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10B981;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:700;margin:14px 0}
+
+.submit-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-weight:800;padding:18px 36px;border-radius:999px;border:none;cursor:pointer;width:100%;font-size:15px;font-family:inherit;transition:all 0.25s;margin-top:10px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(249,115,22,0.35)}
+.submit-btn::after{content:'→';font-size:17px}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.privacy-note{text-align:center;font-size:11px;color:var(--text-3);margin-top:14px}
+.privacy-note a{color:var(--orange)}
+
+.footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
+.footer a{color:var(--orange)}
+
+.empty{text-align:center;padding:80px 20px;color:var(--text-2)}
+.empty-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-weight:700;padding:14px 28px;border-radius:999px;margin-top:18px}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" class="topnav-logo">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+  <a href="carrito.html" class="topnav-back">← Volver al carrito</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-tag">Checkout</div>
+  <h1 class="page-title">Finaliza tu <span class="grad">pedido</span></h1>
+</header>
+
+<main class="wrap" id="checkout-wrap">
+  <!-- Contenido inyectado por JS -->
+</main>
+
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+function renderCheckout() {
+  const items = getCart();
+  const wrap = document.getElementById('checkout-wrap');
+
+  if (items.length === 0) {
+    wrap.innerHTML = `
+      <div class="empty">
+        <h2>No hay productos para procesar</h2>
+        <p>Agrega productos al carrito antes de hacer checkout.</p>
+        <a href="empezar-proyecto.html" class="empty-cta">Ver catálogo →</a>
+      </div>
+    `;
+    return;
+  }
+
+  const subtotal = getCartTotal();
+  const summaryItems = items.map(item => {
+    const config = [item.tamano, item.color, item.orientacion, item.grosor, item.color_marco, item.color_colgador, item.color_panel].filter(Boolean).join(' · ');
+    const totalLine = (item.cantidad || 1) > 1 ? `${item.cantidad} × $${item.precio_num} = $${item.precio_num * item.cantidad}` : `$${item.precio_num}`;
+    return `
+      <div class="summary-item">
+        <img src="${item.imagen_url || 'logo-kodara.jpeg'}" alt="">
+        <div class="summary-item-info">
+          <div class="summary-item-title">${item.producto || 'Producto'}</div>
+          <div class="summary-item-config">${config}</div>
+        </div>
+        <div class="summary-item-price">${totalLine}</div>
+      </div>
+    `;
+  }).join('');
+
+  wrap.innerHTML = `
+    <form id="checkout-form">
+      <div class="grid">
+        <div>
+          <div class="section">
+            <h3>Datos de envío</h3>
+            <div class="field-row">
+              <div class="field">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="40" pattern="[A-Za-zÀ-ÿñÑ\\s'\\-]{2,40}" title="Solo letras.">
+              </div>
+              <div class="field">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" required minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿñÑ\\s'\\-]{2,60}" title="Solo letras.">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="direccion_1">Dirección, línea 1</label>
+                <input type="text" id="direccion_1" name="direccion_1" required minlength="5" maxlength="100" placeholder="Calle, número">
+              </div>
+              <div class="field">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required maxlength="80" placeholder="tucorreo@ejemplo.com">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="direccion_2">Dirección, línea 2 <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
+                <input type="text" id="direccion_2" name="direccion_2" maxlength="100" placeholder="Piso, puerta, escalera">
+              </div>
+              <div class="field">
+                <label for="empresa">Nombre de empresa <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
+                <input type="text" id="empresa" name="empresa" maxlength="60">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="codigo_postal">Código postal</label>
+                <input type="text" id="codigo_postal" name="codigo_postal" required minlength="3" maxlength="10" pattern="[A-Za-z0-9\\s\\-]{3,10}" placeholder="08001">
+              </div>
+              <div class="field">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required minlength="7" maxlength="20" pattern="[\\d\\s\\(\\)\\-\\+]{7,20}" placeholder="+1 (201) 555-0123">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" name="ciudad" required minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿñÑ\\s'\\-\\.]{2,60}">
+              </div>
+              <div class="field">
+                <label for="estado">Estado / Provincia / Región</label>
+                <input type="text" id="estado" name="estado" required minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿñÑ\\s'\\-\\.]{2,60}">
+              </div>
+            </div>
+            <div class="field">
+              <label for="pais">País</label>
+              <input type="text" id="pais" name="pais" required minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿñÑ\\s'\\-\\.]{2,60}" placeholder="España / Estados Unidos / México...">
+            </div>
+            <div class="field">
+              <label for="notas">Notas / instrucciones <span style="color:var(--text-3);font-weight:500;text-transform:none">(opcional)</span></label>
+              <textarea id="notas" name="notas" placeholder="¿Algo que tengamos que tener en cuenta?"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <aside class="summary section">
+          <h3>Resumen</h3>
+          ${summaryItems}
+          <div class="summary-row" style="margin-top:14px">
+            <span>${getCartCount()} producto${getCartCount() !== 1 ? 's' : ''}</span>
+            <span>$${subtotal}</span>
+          </div>
+          <div class="shipping-note">
+            <span>🚚</span>
+            <span>Envío gratis incluido</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="amount">$${subtotal}</span>
+          </div>
+          <div class="form-alert" id="form-alert"></div>
+          <button type="submit" class="submit-btn" id="submit-btn">Enviar pedido</button>
+          <p class="privacy-note">Al enviar aceptas nuestra <a href="politica-privacidad.html">política de privacidad</a>.</p>
+        </aside>
+      </div>
+    </form>
+  `;
+
+  attachFormHandlers();
+}
+
+function attachFormHandlers() {
+  const form = document.getElementById('checkout-form');
+  const alertBox = document.getElementById('form-alert');
+  const submitBtn = document.getElementById('submit-btn');
+
+  function showAlert(msg) {
+    alertBox.textContent = '⚠ ' + msg;
+    alertBox.classList.add('show');
+    alertBox.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(() => alertBox.classList.remove('show'), 8000);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const items = getCart();
+    if (items.length === 0) {
+      showAlert('Tu carrito está vacío.');
+      return;
+    }
+
+    // Validar HTML5
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Datos del cliente
+    const data = new FormData(form);
+    const cliente = Object.fromEntries(data.entries());
+
+    // Construir mensaje detallado con todos los items
+    const itemsText = items.map((item, i) => {
+      const config = [
+        item.tamano ? `Tamaño: ${item.tamano}` : null,
+        item.color ? `Color: ${item.color}` : null,
+        item.orientacion ? `Orientación: ${item.orientacion}` : null,
+        item.grosor ? `Grosor: ${item.grosor}` : null,
+        item.color_marco ? `Marco: ${item.color_marco}` : null,
+        item.color_colgador ? `Colgador: ${item.color_colgador}` : null,
+        item.color_panel ? `Panel: ${item.color_panel}` : null,
+      ].filter(Boolean).join('\n  ');
+
+      return `\n${'='.repeat(60)}\nPRODUCTO ${i+1}: ${item.producto}\n${'='.repeat(60)}\n  ${config}\n  Cantidad: ${item.cantidad || 1}\n  Precio unitario: $${item.precio_num}\n  Subtotal: $${(item.precio_num * (item.cantidad || 1))}\n  Imagen del cliente: ${item.imagen_url}`;
+    }).join('\n');
+
+    const total = getCartTotal();
+    const mensaje = `
+NUEVO PEDIDO MULTI-PRODUCTO · KODARA PRINT STUDIO
+${'='.repeat(60)}
+
+DATOS DEL CLIENTE:
+  Nombre: ${cliente.nombre} ${cliente.apellido}
+  Email: ${cliente.email}
+  Teléfono: ${cliente.telefono}
+
+DIRECCIÓN DE ENVÍO:
+  ${cliente.direccion_1}${cliente.direccion_2 ? '\n  ' + cliente.direccion_2 : ''}${cliente.empresa ? '\n  Empresa: ' + cliente.empresa : ''}
+  ${cliente.codigo_postal} ${cliente.ciudad}, ${cliente.estado}
+  ${cliente.pais}
+
+${cliente.notas ? 'NOTAS:\n  ' + cliente.notas + '\n' : ''}
+
+${itemsText}
+
+${'='.repeat(60)}
+TOTAL DEL PEDIDO: $${total} (${getCartCount()} productos)
+ENVÍO: Gratis (incluido)
+${'='.repeat(60)}
+`;
+
+    // Enviar a Web3Forms
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      const payload = new FormData();
+      payload.append('access_key', '2e5a1c54-e4bf-41f4-b04c-7f4c30dace33');
+      payload.append('subject', `Nuevo pedido multi-producto · $${total} · Kodara Print`);
+      payload.append('from_name', 'Kodara Print Studio');
+      payload.append('email', cliente.email);
+      payload.append('mensaje', mensaje);
+      // Tambien adjuntar fields individuales para que sean facil de leer
+      for (const [k, v] of Object.entries(cliente)) {
+        payload.append('cliente_' + k, v);
+      }
+      payload.append('total', '$' + total);
+      payload.append('cantidad_productos', items.length);
+      // URLs de imagenes
+      items.forEach((item, i) => {
+        payload.append(`imagen_${i+1}_url`, item.imagen_url || '');
+        payload.append(`producto_${i+1}`, item.producto || '');
+      });
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: payload
+      });
+
+      if (res.ok) {
+        clearCart();
+        window.location.href = 'gracias.html';
+      } else {
+        const err = await res.text();
+        console.error('Error:', err);
+        showAlert('Error al enviar pedido. Inténtalo de nuevo o contáctanos.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar pedido';
+      }
+    } catch (err) {
+      console.error(err);
+      showAlert('Error de conexión. Verifica tu internet e inténtalo de nuevo.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar pedido';
+    }
+  });
+}
+
+renderCheckout();
+</script>
+</body>
+</html>

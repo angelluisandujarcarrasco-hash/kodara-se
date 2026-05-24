@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Pedido recibido! · Kodara Print Studio</title>
+<link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060B18;--text:#fff;--text-2:#B8C0D0;--orange:#F97316;--pink:#EC4899;--purple:#7C3AED;--green:#10B981;--border:rgba(255,255,255,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+.topnav{position:sticky;top:0;background:rgba(6,11,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.topnav img{width:36px;height:36px;border-radius:8px}
+.topnav span{color:var(--orange);font-size:12px;font-weight:600}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.card{max-width:560px;text-align:center;padding:60px 40px;background:linear-gradient(135deg, rgba(16,185,129,0.06), rgba(124,58,237,0.04));border:1px solid rgba(16,185,129,0.2);border-radius:24px}
+.check{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg, #10B981, #059669);color:#fff;display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 24px;box-shadow:0 12px 40px rgba(16,185,129,0.4)}
+h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+h1 .grad{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+p{color:var(--text-2);font-size:15px;margin-bottom:14px;line-height:1.6}
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-weight:700;padding:14px 28px;border-radius:999px;margin-top:14px;transition:all 0.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,0.35)}
+.footer{padding:32px;text-align:center;color:#6B7689;font-size:13px;border-top:1px solid var(--border)}
+.footer a{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" style="display:flex;align-items:center;gap:10px">
+    <img src="logo-kodara.jpeg" alt="Kodara SE">
+    <div>Kodara <span>PRINT</span></div>
+  </a>
+</nav>
+
+<main class="wrap">
+  <div class="card">
+    <div class="check">✓</div>
+    <h1>¡Pedido <span class="grad">recibido</span>!</h1>
+    <p>Gracias por confiar en Kodara Print Studio. Hemos recibido tu pedido y te contactaremos por email en menos de 24 horas con la confirmación y los siguientes pasos.</p>
+    <p style="font-size:13px;opacity:0.7">Si tienes dudas, escríbenos a kodarase@gmail.com</p>
+    <a href="empezar-proyecto.html" class="btn">Seguir comprando →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+</footer>
+
+</body>
+</html>
