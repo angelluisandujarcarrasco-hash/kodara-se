@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subir fotos familia · Angel</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{background:#0a0e1a;color:#fff;padding:40px 20px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-size:28px;margin-bottom:8px;background:linear-gradient(135deg,#F97316,#EC4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+.sub{color:#B8C0D0;margin-bottom:24px;font-size:14px}
+.zone{border:3px dashed rgba(255,255,255,0.2);border-radius:20px;padding:60px 20px;text-align:center;cursor:pointer;background:rgba(255,255,255,0.03);transition:all 0.2s;margin-bottom:24px}
+.zone:hover,.zone.drag{border-color:#F97316;background:rgba(249,115,22,0.06)}
+.zone-icon{font-size:64px;margin-bottom:16px}
+.zone-title{font-size:20px;font-weight:800;margin-bottom:8px}
+.zone-hint{color:#6B7689;font-size:13px}
+input[type=file]{display:none}
+.uploads{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+.upload{background:#131F36;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:12px;text-align:center;position:relative}
+.upload img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+.upload.uploading img{opacity:0.4;filter:grayscale(1)}
+.upload.error{border-color:#EF4444}
+.upload-status{font-size:11px;color:#F97316;font-weight:700;font-family:'Courier New',monospace}
+.upload.done .upload-status{color:#10B981}
+.upload.error .upload-status{color:#EF4444}
+.upload-num{position:absolute;top:6px;left:6px;background:rgba(0,0,0,0.7);color:#F97316;padding:3px 8px;border-radius:99px;font-size:11px;font-weight:800;font-family:'Courier New',monospace}
+.results{background:#0F1A2E;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px}
+.results-title{font-size:16px;font-weight:800;margin-bottom:14px;color:#F97316}
+.results-hint{font-size:12px;color:#6B7689;margin-bottom:14px}
+textarea{width:100%;background:#060B18;color:#10B981;font-family:'Courier New',monospace;font-size:11px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px;min-height:200px;resize:vertical}
+.copy-btn{margin-top:12px;background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;border:none;padding:12px 24px;border-radius:99px;font-weight:700;cursor:pointer;font-size:14px}
+.copy-btn:active{transform:scale(0.97)}
+.copied{color:#10B981;margin-left:12px;font-size:13px;font-weight:700;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Subir fotos para el regalo de papá</h1>
+  <p class="sub">Arrastra todas las fotos (papá, abuelo, abuela). Se suben a Cloudinary automáticamente. Cuando terminen, copia los URLs y pásamelos.</p>
+
+  <label class="zone" id="zone">
+    <input type="file" id="file" accept="image/*" multiple>
+    <div class="zone-icon">📁</div>
+    <div class="zone-title">Arrastra fotos aquí o haz clic</div>
+    <div class="zone-hint">JPG, PNG · puedes subir varias a la vez · ilimitado</div>
+  </label>
+
+  <div class="uploads" id="uploads"></div>
+
+  <div class="results" id="results" style="display:none">
+    <div class="results-title">📋 URLs de tus fotos — copia esto y mándamelo</div>
+    <div class="results-hint">Estas URLs son permanentes. Sólo cópialas y mándamelas por el chat.</div>
+    <textarea id="urls" readonly></textarea>
+    <button class="copy-btn" id="copy">Copiar al portapapeles</button>
+    <span class="copied" id="copied">✓ Copiado</span>
+  </div>
+</div>
+
+<script>
+const CLOUD = 'dxzppmgqb';
+const PRESET = 'kodara_pedidos';
+const zone = document.getElementById('zone');
+const file = document.getElementById('file');
+const uploads = document.getElementById('uploads');
+const results = document.getElementById('results');
+const urlsEl = document.getElementById('urls');
+const allUrls = [];
+let counter = 0;
+
+['dragover','dragenter'].forEach(e=>zone.addEventListener(e,ev=>{ev.preventDefault();zone.classList.add('drag')}));
+['dragleave','dragend','drop'].forEach(e=>zone.addEventListener(e,ev=>{ev.preventDefault();zone.classList.remove('drag')}));
+zone.addEventListener('drop',e=>handleFiles(e.dataTransfer.files));
+file.addEventListener('change',e=>handleFiles(e.target.files));
+
+function handleFiles(files){
+  for(const f of files){ if(f.type.startsWith('image/')) uploadOne(f); }
+}
+
+function uploadOne(f){
+  counter++;
+  const num = counter;
+  const card = document.createElement('div');
+  card.className = 'upload uploading';
+  card.innerHTML = `
+    <span class="upload-num">${num}</span>
+    <img src="${URL.createObjectURL(f)}" alt="">
+    <div class="upload-status">Subiendo...</div>
+  `;
+  uploads.appendChild(card);
+  const status = card.querySelector('.upload-status');
+
+  const fd = new FormData();
+  fd.append('file', f);
+  fd.append('upload_preset', PRESET);
+
+  fetch(`https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`, {method:'POST', body:fd})
+    .then(r=>r.json())
+    .then(data=>{
+      if(data.secure_url){
+        card.classList.remove('uploading');
+        card.classList.add('done');
+        status.textContent = '✓ Subida #'+num;
+        allUrls.push(`#${num}: ${data.secure_url}`);
+        updateResults();
+      } else {
+        throw new Error(data.error?.message || 'error');
+      }
+    })
+    .catch(e=>{
+      card.classList.remove('uploading');
+      card.classList.add('error');
+      status.textContent = '✗ '+e.message;
+    });
+}
+
+function updateResults(){
+  results.style.display = 'block';
+  urlsEl.value = allUrls.join('\n');
+}
+
+document.getElementById('copy').addEventListener('click', ()=>{
+  urlsEl.select();
+  document.execCommand('copy');
+  document.getElementById('copied').style.display = 'inline';
+  setTimeout(()=>document.getElementById('copied').style.display='none', 2000);
+});
+</script>
+<script src="cart.js"></script>
+</body>
+</html>

@@ -178,24 +178,24 @@ img{max-width:100%;display:block}
     <select class="size-select" name="tamano" id="size-select" required>
       <option value="" disabled selected>— Selecciona un tamaño —</option>
       <optgroup label="Tamaños pequeños">
-        <option data-price-10="79" data-price-20="98" value="20x20 cm / 8x8"">20 × 20 cm  ·  8 × 8"  (cuadrado)</option>
-        <option data-price-10="93" data-price-20="118" value="25x25 cm / 10x10"">25 × 25 cm  ·  10 × 10"  (cuadrado)</option>
-        <option data-price-10="107" data-price-20="138" value="30x30 cm / 12x12"">30 × 30 cm  ·  12 × 12"  (cuadrado)</option>
-        <option data-price-10="121" data-price-20="158" value="30x40 cm / 12x16"">30 × 40 cm  ·  12 × 16"</option>
+        <option data-pricethin="79" data-pricethick="98" value="20x20 cm / 8x8"">20 × 20 cm  ·  8 × 8"  (cuadrado)</option>
+        <option data-pricethin="93" data-pricethick="118" value="25x25 cm / 10x10"">25 × 25 cm  ·  10 × 10"  (cuadrado)</option>
+        <option data-pricethin="107" data-pricethick="138" value="30x30 cm / 12x12"">30 × 30 cm  ·  12 × 12"  (cuadrado)</option>
+        <option data-pricethin="121" data-pricethick="158" value="30x40 cm / 12x16"">30 × 40 cm  ·  12 × 16"</option>
       </optgroup>
       <optgroup label="Tamaños medianos">
-        <option data-price-10="135" data-price-20="178" value="40x40 cm / 16x16"">40 × 40 cm  ·  16 × 16"  (cuadrado)</option>
-        <option data-price-10="148" data-price-20="197" value="40x50 cm / 16x20"">40 × 50 cm  ·  16 × 20"</option>
-        <option data-price-10="162" data-price-20="217" value="40x60 cm / 16x24"">40 × 60 cm  ·  16 × 24"</option>
-        <option data-price-10="176" data-price-20="237" value="50x50 cm / 20x20"">50 × 50 cm  ·  20 × 20"  (cuadrado)</option>
-        <option data-price-10="190" data-price-20="257" value="50x70 cm / 20x28"">50 × 70 cm  ·  20 × 28"</option>
+        <option data-pricethin="135" data-pricethick="178" value="40x40 cm / 16x16"">40 × 40 cm  ·  16 × 16"  (cuadrado)</option>
+        <option data-pricethin="148" data-pricethick="197" value="40x50 cm / 16x20"">40 × 50 cm  ·  16 × 20"</option>
+        <option data-pricethin="162" data-pricethick="217" value="40x60 cm / 16x24"">40 × 60 cm  ·  16 × 24"</option>
+        <option data-pricethin="176" data-pricethick="237" value="50x50 cm / 20x20"">50 × 50 cm  ·  20 × 20"  (cuadrado)</option>
+        <option data-pricethin="190" data-pricethick="257" value="50x70 cm / 20x28"">50 × 70 cm  ·  20 × 28"</option>
       </optgroup>
       <optgroup label="Tamaños grandes">
-        <option data-price-10="204" data-price-20="277" value="60x60 cm / 24x24"">60 × 60 cm  ·  24 × 24"  (cuadrado)</option>
-        <option data-price-10="217" data-price-20="297" value="60x80 cm / 24x32"">60 × 80 cm  ·  24 × 32"</option>
-        <option data-price-10="231" data-price-20="317" value="60x90 cm / 24x36"">60 × 90 cm  ·  24 × 36"</option>
-        <option data-price-10="245" data-price-20="336" value="70x70 cm / 28x28"">70 × 70 cm  ·  28 × 28"  (cuadrado)</option>
-        <option data-price-10="259" data-price-20="356" value="70x100 cm / 28x40"">70 × 100 cm  ·  28 × 40"</option>
+        <option data-pricethin="204" data-pricethick="277" value="60x60 cm / 24x24"">60 × 60 cm  ·  24 × 24"  (cuadrado)</option>
+        <option data-pricethin="217" data-pricethick="297" value="60x80 cm / 24x32"">60 × 80 cm  ·  24 × 32"</option>
+        <option data-pricethin="231" data-pricethick="317" value="60x90 cm / 24x36"">60 × 90 cm  ·  24 × 36"</option>
+        <option data-pricethin="245" data-pricethick="336" value="70x70 cm / 28x28"">70 × 70 cm  ·  28 × 28"  (cuadrado)</option>
+        <option data-pricethin="259" data-pricethick="356" value="70x100 cm / 28x40"">70 × 100 cm  ·  28 × 40"</option>
       </optgroup>
     </select>
     <div class="price-box" id="price-box">
@@ -317,7 +317,7 @@ function updatePrice(){
     precioHidden.value = '';
     return;
   }
-  const price = grosor.value === '10mm' ? opt.dataset.price10 : opt.dataset.price20;
+  const price = grosor.value === '10mm' ? opt.dataset.pricethin : opt.dataset.pricethick;
   priceAmount.textContent = '$' + price;
   priceAmount.classList.remove('empty');
   priceBox.classList.add('active');
