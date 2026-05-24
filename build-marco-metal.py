@@ -1,4 +1,51 @@
-<!DOCTYPE html>
+"""
+Construye:
+1. arte-mural-marco-metal.html con las 5 tarjetas (doble imagen + link directo a pedido)
+2. 5 paginas pedido-marco-metal-XXX.html (basadas en pedido-impresion-artistica.html)
+   - SIN paso 'Color del marco' (solo es Negro)
+   - Estructura: Tamaño / Orientación / Imagen / Datos de envío
+"""
+import os
+import re
+
+OUT_DIR = r"C:\Users\lucie\kodara-se"
+
+# 5 productos
+products = [
+    ("mate-premium",
+     "Mate Prémium con Marco de Metal",
+     "Mate Premium",
+     "mate prémium con marco metal",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042914_7edb2849-f673-4a9b-806a-248e123787d9.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043009_01877852-c91e-4c8e-a3c5-444db9e1dab6.png"),
+    ("mate-clasico",
+     "Mate Clásico con Marco de Metal",
+     "Mate Clasico",
+     "mate clásico con marco metal",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042959_af9b42db-80cc-413f-b8cc-d3041d48fe25.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043012_fc1c3e7e-9280-43a6-bde5-a6c06a2c6c12.png"),
+    ("mate-museo",
+     "Mate Calidad Museo con Marco de Metal",
+     "Mate Museo",
+     "mate calidad museo con marco metal",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043003_d60e4583-b5e5-4515-b1a8-64c2dfac45b8.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042921_067ecb24-34eb-47fc-9301-d4077cdc5f24.png"),
+    ("semibrillante-premium",
+     "Semibrillante Prémium con Marco de Metal",
+     "Semibrillante Premium",
+     "semibrillante prémium con marco metal",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043006_dbb7af20-0e37-48cd-853e-94523d52fa97.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043013_29b82df5-90b0-4e83-b2bb-d4c7e2f10f17.png"),
+    ("semibrillante-clasico",
+     "Semibrillante Clásico con Marco de Metal",
+     "Semibrillante Clasico",
+     "semibrillante clásico con marco metal",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042918_f4fd5b74-4f40-4284-9a66-785b1f0a5811.png",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043015_939334f4-4840-4515-a755-e04da349bd87.png"),
+]
+
+# ============ 1. CATÁLOGO arte-mural-marco-metal.html ============
+catalogo = '''<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -77,62 +124,23 @@ img{max-width:100%;display:block}
 <main class="main-content">
   <div class="sub-services">
 
-    <article class="sub-card">
+'''
+
+for key, full, short, lower, base, hover in products:
+    catalogo += f'''    <article class="sub-card">
       <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042914_7edb2849-f673-4a9b-806a-248e123787d9.png" alt="Mate Prémium con Marco de Metal">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043009_01877852-c91e-4c8e-a3c5-444db9e1dab6.png" alt="Mate Prémium con Marco de Metal en pared">
+        <img class="img-base" src="{base}" alt="{full}">
+        <img class="img-hover" src="{hover}" alt="{full} en pared">
       </div>
       <div class="sub-card-body">
-        <h2 class="sub-card-title">Mate Prémium con Marco de Metal</h2>
-        <a href="pedido-marco-metal-mate-premium.html" class="sub-card-cta">Personalizar</a>
+        <h2 class="sub-card-title">{full}</h2>
+        <a href="pedido-marco-metal-{key}.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
 
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042959_af9b42db-80cc-413f-b8cc-d3041d48fe25.png" alt="Mate Clásico con Marco de Metal">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043012_fc1c3e7e-9280-43a6-bde5-a6c06a2c6c12.png" alt="Mate Clásico con Marco de Metal en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Mate Clásico con Marco de Metal</h2>
-        <a href="pedido-marco-metal-mate-clasico.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
+'''
 
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043003_d60e4583-b5e5-4515-b1a8-64c2dfac45b8.png" alt="Mate Calidad Museo con Marco de Metal">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042921_067ecb24-34eb-47fc-9301-d4077cdc5f24.png" alt="Mate Calidad Museo con Marco de Metal en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Mate Calidad Museo con Marco de Metal</h2>
-        <a href="pedido-marco-metal-mate-museo.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043006_dbb7af20-0e37-48cd-853e-94523d52fa97.png" alt="Semibrillante Prémium con Marco de Metal">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043013_29b82df5-90b0-4e83-b2bb-d4c7e2f10f17.png" alt="Semibrillante Prémium con Marco de Metal en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Semibrillante Prémium con Marco de Metal</h2>
-        <a href="pedido-marco-metal-semibrillante-premium.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_042918_f4fd5b74-4f40-4284-9a66-785b1f0a5811.png" alt="Semibrillante Clásico con Marco de Metal">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_043015_939334f4-4840-4515-a755-e04da349bd87.png" alt="Semibrillante Clásico con Marco de Metal en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Semibrillante Clásico con Marco de Metal</h2>
-        <a href="pedido-marco-metal-semibrillante-clasico.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-  </div>
+catalogo += '''  </div>
 </main>
 
 <footer class="footer">
@@ -141,3 +149,58 @@ img{max-width:100%;display:block}
 
 </body>
 </html>
+'''
+
+with open(os.path.join(OUT_DIR, "arte-mural-marco-metal.html"), "w", encoding="utf-8") as f:
+    f.write(catalogo)
+print("OK CATALOGO arte-mural-marco-metal.html")
+
+
+# ============ 2. PÁGINAS DE PEDIDO (basadas en pedido-impresion-artistica.html, SIN paso color marco) ============
+template_path = os.path.join(OUT_DIR, "pedido-impresion-artistica.html")
+with open(template_path, "r", encoding="utf-8") as f:
+    template = f.read()
+
+for key, full, short, lower, base, hover in products:
+    pedido_file = f"pedido-marco-metal-{key}.html"
+    new_html = template
+
+    # Cambiar title
+    new_html = re.sub(
+        r'<title>Hacer mi pedido · [^<]+</title>',
+        f'<title>Hacer mi pedido · {full} · Kodara Print</title>',
+        new_html
+    )
+
+    # Cambiar topnav back link
+    new_html = new_html.replace(
+        'href="arte-mural-impresion-artistica.html"',
+        'href="arte-mural-marco-metal.html"'
+    )
+
+    # Cambiar texto del botón Volver
+    new_html = new_html.replace(
+        '<a href="arte-mural-marco-metal.html" class="topnav-back">← Volver</a>',
+        '<a href="arte-mural-marco-metal.html" class="topnav-back">← Volver a Marco de Metal</a>'
+    )
+
+    # Page tag
+    new_html = re.sub(
+        r'<div class="page-tag">Pedido · [^<]+</div>',
+        f'<div class="page-tag">Pedido · {full}</div>',
+        new_html
+    )
+
+    # Web3Forms subject
+    new_html = re.sub(
+        r'value="Nuevo pedido · [^"]+ · Kodara Print"',
+        f'value="Nuevo pedido · {full} · Kodara Print"',
+        new_html
+    )
+
+    with open(os.path.join(OUT_DIR, pedido_file), "w", encoding="utf-8") as f:
+        f.write(new_html)
+    print(f"OK PEDIDO    {pedido_file}")
+
+print("\nDONE — 5 productos Marco de Metal construidos (precios temporales de Impresion Artistica $28-$65)")
+print("Esperar costos de Angel para aplicar precios reales con margen 50%")
