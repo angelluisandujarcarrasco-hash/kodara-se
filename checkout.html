@@ -137,6 +137,10 @@ function renderCheckout() {
         <div>
           <div class="section">
             <h3>Datos de envío</h3>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#10B981;font-weight:600;gap:8px;flex-wrap:wrap">
+              <span>💾 Tus datos se guardan en tu navegador para la próxima compra</span>
+              <button type="button" id="clear-saved" onclick="if(confirm('¿Borrar mis datos guardados?')){clearSavedCustomer();location.reload();}" style="display:none;background:transparent;border:1px solid rgba(239,68,68,0.4);color:#FCA5A5;font-size:11px;padding:5px 10px;border-radius:99px;cursor:pointer;font-weight:600">Borrar mis datos</button>
+            </div>
             <div class="field-row">
               <div class="field">
                 <label for="nombre">Nombre</label>
@@ -224,6 +228,50 @@ function renderCheckout() {
   attachFormHandlers();
 }
 
+const CUSTOMER_KEY = 'kodara_customer_v1';
+
+function loadSavedCustomer() {
+  try {
+    const raw = localStorage.getItem(CUSTOMER_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function saveCustomer(data) {
+  // Solo guarda campos NO sensibles (no telefono completo, no notas)
+  const safe = {
+    nombre: data.nombre,
+    apellido: data.apellido,
+    email: data.email,
+    direccion_1: data.direccion_1,
+    direccion_2: data.direccion_2 || '',
+    empresa: data.empresa || '',
+    codigo_postal: data.codigo_postal,
+    telefono: data.telefono,
+    ciudad: data.ciudad,
+    estado: data.estado,
+    pais: data.pais,
+    saved_at: new Date().toISOString(),
+  };
+  localStorage.setItem(CUSTOMER_KEY, JSON.stringify(safe));
+}
+
+function clearSavedCustomer() {
+  localStorage.removeItem(CUSTOMER_KEY);
+}
+
+function prefillForm() {
+  const saved = loadSavedCustomer();
+  if (!saved) return;
+  ['nombre','apellido','email','direccion_1','direccion_2','empresa','codigo_postal','telefono','ciudad','estado','pais'].forEach(field => {
+    const input = document.getElementById(field);
+    if (input && saved[field]) input.value = saved[field];
+  });
+  // Mostrar boton "Borrar mis datos"
+  const clearBtn = document.getElementById('clear-saved');
+  if (clearBtn) clearBtn.style.display = 'inline-block';
+}
+
 function attachFormHandlers() {
   const form = document.getElementById('checkout-form');
   const alertBox = document.getElementById('form-alert');
@@ -235,6 +283,9 @@ function attachFormHandlers() {
     alertBox.scrollIntoView({behavior:'smooth', block:'center'});
     setTimeout(() => alertBox.classList.remove('show'), 8000);
   }
+
+  // Pre-llenar form si hay datos guardados
+  prefillForm();
 
   // URL del endpoint Vercel
   const STRIPE_API = 'https://kodara-se-git-main-angelluisandujarcarrasco-5233s-projects.vercel.app/api/create-checkout-session';
@@ -257,6 +308,9 @@ function attachFormHandlers() {
     // Datos del cliente
     const data = new FormData(form);
     const cliente = Object.fromEntries(data.entries());
+
+    // Guardar datos del cliente para autocompletar la proxima vez
+    saveCustomer(cliente);
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Procesando...';
