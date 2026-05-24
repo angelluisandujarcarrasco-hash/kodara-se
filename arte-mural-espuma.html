@@ -11,13 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;
-  --border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);
-  --text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;
-  --orange:#F97316;--orange-light:#FB923C;
-  --pink:#EC4899;--purple:#7C3AED;--yellow:#F59E0B;
-}
+:root{--bg:#060B18;--bg-2:#0A1424;--card:#0F1A2E;--card-2:#131F36;--border:rgba(255,255,255,0.06);--border-2:rgba(255,255,255,0.1);--text:#fff;--text-2:#B8C0D0;--text-3:#6B7689;--orange:#F97316;--orange-light:#FB923C;--pink:#EC4899;--purple:#7C3AED;--yellow:#F59E0B}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
@@ -39,15 +33,24 @@ img{max-width:100%;display:block}
 .page-title .grad{background:linear-gradient(135deg, var(--orange), var(--pink), var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-bottom:0.08em}
 .page-sub{font-size:clamp(15px,1.6vw,18px);color:var(--text-2);max-width:560px;margin:0 auto;line-height:1.55}
 .main-content{max-width:1100px;margin:0 auto;padding:60px 32px 100px;min-height:40vh}
-.placeholder{border:2px dashed var(--border-2);border-radius:24px;padding:60px 32px;text-align:center;color:var(--text-3);font-size:14px}
-.placeholder strong{color:var(--orange);display:block;margin-bottom:8px;font-size:16px}
+.sub-services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,260px));gap:18px;justify-content:center}
+.sub-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.3s ease;display:flex;flex-direction:column}
+.sub-card:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 12px 36px rgba(249,115,22,0.15)}
+.sub-card-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--bg-2)}
+.sub-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.45s ease, transform 0.6s ease}
+.sub-card-img .img-base{opacity:1;z-index:1}
+.sub-card-img .img-hover{opacity:0;z-index:2}
+.sub-card:hover .img-base{opacity:0}
+.sub-card:hover .img-hover{opacity:1;transform:scale(1.04)}
+.sub-card-price{position:absolute;top:10px;right:10px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;letter-spacing:0.3px;z-index:3;box-shadow:0 4px 16px rgba(249,115,22,0.35)}
+.sub-card-body{padding:16px;display:flex;flex-direction:column;gap:12px}
+.sub-card-title{font-size:15px;font-weight:800;letter-spacing:-0.3px;line-height:1.25;text-align:center}
+.sub-card-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg, var(--orange), var(--pink));color:#fff;font-size:13px;font-weight:700;padding:11px 18px;border-radius:999px;transition:all 0.25s}
+.sub-card-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+.sub-card-cta::after{content:'→';font-size:14px}
 .footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
 .footer a{color:var(--orange)}
-@media(max-width:640px){
-  .topnav{padding:12px 18px}
-  .page-header{padding:60px 20px 40px}
-  .main-content{padding:40px 20px 60px}
-}
+@media(max-width:640px){.topnav{padding:12px 18px}.page-header{padding:60px 20px 40px}.main-content{padding:40px 20px 60px}}
 </style>
 </head>
 <body>
@@ -62,20 +65,55 @@ img{max-width:100%;display:block}
 
 <header class="page-header">
   <div class="page-header-inner">
-    <div class="page-tag">Arte Mural · En Espuma</div>
+    <div class="page-tag">Arte Mural · Impresión en espuma</div>
     <h1 class="page-title">
       Personaliza tu <span class="grad">impresión en espuma</span>.
     </h1>
     <p class="page-sub">
-      Lo añadimos despacio. Tú dime qué pongo aquí primero.
+      Panel ligero, resistente y económico. Disponible en formato vertical, apaisado o cuadrado. Listo para colgar.
     </p>
   </div>
 </header>
 
 <main class="main-content">
-  <div class="placeholder">
-    <strong>Aquí va el contenido de Impresión en espuma</strong>
-    Página vacía a propósito — lista para añadir contenido cuando me lo digas.
+  <div class="sub-services">
+
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <span class="sub-card-price">Desde $47</span>
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071634_c287ecec-1d21-43c7-b2d4-51df8779c72b.png" alt="Panel vertical en espuma">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071641_8d988ede-fdae-4152-80e8-5400ff066d57.png" alt="Panel vertical en espuma en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Panel vertical en espuma</h2>
+        <a href="pedido-espuma-vertical.html" class="sub-card-cta">Personalizar</a>
+      </div>
+    </article>
+
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <span class="sub-card-price">Desde $47</span>
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071641_8d988ede-fdae-4152-80e8-5400ff066d57.png" alt="Panel de espuma apaisado">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071634_c287ecec-1d21-43c7-b2d4-51df8779c72b.png" alt="Panel de espuma apaisado en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Panel de espuma apaisado</h2>
+        <a href="pedido-espuma-apaisado.html" class="sub-card-cta">Personalizar</a>
+      </div>
+    </article>
+
+    <article class="sub-card">
+      <div class="sub-card-img">
+        <span class="sub-card-price">Desde $44</span>
+        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071634_c287ecec-1d21-43c7-b2d4-51df8779c72b.png" alt="Panel de espuma cuadrado">
+        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_071641_8d988ede-fdae-4152-80e8-5400ff066d57.png" alt="Panel de espuma cuadrado en pared">
+      </div>
+      <div class="sub-card-body">
+        <h2 class="sub-card-title">Panel de espuma cuadrado</h2>
+        <a href="pedido-espuma-cuadrado.html" class="sub-card-cta">Personalizar</a>
+      </div>
+    </article>
+
   </div>
 </main>
 
