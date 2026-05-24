@@ -681,17 +681,6 @@ form.addEventListener('submit', (e) => {
     }
   }, 1200);
 });
-return;
-    }
-    // 4. Validar que la zona no esté en estado de subida
-    if (zone.classList.contains('uploading')) {
-      e.preventDefault();
-      showAlert('Espera a que termine de subirse la imagen.');
-      zone.scrollIntoView({behavior:'smooth', block:'center'});
-      return;
-    }
-    // El resto de campos los valida HTML5 con required/pattern
-  });
 </script>
 
 <script>
