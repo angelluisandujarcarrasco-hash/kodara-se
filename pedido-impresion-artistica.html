@@ -640,23 +640,39 @@ form.addEventListener('submit', (e) => {
     const match = precioHidden.value.match(/\$(\d+)/);
     if (match) item.precio_num = parseInt(match[1]);
   }
-  // Fallback: leer del option seleccionado (data-price o variantes con grosor)
+  // Fallback robusto: capturar precio del option seleccionado (multiples patrones)
   if (!item.precio_num) {
     const sizeSel = form.querySelector('select[name="tamano"]');
     if (sizeSel && sizeSel.selectedIndex >= 0) {
       const opt = sizeSel.options[sizeSel.selectedIndex];
-      if (opt.dataset.price) {
-        item.precio_num = parseInt(opt.dataset.price);
-      }
-      if (!item.precio_num) {
-        const grosor = form.querySelector('input[name="grosor"]:checked');
-        if (grosor) {
-          const v = grosor.value.toLowerCase();
-          if (v === 'esbelto' && opt.dataset.priceEsbelto) item.precio_num = parseInt(opt.dataset.priceEsbelto);
-          else if (v === 'grueso' && opt.dataset.priceGrueso) item.precio_num = parseInt(opt.dataset.priceGrueso);
-          else if (v === '10mm' && opt.dataset.pricethin) item.precio_num = parseInt(opt.dataset.pricethin);
-          else if (v === '20mm' && opt.dataset.pricethick) item.precio_num = parseInt(opt.dataset.pricethick);
+      if (opt) {
+        // 1. data-price simple (Posteres, Marco Madera, etc.)
+        if (opt.dataset.price) item.precio_num = parseInt(opt.dataset.price);
+        // 2. Variantes con grosor
+        if (!item.precio_num) {
+          const grosor = form.querySelector('input[name="grosor"]:checked');
+          if (grosor) {
+            const v = grosor.value.toLowerCase();
+            if (v === 'esbelto' && opt.dataset.priceEsbelto) item.precio_num = parseInt(opt.dataset.priceEsbelto);
+            else if (v === 'grueso' && opt.dataset.priceGrueso) item.precio_num = parseInt(opt.dataset.priceGrueso);
+            else if (v === '10mm' && opt.dataset.pricethin) item.precio_num = parseInt(opt.dataset.pricethin);
+            else if (v === '20mm' && opt.dataset.pricethick) item.precio_num = parseInt(opt.dataset.pricethick);
+          }
         }
+        // 3. Ultimo recurso: extraer $XX del value/text del option
+        if (!item.precio_num) {
+          const txt = (opt.value || '') + ' ' + (opt.textContent || '');
+          const m = txt.match(/\$(\d+)/);
+          if (m) item.precio_num = parseInt(m[1]);
+        }
+      }
+    }
+    // 4. Tambien intentar desde el priceAmount visible si existe
+    if (!item.precio_num) {
+      const pa = document.getElementById('price-amount');
+      if (pa) {
+        const m = pa.textContent.match(/\$(\d+)/);
+        if (m) item.precio_num = parseInt(m[1]);
       }
     }
   }
