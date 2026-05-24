@@ -1,0 +1,12 @@
+{
+  "name": "kodara-se",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kodara SE - Print on demand + Digital services",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stripe": "^17.4.0"
+  }
+}
