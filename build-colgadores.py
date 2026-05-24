@@ -1,4 +1,51 @@
-<!DOCTYPE html>
+"""
+Construye:
+1. arte-mural-colgadores.html con las 5 tarjetas (nombres completos Gelato)
+2. 5 paginas pedido-colgadores-XXX.html basadas en pedido-marco-madera (con paso color 4 colores)
+"""
+import os
+import re
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
+OUT_DIR = r"C:\Users\lucie\kodara-se"
+
+# 5 productos con URLs verificadas
+products = [
+    {
+        "key": "mate-premium",
+        "name": "Póster de papel mate prémium con colgador",
+        "base": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055712_7d56b9a8-d456-447b-bd4f-74c82a55750c.png",
+        "hover": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055734_0039e860-3ab3-40ce-9d82-3e4a2e7fcca5.png",
+    },
+    {
+        "key": "mate-clasico",
+        "name": "Póster de papel mate clásico con colgador",
+        "base": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055714_2a575431-ac23-42f2-b91b-7eb1d8e16399.png",
+        "hover": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055737_e794471b-0a1e-4c9a-9728-5abcb0668f8d.png",
+    },
+    {
+        "key": "mate-museo",
+        "name": "Póster de papel mate calidad museo con colgador",
+        "base": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055717_68ff9a21-dba2-4d5a-a537-e4a805355980.png",
+        "hover": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055739_44227d8b-4945-49f5-af7a-ebc65bcf5c65.png",
+    },
+    {
+        "key": "semibrillante-premium",
+        "name": "Póster de papel semibrillante prémium con colgador",
+        "base": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055720_a92fd7d7-4f10-4d3f-885d-0cdacdb9f5cd.png",
+        "hover": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055742_14ae4d23-8b25-4548-b083-46582cd8c448.png",
+    },
+    {
+        "key": "semibrillante-clasico",
+        "name": "Póster de papel semibrillante clásico con colgador",
+        "base": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055731_88011ace-95cd-4118-af45-ce35110bd2c6.png",
+        "hover": "https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055745_3576dacd-4fb3-4c23-b25c-0652ade50353.jpeg",
+    },
+]
+
+# ============ 1. CATÁLOGO ============
+catalogo = '''<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -77,62 +124,23 @@ img{max-width:100%;display:block}
 <main class="main-content">
   <div class="sub-services">
 
-    <article class="sub-card">
+'''
+
+for p in products:
+    catalogo += f'''    <article class="sub-card">
       <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055712_7d56b9a8-d456-447b-bd4f-74c82a55750c.png" alt="Póster de papel mate prémium con colgador">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055734_0039e860-3ab3-40ce-9d82-3e4a2e7fcca5.png" alt="Póster de papel mate prémium con colgador en pared">
+        <img class="img-base" src="{p["base"]}" alt="{p["name"]}">
+        <img class="img-hover" src="{p["hover"]}" alt="{p["name"]} en pared">
       </div>
       <div class="sub-card-body">
-        <h2 class="sub-card-title">Póster de papel mate prémium con colgador</h2>
-        <a href="pedido-colgadores-mate-premium.html" class="sub-card-cta">Personalizar</a>
+        <h2 class="sub-card-title">{p["name"]}</h2>
+        <a href="pedido-colgadores-{p["key"]}.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
 
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055714_2a575431-ac23-42f2-b91b-7eb1d8e16399.png" alt="Póster de papel mate clásico con colgador">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055737_e794471b-0a1e-4c9a-9728-5abcb0668f8d.png" alt="Póster de papel mate clásico con colgador en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Póster de papel mate clásico con colgador</h2>
-        <a href="pedido-colgadores-mate-clasico.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
+'''
 
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055717_68ff9a21-dba2-4d5a-a537-e4a805355980.png" alt="Póster de papel mate calidad museo con colgador">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055739_44227d8b-4945-49f5-af7a-ebc65bcf5c65.png" alt="Póster de papel mate calidad museo con colgador en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Póster de papel mate calidad museo con colgador</h2>
-        <a href="pedido-colgadores-mate-museo.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055720_a92fd7d7-4f10-4d3f-885d-0cdacdb9f5cd.png" alt="Póster de papel semibrillante prémium con colgador">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055742_14ae4d23-8b25-4548-b083-46582cd8c448.png" alt="Póster de papel semibrillante prémium con colgador en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Póster de papel semibrillante prémium con colgador</h2>
-        <a href="pedido-colgadores-semibrillante-premium.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-    <article class="sub-card">
-      <div class="sub-card-img">
-        <img class="img-base" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055731_88011ace-95cd-4118-af45-ce35110bd2c6.png" alt="Póster de papel semibrillante clásico con colgador">
-        <img class="img-hover" src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260524_055745_3576dacd-4fb3-4c23-b25c-0652ade50353.jpeg" alt="Póster de papel semibrillante clásico con colgador en pared">
-      </div>
-      <div class="sub-card-body">
-        <h2 class="sub-card-title">Póster de papel semibrillante clásico con colgador</h2>
-        <a href="pedido-colgadores-semibrillante-clasico.html" class="sub-card-cta">Personalizar</a>
-      </div>
-    </article>
-
-  </div>
+catalogo += '''  </div>
 </main>
 
 <footer class="footer">
@@ -141,3 +149,82 @@ img{max-width:100%;display:block}
 
 </body>
 </html>
+'''
+
+with open(os.path.join(OUT_DIR, "arte-mural-colgadores.html"), "w", encoding="utf-8") as f:
+    f.write(catalogo)
+print("OK CATALOGO arte-mural-colgadores.html")
+
+
+# ============ 2. PÁGINAS DE PEDIDO (basadas en pedido-marco-madera-mate-premium.html, que YA tiene paso color 4 colores) ============
+template_path = os.path.join(OUT_DIR, "pedido-marco-madera-mate-premium.html")
+with open(template_path, "r", encoding="utf-8") as f:
+    template = f.read()
+
+for p in products:
+    pedido_file = f"pedido-colgadores-{p['key']}.html"
+    new_html = template
+
+    # Title
+    new_html = re.sub(
+        r'<title>Hacer mi pedido · [^<]+</title>',
+        f'<title>Hacer mi pedido · {p["name"]} · Kodara Print</title>',
+        new_html
+    )
+
+    # Topnav back links (logo + back button)
+    new_html = new_html.replace(
+        'href="arte-mural-marco-madera.html"',
+        'href="arte-mural-colgadores.html"'
+    )
+
+    # Texto botón Volver
+    new_html = new_html.replace(
+        '<a href="arte-mural-colgadores.html" class="topnav-back">← Volver a Pósteres con marcos de madera</a>',
+        '<a href="arte-mural-colgadores.html" class="topnav-back">← Volver a Pósteres con colgadores</a>'
+    )
+
+    # Page-tag
+    new_html = re.sub(
+        r'<div class="page-tag">Pedido · [^<]+</div>',
+        f'<div class="page-tag">Pedido · {p["name"]}</div>',
+        new_html
+    )
+
+    # Web3Forms subject
+    new_html = re.sub(
+        r'value="Nuevo pedido · [^"]+ · Kodara Print"',
+        f'value="Nuevo pedido · {p["name"]} · Kodara Print"',
+        new_html
+    )
+
+    # Cambiar el label "Color del marco" a "Color del colgador"
+    new_html = new_html.replace(
+        '<div class="step-title">Color del marco</div>',
+        '<div class="step-title">Color del colgador</div>'
+    )
+    new_html = new_html.replace(
+        'Elige el color del marco de madera que prefieras.',
+        'Elige el color del colgador de madera que prefieras.'
+    )
+    # name='color_marco' → 'color_colgador'
+    new_html = new_html.replace(
+        'name="color_marco"',
+        'name="color_colgador"'
+    )
+    # JS validation
+    new_html = new_html.replace(
+        "form.querySelector('[name=\"color_marco\"]:checked')",
+        "form.querySelector('[name=\"color_colgador\"]:checked')"
+    )
+    new_html = new_html.replace(
+        "showAlert('Tienes que elegir el color del marco (paso 3).');",
+        "showAlert('Tienes que elegir el color del colgador (paso 3).');"
+    )
+
+    with open(os.path.join(OUT_DIR, pedido_file), "w", encoding="utf-8") as f:
+        f.write(new_html)
+    print(f"OK PEDIDO    {pedido_file}")
+
+print("\nDONE — 5 paginas Pósteres con colgadores construidas")
+print("Precios temporales heredados de Marco de Madera Mate Prémium. Esperar costos Angel para aplicar precios reales.")
