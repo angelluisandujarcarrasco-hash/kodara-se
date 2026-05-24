@@ -52,5 +52,12 @@ p{color:var(--text-2);font-size:15px;margin-bottom:14px;line-height:1.6}
 </footer>
 
 <script src="cart.js"></script>
+<script>
+  // Si llegamos aqui con session_id en la URL = pago Stripe completado, limpiar carrito
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('session_id')) {
+    clearCart();
+  }
+</script>
 </body>
 </html>

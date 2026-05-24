@@ -214,7 +214,7 @@ function renderCheckout() {
             <span class="amount">$${subtotal}</span>
           </div>
           <div class="form-alert" id="form-alert"></div>
-          <button type="submit" class="submit-btn" id="submit-btn">Enviar pedido</button>
+          <button type="submit" class="submit-btn" id="submit-btn">Pagar ahora</button>
           <p class="privacy-note">Al enviar aceptas nuestra <a href="politica-privacidad.html">política de privacidad</a>.</p>
         </aside>
       </div>
@@ -236,6 +236,9 @@ function attachFormHandlers() {
     setTimeout(() => alertBox.classList.remove('show'), 8000);
   }
 
+  // URL del endpoint Vercel
+  const STRIPE_API = 'https://kodara-se-git-main-angelluisandujarcarrasco-5233s-projects.vercel.app/api/create-checkout-session';
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -255,7 +258,10 @@ function attachFormHandlers() {
     const data = new FormData(form);
     const cliente = Object.fromEntries(data.entries());
 
-    // Construir mensaje detallado con todos los items
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Procesando...';
+
+    // 1. Enviar notificacion a Web3Forms (email a Kodara)
     const itemsText = items.map((item, i) => {
       const config = [
         item.tamano ? `Tamaño: ${item.tamano}` : null,
@@ -271,74 +277,57 @@ function attachFormHandlers() {
     }).join('\n');
 
     const total = getCartTotal();
-    const mensaje = `
-NUEVO PEDIDO MULTI-PRODUCTO · KODARA PRINT STUDIO
-${'='.repeat(60)}
 
-DATOS DEL CLIENTE:
-  Nombre: ${cliente.nombre} ${cliente.apellido}
-  Email: ${cliente.email}
-  Teléfono: ${cliente.telefono}
-
-DIRECCIÓN DE ENVÍO:
-  ${cliente.direccion_1}${cliente.direccion_2 ? '\n  ' + cliente.direccion_2 : ''}${cliente.empresa ? '\n  Empresa: ' + cliente.empresa : ''}
-  ${cliente.codigo_postal} ${cliente.ciudad}, ${cliente.estado}
-  ${cliente.pais}
-
-${cliente.notas ? 'NOTAS:\n  ' + cliente.notas + '\n' : ''}
-
-${itemsText}
-
-${'='.repeat(60)}
-TOTAL DEL PEDIDO: $${total} (${getCartCount()} productos)
-ENVÍO: Gratis (incluido)
-${'='.repeat(60)}
-`;
-
-    // Enviar a Web3Forms
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-
+    // 2. Crear sesion Stripe Checkout via Vercel
     try {
-      const payload = new FormData();
-      payload.append('access_key', '2e5a1c54-e4bf-41f4-b04c-7f4c30dace33');
-      payload.append('subject', `Nuevo pedido multi-producto · $${total} · Kodara Print`);
-      payload.append('from_name', 'Kodara Print Studio');
-      payload.append('email', cliente.email);
-      payload.append('mensaje', mensaje);
-      // Tambien adjuntar fields individuales para que sean facil de leer
-      for (const [k, v] of Object.entries(cliente)) {
-        payload.append('cliente_' + k, v);
-      }
-      payload.append('total', '$' + total);
-      payload.append('cantidad_productos', items.length);
-      // URLs de imagenes
-      items.forEach((item, i) => {
-        payload.append(`imagen_${i+1}_url`, item.imagen_url || '');
-        payload.append(`producto_${i+1}`, item.producto || '');
-      });
-
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const stripeRes = await fetch(STRIPE_API, {
         method: 'POST',
-        body: payload
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: items,
+          customer_email: cliente.email,
+        }),
       });
 
-      if (res.ok) {
-        clearCart();
-        window.location.href = 'gracias.html';
-      } else {
-        const err = await res.text();
-        console.error('Error:', err);
-        showAlert('Error al enviar pedido. Inténtalo de nuevo o contáctanos.');
+      if (!stripeRes.ok) {
+        const err = await stripeRes.text();
+        console.error('Stripe API error:', err);
+        showAlert('Error al crear el pago. Inténtalo de nuevo o contáctanos.');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar pedido';
+        submitBtn.textContent = 'Pagar ahora';
+        return;
       }
+
+      const { url: stripeUrl } = await stripeRes.json();
+
+      // 3. Enviar email de notificacion (no bloquear si falla)
+      const w3Payload = new FormData();
+      w3Payload.append('access_key', '2e5a1c54-e4bf-41f4-b04c-7f4c30dace33');
+      w3Payload.append('subject', `Pedido en proceso (Stripe) · $${total} · Kodara Print`);
+      w3Payload.append('from_name', 'Kodara Print Studio');
+      w3Payload.append('email', cliente.email);
+      for (const [k, v] of Object.entries(cliente)) {
+        w3Payload.append('cliente_' + k, v);
+      }
+      w3Payload.append('total', '$' + total);
+      w3Payload.append('items_detalle', itemsText);
+      items.forEach((item, i) => {
+        w3Payload.append(`imagen_${i+1}_url`, item.imagen_url || '');
+        w3Payload.append(`producto_${i+1}`, item.producto || '');
+      });
+      // Fire-and-forget, no esperamos a que termine
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: w3Payload }).catch(()=>{});
+
+      // 4. Redirect a Stripe Checkout
+      window.location.href = stripeUrl;
     } catch (err) {
       console.error(err);
       showAlert('Error de conexión. Verifica tu internet e inténtalo de nuevo.');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar pedido';
+      submitBtn.textContent = 'Pagar ahora';
     }
+    return;
+
   });
 }
 
