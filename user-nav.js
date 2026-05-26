@@ -27,16 +27,13 @@ function injectStyle() {
   document.head.appendChild(s);
 }
 
-// Encuentra el contenedor del nav. Busca por orden de preferencia:
-// 1. Elemento con id="user-nav-slot"
-// 2. .topnav-actions
-// 3. último hijo de .topnav
+// Encuentra el contenedor del nav. Busca por orden:
 function findSlot() {
   return document.getElementById('user-nav-slot')
     || document.querySelector('.topnav-actions')
-    || document.querySelector('.topnav nav-actions')
+    || document.querySelector('.nav-right')
     || (() => {
-      const topnav = document.querySelector('.topnav');
+      const topnav = document.querySelector('.topnav') || document.querySelector('#nav') || document.querySelector('nav');
       if (!topnav) return null;
       const slot = document.createElement('div');
       slot.style.cssText = 'display:flex;gap:10px;align-items:center';
