@@ -31,34 +31,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #060B18;
-  --bg-2: #0A1424;
-  --bg-3: #111B30;
-  --card: #0F1A2E;
-  --card-2: #131F36;
-  --border: rgba(255,255,255,0.06);
-  --border-2: rgba(255,255,255,0.1);
-  --text: #FFFFFF;
-  --text-2: #B8C0D0;
-  --text-3: #6B7689;
-  --muted: #4A5568;
-  --orange: #F97316;
-  --orange-light: #FB923C;
-  --orange-dark: #C2570C;
-  --purple: #7C3AED;
-  --purple-light: #A78BFA;
-  --green: #10B981;
-  --blue: #3B82F6;
-  --pink: #EC4899;
-  --cyan: #06B6D4;
-  --yellow: #F59E0B;
+  --bg: #FCF0DE;
+  --bg-2: #F7E6CC;
+  --card: #FFF8EC;
+  --card-2: #F4E4C6;
+  --border: rgba(60,50,40,0.12);
+  --border-2: rgba(60,50,40,0.20);
+  --text: #3C3228;
+  --text-2: #5C4E40;
+  --text-3: #8A7864;
+  --orange: #C15431;
+  --orange-light: #D97757;
+  --pink: #D97757;
+  --purple: #B58850;
+  --blue: #6B8E7A;
+  --green: #88A06E;
+  --cyan: #A8997A;
+  --yellow: #D4A977;
+  --terracotta: #C15431;
+  --terracotta-dark: #9B3F22;
+  --gold: #D4A977;
+  --gold-dark: #B58850;
+  --cream: #FCF0DE;
+  --dark: #3C3228;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 *::selection { background: var(--orange); color: #fff; }
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -137,7 +137,7 @@ nav.scrolled {
   font-size: 11px; padding: 5px 12px; border-radius: 999px;
   color: var(--text-3); transition: all 0.2s; letter-spacing: 0.5px;
 }
-.lang-btn.active { background: var(--orange); color: #fff; }
+.lang-btn.active { background: var(--terracotta); color: #fff; }
 .cta-btn {
   background: linear-gradient(135deg, var(--orange), var(--orange-light));
   color: #fff; border: none; cursor: pointer;
@@ -186,7 +186,7 @@ nav.scrolled {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(249,115,22,0.6); }
   50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(249,115,22,0); }
 }
-.hero h1 {
+.hero h1 { font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(48px, 7vw, 88px);
   font-weight: 900;
   letter-spacing: -2.5px;
@@ -252,7 +252,7 @@ nav.scrolled {
   font-family: 'JetBrains Mono', monospace;
   font-size: 28px; font-weight: 800;
   margin-bottom: 4px;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
+  background: linear-gradient(135deg, var(--terracotta), var(--gold-dark));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -287,7 +287,7 @@ nav.scrolled {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-.section-title {
+.section-title { font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 900; letter-spacing: -1.5px;
   line-height: 1.05; margin-bottom: 20px;
@@ -461,7 +461,7 @@ nav.scrolled {
 .step-num {
   font-family: 'JetBrains Mono', monospace;
   font-size: 64px; font-weight: 900;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
+  background: linear-gradient(135deg, var(--terracotta), var(--gold-dark));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1; margin-bottom: 24px;
@@ -529,7 +529,7 @@ nav.scrolled {
 }
 .plan-badge {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--orange), var(--pink));
+  background: linear-gradient(135deg, var(--terracotta), var(--gold-dark));
   color: #fff; font-size: 11px; font-weight: 700;
   padding: 6px 20px; border-radius: 999px;
   letter-spacing: 0.5px; white-space: nowrap;
@@ -735,7 +735,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 .svc-modal-price {
   font-family: 'JetBrains Mono', monospace;
   font-size: 24px; font-weight: 800;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
+  background: linear-gradient(135deg, var(--terracotta), var(--gold-dark));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -894,13 +894,13 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 <body>
 
 <div id="progress-bar"></div>
-<div class="grain"></div>
+
 
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo">
-    <div class="logo-mark"><img src="logo-kodara.jpeg" alt="Kodara SE"></div>
-    Kodara<span>SE</span>
+    <div class="logo-mark"><img src="logo-kodara-boho.png" alt="Kodara SE"></div>
+    Kodarase<span>Print Studio</span>
   </a>
   <ul class="nav-links">
     <li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li>
@@ -937,10 +937,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 
   <div class="hero-visual">
     <div class="hero-visual-wrap">
-      <video autoplay loop muted playsinline poster="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_201615_d5bb460f-cfdf-4e91-be74-734509edb3d7.png">
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_201627_d122db97-86ff-44c3-9237-75624e266808.mp4" type="video/mp4">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_201615_d5bb460f-cfdf-4e91-be74-734509edb3d7.png" alt="Kodara SE">
-      </video>
+      <img src="https://res.cloudinary.com/dxzppmgqb/image/upload/v1779924499/hero-boho-print.png" alt="Kodarase Print Studio" style="width:100%;border-radius:24px;display:block">
     </div>
   </div>
 
@@ -1436,8 +1433,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#top" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-        <div class="logo-mark"><img src="logo-kodara.jpeg" alt="Kodara SE"></div>
-        Kodara<span>SE</span>
+        <div class="logo-mark"><img src="logo-kodara-boho.png" alt="Kodara SE"></div>
+        Kodarase<span>Print Studio</span>
       </a>
       <p data-es="Soluciones digitales que generan resultados reales. Para negocios que quieren crecer rápido." data-en="Digital solutions that generate real results. For businesses that want to grow fast.">Soluciones digitales que generan resultados reales. Para negocios que quieren crecer rápido.</p>
       <div class="footer-social">
