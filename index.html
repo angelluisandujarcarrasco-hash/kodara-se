@@ -919,6 +919,27 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 .testimonio-author small { display: block; font-weight: 500; color: var(--text-3); margin-top: 4px; text-transform: none; letter-spacing: 0; }
 @media (max-width: 800px) { .testimonios-grid { grid-template-columns: 1fr; } }
 
+/* MODAL RESEÑA */
+.review-backdrop{position:fixed;inset:0;background:rgba(60,50,40,0.55);backdrop-filter:blur(6px);z-index:99997;display:none;align-items:center;justify-content:center;padding:20px}
+.review-backdrop.open{display:flex}
+.review-modal{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:36px 30px;max-width:460px;width:100%;position:relative;box-shadow:0 25px 70px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto}
+.review-close{position:absolute;top:14px;right:14px;background:rgba(60,50,40,0.08);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:20px;color:var(--text-2);display:flex;align-items:center;justify-content:center}
+.review-close:hover{background:rgba(60,50,40,0.16)}
+.review-title{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.review-sub{font-size:14px;color:var(--text-2);line-height:1.5;margin-bottom:22px}
+.review-field{margin-bottom:16px}
+.review-field label{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.review-field input[type=text], .review-field textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:14px;font-family:inherit;padding:12px 14px;border-radius:10px;outline:none;transition:border-color 0.2s}
+.review-field input:focus, .review-field textarea:focus{border-color:var(--terracotta)}
+.review-field input[type=file]{width:100%;font-size:13px;color:var(--text-2);padding:8px 0}
+.review-stars{display:flex;gap:6px;font-size:32px;cursor:pointer}
+.review-stars span{color:var(--border-2);transition:color 0.15s;cursor:pointer}
+.review-stars span.active{color:var(--gold-dark)}
+.review-success{text-align:center;padding:24px 0}
+.review-success-icon{font-size:52px;margin-bottom:14px}
+.review-success h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--dark);margin-bottom:10px}
+.review-success p{font-size:14px;color:var(--text-2);line-height:1.5}
+
 /* WHATSAPP FAB */
 .whatsapp-fab {
   position: fixed; bottom: 24px; right: 24px; z-index: 9999;
@@ -1109,8 +1130,45 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:36px">
+      <p style="color:var(--text-2);font-size:15px;margin-bottom:18px" data-es="¿Ya recibiste tu pedido? ¡Comparte tu experiencia con una foto o video!" data-en="Already got your order? Share your experience with a photo or video!">¿Ya recibiste tu pedido? ¡Comparte tu experiencia con una foto o video!</p>
+      <button class="cta-btn cta-big" onclick="openReview()" data-es="Dejar mi reseña ★" data-en="Leave my review ★" style="border:none;cursor:pointer;font-family:inherit">Dejar mi reseña ★</button>
+    </div>
   </div>
 </section>
+
+<!-- MODAL RESEÑA -->
+<div class="review-backdrop" id="reviewModal">
+  <div class="review-modal">
+    <button class="review-close" onclick="closeReview()" aria-label="Cerrar">×</button>
+    <div id="reviewContent">
+      <h3 class="review-title" data-es="Deja tu reseña" data-en="Leave your review">Deja tu reseña</h3>
+      <p class="review-sub" data-es="Cuéntanos tu experiencia. Sube una foto o video de tu producto. La revisaremos y publicaremos pronto." data-en="Tell us your experience. Upload a photo or video of your product. We'll review and publish it soon.">Cuéntanos tu experiencia. Sube una foto o video de tu producto. La revisaremos y publicaremos pronto.</p>
+      <form id="reviewForm">
+        <div class="review-field">
+          <label data-es="Tu nombre" data-en="Your name">Tu nombre</label>
+          <input type="text" id="rev-name" required placeholder="María G.">
+        </div>
+        <div class="review-field">
+          <label data-es="Tu calificación" data-en="Your rating">Tu calificación</label>
+          <div class="review-stars" id="revStars">
+            <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+          </div>
+        </div>
+        <div class="review-field">
+          <label data-es="Tu comentario" data-en="Your comment">Tu comentario</label>
+          <textarea id="rev-text" rows="3" required placeholder="Me encantó la calidad de mi póster..."></textarea>
+        </div>
+        <div class="review-field">
+          <label data-es="Foto o video de tu producto (opcional)" data-en="Photo or video of your product (optional)">Foto o video de tu producto (opcional)</label>
+          <input type="file" id="rev-file" accept="image/*,video/*">
+          <small style="color:var(--text-3);font-size:11px">Máximo 5 MB</small>
+        </div>
+        <button type="submit" class="cta-btn cta-big" id="revSubmit" style="border:none;cursor:pointer;width:100%;justify-content:center;font-family:inherit" data-es="Enviar reseña →" data-en="Send review →">Enviar reseña →</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="section" id="about">
@@ -2136,6 +2194,52 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script src="lead-magnet.js"></script>
+
+<script>
+// ===== MODAL RESEÑA =====
+let revRating = 5;
+function openReview(){ document.getElementById('reviewModal').classList.add('open'); }
+function closeReview(){ document.getElementById('reviewModal').classList.remove('open'); }
+(function(){
+  const modal = document.getElementById('reviewModal');
+  if(!modal) return;
+  modal.addEventListener('click', e => { if(e.target===modal) closeReview(); });
+  // Stars
+  const stars = modal.querySelectorAll('#revStars span');
+  function paint(n){ stars.forEach(s => s.classList.toggle('active', +s.dataset.v <= n)); }
+  paint(5);
+  stars.forEach(s => {
+    s.addEventListener('click', () => { revRating = +s.dataset.v; paint(revRating); });
+    s.addEventListener('mouseenter', () => paint(+s.dataset.v));
+  });
+  modal.querySelector('#revStars').addEventListener('mouseleave', () => paint(revRating));
+  // Submit
+  const form = document.getElementById('reviewForm');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('revSubmit');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    const file = document.getElementById('rev-file').files[0];
+    if(file && file.size > 5*1024*1024){
+      alert('El archivo es muy grande (máximo 5 MB). Usa una foto o un video corto.');
+      btn.disabled = false; btn.textContent = 'Enviar reseña →'; return;
+    }
+    const fd = new FormData();
+    fd.append('access_key', '2e5a1c54-e4bf-41f4-b04c-7f4c30dace33');
+    fd.append('subject', '⭐ Nueva reseña de cliente Kodarase');
+    fd.append('from_name', 'Reseñas Kodarase');
+    fd.append('Nombre', document.getElementById('rev-name').value);
+    fd.append('Calificación', revRating + ' estrellas');
+    fd.append('Comentario', document.getElementById('rev-text').value);
+    if(file) fd.append('attachment', file);
+    try{
+      await fetch('https://api.web3forms.com/submit', { method:'POST', body: fd });
+    }catch(err){ console.error(err); }
+    document.getElementById('reviewContent').innerHTML =
+      '<div class="review-success"><div class="review-success-icon">🎉</div><h3>¡Gracias por tu reseña!</h3><p>La revisaremos y la publicaremos pronto en nuestra web. ¡Tu opinión nos ayuda muchísimo!</p></div>';
+  });
+})();
+</script>
 
 <!-- WHATSAPP FAB -->
 <a href="https://wa.me/12724467291" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chatear por WhatsApp" title="Chatea con nosotros por WhatsApp">
