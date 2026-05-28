@@ -54,14 +54,37 @@ img{max-width:100%;display:block}
 .shipping-icon{font-size:18px}
 .footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
 .footer a{color:var(--orange)}
+/* Banner lanzamiento */
+.launch-banner{position:sticky;top:0;z-index:200;background:linear-gradient(135deg,var(--terracotta),var(--gold-dark));color:#fff;text-align:center;padding:11px 18px;font-size:13.5px;font-weight:600;letter-spacing:0.2px;line-height:1.4}
+.launch-banner strong{font-weight:800;background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace}
+/* Badges de garantía */
+.trust-badges{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px;margin-top:22px}
+.trust-badge{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--text-2)}
+.trust-badge .check{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,0.15);color:#10B981;font-size:12px;font-weight:800}
+/* Descripción de producto */
+.sub-card-desc{font-size:12.5px;color:var(--text-3);text-align:center;line-height:1.45;margin-top:-4px}
+/* Sección ayuda WhatsApp */
+.help-section{max-width:760px;margin:0 auto 80px;text-align:center;padding:48px 32px;background:var(--card);border:1px solid var(--border);border-radius:24px}
+.help-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--terracotta);text-transform:uppercase;margin-bottom:14px}
+.help-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,34px);font-weight:700;color:var(--dark);margin-bottom:12px;letter-spacing:-0.5px}
+.help-text{font-size:15px;color:var(--text-2);line-height:1.6;margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto}
+.help-wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-size:15px;font-weight:700;padding:15px 32px;border-radius:999px;transition:all 0.25s;box-shadow:0 6px 20px rgba(37,211,102,0.35)}
+.help-wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.5);color:#fff}
+.help-wa-btn svg{width:22px;height:22px;fill:#fff}
 @media(max-width:640px){
   .topnav{padding:12px 18px}
   .page-header{padding:60px 20px 40px}
   .main-content{padding:40px 20px 60px}
+  .trust-badges{gap:12px;flex-direction:column}
+  .launch-banner{font-size:12px}
 }
 </style>
 </head>
 <body>
+
+<div class="launch-banner">
+  🎉 LANZAMIENTO: usa el código <strong>LANZAMIENTO20</strong> y recibe 20% OFF tu primer pedido. Solo primeros 20 clientes.
+</div>
 
 <nav class="topnav">
   <a href="personalizar-arte-mural.html" class="topnav-logo">
@@ -75,11 +98,16 @@ img{max-width:100%;display:block}
   <div class="page-header-inner">
     <div class="page-tag">Arte Mural · Posteres</div>
     <h1 class="page-title">
-      Personaliza tu <span class="grad">pósteres</span>.
+      Personaliza tus <span class="grad">pósteres</span>.
     </h1>
     <p class="page-sub">
       Elige el tipo de papel que prefieras. Cada uno con sus propios tamaños y precios.
     </p>
+    <div class="trust-badges">
+      <span class="trust-badge"><span class="check">✓</span> Preview antes de imprimir</span>
+      <span class="trust-badge"><span class="check">✓</span> Calidad garantizada o reembolso</span>
+      <span class="trust-badge"><span class="check">✓</span> Pago seguro Stripe</span>
+    </div>
     <div class="hero-shipping">
       <span class="shipping-icon">🚚</span>
       <strong>Envío gratis</strong>
@@ -99,6 +127,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Póster de papel mate prémium</h2>
+        <p class="sub-card-desc">Acabado profesional, sin reflejos</p>
         <a href="pedido-posteres-mate-premium.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -112,6 +141,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Póster de papel mate clásico</h2>
+        <p class="sub-card-desc">Acabado mate suave, ideal para decoración minimalista</p>
         <a href="pedido-posteres-mate-clasico.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -125,6 +155,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Póster de papel mate calidad museo</h2>
+        <p class="sub-card-desc">Calidad galería, para obras importantes</p>
         <a href="pedido-posteres-mate-museo.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -138,6 +169,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Impresión Artística</h2>
+        <p class="sub-card-desc">Papel fine-art, máxima calidad cromática</p>
         <a href="pedido-posteres-impresion-artistica.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -151,6 +183,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Póster de papel semibrillante prémium</h2>
+        <p class="sub-card-desc">Mayor durabilidad, perfecto para regalos</p>
         <a href="pedido-posteres-semibrillante-premium.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -164,6 +197,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="sub-card-body">
         <h2 class="sub-card-title">Póster de papel semibrillante clásico</h2>
+        <p class="sub-card-desc">Brillo sutil, colores vibrantes</p>
         <a href="pedido-posteres-semibrillante-clasico.html" class="sub-card-cta">Personalizar</a>
       </div>
     </article>
@@ -171,8 +205,18 @@ img{max-width:100%;display:block}
   </div>
 </main>
 
+<section class="help-section">
+  <div class="help-tag">// ¿NO SABES CUÁL ELEGIR?</div>
+  <h2 class="help-title">Te ayudamos a elegir</h2>
+  <p class="help-text">Escríbenos por WhatsApp y te ayudamos a elegir el papel perfecto en 5 minutos.</p>
+  <a href="https://wa.me/PLACEHOLDER" target="_blank" rel="noopener" class="help-wa-btn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Escríbenos por WhatsApp
+  </a>
+</section>
+
 <footer class="footer">
-  © 2026 Kodara SE · <a href="index.html">kodarase.com</a>
+  © 2026 Kodarase Print Studio · <a href="index.html">kodarase.com</a>
 </footer>
 
 <script src="cart.js"></script>
