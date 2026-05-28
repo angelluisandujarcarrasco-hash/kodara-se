@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kodarase Print Studio — Diseñamos e imprimimos lo que imagines</title>
+<title>Kodarase Print Studio — Pósters, lienzos y regalos personalizados</title>
 <meta property="og:title" content="Kodarase Print Studio — Diseñamos e imprimimos lo que imagines">
 <meta property="og:description" content="Diseñamos e imprimimos tus fotos, ideas y diseños en pósters, lienzos, ropa, tazas y más. Calidad premium, envío rápido. Empieza con 10% descuento.">
 <meta property="og:image" content="https://res.cloudinary.com/dxzppmgqb/image/upload/v1779717115/tarjeta-frente-print-v5.png">
@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="Print-on-demand artesanal premium. 10% descuento al suscribirte.">
 <meta name="twitter:image" content="https://res.cloudinary.com/dxzppmgqb/image/upload/v1779717115/tarjeta-frente-print-v5.png">
 <link rel="icon" type="image/jpeg" href="logo-kodara.jpeg">
-<meta name="description" content="Imprimimos tus fotos y diseños en lienzos, pósters, ropa, tazas y bolsas. Print-on-demand artesanal premium. Calidad alta, envío rápido. Diseña el tuyo en kodarase.com.">
-<meta name="keywords" content="print on demand, impresión personalizada, pósters personalizados, lienzos arte mural, tazas personalizadas, bolsas tote, kodarase, regalos personalizados, decoración hogar, print studio">
+<meta name="description" content="Imprimimos tus fotos y diseños en pósters, lienzos, ropa, tazas y bolsas. Calidad premium, envío 3-7 días, sin mínimos. Empieza con 10% descuento.">
+<meta name="keywords" content="print on demand, impresión personalizada, pósters personalizados, lienzos enmarcados, tazas personalizadas, bolsas tote, ropa personalizada, tarjetas, calendarios, libros de fotos, regalos personalizados, decoración hogar, kodarase">
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -870,6 +870,68 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   .bud-head, .bud-body, .bud-progress { padding-left: 20px; padding-right: 20px; }
 }
 
+/* PRODUCTOS */
+.products-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1100px; margin: 0 auto;
+}
+.product-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden; transition: all 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-4px); border-color: var(--terracotta);
+  box-shadow: 0 12px 32px rgba(193,84,49,0.12);
+}
+.product-img { aspect-ratio: 1/1; position: relative; overflow: hidden; background: var(--bg-2); }
+.product-placeholder {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--text-3); font-size: 13px; font-family: 'Inter',sans-serif; font-weight: 600;
+  background: repeating-linear-gradient(45deg, var(--bg-2), var(--bg-2) 10px, var(--card-2) 10px, var(--card-2) 20px);
+}
+.product-card h4 {
+  font-family: 'Playfair Display', Georgia, serif; font-size: 18px;
+  font-weight: 700; text-align: center; padding: 16px 12px; color: var(--dark);
+}
+@media (max-width: 800px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* TESTIMONIOS */
+.testimonios-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  max-width: 1100px; margin: 0 auto;
+}
+.testimonio-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 18px; padding: 28px 24px; text-align: center;
+}
+.testimonio-stars {
+  color: var(--gold-dark); font-size: 18px; margin-bottom: 16px; letter-spacing: 2px;
+}
+.testimonio-text {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px;
+  color: var(--text-2); line-height: 1.6; margin-bottom: 18px;
+}
+.testimonio-author {
+  font-size: 13px; font-weight: 700; color: var(--dark);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.testimonio-author small { display: block; font-weight: 500; color: var(--text-3); margin-top: 4px; text-transform: none; letter-spacing: 0; }
+@media (max-width: 800px) { .testimonios-grid { grid-template-columns: 1fr; } }
+
+/* WHATSAPP FAB */
+.whatsapp-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.4), 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+}
+.whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 30px rgba(37,211,102,0.55); }
+.whatsapp-fab svg { width: 32px; height: 32px; fill: #fff; }
+@media (max-width: 480px) { .whatsapp-fab { bottom: 18px; right: 18px; width: 56px; height: 56px; } }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .section { padding: 80px 24px; }
@@ -978,9 +1040,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
 <section class="section" id="services">
   <div class="section-inner">
     <div class="section-tag reveal" data-es="// LO QUE HACEMOS" data-en="// WHAT WE DO">// LO QUE HACEMOS</div>
-    <h2 class="section-title reveal" data-es="Print-on-demand artesanal +<br>servicios digitales premium." data-en="Artisanal print-on-demand +<br>premium digital services.">Print-on-demand artesanal +<br>servicios digitales premium.</h2>
-    <p class="section-subtitle reveal" data-es="Nuestro servicio estrella es Kodarase Print Studio. También ofrecemos diseño web y marketing digital para negocios que quieren crecer rápido." data-en="Our flagship service is Kodarase Print Studio. We also offer web design and digital marketing for businesses that want to grow fast.">
-      Nuestro servicio estrella es Kodarase Print Studio. También ofrecemos diseño web y marketing digital para negocios que quieren crecer rápido.
+    <h2 class="section-title reveal" data-es="Print-on-demand artesanal.<br>Lo que imagines, lo imprimimos." data-en="Artisanal print-on-demand.<br>Whatever you imagine, we print.">Print-on-demand artesanal.<br>Lo que imagines, lo imprimimos.</h2>
+    <p class="section-subtitle reveal" data-es="Pósters, lienzos, ropa, tazas, bolsas y mucho más. Sin stock, sin mínimos, sin esperar meses. Cada pieza única, hecha cuando tú la pides." data-en="Posters, canvases, clothing, mugs, bags and much more. No stock, no minimums, no waiting months. Each piece unique, made when you order it.">
+      Pósters, lienzos, ropa, tazas, bolsas y mucho más. Sin stock, sin mínimos, sin esperar meses. Cada pieza única, hecha cuando tú la pides.
     </p>
 
     <div class="services-grid">
@@ -996,30 +1058,29 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         </div>
       </article>
 
-      <article class="svc-card svc-1 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073709_1d7c53e2-f320-40c4-bd29-2167dd86833e.png" alt="Diseño Web Premium"></div>
-        <span class="svc-tag">KSE-001</span>
-        <h3 data-es="Diseño Web Premium" data-en="Premium Web Design">Diseño Web Premium</h3>
-        <p data-es="Web profesional con animaciones GSAP, diseño a medida y optimizada para convertir visitas en clientes. Lista en 72 horas." data-en="Professional website with GSAP animations, custom design and optimized to convert visitors into customers. Ready in 72 hours.">Web profesional con animaciones GSAP, diseño a medida y optimizada para convertir visitas en clientes. Lista en 72 horas.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$900 — $2,000</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-10 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260519_113236_6e859e54-d51c-48fd-888a-ae9848a98b5a.png" alt="Marketing Digital"></div>
-        <span class="svc-tag" style="background:rgba(236,72,153,0.1);color:#EC4899">KSE-010 · NUEVO</span>
-        <h3 data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</h3>
-        <p data-es="Marketing completo en Instagram, TikTok, YouTube y Facebook con videos cinematográficos premium. Para que el mundo conozca tu negocio." data-en="Complete marketing on Instagram, TikTok, YouTube and Facebook with premium cinematic videos. So the world knows your business.">Marketing completo en Instagram, TikTok, YouTube y Facebook con videos cinematográficos premium. Para que el mundo conozca tu negocio.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$147 — $497</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
       <!-- BOTÓN PARA MOSTRAR MÁS SERVICIOS -->
 
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="section" id="productos">
+  <div class="section-inner">
+    <div class="section-divider">
+      <div class="section-tag reveal" data-es="// NUESTROS PRODUCTOS" data-en="// OUR PRODUCTS">// NUESTROS PRODUCTOS</div>
+      <h2 class="section-title reveal" data-es="Todo lo que puedes personalizar." data-en="Everything you can customize.">Todo lo que puedes personalizar.</h2>
+      <p class="section-subtitle reveal" data-es="Pósters, lienzos, ropa, tazas y mucho más. Sube tu diseño o foto y nosotros lo imprimimos con calidad premium." data-en="Posters, canvases, clothing, mugs and more. Upload your design or photo and we print with premium quality.">Pósters, lienzos, ropa, tazas y mucho más. Sube tu diseño o foto y nosotros lo imprimimos con calidad premium.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Póster personalizado</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Lienzo enmarcado</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Taza</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Bolsa Tote</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Camiseta</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Tarjeta</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Calendario</h4></div>
+      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Libro de fotos</h4></div>
     </div>
   </div>
 </section>
@@ -1047,6 +1108,33 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <div class="step-num">03</div>
         <h3 data-es="Recíbelo en casa" data-en="Receive it at home">Recíbelo en casa</h3>
         <p data-es="Producimos y enviamos a cualquier parte del mundo en 3-7 días. Calidad garantizada o te devolvemos tu dinero." data-en="We produce and ship anywhere in the world in 3-7 days. Quality guaranteed or your money back.">Producimos y enviamos a cualquier parte del mundo en 3-7 días. Calidad garantizada o te devolvemos tu dinero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section" id="testimonios">
+  <div class="section-inner">
+    <div class="section-divider">
+      <div class="section-tag reveal" data-es="// QUÉ DICEN NUESTROS CLIENTES" data-en="// WHAT OUR CLIENTS SAY">// QUÉ DICEN NUESTROS CLIENTES</div>
+      <h2 class="section-title reveal" data-es="Historias reales de personas reales." data-en="Real stories from real people.">Historias reales de personas reales.</h2>
+    </div>
+    <div class="testimonios-grid">
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text" data-es="Testimonio próximamente. Próximamente esta sección tendrá comentarios de clientes reales sobre su experiencia con Kodarase." data-en="Testimonial coming soon. This section will soon feature real customer feedback about their Kodarase experience.">Testimonio próximamente. Próximamente esta sección tendrá comentarios de clientes reales sobre su experiencia con Kodarase.</p>
+        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text" data-es="Testimonio próximamente. La calidad de los productos y el servicio personalizado hablan por sí solos." data-en="Testimonial coming soon. The product quality and personalized service speak for themselves.">Testimonio próximamente. La calidad de los productos y el servicio personalizado hablan por sí solos.</p>
+        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text" data-es="Testimonio próximamente. Diseños únicos y entrega rápida — lo que cada cliente busca al personalizar sus productos." data-en="Testimonial coming soon. Unique designs and fast delivery — what every client wants when customizing products.">Testimonio próximamente. Diseños únicos y entrega rápida — lo que cada cliente busca al personalizar sus productos.</p>
+        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
       </div>
     </div>
   </div>
@@ -1171,17 +1259,16 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
           <input type="text" class="f-input" id="c-name" data-es-ph="Nombre completo" data-en-ph="Full name" placeholder="Nombre completo" required>
           <input type="email" class="f-input" id="c-email" placeholder="Email" required>
           <select class="f-input" id="c-svc" required>
-            <option value="" disabled selected data-es="Servicio que te interesa" data-en="Service you're interested in">Servicio que te interesa</option>
-            <option data-es="Diseño Web Premium" data-en="Premium Web Design">Diseño Web Premium</option>
-            <option data-es="Instagram a Web" data-en="Instagram to Website">Instagram a Web</option>
-            <option data-es="Auditoría Meta Ads" data-en="Meta Ads Audit">Auditoría Meta Ads</option>
-            <option data-es="Auditoría SEO" data-en="SEO Audit">Auditoría SEO</option>
-            <option data-es="Automatizaciones" data-en="Automations">Automatizaciones</option>
-            <option data-es="Auditoría de Negocio" data-en="Business Audit">Auditoría de Negocio</option>
-            <option data-es="Dashboard de Facturas" data-en="Invoice Dashboard">Dashboard de Facturas</option>
-            <option data-es="Prospección de Clientes" data-en="Client Prospecting">Prospección de Clientes</option>
-            <option data-es="Chat IA para Web" data-en="AI Chat for Web">Chat IA para Web</option>
-            <option data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</option>
+            <option value="" disabled selected data-es="Producto que te interesa" data-en="Product you're interested in">Producto que te interesa</option>
+            <option data-es="Pósters" data-en="Posters">Pósters</option>
+            <option data-es="Lienzos" data-en="Canvases">Lienzos</option>
+            <option data-es="Tazas" data-en="Mugs">Tazas</option>
+            <option data-es="Bolsas Tote" data-en="Tote Bags">Bolsas Tote</option>
+            <option data-es="Ropa" data-en="Clothing">Ropa</option>
+            <option data-es="Tarjetas" data-en="Cards">Tarjetas</option>
+            <option data-es="Calendarios" data-en="Calendars">Calendarios</option>
+            <option data-es="Libros de Fotos" data-en="Photo Books">Libros de Fotos</option>
+            <option data-es="Otro" data-en="Other">Otro</option>
           </select>
           <textarea class="f-input" id="c-msg" data-es-ph="Cuéntanos brevemente tu proyecto..." data-en-ph="Tell us briefly about your project..." placeholder="Cuéntanos brevemente tu proyecto..." required></textarea>
           <button type="submit" class="cta-btn cta-big" style="justify-content:center" data-es="Enviar mensaje →" data-en="Send message →">Enviar mensaje →</button>
@@ -1220,8 +1307,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
             <span data-es="Ver demo" data-en="View demo">Ver demo</span>
           </a>
-          <button class="cta-btn" onclick="closeSvcModal();setTimeout(()=>openBudget(svcModalCurrent),300)" data-es="Solicitar presupuesto →" data-en="Request quote →">
-            Solicitar presupuesto →
+          <button class="cta-btn" onclick="closeSvcModal();setTimeout(()=>openBudget(svcModalCurrent),300)" data-es="Empezar mi pedido →" data-en="Start my order →">
+            Empezar mi pedido →
           </button>
         </div>
       </div>
@@ -1234,7 +1321,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   <div class="bud-box">
     <div class="bud-head">
       <div>
-        <div class="bud-title" data-es="Solicitar presupuesto" data-en="Request a quote">Solicitar presupuesto</div>
+        <div class="bud-title" data-es="Empezar mi pedido" data-en="Start my order">Empezar mi pedido</div>
         <div class="bud-sub" data-es="Te respondemos en menos de 24h con propuesta sin compromiso." data-en="We respond within 24h with a no-commitment proposal.">Te respondemos en menos de 24h con propuesta sin compromiso.</div>
       </div>
       <button class="svc-modal-close" onclick="closeBudget()">✕</button>
@@ -1276,17 +1363,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <div class="bud-group">
           <div class="bud-label" data-es="¿Algo más que decirnos?" data-en="Anything else to tell us?">¿Algo más que decirnos?</div>
           <textarea class="bud-input" rows="4" id="extraNotes" data-es-ph="Detalles extra, referencias de webs que te gusten, plazos..." data-en-ph="Extra details, references of sites you like, timelines..." placeholder="Detalles extra, referencias de webs que te gusten, plazos..."></textarea>
-        </div>
-        <div class="bud-group" style="margin-top:12px">
-          <div class="bud-label" data-es="Presupuesto aproximado" data-en="Approximate budget">Presupuesto aproximado</div>
-          <select class="bud-input" id="budgetRange">
-            <option value="" data-es="Prefiero recibir propuesta primero" data-en="I prefer to receive a proposal first">Prefiero recibir propuesta primero</option>
-            <option data-es="Menos de $200" data-en="Less than $200">Menos de $200</option>
-            <option>$200 – $500</option>
-            <option>$500 – $1,000</option>
-            <option>$1,000 – $3,000</option>
-            <option data-es="Más de $3,000" data-en="More than $3,000">Más de $3,000</option>
-          </select>
         </div>
         <div class="bud-foot">
           <button class="bud-back" onclick="bGoStep(2)" data-es="← Atrás" data-en="← Back">← Atrás</button>
@@ -1347,14 +1423,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         <li><a href="arte-mural-marco-madera.html">Marcos de madera</a></li>
         <li><a href="arte-mural-aluminio.html">Aluminio</a></li>
         <li><a href="arte-mural-colgadores.html">Colgadores</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h4 data-es="Servicios Digitales" data-en="Digital Services">Servicios Digitales</h4>
-      <ul>
-        <li><a href="#" onclick="openSvcModal('web');return false;">Diseño Web</a></li>
-        <li><a href="#" onclick="openSvcModal('marketing');return false;">Marketing Digital</a></li>
-        <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
     <div class="f-col">
@@ -2008,7 +2076,7 @@ function bSubmit() {
   fd.append('empresa', company || 'No indicado');
   fd.append('servicios', svcs);
   fd.append('detalles', details);
-  fd.append('presupuesto', budget || 'Sin especificar');
+  // budget removed
   fd.append('notas', notes || 'Sin notas');
   fd.append('_subject', 'Solicitud Kodara — ' + name + ' — ' + svcs);
   fd.append('_captcha', 'false');
@@ -2097,5 +2165,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script src="lead-magnet.js"></script>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/PLACEHOLDER" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chatear por WhatsApp" title="Chatea con nosotros por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 </body>
 </html>
