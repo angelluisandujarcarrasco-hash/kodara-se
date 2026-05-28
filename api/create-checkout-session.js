@@ -78,6 +78,7 @@ module.exports = async (req, res) => {
       payment_method_types: ['card'],
       line_items: line_items,
       customer_email: customer_email,
+      allow_promotion_codes: true,
       success_url,
       cancel_url,
       shipping_address_collection: {
