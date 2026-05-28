@@ -269,6 +269,5 @@ function addMsg(t,type){const m=document.getElementById('chatMsgs');const d=docu
 function sendMsg(){const f=document.getElementById('chatField');const v=f.value.trim();if(!v)return;addMsg(v,'user');f.value='';setTimeout(()=>addMsg(getReply(v),'bot'),700)}
 function sendQuick(t){addMsg(t,'user');setTimeout(()=>addMsg(getReply(t),'bot'),700)}
 </script>
-<script src="chat-asistente.js"></script>
 </body>
 </html>
