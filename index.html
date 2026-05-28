@@ -2044,11 +2044,24 @@ function bSubmit() {
 /* ====== INIT ====== */
 document.addEventListener('DOMContentLoaded', () => {
   buildSvcSelGrid();
-  // Map service cards to service keys
-  const cardKeys = ['web','instagram','metaads','seo','auto','negocio','facturas','prospeccion','chat','marketing'];
-  document.querySelectorAll('.services-grid .svc-card').forEach((card, i) => {
-    const key = cardKeys[i];
-    if (!key) return;
+  // Map service cards to service keys por la clase svc-N (no por orden)
+  const classToKey = {
+    'svc-1': 'web',
+    'svc-2': 'instagram',
+    'svc-3': 'metaads',
+    'svc-4': 'seo',
+    'svc-5': 'auto',
+    'svc-6': 'negocio',
+    'svc-7': 'facturas',
+    'svc-8': 'prospeccion',
+    'svc-9': 'chat',
+    'svc-10': 'marketing',
+    // svc-11 (Print Studio) NO tiene modal ni demo — solo el link directo
+  };
+  document.querySelectorAll('.services-grid .svc-card').forEach((card) => {
+    const cls = Array.from(card.classList).find(c => classToKey[c]);
+    const key = classToKey[cls];
+    if (!key) return; // svc-11 (Print Studio) se salta
     card.addEventListener('click', () => openSvcModal(key));
     // Inyectar botón "Ver demo" en svc-meta
     const meta = card.querySelector('.svc-meta');
