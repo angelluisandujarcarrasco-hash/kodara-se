@@ -419,22 +419,28 @@ nav.scrolled {
 .svc-arrow { animation: pulseBtn 2.8s ease-in-out infinite; }
 
 /* Bento sizes */
-.svc-1 { grid-column: span 6; --accent: var(--orange); --accent-bg: rgba(249,115,22,0.1); }
-.svc-2 { grid-column: span 6; --accent: var(--pink); --accent-bg: rgba(236,72,153,0.1); }
-.svc-3 { grid-column: span 4; --accent: var(--blue); --accent-bg: rgba(59,130,246,0.1); }
-.svc-4 { grid-column: span 4; --accent: var(--green); --accent-bg: rgba(16,185,129,0.1); }
-.svc-5 { grid-column: span 4; --accent: var(--purple); --accent-bg: rgba(124,58,237,0.1); }
-.svc-6 { grid-column: span 6; --accent: var(--yellow); --accent-bg: rgba(245,158,11,0.1); }
-.svc-7 { grid-column: span 6; --accent: var(--cyan); --accent-bg: rgba(6,182,212,0.1); }
-.svc-8 { grid-column: span 6; --accent: var(--pink); --accent-bg: rgba(236,72,153,0.1); }
-.svc-9 { grid-column: span 6; --accent: var(--orange); --accent-bg: rgba(249,115,22,0.1); }
-.svc-10 { grid-column: span 12; --accent: var(--pink); --accent-bg: rgba(236,72,153,0.1); background: linear-gradient(135deg, var(--card), rgba(236,72,153,0.05)); }
+.svc-1 { grid-column: span 6; --accent: var(--terracotta); --accent-bg: rgba(193,84,49,0.08); }
+.svc-2 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-3 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-4 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-5 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-6 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-7 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-8 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-9 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
+.svc-10 { grid-column: span 6; --accent: var(--terracotta); --accent-bg: rgba(193,84,49,0.08); }
+/* Servicios secundarios (2-9) más compactos */
+.svc-2 .svc-img, .svc-3 .svc-img, .svc-4 .svc-img, .svc-5 .svc-img, .svc-6 .svc-img, .svc-7 .svc-img, .svc-8 .svc-img, .svc-9 .svc-img { aspect-ratio: 4/3; }
+.svc-2 h3, .svc-3 h3, .svc-4 h3, .svc-5 h3, .svc-6 h3, .svc-7 h3, .svc-8 h3, .svc-9 h3 { font-size: 18px !important; }
+.svc-2 p, .svc-3 p, .svc-4 p, .svc-5 p, .svc-6 p, .svc-7 p, .svc-8 p, .svc-9 p { font-size: 13px !important; line-height: 1.5 !important; }
+.svc-2 .svc-meta, .svc-3 .svc-meta, .svc-4 .svc-meta, .svc-5 .svc-meta, .svc-6 .svc-meta, .svc-7 .svc-meta, .svc-8 .svc-meta, .svc-9 .svc-meta { font-size: 12px; }
 .svc-10::after { content: 'NUEVO'; position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, var(--pink), var(--orange)); color: #fff; font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 10px; border-radius: 999px; letter-spacing: 1px; z-index: 2; box-shadow: 0 4px 16px rgba(236,72,153,0.4); }
 .svc-11 { grid-column: span 12; --accent: #D4A977; --accent-bg: rgba(212,169,119,0.12); background: linear-gradient(135deg, var(--card), rgba(212,169,119,0.06)); }
 .svc-11::after { content: 'KODARA PRINT'; position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, #C9A227, #D4A977); color: #fff; font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 12px; border-radius: 999px; letter-spacing: 1.5px; z-index: 2; box-shadow: 0 4px 16px rgba(201,162,39,0.4); }
 @media (max-width: 960px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9, .svc-10, .svc-11 { grid-column: span 1; }
+  .svc-1, .svc-10, .svc-11 { grid-column: span 2; }
+  .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9 { grid-column: span 1; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
