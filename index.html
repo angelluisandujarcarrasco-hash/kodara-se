@@ -420,28 +420,15 @@ nav.scrolled {
 
 /* Bento sizes */
 .svc-1 { grid-column: span 6; --accent: var(--terracotta); --accent-bg: rgba(193,84,49,0.08); }
-.svc-2 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-3 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-4 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-5 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-6 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-7 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-8 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
-.svc-9 { grid-column: span 3; --accent: var(--gold-dark); --accent-bg: rgba(181,136,80,0.08); }
 .svc-10 { grid-column: span 6; --accent: var(--terracotta); --accent-bg: rgba(193,84,49,0.08); }
 /* Servicios secundarios (2-9) más compactos */
-.svc-2 .svc-img, .svc-3 .svc-img, .svc-4 .svc-img, .svc-5 .svc-img, .svc-6 .svc-img, .svc-7 .svc-img, .svc-8 .svc-img, .svc-9 .svc-img { aspect-ratio: 4/3; }
-.svc-2 h3, .svc-3 h3, .svc-4 h3, .svc-5 h3, .svc-6 h3, .svc-7 h3, .svc-8 h3, .svc-9 h3 { font-size: 18px !important; }
-.svc-2 p, .svc-3 p, .svc-4 p, .svc-5 p, .svc-6 p, .svc-7 p, .svc-8 p, .svc-9 p { font-size: 13px !important; line-height: 1.5 !important; }
-.svc-2 .svc-meta, .svc-3 .svc-meta, .svc-4 .svc-meta, .svc-5 .svc-meta, .svc-6 .svc-meta, .svc-7 .svc-meta, .svc-8 .svc-meta, .svc-9 .svc-meta { font-size: 12px; }
 .svc-10::after { content: 'NUEVO'; position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, var(--pink), var(--orange)); color: #fff; font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 10px; border-radius: 999px; letter-spacing: 1px; z-index: 2; box-shadow: 0 4px 16px rgba(236,72,153,0.4); }
 .svc-11 { grid-column: span 12; --accent: #D4A977; --accent-bg: rgba(212,169,119,0.12); background: linear-gradient(135deg, var(--card), rgba(212,169,119,0.06)); }
 .svc-11::after { content: 'KODARA PRINT'; position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, #C9A227, #D4A977); color: #fff; font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 12px; border-radius: 999px; letter-spacing: 1.5px; z-index: 2; box-shadow: 0 4px 16px rgba(201,162,39,0.4); }
 @media (max-width: 960px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .svc-1, .svc-10, .svc-11 { grid-column: span 2; }
-  .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9 { grid-column: span 1; }
-}
+  .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
   .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6, .svc-7, .svc-8, .svc-9, .svc-10, .svc-11 { grid-column: span 1; }
@@ -1032,102 +1019,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       </article>
 
       <!-- BOTÓN PARA MOSTRAR MÁS SERVICIOS -->
-      <div class="services-toggle-wrap" style="grid-column:span 12;text-align:center;margin:20px 0">
-        <button class="services-toggle-btn" onclick="document.getElementById('services-extra').style.display=document.getElementById('services-extra').style.display==='contents'?'none':'contents';this.innerText=this.innerText.includes('Ver')?'Ocultar servicios ▲':'Ver 8 servicios más ▼'" style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:#B8C0D0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;padding:14px 28px;border-radius:999px;cursor:pointer;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.2s">Ver 8 servicios más ▼</button>
-      </div>
 
-      <div id="services-extra" style="display:none">
-
-
-      <article class="svc-card svc-2 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073720_f0c22035-d77c-4d73-8be0-007789670bb1.png" alt="Instagram a Web"></div>
-        <span class="svc-tag">KSE-002</span>
-        <h3 data-es="Instagram a Web" data-en="Instagram to Web">Instagram a Web</h3>
-        <p data-es="Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Entrega en 24-48 horas." data-en="Your Instagram profile becomes a professional website with your real photos, colors and services. Delivered in 24-48 hours.">Tu perfil de Instagram se convierte en una web profesional con tus fotos, colores y servicios reales. Entrega en 24-48 horas.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$200 — $1,000</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-3 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073740_e7b00a82-3883-4caa-8d72-0ce2a4591d35.png" alt="Auditoría Meta Ads"></div>
-        <span class="svc-tag">KSE-003</span>
-        <h3 data-es="Auditoría Meta Ads" data-en="Meta Ads Audit">Auditoría Meta Ads</h3>
-        <p data-es="Detectamos qué anuncios pierden dinero. Entregamos anuncios reescritos listos para lanzar en 48h." data-en="We detect which ads lose money. We deliver rewritten ads ready to launch in 48h.">Detectamos qué anuncios pierden dinero. Entregamos anuncios reescritos listos para lanzar en 48h.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$200 — $800</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-4 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_073947_470207c8-1e32-46f3-94dd-6056c2d15fff.png" alt="Auditoría SEO"></div>
-        <span class="svc-tag">KSE-004</span>
-        <h3 data-es="Auditoría SEO" data-en="SEO Audit">Auditoría SEO</h3>
-        <p data-es="Informe con puntuación 0-100 y plan de acción priorizado. Entrega en 48 horas." data-en="Report with 0-100 score and prioritized action plan. Delivery in 48 hours.">Informe con puntuación 0-100 y plan de acción priorizado. Entrega en 48 horas.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$200 — $700</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-5 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074002_c6652c8c-38a3-44f0-811e-54f0e170066f.png" alt="Automatizaciones"></div>
-        <span class="svc-tag">KSE-005</span>
-        <h3 data-es="Automatizaciones" data-en="Automations">Automatizaciones</h3>
-        <p data-es="Emails, reportes y seguimiento con n8n. Funciona 24/7. Ahorra 3+ horas diarias." data-en="Emails, reports and follow-ups with n8n. Runs 24/7. Save 3+ hours daily.">Emails, reportes y seguimiento con n8n. Funciona 24/7. Ahorra 3+ horas diarias.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$1,000 — $10,000+</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-6 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074013_fb060d9f-8e20-47ac-b391-2be146e7c3e6.png" alt="Auditoría de Negocio"></div>
-        <span class="svc-tag">KSE-006</span>
-        <h3 data-es="Auditoría de Negocio" data-en="Business Audit">Auditoría de Negocio</h3>
-        <p data-es="Análisis completo: web, redes, oferta, precios vs competencia. Informe con puntuación por área y plan priorizado." data-en="Complete analysis: web, social, offer, prices vs competition. Report with score by area and prioritized plan.">Análisis completo: web, redes, oferta, precios vs competencia. Informe con puntuación por área y plan priorizado.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$500 — $3,000</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-7 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074114_7b893118-7e0f-4678-bd0b-f073141fc089.png" alt="Dashboard de Facturas"></div>
-        <span class="svc-tag">KSE-007</span>
-        <h3 data-es="Dashboard de Facturas" data-en="Invoice Dashboard">Dashboard de Facturas</h3>
-        <p data-es="Subes tus facturas PDF y en 24h tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto." data-en="Upload your PDF invoices and in 24h you get a visual dashboard with income, expenses, VAT and net profit.">Subes tus facturas PDF y en 24h tienes un dashboard visual con ingresos, gastos, IVA y beneficio neto.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$100 — $500</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-8 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074127_e5423e8e-f08e-4c83-b69a-5c850897572b.png" alt="Prospección de Clientes"></div>
-        <span class="svc-tag">KSE-008</span>
-        <h3 data-es="Prospección de Clientes" data-en="Client Prospecting">Prospección de Clientes</h3>
-        <p data-es="Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado." data-en="We find businesses in your sector with weak web, analyze them and write personalized contact messages.">Encontramos negocios de tu sector con web débil, los analizamos y escribimos el mensaje de contacto personalizado.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$400 — $900</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-
-      <article class="svc-card svc-9 reveal">
-        <div class="svc-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DYM1J3h5iy8QkCLK3SvRJRjyvr/hf_20260518_074147_849b5757-f209-42ea-adf3-48c45402e294.png" alt="Chat IA para Web"></div>
-        <span class="svc-tag">KSE-009</span>
-        <h3 data-es="Chat IA para Web" data-en="AI Web Chat">Chat IA para Web</h3>
-        <p data-es="Chatbot de IA en tu web que responde clientes 24/7 y captura leads automáticamente mientras duermes." data-en="AI chatbot on your website that answers clients 24/7 and captures leads automatically while you sleep.">Chatbot de IA en tu web que responde clientes 24/7 y captura leads automáticamente mientras duermes.</p>
-        <div class="svc-meta">
-          <span class="svc-price">$150 — $350</span>
-          <div class="svc-arrow"><span data-es="Ver más" data-en="View more">Ver más</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </article>
-      </div>
-</div>
+    </div>
   </div>
 </section>
 
@@ -1461,7 +1354,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <ul>
         <li><a href="#" onclick="openSvcModal('web');return false;">Diseño Web</a></li>
         <li><a href="#" onclick="openSvcModal('marketing');return false;">Marketing Digital</a></li>
-        <li><a href="#" onclick="document.getElementById('services-extra').style.display='contents';location.hash='#services';return false;">Ver más servicios</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
