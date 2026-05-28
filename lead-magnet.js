@@ -144,8 +144,14 @@
     triggered = true;
     open();
   }
-  setTimeout(trigger, 12000);
+  // No mostrar si hay otro modal abierto (resena, etc.)
+  function safeTrigger() {
+    const rev = document.getElementById('reviewModal');
+    if (rev && rev.classList.contains('open')) return;
+    trigger();
+  }
+  setTimeout(safeTrigger, 30000);
   document.addEventListener('mouseleave', e => {
-    if (e.clientY < 0 && !triggered) trigger();
+    if (e.clientY < 0 && !triggered) safeTrigger();
   });
 })();
