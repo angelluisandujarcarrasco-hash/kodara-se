@@ -93,7 +93,7 @@ nav {
   transition: all 0.3s ease;
 }
 nav.scrolled {
-  background: rgba(6,11,24,0.85);
+  background: rgba(252,240,222,0.92);
   backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--border);
   padding: 14px 48px;
@@ -900,7 +900,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <button type="button" class="cta-btn" onclick="openBudget()" data-es="Empezar →" data-en="Get started →">Empezar →</button>
+    <a href="servicio-kodara-print.html" class="cta-btn" data-es="Diseñar →" data-en="Design →" style="text-decoration:none">Diseñar →</a>
   </div>
 </nav>
 
@@ -1747,14 +1747,18 @@ let bSelected = [];
 let bStep = 1;
 function buildSvcSelGrid() {
   const grid = document.getElementById('svcSelGrid');
-  grid.innerHTML = Object.entries(SERVICES).map(([k, s]) => `
+  // Solo mostrar los servicios digitales realmente activos en el sitio: web y marketing
+  const activeKeys = ['web', 'marketing'];
+  grid.innerHTML = activeKeys.filter(k => SERVICES[k]).map(k => {
+    const s = SERVICES[k];
+    return `
     <button class="svc-sel-card${bSelected.includes(k)?' selected':''}" data-key="${k}" onclick="toggleBudSvc(this)">
       <div class="svc-sel-check">✓</div>
       <div class="svc-sel-icon">${s.icon}</div>
       <div class="svc-sel-name">${tx(s, 'name')}</div>
       <div class="svc-sel-price">${s.priceShort}</div>
     </button>
-  `).join('');
+  `;}).join('');
 }
 function toggleBudSvc(btn) {
   const k = btn.dataset.key;
