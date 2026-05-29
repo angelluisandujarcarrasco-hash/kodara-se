@@ -959,6 +959,41 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
   .hero { padding: 120px 24px 60px; }
   .hero-stats-row { grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 600px) {
+  .hero { padding: 100px 18px 50px; }
+  .hero h1 { font-size: clamp(34px, 11vw, 52px); }
+  .hero p { font-size: 15px; }
+  /* Botones apilados a ancho completo */
+  .hero-cta { flex-direction: column; width: 100%; }
+  .hero-cta .cta-big { width: 100%; justify-content: center; }
+  /* Nav compacto */
+  nav, nav.scrolled { padding: 12px 16px; }
+  .nav-right { gap: 8px; }
+  .cta-btn { padding: 10px 16px; font-size: 13px; }
+  .logo { font-size: 17px; }
+  /* Secciones con menos padding */
+  .section { padding: 56px 16px; }
+  .section-title { font-size: clamp(26px, 7vw, 38px); }
+  /* Productos 2 columnas con menos gap */
+  .products-grid { gap: 12px; }
+  .product-card h4 { font-size: 16px; }
+  /* Testimonios y stats */
+  .hero-stats-row { gap: 12px; }
+  .hero-stat-val { font-size: 26px; }
+  /* WhatsApp FAB no tan grande */
+  .whatsapp-fab { width: 54px; height: 54px; bottom: 16px; right: 16px; }
+  .whatsapp-fab svg { width: 28px; height: 28px; }
+  /* Modal reseña ocupa casi toda la pantalla */
+  .review-modal { padding: 28px 20px; }
+  .review-title { font-size: 24px; }
+  /* Footer apilado */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+  .footer-social { justify-content: center; }
+}
+@media (max-width: 380px) {
+  .hero h1 { font-size: 30px; }
+  .hero-stats-row { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
 <body>
