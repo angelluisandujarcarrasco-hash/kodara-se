@@ -1172,8 +1172,74 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
           <input type="text" id="rev-name" required placeholder="María G." maxlength="60">
         </div>
         <div class="review-field">
-          <label data-es="Ciudad / pedido (opcional)" data-en="City / order (optional)">Ciudad / pedido (opcional)</label>
-          <input type="text" id="rev-location" placeholder="Boston · Póster 30x40" maxlength="100">
+          <label data-es="Ciudad (opcional)" data-en="City (optional)">Ciudad (opcional)</label>
+          <input type="text" id="rev-location" placeholder="Boston, MA" maxlength="60">
+        </div>
+        <div class="review-field">
+          <label data-es="¿Qué compraste? (opcional)" data-en="What did you buy? (optional)">¿Qué compraste? (opcional)</label>
+          <select id="rev-product" class="size-select" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:14px;padding:12px 14px;border-radius:10px;width:100%;cursor:pointer">
+            <option value="">— Selecciona un producto —</option>
+            <optgroup label="Pósters">
+              <option>Póster en papel</option>
+              <option>Póster con colgador</option>
+              <option>Póster con marco de madera</option>
+              <option>Póster con marco de madera prémium</option>
+              <option>Póster con marco de metal</option>
+            </optgroup>
+            <optgroup label="Lienzos">
+              <option>Lienzo</option>
+              <option>Lienzo enmarcado</option>
+            </optgroup>
+            <optgroup label="Impresiones especiales">
+              <option>Impresión en aluminio</option>
+              <option>Impresión en aluminio cepillado</option>
+              <option>Impresión en plexiglás</option>
+              <option>Impresión en madera</option>
+              <option>Panel de espuma</option>
+            </optgroup>
+            <optgroup label="Otros">
+              <option>Tarjetas de visita</option>
+              <option>Otro producto</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="review-field">
+          <label data-es="Tamaño (opcional)" data-en="Size (optional)">Tamaño (opcional)</label>
+          <select id="rev-size" class="size-select" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:14px;padding:12px 14px;border-radius:10px;width:100%;cursor:pointer">
+            <option value="">— Selecciona un tamaño —</option>
+            <optgroup label="Pequeños">
+              <option>13×18 cm / 5×7"</option>
+              <option>15×20 cm / 6×8"</option>
+              <option>20×25 cm / 8×10"</option>
+              <option>20×30 cm / 8×12"</option>
+              <option>21×29.7 cm / A4</option>
+              <option>25×25 cm / 10×10"</option>
+              <option>27×35 cm / 11×14"</option>
+              <option>30×30 cm / 12×12"</option>
+            </optgroup>
+            <optgroup label="Medianos">
+              <option>30×40 cm / 12×16"</option>
+              <option>30×45 cm / 12×18"</option>
+              <option>A3 (29.7×42 cm)</option>
+              <option>40×40 cm / 16×16"</option>
+              <option>40×50 cm / 16×20"</option>
+              <option>40×60 cm / 16×24"</option>
+              <option>A2 (42×59.4 cm)</option>
+              <option>45×60 cm / 18×24"</option>
+              <option>50×50 cm / 20×20"</option>
+              <option>50×70 cm / 20×28"</option>
+            </optgroup>
+            <optgroup label="Grandes">
+              <option>A1 (59.4×84.1 cm)</option>
+              <option>60×60 cm / 24×24"</option>
+              <option>60×80 cm / 24×32"</option>
+              <option>60×90 cm / 24×36"</option>
+              <option>70×70 cm / 28×28"</option>
+              <option>70×100 cm / 28×40"</option>
+              <option>75×100 cm / 30×40"</option>
+              <option>A0 (84.1×118.9 cm)</option>
+            </optgroup>
+          </select>
         </div>
         <div class="review-field">
           <label data-es="Tu calificación" data-en="Your rating">Tu calificación</label>
@@ -2265,7 +2331,10 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
     btn.disabled = true; btn.textContent = 'Enviando...';
 
     const name = document.getElementById('rev-name').value.trim();
-    const location = document.getElementById('rev-location').value.trim();
+    const city = document.getElementById('rev-location').value.trim();
+    const product = document.getElementById('rev-product').value.trim();
+    const size = document.getElementById('rev-size').value.trim();
+    const location = [city, product, size].filter(Boolean).join(' · ');
     const text_es = document.getElementById('rev-text').value.trim();
     const file = document.getElementById('rev-file').files[0];
     const website = form.querySelector('input[name="website"]').value; // honeypot
