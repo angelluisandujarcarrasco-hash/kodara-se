@@ -1163,11 +1163,17 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
     <button class="review-close" onclick="closeReview()" aria-label="Cerrar">×</button>
     <div id="reviewContent">
       <h3 class="review-title" data-es="Deja tu reseña" data-en="Leave your review">Deja tu reseña</h3>
-      <p class="review-sub" data-es="Cuéntanos tu experiencia. Sube una foto o video de tu producto. La revisaremos y publicaremos pronto." data-en="Tell us your experience. Upload a photo or video of your product. We'll review and publish it soon.">Cuéntanos tu experiencia. Sube una foto o video de tu producto. La revisaremos y publicaremos pronto.</p>
-      <form id="reviewForm">
+      <p class="review-sub" data-es="Cuéntanos tu experiencia con una foto de tu producto. Tu reseña se publicará automáticamente." data-en="Tell us your experience with a photo of your product. Your review publishes automatically.">Cuéntanos tu experiencia con una foto de tu producto. Tu reseña se publicará automáticamente.</p>
+      <form id="reviewForm" autocomplete="off">
+        <!-- honeypot anti-spam -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
         <div class="review-field">
           <label data-es="Tu nombre" data-en="Your name">Tu nombre</label>
-          <input type="text" id="rev-name" required placeholder="María G.">
+          <input type="text" id="rev-name" required placeholder="María G." maxlength="60">
+        </div>
+        <div class="review-field">
+          <label data-es="Ciudad / pedido (opcional)" data-en="City / order (optional)">Ciudad / pedido (opcional)</label>
+          <input type="text" id="rev-location" placeholder="Boston · Póster 30x40" maxlength="100">
         </div>
         <div class="review-field">
           <label data-es="Tu calificación" data-en="Your rating">Tu calificación</label>
@@ -1177,13 +1183,14 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
         </div>
         <div class="review-field">
           <label data-es="Tu comentario" data-en="Your comment">Tu comentario</label>
-          <textarea id="rev-text" rows="3" required placeholder="Me encantó la calidad de mi póster..."></textarea>
+          <textarea id="rev-text" rows="3" required minlength="10" maxlength="600" placeholder="Me encantó la calidad de mi póster..."></textarea>
         </div>
         <div class="review-field">
-          <label data-es="Foto o video de tu producto (opcional)" data-en="Photo or video of your product (optional)">Foto o video de tu producto (opcional)</label>
-          <input type="file" id="rev-file" accept="image/*,video/*">
-          <small style="color:var(--text-3);font-size:11px">Máximo 5 MB</small>
+          <label data-es="Foto de tu producto (opcional)" data-en="Photo of your product (optional)">Foto de tu producto (opcional)</label>
+          <input type="file" id="rev-file" accept="image/*">
+          <small style="color:var(--text-3);font-size:11px">Máximo 3 MB. Para video, mándalo por WhatsApp.</small>
         </div>
+        <div id="rev-error" style="display:none;background:#FEE;border:1px solid #C0392B;color:#922A20;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:12px"></div>
         <button type="submit" class="cta-btn cta-big" id="revSubmit" style="border:none;cursor:pointer;width:100%;justify-content:center;font-family:inherit" data-es="Enviar reseña →" data-en="Send review →">Enviar reseña →</button>
       </form>
     </div>
@@ -2235,28 +2242,67 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
   modal.querySelector('#revStars').addEventListener('mouseleave', () => paint(revRating));
   // Submit
   const form = document.getElementById('reviewForm');
+  const errBox = document.getElementById('rev-error');
+  function showErr(msg){
+    errBox.textContent = msg;
+    errBox.style.display = 'block';
+  }
+  function hideErr(){ errBox.style.display = 'none'; }
+
+  function fileToBase64(file){
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result);
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+  }
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    hideErr();
     const btn = document.getElementById('revSubmit');
     btn.disabled = true; btn.textContent = 'Enviando...';
+
+    const name = document.getElementById('rev-name').value.trim();
+    const location = document.getElementById('rev-location').value.trim();
+    const text_es = document.getElementById('rev-text').value.trim();
     const file = document.getElementById('rev-file').files[0];
-    if(file && file.size > 5*1024*1024){
-      alert('El archivo es muy grande (máximo 5 MB). Usa una foto o un video corto.');
+    const website = form.querySelector('input[name="website"]').value; // honeypot
+
+    if(file && file.size > 3*1024*1024){
+      showErr('La imagen es muy grande (máximo 3 MB). Usa una foto más pequeña.');
       btn.disabled = false; btn.textContent = 'Enviar reseña →'; return;
     }
-    const fd = new FormData();
-    fd.append('access_key', '2e5a1c54-e4bf-41f4-b04c-7f4c30dace33');
-    fd.append('subject', '⭐ Nueva reseña de cliente Kodarase');
-    fd.append('from_name', 'Reseñas Kodarase');
-    fd.append('Nombre', document.getElementById('rev-name').value);
-    fd.append('Calificación', revRating + ' estrellas');
-    fd.append('Comentario', document.getElementById('rev-text').value);
-    if(file) fd.append('attachment', file);
+
+    let image_base64 = '';
+    if(file){
+      try{ image_base64 = await fileToBase64(file); }
+      catch(err){ console.error(err); }
+    }
+
     try{
-      await fetch('https://api.web3forms.com/submit', { method:'POST', body: fd });
-    }catch(err){ console.error(err); }
-    document.getElementById('reviewContent').innerHTML =
-      '<div class="review-success"><div class="review-success-icon">🎉</div><h3>¡Gracias por tu reseña!</h3><p>La revisaremos y la publicaremos pronto en nuestra web. ¡Tu opinión nos ayuda muchísimo!</p></div>';
+      const res = await fetch('/api/submit-review', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          name, location, rating: revRating, text_es, text_en: text_es,
+          image_base64, website,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if(!res.ok){
+        showErr(data.error || 'No se pudo enviar. Inténtalo más tarde o escríbenos por WhatsApp.');
+        btn.disabled = false; btn.textContent = 'Enviar reseña →';
+        return;
+      }
+      document.getElementById('reviewContent').innerHTML =
+        '<div class="review-success"><div class="review-success-icon">🎉</div><h3>¡Publicada!</h3><p>Tu reseña ya está en la web. Refresca la página para verla.</p><button onclick="location.reload()" class="cta-btn cta-big" style="border:none;cursor:pointer;margin-top:16px;font-family:inherit">Ver mi reseña →</button></div>';
+    }catch(err){
+      console.error(err);
+      showErr('Error de conexión. Inténtalo más tarde o escríbenos por WhatsApp.');
+      btn.disabled = false; btn.textContent = 'Enviar reseña →';
+    }
   });
 })();
 </script>
