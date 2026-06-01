@@ -1147,22 +1147,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <div class="section-tag reveal" data-es="// QUÉ DICEN NUESTROS CLIENTES" data-en="// WHAT OUR CLIENTS SAY">// QUÉ DICEN NUESTROS CLIENTES</div>
       <h2 class="section-title reveal" data-es="Historias reales de personas reales." data-en="Real stories from real people.">Historias reales de personas reales.</h2>
     </div>
-    <div class="testimonios-grid">
-      <div class="testimonio-card reveal">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text" data-es="Testimonio próximamente. Próximamente esta sección tendrá comentarios de clientes reales sobre su experiencia con Kodarase." data-en="Testimonial coming soon. This section will soon feature real customer feedback about their Kodarase experience.">Testimonio próximamente. Próximamente esta sección tendrá comentarios de clientes reales sobre su experiencia con Kodarase.</p>
-        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
-      </div>
-      <div class="testimonio-card reveal">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text" data-es="Testimonio próximamente. La calidad de los productos y el servicio personalizado hablan por sí solos." data-en="Testimonial coming soon. The product quality and personalized service speak for themselves.">Testimonio próximamente. La calidad de los productos y el servicio personalizado hablan por sí solos.</p>
-        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
-      </div>
-      <div class="testimonio-card reveal">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text" data-es="Testimonio próximamente. Diseños únicos y entrega rápida — lo que cada cliente busca al personalizar sus productos." data-en="Testimonial coming soon. Unique designs and fast delivery — what every client wants when customizing products.">Testimonio próximamente. Diseños únicos y entrega rápida — lo que cada cliente busca al personalizar sus productos.</p>
-        <div class="testimonio-author">Cliente verificado<small data-es="Pedido reciente" data-en="Recent order">Pedido reciente</small></div>
-      </div>
+    <div class="testimonios-grid" id="testimoniosGrid">
+      <!-- Cargado dinámicamente desde reviews.json -->
     </div>
     <div style="text-align:center;margin-top:36px">
       <p style="color:var(--text-2);font-size:15px;margin-bottom:18px" data-es="¿Ya recibiste tu pedido? ¡Comparte tu experiencia con una foto o video!" data-en="Already got your order? Share your experience with a photo or video!">¿Ya recibiste tu pedido? ¡Comparte tu experiencia con una foto o video!</p>
@@ -2272,6 +2258,40 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
     document.getElementById('reviewContent').innerHTML =
       '<div class="review-success"><div class="review-success-icon">🎉</div><h3>¡Gracias por tu reseña!</h3><p>La revisaremos y la publicaremos pronto en nuestra web. ¡Tu opinión nos ayuda muchísimo!</p></div>';
   });
+})();
+</script>
+
+<!-- CARGAR RESEÑAS DESDE JSON -->
+<script>
+(async function(){
+  try{
+    const res = await fetch('reviews.json?v=' + Date.now());
+    if(!res.ok) return;
+    const data = await res.json();
+    const grid = document.getElementById('testimoniosGrid');
+    if(!grid) return;
+    const approved = (data.reviews||[]).filter(r => r.approved);
+    if(approved.length === 0) return;
+    grid.innerHTML = approved.map(r => {
+      const stars = '★'.repeat(r.rating||5) + '☆'.repeat(5-(r.rating||5));
+      const safeText_es = (r.text_es||'').replace(/"/g,'&quot;');
+      const safeText_en = (r.text_en||r.text_es||'').replace(/"/g,'&quot;');
+      const img = r.image_url ? `<img src="${r.image_url}" alt="" style="width:100%;border-radius:12px;margin-bottom:14px;max-height:220px;object-fit:cover" loading="lazy">` : '';
+      return `<div class="testimonio-card reveal">
+        ${img}
+        <div class="testimonio-stars">${stars}</div>
+        <p class="testimonio-text" data-es="${safeText_es}" data-en="${safeText_en}">${r.text_es||''}</p>
+        <div class="testimonio-author">${r.name||'Cliente verificado'}<small>${r.location||'Pedido reciente'}</small></div>
+      </div>`;
+    }).join('');
+    // Re-trigger reveal animation
+    grid.querySelectorAll('.reveal').forEach(el => {
+      const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }}), {threshold:0.1});
+      io.observe(el);
+    });
+  }catch(err){
+    console.warn('No se pudieron cargar las reseñas:', err);
+  }
 })();
 </script>
 

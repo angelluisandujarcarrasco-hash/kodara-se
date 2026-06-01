@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de Reseñas · Kodarase Admin</title>
+<style>
+:root {
+  --cream: #FCF0DE;
+  --terracotta: #C15431;
+  --terracotta-dark: #9B3F22;
+  --gold: #D4A977;
+  --gold-dark: #B58850;
+  --text: #3C3228;
+  --text-2: #5C4E40;
+  --text-3: #8A7864;
+  --border: rgba(60,50,40,0.18);
+  --bg: #fff;
+  --bg-2: #FFF8EC;
+  --card: #fff;
+  --danger: #C0392B;
+  --success: #2E7D32;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;padding:30px 20px;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:32px;color:var(--text);margin-bottom:6px}
+.sub{color:var(--text-2);margin-bottom:28px;font-size:14px}
+.warn{background:#FFF5E6;border:1px solid var(--gold);padding:14px 18px;border-radius:12px;color:var(--text-2);font-size:13px;margin-bottom:24px;line-height:1.6}
+.warn strong{color:var(--terracotta)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:760px){.cards{grid-template-columns:1fr}}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:24px}
+.card h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.field input, .field textarea, .field select{width:100%;background:var(--bg-2);border:1px solid var(--border);color:var(--text);font-size:14px;font-family:inherit;padding:10px 12px;border-radius:10px;outline:none;transition:border-color 0.2s}
+.field input:focus, .field textarea:focus, .field select:focus{border-color:var(--terracotta)}
+.field textarea{min-height:90px;resize:vertical}
+.stars{display:flex;gap:6px;font-size:28px;cursor:pointer;user-select:none}
+.stars span{color:var(--border);transition:color 0.15s}
+.stars span.on{color:var(--gold-dark)}
+.btn{background:var(--terracotta);color:#fff;border:none;padding:12px 22px;border-radius:10px;font-family:inherit;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.btn:hover{background:var(--terracotta-dark);transform:translateY(-1px)}
+.btn-2{background:var(--gold-dark);color:#fff}
+.btn-2:hover{background:#9B7338}
+.btn-3{background:transparent;color:var(--text-2);border:1px solid var(--border)}
+.btn-3:hover{background:var(--bg-2)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{background:#922A20}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.list{margin-top:8px}
+.review-item{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;position:relative}
+.review-item.unapproved{border-color:var(--gold);background:#FFF5E6}
+.review-item.placeholder{opacity:0.6;font-style:italic}
+.review-head{display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;gap:10px}
+.review-name{font-weight:700;font-size:14px}
+.review-stars-display{color:var(--gold-dark);font-size:14px;letter-spacing:2px}
+.review-meta{font-size:11px;color:var(--text-3);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.review-text{font-size:13px;line-height:1.5;color:var(--text-2);margin-bottom:10px}
+.review-text:not(:last-child){border-top:1px dashed var(--border);padding-top:8px;margin-top:8px}
+.review-actions{display:flex;gap:6px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px;text-transform:uppercase;letter-spacing:0.5px}
+.tag-ok{background:#E8F5E9;color:var(--success)}
+.tag-pending{background:#FFF5E6;color:var(--gold-dark)}
+.tag-placeholder{background:#F5F5F5;color:var(--text-3)}
+.json-out{width:100%;min-height:220px;background:#1a1a1a;color:#9CDCFE;border:1px solid #333;border-radius:10px;padding:14px;font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;white-space:pre;overflow:auto;outline:none}
+.tip{font-size:12px;color:var(--text-3);margin-top:8px;line-height:1.5}
+.tip code{background:var(--bg-2);padding:2px 6px;border-radius:4px;font-size:11px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Panel de Reseñas</h1>
+<p class="sub">Crea, edita, aprueba o borra reseñas. Luego copia el JSON al final y pégalo en <code>reviews.json</code> del repositorio.</p>
+
+<div class="warn">
+  <strong>⚠️ Importante:</strong> esta página es solo tu panel local — los cambios <strong>NO se guardan automáticamente</strong>. Después de editar, copia el JSON al final y reemplaza el contenido de <code>reviews.json</code> en GitHub. <br><br>
+  Para subir una foto/video, primero ponla en <code>img/reviews/</code> del repo y usa la ruta (ej: <code>img/reviews/maria.jpg</code>).
+</div>
+
+<div class="cards">
+
+<!-- AÑADIR NUEVA -->
+<div class="card">
+<h2>+ Nueva reseña</h2>
+<div class="field">
+  <label>Nombre del cliente</label>
+  <input type="text" id="newName" placeholder="María G.">
+</div>
+<div class="field">
+  <label>Ubicación / contexto</label>
+  <input type="text" id="newLocation" placeholder="Boston, MA · Pedido póster 30×40">
+</div>
+<div class="field">
+  <label>Calificación</label>
+  <div class="stars" id="newStars">
+    <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+  </div>
+</div>
+<div class="field">
+  <label>Comentario (Español)</label>
+  <textarea id="newTextEs" placeholder="La calidad fue increíble y llegó en 4 días..."></textarea>
+</div>
+<div class="field">
+  <label>Comentario (Inglés) — opcional</label>
+  <textarea id="newTextEn" placeholder="Quality was incredible and arrived in 4 days..."></textarea>
+</div>
+<div class="field">
+  <label>Ruta de imagen (opcional)</label>
+  <input type="text" id="newImage" placeholder="img/reviews/maria.jpg">
+</div>
+<div class="btn-row">
+  <button class="btn" onclick="addReview()">Añadir reseña</button>
+</div>
+</div>
+
+<!-- LISTA ACTUAL -->
+<div class="card">
+<h2>Reseñas existentes</h2>
+<div class="list" id="reviewsList"></div>
+</div>
+
+</div>
+
+<!-- JSON OUT -->
+<div class="card" style="margin-top:28px">
+<h2>📋 JSON final (cópialo a <code>reviews.json</code>)</h2>
+<textarea id="jsonOut" class="json-out" readonly></textarea>
+<div class="btn-row" style="margin-top:14px">
+  <button class="btn" onclick="copyJson()">Copiar al portapapeles</button>
+  <button class="btn-2 btn" onclick="downloadJson()">Descargar reviews.json</button>
+  <button class="btn-3 btn" onclick="resetFromServer()">Recargar desde servidor</button>
+</div>
+<p class="tip">
+  Después de copiar: ve a tu repo en GitHub → <code>reviews.json</code> → editar (lápiz) → pega el contenido → Commit.<br>
+  En 1-2 minutos la web tendrá las reseñas actualizadas.
+</p>
+</div>
+
+</div>
+
+<script>
+let state = { reviews: [] };
+let newRating = 5;
+
+async function loadFromServer(){
+  try{
+    const res = await fetch('reviews.json?v=' + Date.now());
+    if(!res.ok) throw new Error('No reviews.json');
+    state = await res.json();
+  }catch(err){
+    console.warn('reviews.json no encontrado, empezando vacío');
+    state = { reviews: [] };
+  }
+  render();
+}
+
+function render(){
+  // Stars input
+  document.querySelectorAll('#newStars span').forEach(s => {
+    s.classList.toggle('on', +s.dataset.v <= newRating);
+  });
+
+  // List
+  const list = document.getElementById('reviewsList');
+  if(state.reviews.length === 0){
+    list.innerHTML = '<p style="color:var(--text-3);font-size:13px">No hay reseñas todavía.</p>';
+  } else {
+    list.innerHTML = state.reviews.map((r,i) => {
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5-r.rating);
+      const tag = r.placeholder
+        ? '<span class="tag tag-placeholder">Placeholder</span>'
+        : (r.approved ? '<span class="tag tag-ok">Publicada</span>' : '<span class="tag tag-pending">Pendiente</span>');
+      const cls = (r.placeholder ? ' placeholder' : '') + (r.approved ? '' : ' unapproved');
+      return `<div class="review-item${cls}">
+        <div class="review-head">
+          <div>
+            <div class="review-name">${escapeHtml(r.name||'Sin nombre')} ${tag}</div>
+            <div class="review-meta">${escapeHtml(r.location||'')} · ${r.date||''}</div>
+          </div>
+          <div class="review-stars-display">${stars}</div>
+        </div>
+        <div class="review-text">${escapeHtml(r.text_es||'')}</div>
+        ${r.text_en ? `<div class="review-text"><em>EN:</em> ${escapeHtml(r.text_en)}</div>` : ''}
+        ${r.image_url ? `<div class="review-text"><strong>📷</strong> <code>${escapeHtml(r.image_url)}</code></div>` : ''}
+        <div class="review-actions">
+          <button class="btn btn-3" onclick="toggleApproval(${i})">${r.approved?'Despublicar':'Publicar'}</button>
+          <button class="btn btn-danger" onclick="deleteReview(${i})">Borrar</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // JSON out
+  document.getElementById('jsonOut').value = JSON.stringify(state, null, 2);
+}
+
+function escapeHtml(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function addReview(){
+  const name = document.getElementById('newName').value.trim();
+  const location = document.getElementById('newLocation').value.trim();
+  const textEs = document.getElementById('newTextEs').value.trim();
+  const textEn = document.getElementById('newTextEn').value.trim();
+  const image = document.getElementById('newImage').value.trim();
+  if(!name || !textEs){
+    alert('Falta nombre o comentario en español.');
+    return;
+  }
+  const id = 'r-' + Date.now().toString(36);
+  state.reviews.unshift({
+    id,
+    name,
+    location: location || 'Cliente verificado',
+    rating: newRating,
+    text_es: textEs,
+    text_en: textEn || textEs,
+    image_url: image || '',
+    date: new Date().toISOString().slice(0,10),
+    approved: true,
+    placeholder: false
+  });
+  // Clear form
+  document.getElementById('newName').value = '';
+  document.getElementById('newLocation').value = '';
+  document.getElementById('newTextEs').value = '';
+  document.getElementById('newTextEn').value = '';
+  document.getElementById('newImage').value = '';
+  newRating = 5;
+  render();
+}
+
+function toggleApproval(i){
+  state.reviews[i].approved = !state.reviews[i].approved;
+  render();
+}
+
+function deleteReview(i){
+  if(!confirm('¿Borrar esta reseña?')) return;
+  state.reviews.splice(i, 1);
+  render();
+}
+
+function copyJson(){
+  const ta = document.getElementById('jsonOut');
+  ta.select();
+  document.execCommand('copy');
+  navigator.clipboard.writeText(ta.value);
+  const btn = event.target;
+  const old = btn.textContent;
+  btn.textContent = '✓ Copiado';
+  setTimeout(() => { btn.textContent = old; }, 1500);
+}
+
+function downloadJson(){
+  const blob = new Blob([document.getElementById('jsonOut').value], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'reviews.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetFromServer(){
+  if(!confirm('¿Descartar tus cambios locales y recargar lo que está en el servidor?')) return;
+  loadFromServer();
+}
+
+// Stars click handler
+document.querySelectorAll('#newStars span').forEach(s => {
+  s.addEventListener('click', () => { newRating = +s.dataset.v; render(); });
+});
+
+loadFromServer();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "reviews": [
+    {
+      "id": "placeholder-1",
+      "name": "Cliente verificado",
+      "location": "Pedido reciente",
+      "rating": 5,
+      "text_es": "Testimonio próximamente. Próximamente esta sección tendrá comentarios de clientes reales sobre su experiencia con Kodarase.",
+      "text_en": "Testimonial coming soon. This section will soon feature real customer feedback about their Kodarase experience.",
+      "image_url": "",
+      "date": "2026-06-01",
+      "approved": true,
+      "placeholder": true
+    },
+    {
+      "id": "placeholder-2",
+      "name": "Cliente verificado",
+      "location": "Pedido reciente",
+      "rating": 5,
+      "text_es": "Testimonio próximamente. La calidad de los productos y el servicio personalizado hablan por sí solos.",
+      "text_en": "Testimonial coming soon. The product quality and personalized service speak for themselves.",
+      "image_url": "",
+      "date": "2026-06-01",
+      "approved": true,
+      "placeholder": true
+    },
+    {
+      "id": "placeholder-3",
+      "name": "Cliente verificado",
+      "location": "Pedido reciente",
+      "rating": 5,
+      "text_es": "Testimonio próximamente. Diseños únicos y entrega rápida — lo que cada cliente busca al personalizar sus productos.",
+      "text_en": "Testimonial coming soon. Unique designs and fast delivery — what every client wants when customizing products.",
+      "image_url": "",
+      "date": "2026-06-01",
+      "approved": true,
+      "placeholder": true
+    }
+  ]
+}
