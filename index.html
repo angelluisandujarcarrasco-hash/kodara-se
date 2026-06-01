@@ -2282,7 +2282,7 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
     }
 
     try{
-      const res = await fetch('/api/submit-review', {
+      const res = await fetch('https://kodara-se-git-main-angelluisandujarcarrasco-5233s-projects.vercel.app/api/submit-review', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify({
