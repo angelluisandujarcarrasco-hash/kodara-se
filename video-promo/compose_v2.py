@@ -72,12 +72,12 @@ def make_product_frame(prod_img_path, label, sublabel=''):
 
 # Generar frames de productos
 products = [
-    ('video-promo/productos-higgsfield/01-lienzo-enmarcado.png', 'Lienzos Enmarcados', 'Madera natural · 13 tamanos'),
-    ('video-promo/productos-higgsfield/02-marco-madera.png', 'Marcos de Madera', 'Roble premium · 22 tamanos'),
-    ('video-promo/productos-higgsfield/03-aluminio.png', 'Impresion en Aluminio', 'Metalico moderno · 18 tamanos'),
-    ('video-promo/productos-higgsfield/04-plexiglas.png', 'Plexiglas Brillante', 'Cristal acrilico · 18 tamanos'),
-    ('video-promo/productos-higgsfield/05-madera.png', 'Impresion en Madera', 'Roble rustico · 18 tamanos'),
-    ('video-promo/productos-higgsfield/06-espuma.png', 'Panel de Espuma', 'Ligero · 13 tamanos'),
+    ('video-promo/productos-higgsfield/01-lienzo-enmarcado.png', 'Lienzos Enmarcados', 'Madera natural · 13 tamaños'),
+    ('video-promo/productos-higgsfield/02-marco-madera.png', 'Marcos de Madera', 'Roble premium · 22 tamaños'),
+    ('video-promo/productos-higgsfield/03-aluminio.png', 'Impresión en Aluminio', 'Metálico moderno · 18 tamaños'),
+    ('video-promo/productos-higgsfield/04-plexiglas.png', 'Plexiglás Brillante', 'Cristal acrílico · 18 tamaños'),
+    ('video-promo/productos-higgsfield/05-madera.png', 'Impresión en Madera', 'Roble rústico · 18 tamaños'),
+    ('video-promo/productos-higgsfield/06-espuma.png', 'Panel de Espuma', 'Ligero · 13 tamaños'),
 ]
 
 os.makedirs('video-promo/frames-v2', exist_ok=True)
