@@ -16,10 +16,13 @@
 .kd-launch-close{position:absolute;top:50%;right:10px;transform:translateY(-50%);background:rgba(255,255,255,0.18);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:18px;color:#fff;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;transition:background 0.2s}
 .kd-launch-close:hover{background:rgba(255,255,255,0.32)}
 body{padding-top:42px !important}
+/* Empujar topnav/navbar sticky para que NO queden tapados por el banner */
+nav.topnav, .topnav, .nav-bar, header.sticky, .nav.sticky{top:42px !important}
 @media(max-width:600px){
   .kd-launch-banner{font-size:11.5px;padding:8px 36px 8px 12px;line-height:1.3}
   .kd-launch-banner strong{padding:2px 7px;margin:0 2px}
   body{padding-top:50px !important}
+  nav.topnav, .topnav, .nav-bar, header.sticky, .nav.sticky{top:50px !important}
 }
 @media(max-width:380px){
   .kd-launch-banner{font-size:10.5px}
@@ -50,11 +53,12 @@ body{padding-top:42px !important}
   banner.querySelector('.kd-launch-close').addEventListener('click', () => {
     banner.style.animation = 'kdSlideUp 0.3s ease forwards';
     const upStyle = document.createElement('style');
-    upStyle.textContent = '@keyframes kdSlideUp{to{transform:translateY(-100%);opacity:0}}';
+    upStyle.textContent = `@keyframes kdSlideUp{to{transform:translateY(-100%);opacity:0}}
+body{padding-top:0 !important}
+nav.topnav, .topnav, .nav-bar, header.sticky, .nav.sticky{top:0 !important}`;
     document.head.appendChild(upStyle);
     setTimeout(() => {
       banner.remove();
-      document.body.style.paddingTop = '';
     }, 300);
     localStorage.setItem(KEY, Date.now().toString());
   });
