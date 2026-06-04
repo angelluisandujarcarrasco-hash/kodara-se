@@ -1101,16 +1101,145 @@ footer { border-top: 1px solid var(--border); padding: 64px 48px 32px; backgroun
       <h2 class="section-title reveal" data-es="Todo lo que puedes personalizar." data-en="Everything you can customize.">Todo lo que puedes personalizar.</h2>
       <p class="section-subtitle reveal" data-es="Pósters, lienzos, ropa, tazas y mucho más. Sube tu diseño o foto y nosotros lo imprimimos con calidad premium." data-en="Posters, canvases, clothing, mugs and more. Upload your design or photo and we print with premium quality.">Pósters, lienzos, ropa, tazas y mucho más. Sube tu diseño o foto y nosotros lo imprimimos con calidad premium.</p>
     </div>
-    <div class="products-grid">
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Póster personalizado</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Lienzo enmarcado</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Taza</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Bolsa Tote</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Camiseta</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Tarjeta</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Calendario</h4></div>
-      <div class="product-card reveal"><div class="product-img"><div class="product-placeholder"><span>📸 Foto próximamente</span></div></div><h4>Libro de fotos</h4></div>
+    <div class="products-grid" id="productsGrid">
+      <div class="product-card reveal" data-category="Póster" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Póster personalizado</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Lienzo" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Lienzo</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Taza" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Taza</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Bolsa" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Bolsa Tote</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Camiseta" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Camiseta</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Tarjeta" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Tarjeta</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Calendario" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Calendario</h4><div class="product-count">Sé tú el primero</div></div>
+      <div class="product-card reveal" data-category="Libro" role="button" tabindex="0"><div class="product-img"><div class="product-placeholder"><span>📸 Próximamente</span></div></div><h4>Libro de fotos</h4><div class="product-count">Sé tú el primero</div></div>
     </div>
+
+<!-- MODAL GALERIA DE PRODUCTO -->
+<div class="gallery-backdrop" id="galleryModal" role="dialog" aria-modal="true">
+  <div class="gallery-modal">
+    <button class="gallery-close" onclick="closeGallery()" aria-label="Cerrar">×</button>
+    <h3 class="gallery-title" id="galleryTitle">Producto</h3>
+    <p class="gallery-sub" id="gallerySub">Pedidos enviados a clientes reales</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</div>
+
+<style>
+.product-card{cursor:pointer;transition:transform .25s,box-shadow .25s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(60,50,40,.18)}
+.product-card:focus-visible{outline:2px solid var(--terracotta);outline-offset:4px}
+.product-card .product-count{font-size:11px;color:var(--text-3);font-weight:600;text-align:center;letter-spacing:1px;text-transform:uppercase;margin-top:6px;font-family:'JetBrains Mono',monospace}
+.product-card .product-img-real{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.product-card .badge-count{position:absolute;top:10px;right:10px;background:var(--terracotta);color:#fff;font-size:12px;font-weight:800;padding:5px 10px;border-radius:99px;z-index:2;font-family:'JetBrains Mono',monospace;box-shadow:0 4px 12px rgba(193,84,49,.4)}
+.product-img{position:relative}
+
+.gallery-backdrop{position:fixed;inset:0;background:rgba(60,50,40,.55);backdrop-filter:blur(6px);z-index:100002;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.gallery-backdrop.open{display:flex}
+.gallery-modal{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:36px 30px;max-width:880px;width:100%;position:relative;box-shadow:0 25px 70px rgba(0,0,0,.3);margin:auto}
+.gallery-close{position:absolute;top:14px;right:14px;background:rgba(60,50,40,.08);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:22px;color:var(--text-2);display:flex;align-items:center;justify-content:center}
+.gallery-close:hover{background:rgba(60,50,40,.18)}
+.gallery-title{font-family:'Playfair Display',Georgia,serif;font-size:30px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.gallery-sub{font-size:14px;color:var(--text-2);margin-bottom:22px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.gallery-item{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.gallery-item img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.gallery-item-info{padding:12px 14px}
+.gallery-item-name{font-weight:800;font-size:14px;color:var(--dark)}
+.gallery-item-meta{font-size:12px;color:var(--text-3);margin-top:4px;font-family:'JetBrains Mono',monospace}
+.gallery-item-stars{color:var(--gold-dark);letter-spacing:2px;font-size:13px;margin-top:6px}
+.gallery-empty{text-align:center;padding:30px 0;color:var(--text-3)}
+.gallery-empty h4{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-2);margin-bottom:10px}
+.gallery-empty p{font-size:14px;line-height:1.5;max-width:420px;margin:0 auto 16px}
+@media(max-width:700px){.gallery-modal{padding:28px 22px}.gallery-title{font-size:24px}.gallery-grid{grid-template-columns:1fr 1fr;gap:12px}}
+</style>
+
+<script>
+let _kdGalleryReviews = null;
+async function _kdLoadReviews(){
+  if(_kdGalleryReviews) return _kdGalleryReviews;
+  try{
+    const r = await fetch('reviews.json?v=' + Date.now());
+    const d = await r.json();
+    _kdGalleryReviews = (d.reviews || []).filter(x => x.approved && !x.placeholder);
+  }catch(e){ _kdGalleryReviews = []; }
+  return _kdGalleryReviews;
+}
+function _escape(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+async function openGallery(category){
+  const modal = document.getElementById('galleryModal');
+  const grid = document.getElementById('galleryGrid');
+  const title = document.getElementById('galleryTitle');
+  const sub = document.getElementById('gallerySub');
+  title.textContent = category;
+  sub.textContent = 'Pedidos enviados a clientes reales';
+  grid.innerHTML = '<p style="color:var(--text-3);text-align:center;padding:20px">Cargando…</p>';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const all = await _kdLoadReviews();
+  const items = all.filter(r => (r.product_category||'').toLowerCase() === category.toLowerCase());
+  if(items.length === 0){
+    grid.innerHTML = `<div class="gallery-empty" style="grid-column:1/-1">
+      <h4>Aún no tenemos pedidos de ${_escape(category)} para mostrar</h4>
+      <p>Sé tú el primero. Tu pedido podría aparecer aquí como referencia para futuros clientes.</p>
+      <a href="empezar-proyecto.html" class="cta-btn cta-big" style="display:inline-flex;text-decoration:none">Empezar mi pedido →</a>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = items.map(r => {
+    const stars = '★'.repeat(r.rating||5);
+    const img = r.image_url ? `<img src="${_escape(r.image_url)}" alt="" loading="lazy">` : '';
+    const size = r.size ? `<div class="gallery-item-meta">📐 ${_escape(r.size)}</div>` : '';
+    const loc = r.location ? `<div class="gallery-item-meta">📍 ${_escape(r.location)}</div>` : '';
+    return `<div class="gallery-item">
+      ${img}
+      <div class="gallery-item-info">
+        <div class="gallery-item-name">${_escape(r.name||'Cliente')}</div>
+        ${loc}${size}
+        <div class="gallery-item-stars">${stars}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function closeGallery(){
+  document.getElementById('galleryModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Wire up cards
+document.addEventListener('DOMContentLoaded', async () => {
+  const all = await _kdLoadReviews();
+  const counts = {};
+  all.forEach(r => {
+    const c = (r.product_category||'').toLowerCase();
+    counts[c] = (counts[c]||0) + 1;
+  });
+
+  document.querySelectorAll('#productsGrid .product-card').forEach(card => {
+    const cat = card.dataset.category;
+    const handler = () => openGallery(cat);
+    card.addEventListener('click', handler);
+    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); handler(); }});
+
+    // Si hay pedidos en esta categoría → mostrar foto del primero + badge contador
+    const matches = all.filter(r => (r.product_category||'').toLowerCase() === (cat||'').toLowerCase());
+    if(matches.length > 0){
+      const first = matches[0];
+      const imgEl = card.querySelector('.product-img');
+      const countEl = card.querySelector('.product-count');
+      if(first.image_url && imgEl){
+        imgEl.innerHTML = `<span class="badge-count">${matches.length} ${matches.length===1?'pedido':'pedidos'}</span><img src="${first.image_url}" class="product-img-real" alt="" loading="lazy">`;
+      }
+      if(countEl) countEl.textContent = `Ver ${matches.length} ${matches.length===1?'ejemplo':'ejemplos'} →`;
+    }
+  });
+
+  // Cerrar modal al hacer click fuera o ESC
+  document.getElementById('galleryModal').addEventListener('click', e => {
+    if(e.target.id === 'galleryModal') closeGallery();
+  });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeGallery(); });
+});
+</script>
   </div>
 </section>
 
