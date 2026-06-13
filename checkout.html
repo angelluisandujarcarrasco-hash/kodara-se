@@ -323,14 +323,25 @@ function attachFormHandlers() {
       const config = [
         item.tamano ? `Tamaño: ${item.tamano}` : null,
         item.color ? `Color: ${item.color}` : null,
+        item.tecnica ? `Técnica: ${item.tecnica}` : null,
         item.orientacion ? `Orientación: ${item.orientacion}` : null,
+        item.paginas ? `Páginas: ${item.paginas}` : null,
         item.grosor ? `Grosor: ${item.grosor}` : null,
         item.color_marco ? `Marco: ${item.color_marco}` : null,
         item.color_colgador ? `Colgador: ${item.color_colgador}` : null,
         item.color_panel ? `Panel: ${item.color_panel}` : null,
+        item.num_fotos ? `Número de fotos: ${item.num_fotos}` : null,
+        item.notas_producto ? `Notas del cliente: ${item.notas_producto}` : null,
       ].filter(Boolean).join('\n  ');
 
-      return `\n${'='.repeat(60)}\nPRODUCTO ${i+1}: ${item.producto}\n${'='.repeat(60)}\n  ${config}\n  Cantidad: ${item.cantidad || 1}\n  Precio unitario: $${item.precio_num}\n  Subtotal: $${(item.precio_num * (item.cantidad || 1))}\n  Imagen del cliente: ${item.imagen_url}`;
+      // Si es un libro con muchas fotos, listar TODAS las URLs
+      let fotosBloque = `\n  Imagen del cliente: ${item.imagen_url}`;
+      if (item.imagenes_todas && item.imagenes_todas.includes(',')) {
+        const urls = item.imagenes_todas.split(',').filter(Boolean);
+        fotosBloque = `\n  TODAS LAS FOTOS (${urls.length}):\n` + urls.map((u, n) => `    ${n+1}. ${u}`).join('\n');
+      }
+
+      return `\n${'='.repeat(60)}\nPRODUCTO ${i+1}: ${item.producto}\n${'='.repeat(60)}\n  ${config}\n  Cantidad: ${item.cantidad || 1}\n  Precio unitario: $${item.precio_num}\n  Subtotal: $${(item.precio_num * (item.cantidad || 1))}${fotosBloque}`;
     }).join('\n');
 
     const total = getCartTotal();
@@ -371,6 +382,12 @@ function attachFormHandlers() {
       items.forEach((item, i) => {
         w3Payload.append(`imagen_${i+1}_url`, item.imagen_url || '');
         w3Payload.append(`producto_${i+1}`, item.producto || '');
+        // Si tiene multiples fotos (libros), incluir todas
+        if (item.imagenes_todas && item.imagenes_todas.includes(',')) {
+          w3Payload.append(`fotos_${i+1}_todas`, item.imagenes_todas);
+          w3Payload.append(`fotos_${i+1}_cantidad`, String(item.num_fotos || ''));
+        }
+        if (item.notas_producto) w3Payload.append(`notas_${i+1}`, item.notas_producto);
       });
       // Fire-and-forget, no esperamos a que termine
       fetch('https://api.web3forms.com/submit', { method: 'POST', body: w3Payload }).catch(()=>{});

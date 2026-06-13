@@ -244,33 +244,41 @@ async function compressImage(file, maxBytes){
   return null;
 }
 
-async function handleFiles(fileList){
-  for (const original of Array.from(fileList)){
-    if (!original.type.match(/^image\/(jpeg|png|webp)$/)) continue;
-    // placeholder
-    const idx = photos.length;
-    photos.push({url:null});
-    renderPhotos();
-    const thumb = grid.children[idx];
-    if (thumb) thumb.classList.add('uploading');
-
-    let file = original;
+async function uploadOne(photoObj){
+  let file = photoObj.file;
+  try{
     if (file.size > MAX_BYTES){
-      const c = await compressImage(original, MAX_BYTES);
-      if (!c){ photos.splice(idx,1); renderPhotos(); continue; }
+      const c = await compressImage(file, MAX_BYTES);
+      if (!c){ photoObj.failed = true; return; }
       file = c;
     }
-    try{
-      const fd = new FormData();
-      fd.append('file', file); fd.append('upload_preset', UPLOAD_PRESET);
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {method:'POST', body:fd});
-      const data = await res.json();
-      if (data.secure_url){ photos[idx] = {url:data.secure_url}; }
-      else { photos.splice(idx,1); }
-    }catch(e){ photos.splice(idx,1); }
+    const fd = new FormData();
+    fd.append('file', file); fd.append('upload_preset', UPLOAD_PRESET);
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {method:'POST', body:fd});
+    const data = await res.json();
+    if (data.secure_url){ photoObj.url = data.secure_url; }
+    else { photoObj.failed = true; }
+  }catch(e){ photoObj.failed = true; }
+}
+async function handleFiles(fileList){
+  const valid = Array.from(fileList).filter(f => f.type.match(/^image\/(jpeg|png|webp)$/));
+  if (valid.length === 0) return;
+  // Crear placeholders y mostrarlos enseguida
+  const nuevos = valid.map(f => ({url:null, file:f, failed:false}));
+  nuevos.forEach(p => photos.push(p));
+  renderPhotos();
+  // Subir en lotes de 4 en paralelo (rapido y sin saturar)
+  const BATCH = 4;
+  for (let i=0; i<nuevos.length; i+=BATCH){
+    const lote = nuevos.slice(i, i+BATCH);
+    await Promise.all(lote.map(p => uploadOne(p)));
     renderPhotos();
     syncFields();
   }
+  // Quitar las que fallaron
+  photos = photos.filter(p => !p.failed);
+  renderPhotos();
+  syncFields();
 }
 
 function renderPhotos(){
