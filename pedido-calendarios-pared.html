@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="192x192" href="favicon-192x192.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacer mi pedido · Calendario de Pared 2026 · Kodarase Print Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FCF0DE;--bg-2:#F7E6CC;--card:#FFF8EC;--card-2:#F7E6CC;--border:rgba(60,50,40,0.12);--border-2:rgba(60,50,40,0.18);--text:#3C3228;--text-2:#5C4E40;--text-3:#8A7864;--orange:#C15431;--orange-light:#D97757;--pink:#D97757;--purple:#B58850;--yellow:#D4A977;--terracotta:#C15431;--terracotta-dark:#9B3F22;--gold:#D4A977;--gold-dark:#B58850;--cream:#FCF0DE;--dark:#3C3228;--green:#10B981}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(252,240,222,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-weight:800;font-size:20px;color:var(--dark)}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--gold-dark);font-size:11px;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.topnav-back{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}
+.topnav-back:hover{background:var(--terracotta);color:#fff}
+.page-header{position:relative;padding:60px 32px 40px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),radial-gradient(ellipse at bottom, rgba(249,115,22,0.08), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.page-header-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.page-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:20px;text-transform:uppercase}
+.page-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.page-title{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.2px;line-height:1.15;margin-bottom:14px}
+.page-title .grad{background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-bottom:0.08em}
+.page-sub{font-size:15px;color:var(--text-2);max-width:540px;margin:0 auto;line-height:1.55}
+.hero-shipping{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);border-radius:999px;padding:10px 22px;font-size:14px;color:#10B981;font-weight:700;box-shadow:0 4px 16px rgba(16,185,129,0.15)}
+.hero-shipping strong{color:#10B981;font-weight:800}
+.shipping-icon{font-size:18px}
+.form-wrap{max-width:760px;margin:0 auto;padding:50px 24px 80px}
+.form-step{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));color:#fff;font-weight:800;font-size:14px;font-family:'JetBrains Mono',monospace}
+.step-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.step-title{font-size:20px;font-weight:800;letter-spacing:-0.3px}
+.step-sub{color:var(--text-3);font-size:13px;margin-bottom:22px;padding-left:44px}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opt{cursor:pointer;background:var(--bg-2);border:2px solid var(--border-2);border-radius:14px;padding:18px;text-align:center;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.opt:hover{border-color:var(--orange-light)}
+.opt input{display:none}
+.opt:has(input:checked){border-color:var(--orange);background:rgba(249,115,22,0.08)}
+.opt.disabled{opacity:0.35;pointer-events:none;filter:grayscale(0.6)}
+.opt-label{font-weight:700;font-size:14px}
+.opt-sub{font-size:11px;color:var(--text-3)}
+.size-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.pages-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pages-select{flex:1;min-width:160px;background:var(--bg-2);border:2px solid var(--border-2);border-radius:14px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.pages-select:focus{outline:none;border-color:var(--orange)}
+.price-box{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(135deg, rgba(249,115,22,0.08), rgba(236,72,153,0.08));border:1px solid rgba(249,115,22,0.25);border-radius:14px;padding:18px 22px;margin-top:16px;transition:all 0.3s ease}
+.price-box.active{border-color:var(--orange);background:linear-gradient(135deg, rgba(249,115,22,0.15), rgba(236,72,153,0.12))}
+.price-label{font-size:12px;color:var(--text-3);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.price-amount{font-size:clamp(28px,4vw,36px);font-weight:900;font-family:'JetBrains Mono',monospace;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.price-amount.empty{background:none;-webkit-text-fill-color:var(--text-3);color:var(--text-3);font-size:16px;font-weight:600}
+.info-note{background:rgba(212,169,119,0.14);border:1px solid var(--gold);border-radius:12px;padding:13px 16px;font-size:13px;color:var(--text-2);line-height:1.5;margin-top:14px}
+.info-note strong{color:var(--gold-dark)}
+.upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--border-2);border-radius:14px;padding:34px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg-2);width:100%;min-height:150px}
+.upload-zone:hover{border-color:var(--orange);background:rgba(249,115,22,0.04)}
+.upload-zone.dragover{border-color:var(--orange);background:rgba(249,115,22,0.08)}
+.upload-icon{font-size:40px;margin-bottom:8px;opacity:0.75}
+.upload-text{font-weight:700;font-size:15px;margin-bottom:6px}
+.upload-hint{font-size:12px;color:var(--text-3)}
+.upload-zone input[type=file]{display:none}
+.photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px;margin-top:16px}
+.photo-thumb{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;border:2px solid var(--green)}
+.photo-thumb img{width:100%;height:100%;object-fit:cover}
+.photo-thumb.uploading{border-color:var(--orange);display:flex;align-items:center;justify-content:center;background:var(--bg-2);font-size:11px;color:var(--orange);font-weight:700}
+.photo-remove{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,0.7);color:#fff;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;line-height:1}
+.photos-counter{font-size:13px;font-weight:700;color:var(--green);margin-top:12px;font-family:'JetBrains Mono',monospace}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;letter-spacing:0.3px;text-transform:uppercase}
+.field input,.field textarea{width:100%;background:var(--bg-2);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:14px;transition:border 0.2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange)}
+.field textarea{resize:vertical;min-height:90px}
+.form-alert{display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.4);color:#B91C1C;border-radius:12px;padding:14px 18px;font-size:14px;font-weight:600;margin-bottom:16px;text-align:center}
+.form-alert.show{display:block}
+.submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));color:#fff;font-size:15px;font-weight:800;padding:18px 36px;border-radius:999px;border:none;cursor:pointer;width:100%;transition:all 0.25s;font-family:inherit}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(249,115,22,0.35)}
+.submit-btn::after{content:'→';font-size:17px}
+.privacy-note{text-align:center;font-size:11px;color:var(--text-3);margin-top:16px}
+.privacy-note a{color:var(--orange)}
+.footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
+.footer a{color:var(--orange)}
+@media(max-width:640px){.topnav{padding:12px 18px}.form-wrap{padding:32px 16px 60px}.form-step{padding:20px}.opt-grid{grid-template-columns:1fr 1fr}}
+.form-step.locked{opacity:0.42;pointer-events:none;filter:grayscale(0.4);position:relative;transition:all 0.3s ease}
+.form-step.locked::after{content:'\1F512  Completa el paso anterior';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.92);color:#fff;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:700;pointer-events:none;white-space:nowrap;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 24px rgba(0,0,0,0.4);z-index:10}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="personalizar-calendarios.html" class="topnav-logo">
+    <img src="logo-kodara-boho.png" alt="Kodarase Print Studio">
+    <div>Kodarase <span>Print Studio</span></div>
+  </a>
+  <a href="personalizar-calendarios.html" class="topnav-back">← Volver a Calendarios</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Pedido · Calendario de Pared 2026</div>
+    <h1 class="page-title">Calendario de Pared <span class="grad">2026</span>.</h1>
+    <p class="page-sub">Calendario de pared con espiral, doble cara. Sube tus fotos (una por mes) y nosotros lo armamos.</p>
+    <div class="hero-shipping"><span class="shipping-icon">🚚</span><strong>Envío a todo el mundo</strong></div>
+  </div>
+</header>
+
+<form class="form-wrap" action="#" method="POST" novalidate>
+  <input type="hidden" name="subject" value="Nuevo pedido · Calendario de Pared 2026 · Kodarase">
+  <input type="hidden" name="from_name" value="Kodarase Print Studio">
+
+  <!-- 1 · ORIENTACIÓN -->
+  <div class="form-step">
+    <div class="step-head"><div class="step-num">1</div><div class="step-title">Orientación</div></div>
+    <p class="step-sub">Vertical para retratos, horizontal para paisajes. La horizontal solo está en 21×28 cm.</p>
+    <div class="opt-grid">
+      <label class="opt">
+        <input type="radio" name="orientacion" value="Vertical" required>
+        <div style="width:36px;height:48px;background:linear-gradient(135deg,var(--card-2),var(--bg));border:1px solid var(--border-2);border-radius:4px"></div>
+        <div class="opt-label">Vertical</div>
+      </label>
+      <label class="opt">
+        <input type="radio" name="orientacion" value="Horizontal">
+        <div style="width:48px;height:36px;background:linear-gradient(135deg,var(--card-2),var(--bg));border:1px solid var(--border-2);border-radius:4px"></div>
+        <div class="opt-label">Horizontal</div>
+      </label>
+    </div>
+  </div>
+
+  <!-- 2 · TAMAÑO -->
+  <div class="form-step">
+    <div class="step-head"><div class="step-num">2</div><div class="step-title">Tamaño del libro</div></div>
+    <p class="step-sub">Algunos tamaños solo están en cierta orientación. Elige la orientación primero.</p>
+    <div class="size-grid" id="size-grid">
+      <label class="opt" data-orient="Vertical">
+        <input type="radio" name="tamano" value="5.5x16.5&quot;" data-price="30" required>
+        <div class="opt-label">5.5 × 16.5"</div>
+        <div class="opt-sub">alargado · solo vertical</div>
+      </label>
+      <label class="opt" data-orient="Vertical,Horizontal">
+        <input type="radio" name="tamano" value="LT 8.5x11&quot;" data-price="31">
+        <div class="opt-label">LT · 8.5 × 11"</div>
+        <div class="opt-sub">carta</div>
+      </label>
+      <label class="opt" data-orient="Vertical">
+        <input type="radio" name="tamano" value="Ledger 11x16.5&quot;" data-price="36">
+        <div class="opt-label">Ledger · 11 × 16.5"</div>
+        <div class="opt-sub">grande · solo vertical</div>
+      </label>
+      <label class="opt" data-orient="Horizontal">
+        <input type="radio" name="tamano" value="8.5x8.5&quot;" data-price="36">
+        <div class="opt-label">8.5 × 8.5"</div>
+        <div class="opt-sub">cuadrado · solo horizontal</div>
+      </label>
+    </div>
+    <div class="price-box" id="price-box">
+      <div class="price-label">Precio del calendario</div>
+      <div class="price-amount empty" id="price-amount">Elige tamaño</div>
+    </div>
+    <input type="hidden" name="precio" id="precio-hidden" value="">
+  </div>
+
+  <!-- 4 · FOTOS -->
+  <div class="form-step">
+    <div class="step-head"><div class="step-num">3</div><div class="step-title">Tus fotos</div></div>
+    <p class="step-sub">Sube tus fotos (idealmente una por mes = 12-13 fotos). Nosotros las acomodamos mes por mes y te mandamos la vista previa.</p>
+    <label class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" multiple>
+      <div class="upload-icon">📚</div>
+      <div class="upload-text">Arrastra tus fotos aquí o haz clic para elegirlas</div>
+      <div class="upload-hint">Puedes seleccionar VARIAS a la vez · JPG, PNG, WEBP · hasta 10 MB c/u</div>
+    </label>
+    <div class="photos-grid" id="photos-grid"></div>
+    <div class="photos-counter" id="photos-counter" style="display:none"></div>
+    <input type="hidden" name="imagen_url" id="imagen-url" required>
+    <input type="hidden" name="imagenes_todas" id="imagenes-todas">
+    <div class="field" style="margin-top:18px">
+      <label>Notas (orden de fotos, textos, dedicatoria...)</label>
+      <textarea name="notas" placeholder="Ej: empieza con la foto de la playa, pon 'Familia 2026' en la portada, etc."></textarea>
+    </div>
+  </div>
+
+  <div class="form-alert" id="form-alert"></div>
+  <button type="submit" class="submit-btn" id="submit-btn">Agregar al carrito</button>
+  <p class="privacy-note">Al enviar aceptas nuestra <a href="politica-privacidad.html">política de privacidad</a>.</p>
+</form>
+
+<footer class="footer">© 2026 Kodarase Print Studio · <a href="index.html">kodarase.com</a></footer>
+
+<script>
+const CLOUD_NAME = 'dxzppmgqb';
+const UPLOAD_PRESET = 'kodara_pedidos';
+const MAX_BYTES = 10 * 1024 * 1024;
+const PRODUCT_NAME = 'Calendario de Pared 2026';
+
+// ===== Orientación filtra tamaños =====
+const sizeLabels = document.querySelectorAll('#size-grid .opt');
+document.querySelectorAll('input[name="orientacion"]').forEach(r => {
+  r.addEventListener('change', () => {
+    const orient = r.value;
+    sizeLabels.forEach(lbl => {
+      const allowed = (lbl.dataset.orient || '').split(',');
+      const ok = allowed.includes(orient);
+      lbl.classList.toggle('disabled', !ok);
+      const inp = lbl.querySelector('input');
+      if (!ok && inp.checked) { inp.checked = false; updatePrice(); }
+    });
+  });
+});
+
+// ===== Precio en vivo =====
+const priceBox = document.getElementById('price-box');
+const priceAmount = document.getElementById('price-amount');
+const precioHidden = document.getElementById('precio-hidden');
+function getSelectedSize(){ return document.querySelector('input[name="tamano"]:checked'); }
+function updatePrice(){
+  const size = getSelectedSize();
+  if (!size){ priceAmount.textContent='Elige tamaño'; priceAmount.classList.add('empty'); priceBox.classList.remove('active'); precioHidden.value=''; return; }
+  const price = parseInt(size.dataset.price);
+  priceAmount.textContent = '$' + price;
+  priceAmount.classList.remove('empty');
+  priceBox.classList.add('active');
+  precioHidden.value = '$' + price;
+}
+document.querySelectorAll('input[name="tamano"]').forEach(r => r.addEventListener('change', updatePrice));
+
+
+// ===== Multi-upload =====
+const zone = document.getElementById('upload-zone');
+const input = document.getElementById('file-input');
+const grid = document.getElementById('photos-grid');
+const counter = document.getElementById('photos-counter');
+const urlField = document.getElementById('imagen-url');
+const allField = document.getElementById('imagenes-todas');
+let photos = []; // {url}
+
+['dragover','dragenter'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();zone.classList.add('dragover');}));
+['dragleave','dragend','drop'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();zone.classList.remove('dragover');}));
+zone.addEventListener('drop',e=>{ if(e.dataTransfer.files.length) handleFiles(e.dataTransfer.files); });
+input.addEventListener('change',e=>{ if(e.target.files.length) handleFiles(e.target.files); input.value=''; });
+
+async function compressImage(file, maxBytes){
+  const img = await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(file);});
+  const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  canvas.getContext('2d').drawImage(img,0,0);URL.revokeObjectURL(img.src);
+  for(const q of [0.9,0.82,0.74,0.66,0.55]){
+    const blob = await new Promise(r=>canvas.toBlob(r,'image/jpeg',q));
+    if(blob && blob.size <= maxBytes) return new File([blob], file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
+  }
+  return null;
+}
+
+async function uploadOne(photoObj){
+  let file = photoObj.file;
+  try{
+    if (file.size > MAX_BYTES){
+      const c = await compressImage(file, MAX_BYTES);
+      if (!c){ photoObj.failed = true; return; }
+      file = c;
+    }
+    const fd = new FormData();
+    fd.append('file', file); fd.append('upload_preset', UPLOAD_PRESET);
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {method:'POST', body:fd});
+    const data = await res.json();
+    if (data.secure_url){ photoObj.url = data.secure_url; }
+    else { photoObj.failed = true; }
+  }catch(e){ photoObj.failed = true; }
+}
+async function handleFiles(fileList){
+  const valid = Array.from(fileList).filter(f => f.type.match(/^image\/(jpeg|png|webp)$/));
+  if (valid.length === 0) return;
+  // Crear placeholders y mostrarlos enseguida
+  const nuevos = valid.map(f => ({url:null, file:f, failed:false}));
+  nuevos.forEach(p => photos.push(p));
+  renderPhotos();
+  // Subir en lotes de 4 en paralelo (rapido y sin saturar)
+  const BATCH = 4;
+  for (let i=0; i<nuevos.length; i+=BATCH){
+    const lote = nuevos.slice(i, i+BATCH);
+    await Promise.all(lote.map(p => uploadOne(p)));
+    renderPhotos();
+    syncFields();
+  }
+  // Quitar las que fallaron
+  photos = photos.filter(p => !p.failed);
+  renderPhotos();
+  syncFields();
+}
+
+function renderPhotos(){
+  grid.innerHTML = photos.map((p,i)=>{
+    if (!p.url) return `<div class="photo-thumb uploading">subiendo…</div>`;
+    return `<div class="photo-thumb"><img src="${p.url}" alt=""><button type="button" class="photo-remove" data-i="${i}">×</button></div>`;
+  }).join('');
+  grid.querySelectorAll('.photo-remove').forEach(b=>{
+    b.addEventListener('click',()=>{ photos.splice(parseInt(b.dataset.i),1); renderPhotos(); syncFields(); });
+  });
+  updatePhotoRequirement();
+}
+function minPhotosForPages(){ return 1; }
+function updatePhotoRequirement(){
+  const done = photos.filter(p=>p.url).length;
+  if (done === 0){ counter.style.display='none'; return; }
+  counter.style.display='block';
+  counter.style.color = (done >= 12) ? 'var(--green)' : '#C15431';
+  counter.textContent = (done >= 12) ? ('✓ '+done+' fotos subidas') : ('✓ '+done+' fotos · recomendado 12-13 (una por mes)');
+}
+function syncFields(){
+  const urls = photos.filter(p=>p.url).map(p=>p.url);
+  urlField.value = urls[0] || '';
+  allField.value = urls.join(',');
+}
+
+// ===== Submit =====
+const form = document.querySelector('form.form-wrap');
+const alertBox = document.getElementById('form-alert');
+function showAlert(msg){ alertBox.textContent='⚠ '+msg; alertBox.classList.add('show'); alertBox.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>alertBox.classList.remove('show'),6000); }
+
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if (!form.querySelector('input[name="orientacion"]:checked')) { showAlert('Elige la orientación.'); return; }
+  const size = getSelectedSize();
+  if (!size) { showAlert('Elige el tamaño del libro.'); return; }
+  if (!precioHidden.value) { showAlert('Elige el tamaño.'); return; }
+  const urls = photos.filter(p=>p.url).map(p=>p.url);
+  if (urls.length === 0) { showAlert('Sube tus fotos para el libro.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  if (photos.some(p=>!p.url)) { showAlert('Espera a que terminen de subir las fotos.'); return; }
+
+  const item = {
+    producto: PRODUCT_NAME,
+    pedido_page: window.location.pathname.split('/').pop(),
+    orientacion: form.querySelector('input[name="orientacion"]:checked').value,
+    tamano: size.value,
+    num_fotos: urls.length,
+    imagen_url: urls[0],
+    imagenes_todas: urls.join(','),
+    precio_num: parseInt(precioHidden.value.replace('$','')),
+    precio_str: precioHidden.value
+  };
+  const notas = form.querySelector('[name="notas"]');
+  if (notas && notas.value.trim()) item.notas_producto = notas.value.trim();
+
+  addToCart(item);
+  showCartToast('¡Libro agregado al carrito!', 'Ver carrito →', 'carrito.html');
+  setTimeout(()=>{
+    if (confirm('¿Agregar otro libro o ir al carrito?\n\nOK = Ir al carrito\nCancelar = Seguir')) {
+      window.location.href = 'carrito.html';
+    } else {
+      photos = []; renderPhotos(); syncFields();
+      const n = form.querySelector('[name="notas"]'); if (n) n.value='';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  }, 1200);
+});
+</script>
+<script src="cart.js"></script>
+<script src="preview-promise.js"></script>
+<script src="launch-banner.js"></script>
+</body>
+</html>
