@@ -10,7 +10,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hacer mi pedido · Bolsas Tote · Kodarase Print Studio</title>
+<title>Hacer mi pedido · Bolsa Tote Clásica · Kodarase Print Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -48,21 +48,24 @@ img{max-width:100%;display:block}
 .tipo-opt:hover{border-color:var(--orange-light)}
 .tipo-opt input{display:none}
 .tipo-opt:has(input:checked){border-color:var(--orange);background:rgba(249,115,22,0.08)}
-.tipo-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:800;padding:4px 9px;border-radius:99px;letter-spacing:0.5px;text-transform:uppercase}
-.tipo-badge.rec{background:rgba(212,169,119,0.25);color:var(--gold-dark)}
-.tipo-badge.top{background:rgba(16,185,129,0.18);color:#10B981}
-.tipo-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:4px}
+.tipo-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;margin-bottom:4px}
 .tipo-desc{font-size:12.5px;color:var(--text-3);line-height:1.4;margin-bottom:12px}
-.tipo-price{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-.color-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.color-opt{cursor:pointer;background:var(--bg-2);border:2px solid var(--border-2);border-radius:14px;padding:20px;text-align:center;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:12px}
+.tipo-price{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.bordado-note{display:none;background:rgba(212,169,119,0.14);border:1px solid var(--gold);border-radius:12px;padding:13px 16px;font-size:13px;color:var(--text-2);line-height:1.5;margin-top:14px}
+.bordado-note.show{display:block}
+.bordado-note strong{color:var(--gold-dark)}
+.color-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.color-opt{cursor:pointer;background:var(--bg-2);border:2px solid var(--border-2);border-radius:14px;padding:18px 10px;text-align:center;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:10px}
 .color-opt:hover{border-color:var(--orange-light)}
 .color-opt input{display:none}
 .color-opt:has(input:checked){border-color:var(--orange);background:rgba(249,115,22,0.08)}
-.color-swatch{width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);box-shadow:0 4px 14px rgba(0,0,0,0.18)}
+.color-swatch{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);box-shadow:0 4px 12px rgba(0,0,0,0.16)}
+.color-swatch.blanco{background:#fafafa;border-color:rgba(60,50,40,0.2)}
+.color-swatch.azul{background:#1e2a52}
 .color-swatch.natural{background:#E8DCC4}
+.color-swatch.rojo{background:#B02436}
 .color-swatch.negro{background:#0a0a0a}
-.color-label{font-weight:700;font-size:14px}
+.color-label{font-weight:700;font-size:13px}
 .upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--border-2);border-radius:14px;padding:40px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg-2);width:100%;min-height:200px}
 .upload-zone:hover{border-color:var(--orange);background:rgba(249,115,22,0.04)}
 .upload-zone.dragover{border-color:var(--orange);background:rgba(249,115,22,0.08);transform:scale(1.01)}
@@ -103,50 +106,50 @@ img{max-width:100%;display:block}
 <body>
 
 <nav class="topnav">
-  <a href="index.html" class="topnav-logo">
+  <a href="personalizar-bolsas.html" class="topnav-logo">
     <img src="logo-kodara-boho.png" alt="Kodarase Print Studio">
     <div>Kodarase <span>Print Studio</span></div>
   </a>
-  <a href="index.html" class="topnav-back">← Volver al inicio</a>
+  <a href="personalizar-bolsas.html" class="topnav-back">← Volver a Bolsas Tote</a>
 </nav>
 
 <header class="page-header">
   <div class="page-header-inner">
-    <div class="page-tag">Pedido · Bolsas Tote</div>
-    <h1 class="page-title">Tu diseño en una <span class="grad">bolsa tote</span>.</h1>
-    <p class="page-sub">Bolsas de tela 100% algodón, perfectas para el día a día. Sube tu foto, logo o diseño y la imprimimos por ti.</p>
+    <div class="page-tag">Pedido · Bolsa Tote Clásica</div>
+    <h1 class="page-title">Bolsa Tote <span class="grad">Clásica</span>.</h1>
+    <p class="page-sub">Bolsa de tela 100% algodón ligero, con asas largas. Elige técnica, color y sube tu diseño.</p>
     <div class="hero-shipping"><span class="shipping-icon">🚚</span><strong>Envío a todo el mundo</strong></div>
   </div>
 </header>
 
 <form class="form-wrap" action="#" method="POST" novalidate>
-  <input type="hidden" name="subject" value="Nuevo pedido · Bolsas Tote · Kodarase">
+  <input type="hidden" name="subject" value="Nuevo pedido · Bolsa Tote Clásica · Kodarase">
   <input type="hidden" name="from_name" value="Kodarase Print Studio">
 
-  <!-- 1 · TIPO DE BOLSA -->
+  <!-- 1 · TÉCNICA -->
   <div class="form-step">
     <div class="step-head">
       <div class="step-num">1</div>
-      <div class="step-title">Elige tu bolsa</div>
+      <div class="step-title">Técnica de estampado</div>
     </div>
-    <p class="step-sub">Dos calidades: la clásica ligera o la prémium de tela más gruesa y resistente.</p>
+    <p class="step-sub">Impresión directa para fotos y diseños a color. Bordado para logos y texto (acabado premium).</p>
     <div class="tipo-grid">
       <label class="tipo-opt">
-        <input type="radio" name="tipo" value="Clásica · 100% algodón" data-price="27" required>
-        <span class="tipo-badge top">Más vendida</span>
-        <div class="tipo-name">Clásica</div>
-        <div class="tipo-desc">100% algodón ligero · asas largas · ideal para uso diario y compras.</div>
+        <input type="radio" name="tecnica" value="Impresión directa" data-price="27" required>
+        <div class="tipo-name">Impresión directa</div>
+        <div class="tipo-desc">Para fotos, ilustraciones y diseños a todo color. Resultado vibrante.</div>
         <div class="tipo-price">$27</div>
       </label>
       <label class="tipo-opt">
-        <input type="radio" name="tipo" value="Prémium · algodón grueso" data-price="35">
-        <span class="tipo-badge rec">Prémium</span>
-        <div class="tipo-name">Prémium</div>
-        <div class="tipo-desc">Algodón más grueso y resistente · acabado superior · para quien busca lo mejor.</div>
-        <div class="tipo-price">$35</div>
+        <input type="radio" name="tecnica" value="Bordado" data-price="33">
+        <div class="tipo-name">Bordado</div>
+        <div class="tipo-desc">Hilo cosido, acabado premium y duradero. Solo logos o texto simple.</div>
+        <div class="tipo-price">$33</div>
       </label>
     </div>
-    <div class="price-box" style="display:none"></div>
+    <div class="bordado-note" id="bordado-note">
+      ⚠️ <strong>Importante sobre el bordado:</strong> el bordado reproduce <strong>logos, texto o diseños simples</strong> — NO fotografías ni degradados de color. Si quieres imprimir una foto, elige <strong>Impresión directa</strong>.
+    </div>
     <input type="hidden" name="precio" id="precio-hidden" value="">
   </div>
 
@@ -156,28 +159,43 @@ img{max-width:100%;display:block}
       <div class="step-num">2</div>
       <div class="step-title">Color de la bolsa</div>
     </div>
-    <p class="step-sub">El natural (crema) resalta los colores. El negro da un look más moderno.</p>
+    <p class="step-sub">5 colores disponibles. El natural (crema) resalta más los colores del diseño.</p>
     <div class="color-grid">
       <label class="color-opt">
         <input type="radio" name="color" value="Natural" required>
         <div class="color-swatch natural"></div>
-        <div class="color-label">Natural (crema)</div>
+        <div class="color-label">Natural</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Blanco">
+        <div class="color-swatch blanco"></div>
+        <div class="color-label">Blanco</div>
       </label>
       <label class="color-opt">
         <input type="radio" name="color" value="Negro">
         <div class="color-swatch negro"></div>
         <div class="color-label">Negro</div>
       </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Azul marino">
+        <div class="color-swatch azul"></div>
+        <div class="color-label">Azul marino</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Rojo">
+        <div class="color-swatch rojo"></div>
+        <div class="color-label">Rojo</div>
+      </label>
     </div>
   </div>
 
-  <!-- 3 · IMAGEN -->
+  <!-- 3 · DISEÑO -->
   <div class="form-step">
     <div class="step-head">
       <div class="step-num">3</div>
       <div class="step-title">Tu diseño</div>
     </div>
-    <p class="step-sub">Sube la foto, logo o ilustración que quieres imprimir en la bolsa. A más resolución, mejor impresión.</p>
+    <p class="step-sub">Sube la foto, logo o ilustración que quieres en la bolsa. A más resolución, mejor resultado.</p>
     <label class="upload-zone" id="upload-zone">
       <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp">
       <div class="upload-icon" id="upload-icon">📁</div>
@@ -191,7 +209,7 @@ img{max-width:100%;display:block}
     <input type="hidden" name="imagen_url" id="imagen-url" required>
     <div class="field" style="margin-top:18px">
       <label>Notas para tu pedido (opcional)</label>
-      <textarea name="notas" placeholder="Ej: centra el logo, imprímelo más pequeño, etc."></textarea>
+      <textarea name="notas" placeholder="Ej: centra el logo, hazlo más pequeño, etc."></textarea>
     </div>
   </div>
 
@@ -275,15 +293,18 @@ async function handleFile(originalFile){
   xhr.send(formData);
 }
 
-// Precio segun tipo seleccionado
+// Precio + aviso bordado segun tecnica
 const precioHidden = document.getElementById('precio-hidden');
-document.querySelectorAll('input[name="tipo"]').forEach(r => {
+const bordadoNote = document.getElementById('bordado-note');
+document.querySelectorAll('input[name="tecnica"]').forEach(r => {
   r.addEventListener('change', () => {
     if (r.checked && r.dataset.price) precioHidden.value = '$' + r.dataset.price;
+    if (r.checked && r.value === 'Bordado') bordadoNote.classList.add('show');
+    else bordadoNote.classList.remove('show');
   });
 });
 
-function getProductName(){ return 'Bolsa Tote'; }
+function getProductName(){ return 'Bolsa Tote Clásica'; }
 
 const form = document.querySelector('form.form-wrap');
 const alertBox = document.getElementById('form-alert');
@@ -297,22 +318,22 @@ function showAlert(msg){
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (!form.querySelector('input[name="tipo"]:checked')) { showAlert('Elige el tipo de bolsa.'); return; }
+  const tecSel = form.querySelector('input[name="tecnica"]:checked');
+  if (!tecSel) { showAlert('Elige la técnica de estampado.'); return; }
   if (!form.querySelector('input[name="color"]:checked')) { showAlert('Elige el color de la bolsa.'); return; }
   if (!urlField.value || !urlField.value.startsWith('https://res.cloudinary.com/')) {
     showAlert('Tienes que subir una imagen.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return;
   }
   if (zone.classList.contains('uploading')) { showAlert('Espera a que termine de subirse la imagen.'); return; }
 
-  const tipoSel = form.querySelector('input[name="tipo"]:checked');
   const item = {
     producto: getProductName(),
     pedido_page: window.location.pathname.split('/').pop(),
-    tipo: tipoSel.value,
+    tecnica: tecSel.value,
     color: form.querySelector('input[name="color"]:checked').value,
     imagen_url: urlField.value,
-    precio_num: parseInt(tipoSel.dataset.price),
-    precio_str: '$' + tipoSel.dataset.price
+    precio_num: parseInt(tecSel.dataset.price),
+    precio_str: '$' + tecSel.dataset.price
   };
   const notas = form.querySelector('[name="notas"]');
   if (notas && notas.value.trim()) item.notas_producto = notas.value.trim();
