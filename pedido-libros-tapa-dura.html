@@ -250,7 +250,7 @@ function clampPages(){
   pagesSelect.value = v;
 }
 pagesSelect.addEventListener('change', () => { clampPages(); updatePrice(); });
-pagesSelect.addEventListener('input', updatePrice);
+pagesSelect.addEventListener('input', () => { updatePrice(); updatePhotoRequirement(); });
 
 // ===== Multi-upload =====
 const zone = document.getElementById('upload-zone');
@@ -314,9 +314,24 @@ function renderPhotos(){
   grid.querySelectorAll('.photo-remove').forEach(b=>{
     b.addEventListener('click',()=>{ photos.splice(parseInt(b.dataset.i),1); renderPhotos(); syncFields(); });
   });
+  updatePhotoRequirement();
+}
+function minPhotosForPages(){
+  const pages = parseInt(pagesSelect.value) || 30;
+  return Math.ceil(pages / 2); // al menos 1 foto por cada 2 paginas
+}
+function updatePhotoRequirement(){
   const done = photos.filter(p=>p.url).length;
-  if (done>0){ counter.style.display='block'; counter.textContent = '✓ '+done+(done===1?' foto subida':' fotos subidas'); }
-  else { counter.style.display='none'; }
+  const min = minPhotosForPages();
+  if (done === 0){ counter.style.display='none'; return; }
+  counter.style.display='block';
+  if (done >= min){
+    counter.style.color = 'var(--green)';
+    counter.textContent = '✓ '+done+' fotos subidas (suficientes para '+pagesSelect.value+' páginas)';
+  } else {
+    counter.style.color = '#C15431';
+    counter.textContent = '⚠ '+done+'/'+min+' fotos · sube '+(min-done)+' más para '+pagesSelect.value+' páginas';
+  }
 }
 function syncFields(){
   const urls = photos.filter(p=>p.url).map(p=>p.url);
@@ -336,8 +351,10 @@ form.addEventListener('submit',(e)=>{
   if (!size) { showAlert('Elige el tamaño del libro.'); return; }
   if (!precioHidden.value) { showAlert('Elige el número de páginas.'); return; }
   const urls = photos.filter(p=>p.url).map(p=>p.url);
-  if (urls.length === 0) { showAlert('Sube al menos una foto.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  if (urls.length === 0) { showAlert('Sube tus fotos para el libro.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return; }
   if (photos.some(p=>!p.url)) { showAlert('Espera a que terminen de subir las fotos.'); return; }
+  const minReq = minPhotosForPages();
+  if (urls.length < minReq) { showAlert('Necesitas al menos '+minReq+' fotos para un libro de '+pagesSelect.value+' páginas. Llevas '+urls.length+'. Sube '+(minReq-urls.length)+' más o reduce las páginas.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return; }
 
   const item = {
     producto: PRODUCT_NAME,
