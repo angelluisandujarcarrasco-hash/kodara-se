@@ -143,21 +143,10 @@ img{max-width:100%;display:block}
   <!-- 3 · PÁGINAS -->
   <div class="form-step">
     <div class="step-head"><div class="step-num">2</div><div class="step-title">Número de páginas</div></div>
-    <p class="step-sub">Mínimo 30, máximo 200. El precio se ajusta según las páginas que elijas.</p>
+    <p class="step-sub">Mínimo 30, máximo 200 (de 2 en 2). El precio se ajusta según las páginas que elijas.</p>
     <div class="pages-row">
-      <select class="pages-select" name="paginas" id="pages-select" required>
-        <option value="30" selected>30 páginas (incluidas)</option>
-        <option value="40">40 páginas</option>
-        <option value="50">50 páginas</option>
-        <option value="60">60 páginas</option>
-        <option value="80">80 páginas</option>
-        <option value="100">100 páginas</option>
-        <option value="120">120 páginas</option>
-        <option value="140">140 páginas</option>
-        <option value="160">160 páginas</option>
-        <option value="180">180 páginas</option>
-        <option value="200">200 páginas (máximo)</option>
-      </select>
+      <input type="number" class="pages-select" name="paginas" id="pages-select" min="30" max="200" step="2" value="30" required>
+      <span style="font-size:14px;color:var(--text-2);font-weight:600">páginas</span>
     </div>
     <div class="price-box" id="price-box">
       <div class="price-label">Precio del libro</div>
@@ -219,7 +208,16 @@ function updatePrice(){
   precioHidden.value = '$' + price;
 }
 document.querySelectorAll('input[name="tamano"]').forEach(r => r.addEventListener('change', updatePrice));
-pagesSelect.addEventListener('change', updatePrice);
+function clampPages(){
+  let v = parseInt(pagesSelect.value) || 30;
+  if (v < 30) v = 30;
+  if (v > 200) v = 200;
+  if (v % 2 !== 0) v = v + 1; // forzar par (sube de 2 en 2)
+  if (v > 200) v = 200;
+  pagesSelect.value = v;
+}
+pagesSelect.addEventListener('change', () => { clampPages(); updatePrice(); });
+pagesSelect.addEventListener('input', updatePrice);
 
 // ===== Multi-upload =====
 const zone = document.getElementById('upload-zone');
