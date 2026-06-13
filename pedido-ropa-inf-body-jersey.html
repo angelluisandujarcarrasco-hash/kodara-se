@@ -10,7 +10,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hacer mi pedido · Camiseta Prémium (Champion) · Kodarase Print Studio</title>
+<title>Hacer mi pedido · Body de Jersey (Bella+Canvas) · Kodarase Print Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -115,48 +115,48 @@ img{max-width:100%;display:block}
 
 <header class="page-header">
   <div class="page-header-inner">
-    <div class="page-tag">Pedido · Camiseta Prémium (Champion)</div>
-    <h1 class="page-title"><span class="grad">Camiseta Prémium (Champion)</span>.</h1>
-    <p class="page-sub">Champion T435, marca reconocida, máxima calidad. Elige talla y color, y sube tu diseño.</p>
+    <div class="page-tag">Pedido · Body de Jersey (Bella+Canvas)</div>
+    <h1 class="page-title"><span class="grad">Body de Jersey (Bella+Canvas)</span>.</h1>
+    <p class="page-sub">Body de jersey prémium Bella+Canvas, suave. Elige talla y color, y sube tu diseño.</p>
     <div class="hero-shipping"><span class="shipping-icon">🚚</span><strong>Envío a todo el mundo</strong></div>
   </div>
 </header>
 
 <form class="form-wrap" action="#" method="POST" novalidate>
-  <input type="hidden" name="subject" value="Nuevo pedido · Camiseta Prémium (Champion) · Kodarase">
+  <input type="hidden" name="subject" value="Nuevo pedido · Body de Jersey (Bella+Canvas) · Kodarase">
   <input type="hidden" name="from_name" value="Kodarase Print Studio">
 
   <!-- 1 · TALLA -->
   <div class="form-step">
     <div class="step-head"><div class="step-num">1</div><div class="step-title">Talla</div></div>
-    <p class="step-sub">Prémium · el precio es el mismo en todas las tallas.</p>
+    <p class="step-sub">Bebé · el precio es el mismo en todas las tallas.</p>
     <div class="color-grid">
       <label class="color-opt">
-        <input type="radio" name="talla" value="XS" required>
-        <div class="color-label">XS</div>
+        <input type="radio" name="talla" value="0-3M" required>
+        <div class="color-label">0-3M</div>
       </label>
       <label class="color-opt">
-        <input type="radio" name="talla" value="S">
-        <div class="color-label">S</div>
+        <input type="radio" name="talla" value="3-6M">
+        <div class="color-label">3-6M</div>
       </label>
       <label class="color-opt">
-        <input type="radio" name="talla" value="M">
-        <div class="color-label">M</div>
+        <input type="radio" name="talla" value="6-12M">
+        <div class="color-label">6-12M</div>
       </label>
       <label class="color-opt">
-        <input type="radio" name="talla" value="L">
-        <div class="color-label">L</div>
+        <input type="radio" name="talla" value="12-18M">
+        <div class="color-label">12-18M</div>
       </label>
       <label class="color-opt">
-        <input type="radio" name="talla" value="XL">
-        <div class="color-label">XL</div>
+        <input type="radio" name="talla" value="18-24M">
+        <div class="color-label">18-24M</div>
       </label>
     </div>
     <div class="price-box" id="price-box" style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(135deg, rgba(249,115,22,0.08), rgba(236,72,153,0.08));border:1px solid rgba(249,115,22,0.25);border-radius:14px;padding:18px 22px;margin-top:16px">
       <div style="font-size:12px;color:var(--text-3);font-weight:700;letter-spacing:1px;text-transform:uppercase">Precio</div>
-      <div style="font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--terracotta)">$42</div>
+      <div style="font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--terracotta)">$36</div>
     </div>
-    <input type="hidden" name="precio" id="precio-hidden" value="$42">
+    <input type="hidden" name="precio" id="precio-hidden" value="$36">
   </div>
 
   <!-- 2 · COLOR -->
@@ -301,9 +301,9 @@ async function handleFile(originalFile){
 
 // Precio fijo
 const precioHidden = document.getElementById('precio-hidden');
-precioHidden.value = '$42';
+precioHidden.value = '$36';
 
-function getProductName(){ return 'Camiseta Prémium (Champion)'; }
+function getProductName(){ return 'Body de Jersey (Bella+Canvas)'; }
 
 const form = document.querySelector('form.form-wrap');
 const alertBox = document.getElementById('form-alert');
@@ -330,8 +330,8 @@ form.addEventListener('submit', (e) => {
     talla: form.querySelector('input[name="talla"]:checked').value,
     color: form.querySelector('input[name="color"]:checked').value,
     imagen_url: urlField.value,
-    precio_num: 42,
-    precio_str: '$42'
+    precio_num: 36,
+    precio_str: '$36'
   };
   const notas = form.querySelector('[name="notas"]');
   if (notas && notas.value.trim()) item.notas_producto = notas.value.trim();
