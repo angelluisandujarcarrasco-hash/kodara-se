@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="192x192" href="favicon-192x192.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacer mi pedido · Camiseta Deportiva Juvenil · Kodarase Print Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FCF0DE;--bg-2:#F7E6CC;--card:#FFF8EC;--card-2:#F7E6CC;--border:rgba(60,50,40,0.12);--border-2:rgba(60,50,40,0.18);--text:#3C3228;--text-2:#5C4E40;--text-3:#8A7864;--orange:#C15431;--orange-light:#D97757;--pink:#D97757;--purple:#B58850;--yellow:#D4A977;--terracotta:#C15431;--terracotta-dark:#9B3F22;--gold:#D4A977;--gold-dark:#B58850;--cream:#FCF0DE;--dark:#3C3228;--green:#10B981}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(252,240,222,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-logo{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-weight:800;font-size:20px;color:var(--dark)}
+.topnav-logo img{width:36px;height:36px;border-radius:8px}
+.topnav-logo span{color:var(--gold-dark);font-size:11px;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.topnav-back{background:transparent;border:1px solid var(--border-2);color:var(--text-2);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:600;transition:all 0.2s}
+.topnav-back:hover{background:var(--terracotta);color:#fff}
+.page-header{position:relative;padding:60px 32px 40px;text-align:center;background:radial-gradient(ellipse at top, rgba(124,58,237,0.12), transparent 60%),radial-gradient(ellipse at bottom, rgba(249,115,22,0.08), transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.page-header-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.page-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;letter-spacing:1px;margin-bottom:20px;text-transform:uppercase}
+.page-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.page-title{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.2px;line-height:1.15;margin-bottom:14px}
+.page-title .grad{background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-bottom:0.08em}
+.page-sub{font-size:15px;color:var(--text-2);max-width:540px;margin:0 auto;line-height:1.55}
+.hero-shipping{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);border-radius:999px;padding:10px 22px;font-size:14px;color:#10B981;font-weight:700;box-shadow:0 4px 16px rgba(16,185,129,0.15)}
+.hero-shipping strong{color:#10B981;font-weight:800}
+.shipping-icon{font-size:18px}
+.form-wrap{max-width:760px;margin:0 auto;padding:50px 24px 80px}
+.form-step{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));color:#fff;font-weight:800;font-size:14px;font-family:'JetBrains Mono',monospace}
+.step-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.step-title{font-size:20px;font-weight:800;letter-spacing:-0.3px}
+.step-sub{color:var(--text-3);font-size:13px;margin-bottom:22px;padding-left:44px}
+.tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tipo-opt{cursor:pointer;background:var(--bg-2);border:2px solid var(--border-2);border-radius:16px;padding:22px 18px;text-align:left;transition:all 0.2s;position:relative;display:block}
+.tipo-opt:hover{border-color:var(--orange-light)}
+.tipo-opt input{display:none}
+.tipo-opt:has(input:checked){border-color:var(--orange);background:rgba(249,115,22,0.08)}
+.tipo-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;margin-bottom:4px}
+.tipo-desc{font-size:12.5px;color:var(--text-3);line-height:1.4;margin-bottom:12px}
+.tipo-price{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.bordado-note{display:none;background:rgba(212,169,119,0.14);border:1px solid var(--gold);border-radius:12px;padding:13px 16px;font-size:13px;color:var(--text-2);line-height:1.5;margin-top:14px}
+.bordado-note.show{display:block}
+.bordado-note strong{color:var(--gold-dark)}
+.color-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.color-opt{cursor:pointer;background:var(--bg-2);border:2px solid var(--border-2);border-radius:14px;padding:18px 10px;text-align:center;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:10px}
+.color-opt:hover{border-color:var(--orange-light)}
+.color-opt input{display:none}
+.color-opt:has(input:checked){border-color:var(--orange);background:rgba(249,115,22,0.08)}
+.color-swatch{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);box-shadow:0 4px 12px rgba(0,0,0,0.16)}
+.color-swatch.blanco{background:#fafafa;border-color:rgba(60,50,40,0.2)}
+.color-swatch.azul{background:#1e2a52}
+.color-swatch.natural{background:#E8DCC4}
+.color-swatch.rojo{background:#B02436}
+.color-swatch.negro{background:#0a0a0a}
+.color-label{font-weight:700;font-size:13px}
+.upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--border-2);border-radius:14px;padding:40px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg-2);width:100%;min-height:200px}
+.upload-zone:hover{border-color:var(--orange);background:rgba(249,115,22,0.04)}
+.upload-zone.dragover{border-color:var(--orange);background:rgba(249,115,22,0.08);transform:scale(1.01)}
+.upload-zone.uploading{border-color:var(--orange);background:rgba(249,115,22,0.04);cursor:wait}
+.upload-zone.done{border-color:var(--green);background:rgba(16,185,129,0.05)}
+.upload-icon{font-size:42px;margin-bottom:10px;opacity:0.75}
+.upload-text{font-weight:700;font-size:15px;margin-bottom:6px}
+.upload-hint{font-size:12px;color:var(--text-3)}
+.upload-zone input[type=file]{display:none}
+.upload-progress{display:none;width:100%;max-width:300px;margin-top:14px;height:8px;background:var(--bg);border-radius:999px;overflow:hidden}
+.upload-progress-bar{height:100%;background:linear-gradient(90deg, var(--orange), var(--pink));width:0%;transition:width 0.3s ease}
+.upload-status{margin-top:12px;font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--orange)}
+.upload-zone.done .upload-status{color:var(--green)}
+.upload-preview{display:none;max-width:120px;max-height:120px;border-radius:10px;margin-top:14px;border:2px solid var(--green)}
+.upload-clear{display:none;margin-top:12px;background:transparent;border:1px solid var(--border-2);color:var(--text-3);font-size:12px;padding:6px 14px;border-radius:999px;cursor:pointer}
+.upload-clear:hover{color:var(--text);border-color:var(--text-3)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;letter-spacing:0.3px;text-transform:uppercase}
+.field input,.field textarea{width:100%;background:var(--bg-2);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:14px;transition:border 0.2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange)}
+.field textarea{resize:vertical;min-height:80px}
+.form-alert{display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.4);color:#B91C1C;border-radius:12px;padding:14px 18px;font-size:14px;font-weight:600;margin-bottom:16px;text-align:center}
+.form-alert.show{display:block}
+.submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg, var(--terracotta), var(--gold-dark));color:#fff;font-size:15px;font-weight:800;padding:18px 36px;border-radius:999px;border:none;cursor:pointer;width:100%;transition:all 0.25s;font-family:inherit}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(249,115,22,0.35)}
+.submit-btn::after{content:'→';font-size:17px}
+.privacy-note{text-align:center;font-size:11px;color:var(--text-3);margin-top:16px}
+.privacy-note a{color:var(--orange)}
+.footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--text-3);font-size:13px}
+.footer a{color:var(--orange)}
+@media(max-width:640px){.topnav{padding:12px 18px}.form-wrap{padding:32px 16px 60px}.form-step{padding:20px}.tipo-grid{grid-template-columns:1fr}}
+.form-step.locked{opacity:0.42;pointer-events:none;filter:grayscale(0.4);position:relative;transition:all 0.3s ease}
+.form-step.locked::after{content:'\1F512  Completa el paso anterior';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.92);color:#fff;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:700;pointer-events:none;white-space:nowrap;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 24px rgba(0,0,0,0.4);z-index:10}
+.form-step.unlocked-anim{animation:stepUnlock 0.5s ease}
+@keyframes stepUnlock{from{transform:translateY(-6px);opacity:0.6}to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="personalizar-ropa-infantil.html" class="topnav-logo">
+    <img src="logo-kodara-boho.png" alt="Kodarase Print Studio">
+    <div>Kodarase <span>Print Studio</span></div>
+  </a>
+  <a href="personalizar-ropa-infantil.html" class="topnav-back">← Volver a Ropa Infantil</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Pedido · Camiseta Deportiva Juvenil</div>
+    <h1 class="page-title"><span class="grad">Camiseta Deportiva Juvenil</span>.</h1>
+    <p class="page-sub">Camiseta deportiva Gildan, ligera y fresca. La más económica. Elige talla y color, y sube tu diseño.</p>
+    <div class="hero-shipping"><span class="shipping-icon">🚚</span><strong>Envío a todo el mundo</strong></div>
+  </div>
+</header>
+
+<form class="form-wrap" action="#" method="POST" novalidate>
+  <input type="hidden" name="subject" value="Nuevo pedido · Camiseta Deportiva Juvenil · Kodarase">
+  <input type="hidden" name="from_name" value="Kodarase Print Studio">
+
+  <!-- 1 · TALLA -->
+  <div class="form-step">
+    <div class="step-head"><div class="step-num">1</div><div class="step-title">Talla</div></div>
+    <p class="step-sub">Camisetas · el precio es el mismo en todas las tallas.</p>
+    <div class="color-grid">
+      <label class="color-opt">
+        <input type="radio" name="talla" value="XS" required>
+        <div class="color-label">XS</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="talla" value="S">
+        <div class="color-label">S</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="talla" value="M">
+        <div class="color-label">M</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="talla" value="L">
+        <div class="color-label">L</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="talla" value="XL">
+        <div class="color-label">XL</div>
+      </label>
+    </div>
+    <div class="price-box" id="price-box" style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(135deg, rgba(249,115,22,0.08), rgba(236,72,153,0.08));border:1px solid rgba(249,115,22,0.25);border-radius:14px;padding:18px 22px;margin-top:16px">
+      <div style="font-size:12px;color:var(--text-3);font-weight:700;letter-spacing:1px;text-transform:uppercase">Precio</div>
+      <div style="font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--terracotta)">$28</div>
+    </div>
+    <input type="hidden" name="precio" id="precio-hidden" value="$28">
+  </div>
+
+  <!-- 2 · COLOR -->
+  <div class="form-step">
+    <div class="step-head"><div class="step-num">2</div><div class="step-title">Color de la prenda</div></div>
+    <p class="step-sub">Elige el color base. ¿Buscas otro? Indícanoslo en las notas y lo conseguimos.</p>
+    <div class="color-grid">
+      <label class="color-opt">
+        <input type="radio" name="color" value="Blanco" required>
+        <div class="color-label">Blanco</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Negro">
+        <div class="color-label">Negro</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Gris">
+        <div class="color-label">Gris</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Azul marino">
+        <div class="color-label">Azul marino</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Rojo">
+        <div class="color-label">Rojo</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Rosa">
+        <div class="color-label">Rosa</div>
+      </label>
+      <label class="color-opt">
+        <input type="radio" name="color" value="Verde">
+        <div class="color-label">Verde</div>
+      </label>
+    </div>
+  </div>
+
+  <!-- 3 · DISEÑO -->
+  <div class="form-step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">Tu diseño</div>
+    </div>
+    <p class="step-sub">Sube la foto, logo o ilustración que quieres en la bolsa. A más resolución, mejor resultado.</p>
+    <label class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp">
+      <div class="upload-icon" id="upload-icon">📁</div>
+      <div class="upload-text" id="upload-text">Arrastra tu imagen aquí o haz clic para elegirla</div>
+      <div class="upload-hint" id="upload-hint">JPG, PNG, WEBP · hasta 10 MB · Si pesa más, la comprimimos automáticamente</div>
+      <div class="upload-progress" id="upload-progress"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
+      <div class="upload-status" id="upload-status"></div>
+      <img class="upload-preview" id="upload-preview" alt="">
+      <button type="button" class="upload-clear" id="upload-clear">Cambiar imagen</button>
+    </label>
+    <input type="hidden" name="imagen_url" id="imagen-url" required>
+    <div class="field" style="margin-top:18px">
+      <label>Notas para tu pedido (opcional)</label>
+      <textarea name="notas" placeholder="Ej: centra el logo, hazlo más pequeño, etc."></textarea>
+    </div>
+  </div>
+
+  <div class="form-alert" id="form-alert"></div>
+  <button type="submit" class="submit-btn" id="submit-btn">Agregar al carrito</button>
+  <p class="privacy-note">Al enviar aceptas nuestra <a href="politica-privacidad.html">política de privacidad</a>.</p>
+</form>
+
+<footer class="footer">© 2026 Kodarase Print Studio · <a href="index.html">kodarase.com</a></footer>
+
+<script>
+const CLOUD_NAME = 'dxzppmgqb';
+const UPLOAD_PRESET = 'kodara_pedidos';
+const zone = document.getElementById('upload-zone');
+const input = document.getElementById('file-input');
+const icon = document.getElementById('upload-icon');
+const text = document.getElementById('upload-text');
+const hint = document.getElementById('upload-hint');
+const progress = document.getElementById('upload-progress');
+const progressBar = document.getElementById('upload-progress-bar');
+const status = document.getElementById('upload-status');
+const preview = document.getElementById('upload-preview');
+const clearBtn = document.getElementById('upload-clear');
+const urlField = document.getElementById('imagen-url');
+['dragover','dragenter'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();if(!zone.classList.contains('uploading')&&!zone.classList.contains('done'))zone.classList.add('dragover');}));
+['dragleave','dragend','drop'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();zone.classList.remove('dragover');}));
+zone.addEventListener('drop',e=>{if(e.dataTransfer.files.length>0)handleFile(e.dataTransfer.files[0]);});
+input.addEventListener('change',e=>{if(e.target.files.length>0)handleFile(e.target.files[0]);});
+clearBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();resetZone();});
+function resetZone(){zone.classList.remove('uploading','done');icon.textContent='📁';icon.style.display='';text.textContent='Arrastra tu imagen aquí o haz clic para elegirla';text.style.display='';hint.style.display='';progress.style.display='none';progressBar.style.width='0%';status.textContent='';preview.style.display='none';preview.src='';clearBtn.style.display='none';urlField.value='';input.value='';}
+const MAX_BYTES = 10 * 1024 * 1024;
+async function compressImage(file, maxBytes){
+  const img = await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(file);});
+  const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  canvas.getContext('2d').drawImage(img,0,0);URL.revokeObjectURL(img.src);
+  for(const q of [0.92,0.85,0.78,0.7,0.6,0.5]){
+    const blob = await new Promise(r=>canvas.toBlob(r,'image/jpeg',q));
+    if(blob && blob.size <= maxBytes) return new File([blob], file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
+  }
+  return null;
+}
+async function handleFile(originalFile){
+  if(!originalFile.type.match(/^image\/(jpeg|png|webp)$/)){status.textContent='✗ Solo JPG, PNG o WEBP';status.style.color='#EF4444';return;}
+  let file = originalFile;
+  if(file.size > MAX_BYTES){
+    zone.classList.remove('done');zone.classList.add('uploading');
+    icon.textContent='🗜️';text.textContent='Comprimiendo imagen...';hint.style.display='none';
+    progress.style.display='none';status.style.color='';status.textContent='Reduciendo tamaño...';clearBtn.style.display='none';
+    try{
+      const compressed = await compressImage(originalFile, MAX_BYTES);
+      if(!compressed){zone.classList.remove('uploading');status.textContent='✗ Imagen muy grande';status.style.color='#EF4444';icon.textContent='⚠️';text.textContent='Haz clic para reintentar';hint.style.display='block';return;}
+      file = compressed;
+    }catch(e){zone.classList.remove('uploading');status.textContent='✗ Error: '+e.message;status.style.color='#EF4444';return;}
+  }
+  zone.classList.remove('done');zone.classList.add('uploading');
+  icon.textContent='⏳';text.textContent='Subiendo tu imagen...';hint.style.display='none';
+  progress.style.display='block';progressBar.style.width='0%';status.style.color='';status.textContent='0%';clearBtn.style.display='none';
+  const formData = new FormData();
+  formData.append('file', file);formData.append('upload_preset', UPLOAD_PRESET);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`);
+  xhr.upload.onprogress=e=>{if(e.lengthComputable){const pct=Math.round((e.loaded/e.total)*100);progressBar.style.width=pct+'%';status.textContent=pct+'%';}};
+  xhr.onload=()=>{
+    if(xhr.status===200){
+      const res = JSON.parse(xhr.responseText);
+      urlField.value = res.secure_url;
+      zone.classList.remove('uploading');zone.classList.add('done');
+      icon.style.display='none';text.style.display='none';progress.style.display='none';
+      preview.src = res.secure_url;preview.style.display='block';
+      const sizeMB = (file.size/(1024*1024)).toFixed(1);
+      status.textContent='✓ Imagen subida ('+sizeMB+' MB)';clearBtn.style.display='inline-block';
+    }else{
+      zone.classList.remove('uploading');
+      let detail = 'HTTP '+xhr.status;
+      try{const errBody=JSON.parse(xhr.responseText);if(errBody&&errBody.error&&errBody.error.message)detail=errBody.error.message;}catch(e){}
+      status.textContent='✗ '+detail;status.style.color='#EF4444';progress.style.display='none';
+      icon.textContent='⚠️';text.textContent='Haz clic para reintentar';hint.style.display='block';
+    }
+  };
+  xhr.onerror=()=>{zone.classList.remove('uploading');status.textContent='✗ Error de conexión';status.style.color='#EF4444';};
+  xhr.send(formData);
+}
+
+// Precio fijo
+const precioHidden = document.getElementById('precio-hidden');
+precioHidden.value = '$28';
+
+function getProductName(){ return 'Camiseta Deportiva Juvenil'; }
+
+const form = document.querySelector('form.form-wrap');
+const alertBox = document.getElementById('form-alert');
+function showAlert(msg){
+  if (!alertBox){ alert(msg); return; }
+  alertBox.textContent = '⚠ ' + msg;
+  alertBox.classList.add('show');
+  alertBox.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>alertBox.classList.remove('show'), 6000);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!form.querySelector('input[name="talla"]:checked')) { showAlert('Elige la talla.'); return; }
+  if (!form.querySelector('input[name="color"]:checked')) { showAlert('Elige el color.'); return; }
+  if (!urlField.value || !urlField.value.startsWith('https://res.cloudinary.com/')) {
+    showAlert('Tienes que subir una imagen.'); zone.scrollIntoView({behavior:'smooth',block:'center'}); return;
+  }
+  if (zone.classList.contains('uploading')) { showAlert('Espera a que termine de subirse la imagen.'); return; }
+
+  const item = {
+    producto: getProductName(),
+    pedido_page: window.location.pathname.split('/').pop(),
+    talla: form.querySelector('input[name="talla"]:checked').value,
+    color: form.querySelector('input[name="color"]:checked').value,
+    imagen_url: urlField.value,
+    precio_num: 28,
+    precio_str: '$28'
+  };
+  const notas = form.querySelector('[name="notas"]');
+  if (notas && notas.value.trim()) item.notas_producto = notas.value.trim();
+
+  addToCart(item);
+  showCartToast('¡Bolsa agregada al carrito!', 'Ver carrito →', 'carrito.html');
+
+  setTimeout(() => {
+    if (confirm('¿Agregar otra bolsa o ir al carrito?\n\nOK = Ir al carrito\nCancelar = Seguir agregando')) {
+      window.location.href = 'carrito.html';
+    } else {
+      resetZone();
+      const n = form.querySelector('[name="notas"]'); if (n) n.value = '';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  }, 1200);
+});
+</script>
+
+<script>
+(function(){
+  const steps = Array.from(document.querySelectorAll('.form-step'));
+  if (steps.length < 2) return;
+  steps.forEach((s, i) => { if (i > 0) s.classList.add('locked'); });
+  function isStepComplete(step){
+    const radios = step.querySelectorAll('input[type="radio"][required]');
+    if (radios.length > 0){
+      const name = radios[0].name;
+      if (!step.querySelector(`input[name="${name}"]:checked`)) return false;
+    }
+    const urlF = step.querySelector('#imagen-url');
+    if (urlF){ if (!urlF.value || !urlF.value.startsWith('https://res.cloudinary.com/')) return false; }
+    return true;
+  }
+  function refreshLocks(){
+    let ok = true;
+    steps.forEach((step, i) => {
+      if (i === 0){ if (!isStepComplete(step)) ok = false; return; }
+      if (ok){
+        if (step.classList.contains('locked')){
+          step.classList.remove('locked'); step.classList.add('unlocked-anim');
+          setTimeout(()=>step.classList.remove('unlocked-anim'), 500);
+        }
+        if (!isStepComplete(step)) ok = false;
+      } else { step.classList.add('locked'); }
+    });
+  }
+  document.addEventListener('change', refreshLocks);
+  document.addEventListener('input', refreshLocks);
+  const urlF = document.getElementById('imagen-url');
+  if (urlF){
+    let last = urlF.value;
+    setInterval(()=>{ if (urlF.value !== last){ last = urlF.value; refreshLocks(); } }, 500);
+  }
+  refreshLocks();
+})();
+</script>
+<script src="cart.js"></script>
+<script src="launch-banner.js"></script>
+<script src="preview-promise.js"></script>
+</body>
+</html>
