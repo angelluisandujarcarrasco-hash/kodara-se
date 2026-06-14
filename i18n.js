@@ -156,13 +156,13 @@
   function injectToggle() {
     if (document.querySelector('.lang-toggle') || document.querySelector('.kd-lang-toggle')) return; // index ya tiene
     var css = '' +
-      '.kd-lang-toggle{position:fixed;right:14px;bottom:14px;z-index:99996;display:flex;background:rgba(255,248,236,0.96);' +
+      '.kd-lang-toggle{position:fixed;left:14px;bottom:14px;z-index:99996;display:flex;background:rgba(255,248,236,0.96);' +
       'border:1px solid rgba(60,50,40,0.18);border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,0.16);overflow:hidden;' +
       "font-family:'Inter',system-ui,sans-serif;backdrop-filter:blur(8px)}" +
       '.kd-lang-toggle button{border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:800;letter-spacing:0.5px;' +
       'color:#8A7864;padding:9px 15px;transition:all .2s;line-height:1}' +
       '.kd-lang-toggle button.active{background:linear-gradient(135deg,#C15431,#B58850);color:#fff}' +
-      '@media(max-width:600px){.kd-lang-toggle{right:10px;bottom:10px}.kd-lang-toggle button{padding:8px 13px;font-size:12px}}';
+      '@media(max-width:600px){.kd-lang-toggle{left:10px;bottom:10px}.kd-lang-toggle button{padding:8px 13px;font-size:12px}}';
     var st = document.createElement('style');
     st.textContent = css;
     document.head.appendChild(st);
