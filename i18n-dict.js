@@ -631,7 +631,10 @@ Object.assign(window.KODARA_DICT, {
   "¡Pedido": "Order",
   "recibido": "received",
   "Gracias por confiar en Kodara Print Studio. Hemos recibido tu pedido y te contactaremos por email en menos de 24 horas con la confirmación y los siguientes pasos.": "Thank you for trusting Kodara Print Studio. We've received your order and will contact you by email within 24 hours with the confirmation and next steps.",
-  "Si tienes dudas, escríbenos a kodarase@gmail.com": "If you have any questions, write to us at kodarase@gmail.com"
+  "Si tienes dudas, escríbenos a kodarase@gmail.com": "If you have any questions, write to us at kodarase@gmail.com",
+  // Política de privacidad (título de pestaña)
+  "Política de Privacidad · Kodara SE": "Privacy Policy · Kodara SE",
+  "España:": "Spain:"
 });
 
 /* Frases plantilla (prefijos de títulos / etiquetas / tamaños). Orden: más largas primero. */

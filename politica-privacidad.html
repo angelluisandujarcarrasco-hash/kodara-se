@@ -168,17 +168,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 </footer>
 
 <script>
-let lang='es';
+let lang=(function(){try{return localStorage.getItem('kodara_lang')||'en';}catch(e){return 'en';}})();
 function setLang(l){
-  lang=l;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  if(event&&event.target)event.target.classList.add('active');
+  lang=(l==='es')?'es':'en'; l=lang;
+  try{localStorage.setItem('kodara_lang',lang);}catch(e){}
+  window.kodaraLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.textContent.trim().toLowerCase()===lang));
   document.querySelectorAll('[data-es]').forEach(el=>{
     const v=el.getAttribute('data-'+l);
     if(v!=null)el.textContent=v;
   });
   document.documentElement.lang=l;
+  if(window.kodaraSetLang) window.kodaraSetLang(l);
 }
+document.addEventListener('DOMContentLoaded',function(){setLang(lang);});
 </script>
 
 <script src="cart.js"></script>
