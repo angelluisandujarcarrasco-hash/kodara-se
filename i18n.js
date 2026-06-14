@@ -12,6 +12,32 @@
 
   // Diccionario Español -> Inglés (texto EXACTO, ya recortado).
   var DICT = window.KODARA_DICT || {};
+  // Frases explícitas para textos plantilla (títulos, "Pedido · X", "← Volver a X", tamaños).
+  var PHRASES = window.KODARA_PHRASES || [];
+  // Auto-frases: nombres de producto del diccionario, para traducirlos cuando van embebidos
+  // en etiquetas tipo "Pedido · NOMBRE". Solo claves seguras (multi-palabra, sin punto, sin ·).
+  var AUTO = Object.keys(DICT).filter(function (k) {
+    return k.length >= 8 && k.indexOf(' ') !== -1 &&
+      !/[.!?]/.test(k) && k.indexOf('·') === -1 &&
+      k.charAt(0) !== '←' && k.indexOf('Personalizar ') !== 0;
+  }).sort(function (a, b) { return b.length - a.length; }); // más largas primero
+
+  function isTemplated(s) {
+    return /^(Pedido ·|Hacer mi pedido|Nuevo pedido|← Volver)/.test(s) ||
+      s.indexOf('tamaños disponibles desde') !== -1 ||
+      s.indexOf('(cuadrado)') !== -1 || s.indexOf('(apaisado)') !== -1;
+  }
+
+  function applyPhrases(original) {
+    var out = original, changed = false, i;
+    for (i = 0; i < PHRASES.length; i++) {
+      if (out.indexOf(PHRASES[i][0]) !== -1) { out = out.split(PHRASES[i][0]).join(PHRASES[i][1]); changed = true; }
+    }
+    for (i = 0; i < AUTO.length; i++) {
+      if (out.indexOf(AUTO[i]) !== -1) { out = out.split(AUTO[i]).join(DICT[AUTO[i]]); changed = true; }
+    }
+    return changed ? out : null;
+  }
 
   // ---- Si la página ya trae el sistema authored (index.html), no interferir ----
   // (index gestiona su propio toggle y persistencia con la misma clave localStorage)
@@ -50,7 +76,8 @@
     batch.forEach(function (node) {
       if (node.__kdEs === undefined) node.__kdEs = node.nodeValue; // cachea original ES
       if (lang === 'en') {
-        var tr = translate(node.__kdEs);
+        var tr = translate(node.__kdEs);              // 1) match exacto del diccionario
+        if (tr === null && isTemplated(node.__kdEs.trim())) tr = applyPhrases(node.__kdEs); // 2) plantillas
         if (tr !== null) node.nodeValue = tr;
       } else {
         node.nodeValue = node.__kdEs; // restaura ES
@@ -85,11 +112,24 @@
     });
   }
 
+  var titleEs;
+  function applyTitle() {
+    if (titleEs === undefined) titleEs = document.title;
+    if (lang === 'en') {
+      var t = translate(titleEs);
+      if (t === null && isTemplated(titleEs.trim())) t = applyPhrases(titleEs);
+      if (t !== null) document.title = t;
+    } else {
+      document.title = titleEs;
+    }
+  }
+
   function applyAll(root) {
     root = root || document.body;
     if (!root) return;
     applyToTextNodes(root);
     applyToAttrs(root);
+    applyTitle();
     document.documentElement.lang = lang;
   }
 
