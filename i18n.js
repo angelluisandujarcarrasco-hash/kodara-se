@@ -16,16 +16,23 @@
   var PHRASES = window.KODARA_PHRASES || [];
   // Auto-frases: nombres de producto del diccionario, para traducirlos cuando van embebidos
   // en etiquetas tipo "Pedido · NOMBRE". Solo claves seguras (multi-palabra, sin punto, sin ·).
+  // nombres de categoría de una sola palabra que SÍ queremos traducir en etiquetas/enlaces
+  var SAFE_SINGLE = { 'Pósteres': 1, 'Calendarios': 1, 'Tarjetas': 1, 'Lienzos': 1, 'Postales': 1, 'Tazas': 1, 'Pósters': 1 };
   var AUTO = Object.keys(DICT).filter(function (k) {
-    return k.length >= 8 && k.indexOf(' ') !== -1 &&
-      !/[.!?]/.test(k) && k.indexOf('·') === -1 &&
-      k.charAt(0) !== '←' && k.indexOf('Personalizar ') !== 0;
+    return SAFE_SINGLE[k] ||
+      (k.length >= 8 && k.indexOf(' ') !== -1 &&
+        !/[.!?]/.test(k) && k.indexOf('·') === -1 &&
+        k.charAt(0) !== '←' && k.indexOf('Personalizar ') !== 0);
   }).sort(function (a, b) { return b.length - a.length; }); // más largas primero
 
   function isTemplated(s) {
     return /^(Pedido ·|Hacer mi pedido|Nuevo pedido|← Volver)/.test(s) ||
-      s.indexOf('tamaños disponibles desde') !== -1 ||
-      s.indexOf('(cuadrado)') !== -1 || s.indexOf('(apaisado)') !== -1;
+      s.indexOf('tamaño final del') !== -1 ||
+      s.indexOf('tamaños disponibles') !== -1 ||
+      s.indexOf('tamaños desde') !== -1 ||
+      s.indexOf('El precio cambia según') !== -1 ||
+      s.indexOf('(cuadrado)') !== -1 || s.indexOf('(apaisado)') !== -1 ||
+      s.indexOf('(panorámico)') !== -1;
   }
 
   function applyPhrases(original) {

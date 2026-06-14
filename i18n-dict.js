@@ -475,14 +475,92 @@ Object.assign(window.KODARA_DICT, {
   "Personalizar Tazas y Botellas · Kodarase Print Studio": "Customize Mugs & Bottles · Kodarase Print Studio"
 });
 
+/* ===== PASO 2 (revisión) — carrito, checkout, vista previa, frases de tamaño ===== */
+Object.assign(window.KODARA_DICT, {
+  // Vista previa (preview-promise.js, en todas las páginas de pedido)
+  "Vista previa antes de imprimir": "Preview before printing",
+  "Antes de producir tu pedido te enviamos una imagen de cómo quedará para que la apruebes. Solo lo imprimimos cuando estés 100% feliz. 💛": "Before producing your order we send you an image of how it will look so you can approve it. We only print it once you're 100% happy. 💛",
+
+  // Carrito (cart.js + carrito.html)
+  "Ver carrito": "View cart",
+  "Ver carrito →": "View cart →",
+  "Tu carrito · Kodarase Print Studio": "Your cart · Kodarase Print Studio",
+  "Tu": "Your",
+  "carrito": "cart",
+  "← Seguir comprando": "← Continue shopping",
+  "Seguir comprando": "Continue shopping",
+  "Resumen del pedido": "Order summary",
+  "Envío gratis incluido": "Free shipping included",
+  "Quitar": "Remove",
+  "Vaciar carrito": "Empty cart",
+  "Finalizar pedido": "Checkout",
+  "Tu carrito está vacío": "Your cart is empty",
+  "Tu carrito está vacío.": "Your cart is empty.",
+  "Agrega productos al carrito desde el catálogo y aparecerán aquí.": "Add products to your cart from the catalog and they'll appear here.",
+  "Ver catálogo →": "View catalog →",
+  "¿Vaciar carrito?": "Empty cart?",
+  "¿Quitar este producto del carrito?": "Remove this product from the cart?",
+  // Etiquetas de configuración (carrito/checkout)
+  "Tamaño:": "Size:", "Color:": "Color:", "Colgador:": "Hanger:", "Grosor:": "Thickness:",
+  "Marco:": "Frame:", "Orientación:": "Orientation:", "Panel:": "Panel:",
+  "Talla:": "Size:", "Técnica:": "Technique:", "Páginas:": "Pages:", "Notas:": "Notes:",
+  "Papel:": "Paper:", "Cantidad:": "Quantity:", "Acabado:": "Finish:",
+  // Toasts (al agregar al carrito)
+  "¡Agregado al carrito!": "Added to cart!",
+  "¡Bolsa agregada al carrito!": "Bag added to cart!",
+  "¡Libro agregado al carrito!": "Book added to cart!",
+
+  // Checkout (checkout.html)
+  "Finalizar pedido · Kodarase Print Studio": "Checkout · Kodarase Print Studio",
+  "Finaliza tu": "Complete your",
+  "Datos de envío": "Shipping details",
+  "Resumen": "Summary",
+  "Nombre": "First name",
+  "Apellido": "Last name",
+  "Correo electrónico": "Email",
+  "Teléfono": "Phone",
+  "Dirección, línea 1": "Address, line 1",
+  "Dirección, línea 2": "Address, line 2",
+  "Ciudad": "City",
+  "Estado / Provincia / Región": "State / Province / Region",
+  "Código postal": "ZIP / Postal code",
+  "País": "Country",
+  "Nombre de empresa": "Company name",
+  "Notas / instrucciones": "Notes / instructions",
+  "Pagar ahora": "Pay now",
+  "Borrar mis datos": "Delete my details",
+  "¿Borrar mis datos guardados?": "Delete my saved details?",
+  "No hay productos para procesar": "No products to process",
+  "Agrega productos al carrito antes de hacer checkout.": "Add products to your cart before checking out.",
+  // Placeholders checkout
+  "tucorreo@ejemplo.com": "youremail@example.com",
+  "Calle, número": "Street, number",
+  "Piso, puerta, escalera": "Floor, door, stairs",
+  "España / Estados Unidos / México...": "Spain / United States / Mexico...",
+  "¿Algo que tengamos que tener en cuenta?": "Anything we should keep in mind?"
+});
+
 /* Frases plantilla (prefijos de títulos / etiquetas / tamaños). Orden: más largas primero. */
 window.KODARA_PHRASES = [
   ["Hacer mi pedido · ", "Make my order · "],
   ["Nuevo pedido · ", "New order · "],
   ["Pedido · ", "Order · "],
   ["← Volver a ", "← Back to "],
+  // frases de tamaño (sentencias con números embebidos)
+  ["El tamaño final del póster con marco prémium que recibirás.", "The final size of the poster with premium frame you'll receive."],
+  ["El tamaño final del póster con marco de metal que recibirás.", "The final size of the poster with metal frame you'll receive."],
+  ["El tamaño final del póster con marco de madera que recibirás.", "The final size of the poster with wood frame you'll receive."],
+  ["El tamaño final del póster con colgador que recibirás.", "The final size of the poster with hanger you'll receive."],
+  ["El tamaño final del póster con marco que recibirás.", "The final size of the poster with frame you'll receive."],
+  ["El tamaño final del póster que recibirás.", "The final size of the poster you'll receive."],
+  ["El precio cambia según el grosor que elegiste arriba.", "The price changes based on the thickness you chose above."],
+  ["El precio cambia según el tamaño.", "The price changes based on the size."],
   [" tamaños disponibles desde ", " sizes available from "],
+  [" tamaños disponibles.", " sizes available."],
+  ["Disponibles ", "Available "],
+  [" tamaños desde ", " sizes from "],
   [" hasta $", " to $"],
   ["(cuadrado)", "(square)"],
-  ["(apaisado)", "(landscape)"]
+  ["(apaisado)", "(landscape)"],
+  ["(panorámico)", "(panoramic)"]
 ];
