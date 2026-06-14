@@ -540,8 +540,71 @@ Object.assign(window.KODARA_DICT, {
   "¿Algo que tengamos que tener en cuenta?": "Anything we should keep in mind?"
 });
 
+/* ===== PASO 2 (rev 2) — páginas arte-mural-*.html (sub-selectores) ===== */
+Object.assign(window.KODARA_DICT, {
+  "Preview antes de imprimir": "Preview before printing",
+  "Calidad garantizada o reembolso": "Quality guaranteed or refund",
+  "Pago seguro Stripe": "Secure Stripe payment",
+  "Personaliza tus": "Customize your",
+  "Póster Impresión Artística": "Fine Art Print Poster",
+  // H1 grad (minúsculas)
+  "impresión en aluminio": "aluminum print",
+  "impresión en espuma": "foam print",
+  "impresión artística": "fine art print",
+  "impresión en plexiglás": "plexiglass print",
+  "póster con colgador": "poster with hanger",
+  "póster con marco de metal": "poster with metal frame",
+  "marco de madera": "wood frame",
+  "pósteres": "posters",
+  "lienzos enmarcados": "framed canvases",
+  "lienzos": "canvases",
+  // variantes sin acento (page-tags)
+  "Impresion Artistica": "Fine Art Print",
+  "Posteres": "Posters",
+  "Lienzos Enmarcados": "Framed Canvases",
+  // descripciones de cada material
+  "Impresiones directas sobre aluminio. Acabado moderno, resistente y duradero. Listas para colgar.": "Direct prints on aluminum. Modern, durable and resistant finish. Ready to hang.",
+  "Pósters con colgador de madera natural y cordón de cuero. Listos para colgar — sin marcos, sin clavos.": "Posters with a natural wood hanger and leather cord. Ready to hang — no frames, no nails.",
+  "Panel ligero, resistente y económico. Disponible en formato vertical, apaisado o cuadrado. Listo para colgar.": "Lightweight, sturdy and affordable panel. Available in portrait, landscape or square format. Ready to hang.",
+  "Tu frase, tu foto o tu diseño impreso en papel artístico premium.": "Your phrase, your photo or your design printed on premium art paper.",
+  "Panel de madera natural con tu diseño impreso. Acabado cálido, sólido y elegante. Listo para colgar.": "Natural wood panel with your design printed. Warm, solid and elegant finish. Ready to hang.",
+  "Pósteres en marco de madera natural con cristal. Listos para colgar — sin clavos, sin complicaciones.": "Posters in a natural wood frame with glass. Ready to hang — no nails, no hassle.",
+  "Pósters en marco de metal negro mate. Diseño minimalista y moderno. Listos para colgar.": "Posters in a matte black metal frame. Minimalist, modern design. Ready to hang.",
+  "Impresiones de calidad sobre plexiglás. Acabado moderno, brillante y resistente. Listas para colgar.": "Quality prints on plexiglass. Modern, glossy and durable finish. Ready to hang.",
+  "Elige el tipo de papel que prefieras. Cada uno con sus propios tamaños y precios.": "Choose the paper type you prefer. Each with its own sizes and prices.",
+  // subtítulos de tarjetas (tipos de papel)
+  "Acabado profesional, sin reflejos": "Professional finish, no glare",
+  "Acabado mate suave, ideal para decoración minimalista": "Soft matte finish, ideal for minimalist decor",
+  "Calidad galería, para obras importantes": "Gallery quality, for important pieces",
+  "Papel fine-art, máxima calidad cromática": "Fine-art paper, maximum color quality",
+  "Mayor durabilidad, perfecto para regalos": "Greater durability, perfect for gifts",
+  "Brillo sutil, colores vibrantes": "Subtle shine, vibrant colors",
+  // ayuda WhatsApp
+  "// ¿NO SABES CUÁL ELEGIR?": "// NOT SURE WHICH TO CHOOSE?",
+  "Te ayudamos a elegir": "We help you choose",
+  "Escríbenos por WhatsApp": "Message us on WhatsApp",
+  "Escríbenos por WhatsApp y te ayudamos a elegir el papel perfecto en 5 minutos.": "Message us on WhatsApp and we'll help you choose the perfect paper in 5 minutes.",
+  // páginas vacías (placeholder)
+  "Lo añadimos despacio. Tú dime qué pongo aquí primero.": "We're adding it slowly. Just tell me what to put here first.",
+  "Aquí va el contenido de Lienzos enmarcados": "Framed canvases content goes here",
+  "Aquí va el contenido de Lienzos": "Canvases content goes here",
+  "Página vacía a propósito — lista para añadir contenido cuando me lo digas.": "Intentionally empty page — ready to add content whenever you tell me.",
+  // optgroup (cabeceras de tamaño, variantes sin precio)
+  "No disponibles": "Not available",
+  "Tamaños pequeños": "Small sizes",
+  "Tamaños medianos": "Medium sizes",
+  "Tamaños grandes": "Large sizes",
+  "Tamaños XL": "XL sizes"
+});
+
 /* Frases plantilla (prefijos de títulos / etiquetas / tamaños). Orden: más largas primero. */
 window.KODARA_PHRASES = [
+  ["Tamaños pequeños", "Small sizes"],
+  ["Tamaños medianos", "Medium sizes"],
+  ["Tamaños grandes", "Large sizes"],
+  ["Tamaños XL", "XL sizes"],
+  ["No disponibles", "Not available"],
+  ["Desde ", "From "],
   ["Hacer mi pedido · ", "Make my order · "],
   ["Nuevo pedido · ", "New order · "],
   ["Pedido · ", "Order · "],

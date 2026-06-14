@@ -17,7 +17,7 @@
   // Auto-frases: nombres de producto del diccionario, para traducirlos cuando van embebidos
   // en etiquetas tipo "Pedido · NOMBRE". Solo claves seguras (multi-palabra, sin punto, sin ·).
   // nombres de categoría de una sola palabra que SÍ queremos traducir en etiquetas/enlaces
-  var SAFE_SINGLE = { 'Pósteres': 1, 'Calendarios': 1, 'Tarjetas': 1, 'Lienzos': 1, 'Postales': 1, 'Tazas': 1, 'Pósters': 1 };
+  var SAFE_SINGLE = { 'Pósteres': 1, 'Posteres': 1, 'Calendarios': 1, 'Tarjetas': 1, 'Lienzos': 1, 'Postales': 1, 'Tazas': 1, 'Pósters': 1, 'pósteres': 1 };
   var AUTO = Object.keys(DICT).filter(function (k) {
     return SAFE_SINGLE[k] ||
       (k.length >= 8 && k.indexOf(' ') !== -1 &&
@@ -26,7 +26,7 @@
   }).sort(function (a, b) { return b.length - a.length; }); // más largas primero
 
   function isTemplated(s) {
-    return /^(Pedido ·|Hacer mi pedido|Nuevo pedido|← Volver)/.test(s) ||
+    return /^(Pedido ·|Hacer mi pedido|Nuevo pedido|← Volver|Arte Mural ·|Desde )/.test(s) ||
       s.indexOf('tamaño final del') !== -1 ||
       s.indexOf('tamaños disponibles') !== -1 ||
       s.indexOf('tamaños desde') !== -1 ||
@@ -105,6 +105,18 @@
         el.setAttribute('placeholder', el.__kdPhEs);
       }
     });
+    // etiquetas de optgroup (cabeceras de los desplegables de tamaño)
+    var ogs = root.querySelectorAll ? root.querySelectorAll('optgroup[label]') : [];
+    Array.prototype.forEach.call(ogs, function (el) {
+      if (el.__kdLabelEs === undefined) el.__kdLabelEs = el.getAttribute('label') || '';
+      if (lang === 'en') {
+        var tr = translate(el.__kdLabelEs);
+        if (tr === null) tr = applyPhrases(el.__kdLabelEs);
+        if (tr !== null) el.setAttribute('label', tr);
+      } else {
+        el.setAttribute('label', el.__kdLabelEs);
+      }
+    });
     // botones tipo input value
     var ins = root.querySelectorAll ? root.querySelectorAll('input[type="submit"],input[type="button"]') : [];
     Array.prototype.forEach.call(ins, function (el) {
@@ -124,7 +136,7 @@
     if (titleEs === undefined) titleEs = document.title;
     if (lang === 'en') {
       var t = translate(titleEs);
-      if (t === null && isTemplated(titleEs.trim())) t = applyPhrases(titleEs);
+      if (t === null) t = applyPhrases(titleEs); // títulos: siempre intenta frases/nombres
       if (t !== null) document.title = t;
     } else {
       document.title = titleEs;
