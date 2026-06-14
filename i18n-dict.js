@@ -597,6 +597,43 @@ Object.assign(window.KODARA_DICT, {
   "Tamaños XL": "XL sizes"
 });
 
+/* ===== PASO 3 — inicio (texto plano) + página de gracias ===== */
+Object.assign(window.KODARA_DICT, {
+  // Tira de características (marquee)
+  "Calidad Premium": "Premium Quality",
+  "Envío Internacional": "International Shipping",
+  "Print on Demand": "Print on Demand",
+  "Diseños Únicos": "Unique Designs",
+  "Sin Mínimos": "No Minimums",
+  "Pago Seguro Stripe": "Secure Stripe Payment",
+  "Garantía Total": "Full Guarantee",
+  "Atención Personalizada": "Personalized Support",
+  "Calidad Garantizada": "Quality Guaranteed",
+  // Badges de las tarjetas de producto
+  "📸 Próximamente": "📸 Coming soon",
+  "☕ ¡Ya disponible!": "☕ Available now!",
+  "🛍️ ¡Ya disponible!": "🛍️ Available now!",
+  "👕 ¡Ropa infantil!": "👕 Kids clothing!",
+  "💌 ¡Ya disponible!": "💌 Available now!",
+  "📅 ¡Ya disponible!": "📅 Available now!",
+  "📚 ¡Ya disponible!": "📚 Available now!",
+  "¡Ya disponible!": "Available now!",
+  "Póster personalizado": "Custom poster",
+  "Sé tú el primero": "Be the first",
+  "Pósters": "Posters",
+  "tu primer pedido": "your first order",
+  // Newsletter / suscripción
+  "Suscríbete y obtén el código + acceso anticipado a nuevos productos, descuentos exclusivos y diseños limitados.": "Subscribe and get the code + early access to new products, exclusive discounts and limited designs.",
+  "Sin spam. Cancela cuando quieras.": "No spam. Cancel anytime.",
+
+  // Página de gracias (gracias.html)
+  "¡Pedido recibido! · Kodarase Print Studio": "Order received! · Kodarase Print Studio",
+  "¡Pedido": "Order",
+  "recibido": "received",
+  "Gracias por confiar en Kodara Print Studio. Hemos recibido tu pedido y te contactaremos por email en menos de 24 horas con la confirmación y los siguientes pasos.": "Thank you for trusting Kodara Print Studio. We've received your order and will contact you by email within 24 hours with the confirmation and next steps.",
+  "Si tienes dudas, escríbenos a kodarase@gmail.com": "If you have any questions, write to us at kodarase@gmail.com"
+});
+
 /* Frases plantilla (prefijos de títulos / etiquetas / tamaños). Orden: más largas primero. */
 window.KODARA_PHRASES = [
   ["Tamaños pequeños", "Small sizes"],

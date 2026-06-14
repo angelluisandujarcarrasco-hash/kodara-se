@@ -6,7 +6,7 @@
 
 /* ── Carga el sistema de idiomas (inglés por defecto + botón ES/EN) en todas las páginas ── */
 (function loadI18n() {
-  var V = '20260614d'; // versión: súbela al actualizar el idioma para evitar caché
+  var V = '20260614e'; // versión: súbela al actualizar el idioma para evitar caché
   function add(src, cb) {
     if (document.querySelector('script[data-kd-i18n="' + src + '"]')) { if (cb) cb(); return; }
     var s = document.createElement('script');

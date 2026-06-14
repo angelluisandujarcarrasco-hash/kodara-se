@@ -206,10 +206,9 @@
   window.kodaraLang = lang;
 
   // ---------- arranque ----------
-  if (AUTHORED) {
-    // index.html: su propio script gestiona idioma + toggle. No hacemos nada aquí.
-    return;
-  }
+  // En index.html (AUTHORED) su propio script gestiona los [data-es] y el toggle;
+  // aquí solo traducimos por diccionario el texto plano (badges, banner, formularios)
+  // y NO inyectamos el botón flotante (injectToggle ya detecta el .lang-toggle existente).
 
   function start() {
     applyAll(document.body);

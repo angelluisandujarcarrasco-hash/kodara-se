@@ -1717,6 +1717,8 @@ function setLang(l) {
     if (v != null) el.setAttribute('placeholder', v);
   });
   document.documentElement.lang = l;
+  // Sincroniza el motor de diccionario (texto plano: badges, banner, formularios)
+  if (window.kodaraSetLang) window.kodaraSetLang(l);
   // Refresh dynamic content if budget modal exists
   if (document.getElementById('svcSelGrid')) buildSvcSelGrid();
   // Refresh service modal if open
