@@ -3,6 +3,21 @@
  * Aparece en TODAS las páginas, sticky top, con botón cerrar.
  * Se recuerda dismissed con localStorage (24h).
  */
+
+/* ── Carga el sistema de idiomas (inglés por defecto + botón ES/EN) en todas las páginas ── */
+(function loadI18n() {
+  function add(src, cb) {
+    if (document.querySelector('script[data-kd-i18n="' + src + '"]')) { if (cb) cb(); return; }
+    var s = document.createElement('script');
+    s.src = src;
+    s.setAttribute('data-kd-i18n', src);
+    if (cb) s.onload = cb;
+    (document.head || document.documentElement).appendChild(s);
+  }
+  // primero el diccionario, luego la engine
+  add('i18n-dict.js', function () { add('i18n.js'); });
+})();
+
 (function() {
   const KEY = 'kodara_launch_banner_dismissed';
   const dismissed = localStorage.getItem(KEY);
