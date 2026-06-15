@@ -1,6 +1,18 @@
 {
   "reviews": [
     {
+      "id": "r-mqf9j69p-09zb",
+      "name": "genesis andujar",
+      "location": "wilkes barre · Poster with wood frame · 21×29,7 cm / A4",
+      "rating": 5,
+      "text_es": "Me encantó, y llegó súper rápido. El servicio, increíble.",
+      "text_en": "Me encantó, y llegó súper rápido. El servicio, increíble.",
+      "image_url": "img/reviews/1781530953614-opdhn7.jpg",
+      "date": "2026-06-15",
+      "approved": true,
+      "placeholder": false
+    },
+    {
       "id": "r-mpv6o0gq-rkm6",
       "name": "yoely",
       "location": "wilkes barre",
