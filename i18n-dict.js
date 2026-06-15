@@ -84,6 +84,7 @@ window.KODARA_DICT = {
   "Tu comentario": "Your comment",
   "Foto de tu producto (opcional)": "Photo of your product (optional)",
   "Máximo 3 MB. Para video, mándalo por WhatsApp.": "Max 3 MB. For video, send it via WhatsApp.",
+  "Cualquier foto sirve, la ajustamos automáticamente. Para video, mándalo por WhatsApp.": "Any photo works, we resize it automatically. For video, send it via WhatsApp.",
   "Enviar reseña →": "Submit review →",
   "Póster en papel": "Paper poster",
   "Póster con colgador": "Poster with hanger",

@@ -1390,7 +1390,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="review-field">
           <label data-es="Foto de tu producto (opcional)" data-en="Photo of your product (optional)">Foto de tu producto (opcional)</label>
           <input type="file" id="rev-file" accept="image/*">
-          <small style="color:var(--text-3);font-size:11px">Máximo 3 MB. Para video, mándalo por WhatsApp.</small>
+          <small style="color:var(--text-3);font-size:11px">Cualquier foto sirve, la ajustamos automáticamente. Para video, mándalo por WhatsApp.</small>
         </div>
         <div id="rev-error" style="display:none;background:#FEE;border:1px solid #C0392B;color:#922A20;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:12px"></div>
         <button type="submit" class="cta-btn cta-big" id="revSubmit" style="border:none;cursor:pointer;width:100%;justify-content:center;font-family:inherit" data-es="Enviar reseña →" data-en="Send review →">Enviar reseña →</button>
@@ -2466,6 +2466,28 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
     });
   }
 
+  // Encoge fotos grandes automáticamente (en vez de rechazarlas)
+  function loadImg(file){
+    return new Promise((res, rej) => { const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = URL.createObjectURL(file); });
+  }
+  async function compressImage(file, maxBytes, maxDim){
+    try{
+      const img = await loadImg(file);
+      let w = img.naturalWidth, h = img.naturalHeight;
+      const scale = Math.min(1, maxDim / Math.max(w, h));
+      w = Math.round(w * scale); h = Math.round(h * scale);
+      const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h); URL.revokeObjectURL(img.src);
+      let q = 0.85, blob = null;
+      for(let i = 0; i < 6; i++){
+        blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', q));
+        if(blob && blob.size <= maxBytes) break;
+        q -= 0.12;
+      }
+      return blob;
+    }catch(e){ console.error(e); return null; }
+  }
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     hideErr();
@@ -2481,14 +2503,20 @@ function closeReview(){ document.getElementById('reviewModal').classList.remove(
     const file = document.getElementById('rev-file').files[0];
     const website = form.querySelector('input[name="website"]').value; // honeypot
 
-    if(file && file.size > 3*1024*1024){
-      showErr('La imagen es muy grande (máximo 3 MB). Usa una foto más pequeña.');
-      btn.disabled = false; btn.textContent = 'Enviar reseña →'; return;
+    let uploadFile = file;
+    if(file){
+      // Encogemos cualquier foto a tamaño web (máx 1600px, ~2MB) para que SIEMPRE entre
+      const c = await compressImage(file, 2*1024*1024, 1600);
+      if(c){ uploadFile = new File([c], 'review.jpg', {type:'image/jpeg'}); }
+      else if(file.size > 4*1024*1024){
+        showErr('No se pudo procesar la imagen. Prueba con otra foto o mándanosla por WhatsApp.');
+        btn.disabled = false; btn.textContent = 'Enviar reseña →'; return;
+      }
     }
 
     let image_base64 = '';
-    if(file){
-      try{ image_base64 = await fileToBase64(file); }
+    if(uploadFile){
+      try{ image_base64 = await fileToBase64(uploadFile); }
       catch(err){ console.error(err); }
     }
 
