@@ -14,10 +14,10 @@
   var DICT = window.KODARA_DICT || {};
   // Frases explícitas para textos plantilla (títulos, "Pedido · X", "← Volver a X", tamaños).
   var PHRASES = window.KODARA_PHRASES || [];
-  // Auto-frases: nombres de producto del diccionario, para traducirlos cuando van embebidos
-  // en etiquetas tipo "Pedido · NOMBRE". Solo claves seguras (multi-palabra, sin punto, sin ·).
-  // nombres de categoría de una sola palabra que SÍ queremos traducir en etiquetas/enlaces
+  // Nombres de categoría de UNA sola palabra que SÍ queremos traducir en etiquetas/enlaces.
   var SAFE_SINGLE = { 'Pósteres': 1, 'Posteres': 1, 'Calendarios': 1, 'Tarjetas': 1, 'Lienzos': 1, 'Postales': 1, 'Tazas': 1, 'Pósters': 1, 'pósteres': 1 };
+  // AUTO = nombres de producto del diccionario, para traducirlos cuando van embebidos en
+  // etiquetas tipo "Pedido · NOMBRE". Solo claves seguras (multi-palabra, sin punto, sin ·) + SAFE_SINGLE.
   var AUTO = Object.keys(DICT).filter(function (k) {
     return SAFE_SINGLE[k] ||
       (k.length >= 8 && k.indexOf(' ') !== -1 &&
